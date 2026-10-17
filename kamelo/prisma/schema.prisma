@@ -1,0 +1,270 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../generated/prisma"
+}
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+model Organization {
+  id String @id @default(cuid())
+  name String
+  plan String @default("free")
+  subscriptionStatus String @default("ACTIVE")
+  planExpiresAt DateTime?
+  users User[]
+  properties Property[]
+  audits Audit[]
+  upgrades Upgrade[]
+}
+model User {
+  id String @id @default(cuid())
+  organizationId String
+  organization Organization @relation(fields: [organizationId], references: [id])
+  name String
+  email String @unique
+  phone String
+  password String
+  role String @default("OWNER")
+  platformAdmin Boolean @default(false)
+  canRecordPayments Boolean @default(false)
+  canControlDevices Boolean @default(false)
+  propertyIds String[] @default([])
+  sessions Session[]
+  resets ResetToken[]
+  assignedTickets Ticket[]
+}
+model Session {
+  token String @id
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expires DateTime
+}
+model ResetToken {
+  token String @id
+  userId String
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expires DateTime
+}
+model Property {
+  id String @id @default(cuid())
+  organizationId String
+  organization Organization @relation(fields: [organizationId], references: [id])
+  name String
+  type String
+  city String @default("")
+  billingAutomation Boolean @default(false)
+  operationsLastRunAt DateTime?
+  wifiSsid String @default("")
+  encryptedWifiPassword String?
+  guestInstructions String @default("")
+  supportPhone String @default("")
+  tickets Ticket[]
+  rooms Room[]
+  guests Guest[]
+  invoices Invoice[]
+  devices Device[]
+  @@index([organizationId])
+}
+model Room {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id])
+  number String
+  rate Int
+  operational String @default("READY")
+  stays Stay[]
+  invoices Invoice[]
+  devices Device[]
+  @@unique([propertyId, number])
+}
+model Guest {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id])
+  name String
+  phone String
+  stays Stay[]
+  invoices Invoice[]
+}
+model Stay {
+  id String @id @default(cuid())
+  roomId String
+  room Room @relation(fields: [roomId], references: [id])
+  guestId String
+  guest Guest @relation(fields: [guestId], references: [id])
+  start String
+  end String?
+  rate Int
+  billingDay Int @default(1)
+  status String
+  invoices Invoice[]
+  accesses SmartAccess[]
+  stayLinks StayLink[]
+  tickets Ticket[]
+  @@index([roomId, status])
+}
+model Invoice {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id])
+  roomId String
+  room Room @relation(fields: [roomId], references: [id])
+  guestId String
+  guest Guest @relation(fields: [guestId], references: [id])
+  stayId String
+  stay Stay @relation(fields: [stayId], references: [id])
+  number String @unique
+  date String
+  due String
+  period String?
+  status String @default("UNPAID")
+  total Int
+  items Json
+  payments Payment[]
+  tenantLinks TenantLink[]
+  proofs PaymentProof[]
+  @@unique([stayId, period])
+}
+model Payment {
+  id String @id @default(cuid())
+  invoiceId String
+  invoice Invoice @relation(fields: [invoiceId], references: [id])
+  amount Int
+  date String
+  method String
+  reference String @default("")
+  actorId String
+  createdAt DateTime @default(now())
+  proof PaymentProof?
+}
+model Device {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id])
+  roomId String?
+  room Room? @relation(fields: [roomId], references: [id])
+  name String
+  provider String @default("MOCK")
+  kind String @default("SWITCH")
+  automationEnabled Boolean @default(false)
+  guestControllable Boolean @default(false)
+  online Boolean @default(true)
+  capabilities Json
+  state Json
+  syncedAt DateTime @default(now())
+  accesses SmartAccess[]
+}
+model TenantLink {
+  id String @id @default(cuid())
+  invoiceId String
+  invoice Invoice @relation(fields:[invoiceId],references:[id])
+  tokenHash String @unique
+  includeAccess Boolean @default(false)
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+  @@index([invoiceId])
+}
+model PaymentProof {
+  id String @id @default(cuid())
+  invoiceId String
+  invoice Invoice @relation(fields:[invoiceId],references:[id])
+  amount Int
+  date String
+  method String
+  reference String @default("")
+  status String @default("PENDING")
+  storageKey String @unique
+  mimeType String
+  fileSize Int
+  contentHash String
+  reviewNote String @default("")
+  reviewedBy String?
+  reviewedAt DateTime?
+  paymentId String? @unique
+  payment Payment? @relation(fields:[paymentId],references:[id])
+  uploadedAt DateTime @default(now())
+  @@index([invoiceId,status])
+  @@index([invoiceId,contentHash])
+}
+model SmartAccess {
+  id String @id @default(cuid())
+  deviceId String
+  device Device @relation(fields:[deviceId],references:[id])
+  stayId String
+  stay Stay @relation(fields:[stayId],references:[id])
+  status String @default("PENDING")
+  validFrom String
+  validUntil String?
+  encryptedPin String
+  provider String @default("MOCK")
+  createdAt DateTime @default(now())
+  revokedAt DateTime?
+  @@unique([deviceId,stayId])
+  @@index([stayId,status])
+}
+model Audit {
+  id String @id @default(cuid())
+  organizationId String
+  organization Organization @relation(fields: [organizationId], references: [id])
+  actorId String
+  action String
+  targetId String
+  metadata Json
+  createdAt DateTime @default(now())
+  @@index([organizationId, createdAt])
+}
+model Upgrade {
+  id String @id @default(cuid())
+  organizationId String
+  organization Organization @relation(fields: [organizationId], references: [id])
+  plan String
+  status String @default("REQUESTED")
+  createdAt DateTime @default(now())
+}
+model RateLimit {
+  key String @id
+  count Int @default(1)
+  expires DateTime
+}
+
+model StayLink {
+  id String @id @default(cuid())
+  stayId String
+  stay Stay @relation(fields: [stayId], references: [id])
+  tokenHash String @unique
+  includeAccess Boolean @default(false)
+  expiresAt DateTime
+  revokedAt DateTime?
+  createdAt DateTime @default(now())
+  @@index([stayId])
+}
+model Ticket {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id])
+  stayId String?
+  stay Stay? @relation(fields: [stayId], references: [id])
+  title String
+  description String
+  category String @default("MAINTENANCE")
+  priority String @default("NORMAL")
+  status String @default("OPEN")
+  assigneeId String?
+  assignee User? @relation(fields: [assigneeId], references: [id], onDelete: SetNull)
+  createdBy String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  updates TicketUpdate[]
+  @@index([propertyId,status])
+}
+model TicketUpdate {
+  id String @id @default(cuid())
+  ticketId String
+  ticket Ticket @relation(fields: [ticketId], references: [id])
+  actorId String
+  note String
+  status String
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,54 @@
+# Implementation status
+
+**Latest complete landing (17 Oct 2026):** [selected full-page concept 2 implementation](LANDING_JOURNAL_IMPLEMENTATION.md) supersedes the historical homepage descriptions and measurements below. Build/typecheck, ten unit tests and 33 HTTP/API groups passed, including the acquisition-to-payment/task/session journey. Visual comparison and bounded desktop/mobile browser checks passed after review corrections; see root `design-qa.md` and [browser coverage](LANDING_BROWSER_QA.md). Desktop document height is 4455px; no horizontal overflow observed at 320/390/780px.
+
+**Latest functional continuation:** [operations/dashboard report](OPERATIONS_DASHBOARD_REPORT.md) and [integration configuration](INTEGRATION_SETUP.md) supersede the historical gaps below for tickets, staff assignments, Stay/Wi-Fi, guest MOCK controls, rule-based live-data LEO, scheduled MOCK reconciliation and opt-in recurring generation. These are now implemented. Build/typecheck, ten unit tests and 28 integration scenario groups passed. AI generative models, Tuya hardware, CCTV/analytics, automatic WhatsApp, email delivery and hosted launch remain unavailable/unverified.
+
+
+**Latest landing continuation:** [refinement report](LANDING_REFINEMENT_REPORT.md) and [verbatim direction](LANDING_REFINEMENT_DIRECTION.md). The homepage now has three editorial pain rows, a complete reminder trial and `/demo/owner`/`/demo/tenant` local examples with consistent property context. Settled 390 px height is 9,475 px (40.5% below the measured 15,932 px baseline). Final build, TypeScript, ten unit tests, Prettier and targeted browser checks passed; backend row counts were unchanged. The 21 integration groups and real synthetic payment/lock checks below are evidence from the preceding functional release, not rerun for this local-only refinement. No backend/schema/entitlement or image-asset change was made.
+
+Updated 13 October 2026. **Kamelo by ELENIO** is a runnable local application, not complete Master PRD acceptance or a hosted launch. The latest [owner-first continuation direction](OWNER_POSITIONING_DIRECTION.md) supersedes earlier generic homepage positioning while retaining the [branding direction](BRANDING_DIRECTION.md) and original ELENIO/LEO identity. Detailed file changes are recorded in [the change log](CHANGELOG_2026-10-13.md).
+
+## Verified current change set
+
+- Production Next.js build and TypeScript check passed after final application changes. Ten domain/file-validation unit tests passed. The 15-group regression suite and six-group tenant/smart suite passed against the final production server and local PostgreSQL. Test records are synthetic and retained for inspection.
+- Desktop/mobile browser checks covered homepage hero, links, capability labels, Kos/hotel selector, keyboard workflow tabs, deterministic LEO example/draft, licensed illustrative photos and refreshed actual application screenshots. At 390 px there was no horizontal document overflow or broken image on the homepage and tenant portal.
+- Browser end-to-end: synthetic tenant uploaded proof; the invoice stayed unpaid with the same balance and a pending proof. Owner signed in, reviewed the proof, explicitly confirmed receipt and approved it. The invoice became paid and the queue emptied. No money was transferred.
+- Browser end-to-end: owner changed a synthetic tenant billing day from 10 to 15; room detail showed 15 and previously issued invoices kept their original due date. Owner created a simulated lock for an active stay; access became active. Disabling automation revoked it. The test owner signed out afterward.
+- Regression coverage: public/auth boundaries, atomic Free onboarding/capacity, organizations and assigned properties, stays and overlapping hotel reservations, check-in/out and readiness, discounts/partial payments/concurrent overpayments, draft/issue/void, upgrade/limits/idempotent recurring, staff explicit grants and revocation, mock controls/offline preservation, expiry/downgrade history, pagination/all-history totals/direct invoice isolation, and CSRF.
+- Tenant/smart coverage: individual due days and month-end future recurring with issued history preserved; hashed/expired/rotated links; cross-invoice/organization private files; rejected HTML and oversized files; pending/duplicate proofs; explicit authorized approval and idempotent one-payment result; rejected/reuploaded proof; concurrent approvals prevented overpayment; safe owner projections; encrypted simulation PIN; date and hotel check-in gates; offline pending activation/revocation; disabled/remapped/checked-out access; and no payment-based lockout. Metrics tests checked equal-period income, all-history overdue, oldest overdue navigation and a pending-proof queue beyond the first 50 invoices.
+- The SVG chart title hydration mismatch found during development was corrected. Final production browser checks produced no new console errors. No standalone ESLint configuration is present; build/typechecking and Prettier are the configured code checks.
+
+Evidence: `artifacts/tenant-smart-verification.json`, `artifacts/kamelo-home-desktop.png`, `artifacts/kamelo-home-mobile.png`, `artifacts/kamelo-dashboard.png`, `artifacts/kamelo-tenant-mobile.png`, `artifacts/kamelo-proof-approved.png`, and `artifacts/kamelo-smart-mobile.png`. Screenshot scope and synthetic data do not establish full cross-browser/WCAG/performance conformance.
+
+## Feature truthfulness
+
+| Area | Current implementation | Remaining work |
+|---|---|---|
+| Owner acquisition | Three leading owner pains, five problem/impact/response cards, business impact, interactive workflows, separate Core/Smart consultation CTAs, factual pricing and FAQ. | Conversion measurement, supplied Indonesian/installed-device photography, formal performance/contrast audit. No fabricated ROI or customer claims. |
+| Identity | Typographic Kamelo with original ELENIO attribution; original-reference LEO poses. Logos copied unchanged. | No new logo required. |
+| Authentication/onboarding | PostgreSQL/Prisma, scrypt, hashed sessions, role/property permissions, three-step atomic room setup, reset-token lifecycle. | Reset mail delivery, email verification, MFA, full staff lifecycle. |
+| Core PMS | Rooms/readiness, occupant/reservation creation, overlaps, check-in/out, history/deep links, property switching, current occupancy and hotel KPIs. | Full guest directory/metadata, reservation drafts/no-show/rescheduling, list scaling. |
+| Billing/tenant | Draft/issue/immutable issued totals, partial/manual payment, overpayment prevention, unpaid void, recurring per stay/month, print, 50-row pagination, manual WhatsApp, per-stay rates/days, private expiring invoice links, proof upload/review. | Automated sender/scheduler, gateway, financial export/import, refunds/corrections/full accounting, explicit link management UI. |
+| Dashboard | Accessible six-month payment graph, equal elapsed-period income comparison, current occupancy, all-history overdue, current-month invoice-cohort collection rate. | Profit/forecasting/historical occupancy snapshots are not implemented or claimed. |
+| Staff/subscription | Shared Free/Starter/Plus config, organization capacities, assigned properties, explicit payment/device grants default false, session revocation, audited upgrade activation, expiry/downgrade retain history. | Full subscription ledger/cancellation/expiry scheduling, gateway, account lifecycle. Ultimate is a consultation concept without configured activation/entitlements. |
+| Smart access | Mock lock scheduled/pending/active/revoked lifecycle, encrypted demonstration PIN, scoped tenant reveal, check-in/out/date/mapping/automation/offline handling. | Real Tuya, compatible hardware and service verification, live credential vault/async command lifecycle, continuous scheduler. Simulation reconciles on stay/configuration actions and authorized owner/tenant reads. No real door is opened; unpaid rent never disables access. |
+| LEO | Read-only homepage examples calculated from the same deterministic demo dataset. Drafts are examples; no automatic execution or unrestricted database access. | Actual AI Agent, authorized tools/quotas/execution/audits. Labeled Segera Hadir. |
+| Maintenance/Smart Stay | Planned workflows are explicitly identified. Invoice portal and simulated access exist. | Tickets/assignments/notifications, complete Stay portal/Wi-Fi QR/instructions/support controls, verified-vacancy energy automation and manual override. |
+| CCTV/Video Analytics | Separate optional Live View and Analytics positioning, both Segera Hadir. | Camera connection, authorized live service, inference, recording/storage/retention, entitlements and operating prices. |
+
+Prices Rp0 / Rp49.000 / Rp99.000 and limits remain from `lib/plans.ts`. Hardware/installation are separate initial costs; additional Smart/CCTV/AI recurring charges and limits require validation. The proposed Ultimate price is not published as an available subscription.
+
+## External dependencies before launch
+
+- Transactional mail: trusted `MAIL_ENDPOINT`/`MAIL_API_KEY`, provider and delivery/recovery validation. Recovery currently reports unavailable.
+- Live Tuya: permitted project/region/services/credentials, actual devices and verified supported functions, implementation and live tests. Mock capabilities are not Tuya codes.
+- Hosting: target server/database/HTTPS, private persistent proof storage and `DATA_ENCRYPTION_KEY`, coordinated database/files/key backups and restore drill, monitoring and access review. Docker configuration is present but Docker/container volumes have not been tested on this machine.
+- Legal/privacy: current pages are development drafts; finalize policies, retention/deletion and legal review before commercial use.
+- Photography: licensed stock is explicitly illustrative, without invented Indonesian location/customer claims; authentic authorized Indonesian assets remain preferable.
+
+## Known bounded scope
+
+The Master PRD remains the target specification. Five consolidated primary modules and compact entities do not implement every listed route/entity. `/admin` aliases share one view. Guest reads are capped at 100 per property; room/stay lists and organization lists need scaling review. Invoice search/ordinary status filters apply to the loaded page; OVERDUE filtering is server-side and paginated, and pending proofs load across all pages. Financial summaries are independent of pagination.
+
+No acquisition funnel instrumentation, CSV/XLSX import/export, customer export/deletion, offline service worker, complete accounting, native app, OTA integration or background recurring/reminder/access scheduler has been added. Authorization tests and local browser evidence do not replace production concurrency, security, recovery, accessibility or performance review.

@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-17",
+  "selectedFullPageOption": 2,
+  "source": "C:/Users/Abi Tiyoso/.codex/generated_images/01a133a4-4ea4-74e1-8c19-4a7241c7d52a/exec-d92c1b3a-585b-40ed-8b80-cb760687b18c.png",
+  "sourcePixels": {
+    "width": 725,
+    "height": 2170
+  },
+  "route": "http://127.0.0.1:3000/",
+  "productionBuild": "passed",
+  "typecheck": "passed",
+  "unitTests": {
+    "passed": 10,
+    "failed": 0
+  },
+  "httpApiGroups": {
+    "core": 15,
+    "tenantSmart": 6,
+    "operations": 7,
+    "acquisition": 5,
+    "total": 33,
+    "failed": 0
+  },
+  "acquisitionCoverage": [
+    "all rendered local links and anchors",
+    "six consumed photoreal assets",
+    "selected-plan registration and pending activation",
+    "invalid plan and duplicate rollback",
+    "property/room setup",
+    "individual tenant billing days and invoice due dates",
+    "private invoice portal",
+    "synthetic proof upload does not pay",
+    "explicit confirmation and exactly-once approval",
+    "ticket lifecycle",
+    "logout denial and persisted login state"
+  ],
+  "browserE2E": "passed within documented landing interaction/onboarding scope",
+  "visualQA": "passed",
+  "browserChecklist": "docs/LANDING_BROWSER_QA.md",
+  "syntheticRecordsRetained": true,
+  "externalMessagesSent": false,
+  "financialTransfersMade": false,
+  "realDeviceCommandsIssued": false,
+  "newWebpAssets": 6,
+  "newWebpAssetBytes": 765334,
+  "defaultLogoSha256": "00E7CB514B48A4E5E52DB62552397263B6AEF2B914595AFC714EA13711ECB254",
+  "suppliedColorWhiteLogoSha256": "A8EC5053979B004F58A032D603D884CDB001FAD8D1C4AF8AEF96FD7101DCF4CC",
+  "review": {
+    "date": "2026-10-17",
+    "productionBuild": "passed after final hero correction",
+    "unitTests": 10,
+    "acquisitionGroupsRerun": 5,
+    "otherApiGroupsRerun": false,
+    "desktop": {
+      "viewport": 1440,
+      "clientWidth": 1425,
+      "scrollWidth": 1425,
+      "height": 4455
+    },
+    "mobile": {
+      "viewport": 390,
+      "clientWidth": 375,
+      "scrollWidth": 375,
+      "height": 8899
+    },
+    "overflowWidthsChecked": [
+      320,
+      390,
+      780
+    ],
+    "consoleErrors": 0,
+    "comparison": "artifacts/journal-comparison-final.png",
+    "browserEvidence": "artifacts/journal-browser-checks.json",
+    "limitations": "See docs/LANDING_BROWSER_QA.md; no exhaustive browser/WCAG/production readiness claim."
+  }
+}

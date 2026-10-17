@@ -1,0 +1,10 @@
+node_modules/
+.next/
+.env
+.env.local
+*.tsbuildinfo
+playwright-report/
+generated/
+.local-db/
+storage/
+.local-secrets/

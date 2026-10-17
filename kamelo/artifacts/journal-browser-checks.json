@@ -1,0 +1,33 @@
+{
+  "checks": [
+    {
+      "name": "reminder prepare and copy action",
+      "result": "passed; values verified, feedback captured"
+    },
+    {
+      "name": "reminder reset returns focus, task status updates",
+      "result": "passed"
+    },
+    {
+      "name": "plan finder Free/Starter/Plus, >50 consultation, blank error/no CTA, restore defaults",
+      "result": "passed"
+    },
+    {
+      "name": "FAQ open/close",
+      "result": "passed"
+    },
+    {
+      "name": "mobile menu anchor closes, 320/390 no horizontal overflow",
+      "result": "passed"
+    },
+    {
+      "name": "landing Starter CTA → registration → pending activation → Kos setup → three rooms",
+      "result": "passed; synthetic account"
+    },
+    {
+      "name": "onboarding-created rooms visible",
+      "result": "passed; rooms 01/02/03 at Rp1.000.000, Free limits retained"
+    }
+  ],
+  "scope": "landing interactions and synthetic registration/onboarding; existing 33 HTTP/API groups cover payment/task/device flows"
+}
