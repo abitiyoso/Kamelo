@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-20",
+  "environment": "disposable QA 3001/55432",
+  "ownerDesktop": {
+    "documentWidth": 1265,
+    "width": 1280
+  },
+  "owner390": {
+    "documentWidth": 375,
+    "width": 390
+  },
+  "tenantDesktop": {
+    "documentWidth": 1265,
+    "width": 1280
+  },
+  "tenant390": {
+    "documentWidth": 375,
+    "width": 390
+  },
+  "tenant320": {
+    "documentWidth": 305,
+    "width": 320
+  },
+  "checks": [
+    "Owner confirmed and published REMINDER-BROWSER for Rp250000 through UI",
+    "Owner history shows one publication and 24-hour cooldown",
+    "Tenant exact STAY account sees same date/reference/amount; remaining unchanged Rp250000",
+    "Tenant reminder page changes to 2 of 42 while proof remains page 1 of 1",
+    "Owner 390 px and tenant 390/320 px have no document horizontal overflow"
+  ]
+}

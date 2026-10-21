@@ -1,0 +1,20 @@
+✔ offline preflight distinguishes configuration from real acceptance without exposing secret values (1.6607ms)
+✔ missing/invalid configurations never become live or leak parsing exceptions (0.7262ms)
+✔ actual mock adapter confirms valid online capabilities and rejects invalid/offline commands (0.8961ms)
+✔ unimplemented Tuya live adapter fails closed for every operation without network (0.4472ms)
+✔ real loopback HTTP transport refuses redirect and sanitizes rejected response (36.3713ms)
+✔ all three actual worker entry points execute only fixed loopback jobs with valid secret (293.6903ms)
+✔ worker origin rejects unsafe transport, credentials, route/query and malformed secrets (1.3895ms)
+✔ worker uses a fixed origin, POST, redirect rejection and strips untrusted response fields (23.3919ms)
+✔ worker sanitizes network/server/JSON failures and rejects invalid counts/cursors (1.5302ms)
+✔ reminder cursor progresses, rejects repeated/backward pages and respects cancellation (1.2166ms)
+Synthetic QA worker completed.
+✔ worker scheduler has no overlapping runs and aborts in-flight work on stop (72.0155ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 445.3986

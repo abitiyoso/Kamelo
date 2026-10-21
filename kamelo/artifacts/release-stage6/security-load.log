@@ -1,0 +1,7 @@
+PASS Recovered owner, staff and tenant identities sign in; session cookies and exact stay context work
+PASS Recovered billing/documents stay private; cross-organization, staff and tenant restrictions and safe HTML download hold
+PASS Foreign-origin writes and job requests without worker authorization fail closed
+PASS Recovered proof bytes download through owner authorization; anonymous, unrelated and staff accounts cannot read them
+PASS Revoked resident grants are checked on each restored-session request
+PASS Bounded concurrent reads preserve financial, occupancy and outbox data
+Release recovery API groups passed: 6

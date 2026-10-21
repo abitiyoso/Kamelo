@@ -1,0 +1,9 @@
+{
+  "logo": "/brand/kamelo-backoffice.png",
+  "building": "/images/backoffice/building.jpeg",
+  "room": "/images/backoffice/room.jpeg",
+  "lobby": "/images/backoffice/lobby.jpeg",
+  "parking": "/images/backoffice/parking.jpeg",
+  "corridor": "/images/backoffice/corridor.jpeg",
+  "emergency": "/images/backoffice/emergency.jpeg"
+}

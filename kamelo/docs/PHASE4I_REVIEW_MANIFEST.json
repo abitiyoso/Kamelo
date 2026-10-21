@@ -1,0 +1,201 @@
+{
+  "phase": "4I resident CSV onboarding",
+  "branch": "codex/phase4i-resident-imports",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "89b1085a2eaf38b3559bbed8af5194705a6cb5c2c85837a2e3484b134fd888d1"
+    },
+    {
+      "path": "README.md",
+      "sha256": "d770727d793e4b18221f80961fd6d6477318d6aa35635e635dd518d62195f940"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "94de0de5c3b7df91274deb5ee37a22a9867a369ad2c546c0d987873ce8840a94"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "b65fba353100742f565305ae048fc23c9d36dd7482b5a58733e79383962220c3"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "424ad215ad0cf0b47425c6f499e9877dfdcf90872ad4d76db79fe5cfdbabd5a4"
+    },
+    {
+      "path": "prisma/migrations/20261019090000_resident_imports/migration.sql",
+      "sha256": "c58d491081ce09ce99a0b5ee71e1262c7fedb9f54430e1effc4aa1e29b504c4e"
+    },
+    {
+      "path": "lib/room-import-csv.mjs",
+      "sha256": "3c36844de8168102c74e7abfd34b6b61643d9784ed77b95eab61849dd4dc8bbd"
+    },
+    {
+      "path": "lib/resident-import-csv.mjs",
+      "sha256": "b1de88233799d5e8da0c0d78bb0e70bd74b87906766be82491da386273de50aa"
+    },
+    {
+      "path": "lib/resident-import.ts",
+      "sha256": "1b1e34409450527b884963f851f683d7e5ce90173b2d3ceb25c5c4c9297143cf"
+    },
+    {
+      "path": "app/api/resident-imports/route.ts",
+      "sha256": "89e91207800f21e5f0429574a004782d4ba3372f472fb179886393dd80eed052"
+    },
+    {
+      "path": "components/workspace/resident-import.tsx",
+      "sha256": "7600f75997b3b2658a6ab5b0c44b278888f3a7d5226e6cb2ddad45947fea39a1"
+    },
+    {
+      "path": "components/portal.tsx",
+      "sha256": "058ac517bd21e620c621d539dc0591afc0110d90cf350f2d4e2b55cf63dd80c8"
+    },
+    {
+      "path": "public/templates/kamelo-penghuni.csv",
+      "sha256": "19f98477c605e33b006d040224ba2b7ed2c011d4b209e437bdf70addcd7beb26"
+    },
+    {
+      "path": "tests/resident-import.test.mjs",
+      "sha256": "b7407e4fe3f4c3f1f7de989bf13f00fc8ad2fc64807cb59cf5e7c67ac92735be"
+    },
+    {
+      "path": "tests/resident-import.integration.mjs",
+      "sha256": "dfd931bfdf1564f80f63fb5bb669026301254b05256e6a37c300539243b97eda"
+    },
+    {
+      "path": "scripts/phase4i-qa-migrate.mjs",
+      "sha256": "de9db2bcd9e0dcfbb18663572ecd6c235f58ffe13d9db26f74be7d0bd6d527fd"
+    },
+    {
+      "path": "scripts/phase4i-qa-verify.mjs",
+      "sha256": "245ce22141a97c287e2a90769e0ee2cece399e075ef039d18386f80de64bbef0"
+    },
+    {
+      "path": "scripts/phase4i-review-sync.mjs",
+      "sha256": "6ae36774e0da28cbda6e4ba403d07b54bc493d081480c0a8ec2d3dc8c13c5b64"
+    },
+    {
+      "path": "docs/PHASE4I_RESIDENT_IMPORTS.md",
+      "sha256": "5d97e93cd04bc1220bc56d21af54146c1d93bfa78f34e3502f72dea1eb87e538"
+    },
+    {
+      "path": "docs/PHASE4I_DESIGN_QA.md",
+      "sha256": "ce6b88c0736e7d14bb693ae5a33bd95ad22bdad43c04614543fbb4f9544d4a88"
+    },
+    {
+      "path": "artifacts/phase4i/build.log",
+      "sha256": "796e1baf98288ed22650cbf03db86b033a776485c6533c9e3431400ce65928d6"
+    },
+    {
+      "path": "artifacts/phase4i/unit.log",
+      "sha256": "ccb10c6473a49e8eb9912b4e0d6806de2a5eebb508e3944ca4e3a4fb2b2f612a"
+    },
+    {
+      "path": "artifacts/phase4i/typecheck.log",
+      "sha256": "829a092d2d4e2d2e3928ea2b15abfae5970280655cd91c9a73b11b168d1f8815"
+    },
+    {
+      "path": "artifacts/phase4i/migration-preservation.json",
+      "sha256": "3f90be7906e33a4d55ce69e44abc815dd577216db4e02ddfa9f87bb527bbdb89"
+    },
+    {
+      "path": "artifacts/phase4i/regression-results.json",
+      "sha256": "00cd4998569d1f1f9860a5bcd04cc93fa9fe75cb5d5af7b7978584de01822cdb"
+    },
+    {
+      "path": "artifacts/phase4i/resident-import-api.json",
+      "sha256": "7df8201bd7eb79c740b5bfa84670984924fe5bccf2dda826eaac5d41db31b39b"
+    },
+    {
+      "path": "artifacts/phase4i/browser-metrics.json",
+      "sha256": "46937741d044e4452088d8b35a7d683afcc638e8d21141f1881bdbaf4ee0945e"
+    },
+    {
+      "path": "artifacts/phase4i/resident-desktop-preview.png",
+      "sha256": "032df4db25e7339ba2c6606e9e905fce4e73424f89030c8bd35594efb586096f"
+    },
+    {
+      "path": "artifacts/phase4i/resident-desktop-saved.png",
+      "sha256": "af061faaec6c9cb94c713c6a07b169bf2aeba9471ed25b4759f06909bafd4ad7"
+    },
+    {
+      "path": "artifacts/phase4i/resident-mobile-390.png",
+      "sha256": "1e0058adb4d6c9f3f1fdcff7922117b7ee68b99c5bae07a390523de070c13b06"
+    },
+    {
+      "path": "artifacts/phase4i/resident-mobile-320.png",
+      "sha256": "b67ff78e73228921c429ef9a9709a161e22e705d963901e88bc035522c27ea95"
+    },
+    {
+      "path": "artifacts/phase4i/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/phase4i/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/phase4i/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/phase4i/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/phase4i/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/phase4i/workspace.integration.log",
+      "sha256": "6aa5ef0201c58e2c38454b413c874e12c398dbd5e48ac38d442f551555533f6d"
+    },
+    {
+      "path": "artifacts/phase4i/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/phase4i/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/phase4i/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/phase4i/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/phase4i/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/phase4i/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/phase4i/privacy.integration.log",
+      "sha256": "9203cd6d96eee6519f5a688bd1c53dcd27763ca66c8526b15acdbfa2e1bc6ec2"
+    },
+    {
+      "path": "artifacts/phase4i/room-import.integration.log",
+      "sha256": "f42a888f174f7e81ea7a459f01c841b6cd678865b978279efa7af374f1ef0569"
+    },
+    {
+      "path": "artifacts/phase4i/resident-import.integration.log",
+      "sha256": "bc71737bceaa78d973a9067d70e87c7e479cb0906ac04bc5c1e92fcc1cf3f524"
+    }
+  ],
+  "excluded": [
+    ".env*",
+    ".local-secrets",
+    "runtime databases",
+    "node_modules",
+    "generated",
+    ".next"
+  ],
+  "commit": false,
+  "push": false,
+  "mainDatabaseMigration": false
+}

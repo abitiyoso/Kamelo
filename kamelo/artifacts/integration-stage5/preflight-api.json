@@ -1,0 +1,108 @@
+{
+  "groups": 3,
+  "scope": "Disposable QA only",
+  "providerRequests": 0,
+  "emailsSent": 0,
+  "liveAcceptance": "PENDING_EXTERNAL_SETUP",
+  "hashesPreserved": {
+    "Invoice": "1844b2ef9113abf1b3fce683e5d02987821af4e6d3085434e92c98acfcc9ff23",
+    "Payment": "4897dc4b8df3fd9890bee07f99f3d78ee51c1e3b8f38c037d8a832ce632f220d",
+    "OpeningReceipt": "673234000542807fa94ed0e63b884253ef37ac89439a4f9dd1ac32f48427c3e1",
+    "Stay": "ec238497b11f8fa60376125365759d7eeb0308373890e5462fe9f025cf689942",
+    "Room": "4baaa51138956b18d9a5a7c5ce919f77b84bf1a74fa9767cf743c564c8adfc16",
+    "Guest": "97dc000392e23f04947a51b8357f7fd1abd37526b09bf5de4b05c6e8b6d8ac8c",
+    "FinancialDocument": "42e29166c62aae2554a210e7c1381c41e5eedb36e34cf8bd3e8e9fedc7c12408",
+    "FinancialDocumentReview": "d8648fc2b6d47347082a8e58865491ee4d5768d869881cfed63a420bd3c3a962",
+    "EmailOutbox": "3a0c13bc8c534e1a3556d535efd7e05f7b29b615e1d22b797ed802a78ea8f846"
+  },
+  "preflight": {
+    "version": 1,
+    "mode": "OFFLINE_CONFIGURATION_REVIEW",
+    "liveAcceptance": "PENDING_EXTERNAL_SETUP",
+    "networkRequests": 0,
+    "application": {
+      "origin": "LOCAL_HTTP",
+      "worker": "CONFIGURED_UNVERIFIED",
+      "database": "CONFIGURED_UNVERIFIED",
+      "encryption": "CONFIGURED_UNVERIFIED",
+      "privateProofStorage": "DEFAULT_PRIVATE_PATH_UNVERIFIED"
+    },
+    "services": [
+      {
+        "key": "email",
+        "name": "Email transaksional",
+        "state": "LOCAL_ONLY",
+        "description": "Penampung QA lokal; tidak mengirim email nyata.",
+        "liveVerified": false,
+        "requirements": [
+          "Mailbox Hostinger dan alamat pengirim yang disetujui",
+          "SPF/DKIM/DMARC serta pengujian inbox/bounce",
+          "Penerima uji dan izin pengiriman eksplisit"
+        ]
+      },
+      {
+        "key": "payment",
+        "name": "Payment gateway",
+        "state": "NOT_CONNECTED",
+        "description": "Pencatatan pembayaran manual tersedia; webhook dan gateway belum terhubung.",
+        "liveVerified": false,
+        "requirements": [
+          "Rencana gateway/webhook terpisah yang disetujui"
+        ]
+      },
+      {
+        "key": "whatsapp",
+        "name": "WhatsApp Business",
+        "state": "NOT_CONNECTED",
+        "description": "Tautan dan salin pesan tersedia; pengiriman otomatis dan webhook belum terhubung.",
+        "liveVerified": false,
+        "requirements": [
+          "Penyedia resmi, nomor pengirim, template dan persetujuan penerima",
+          "Adapter/webhook terverifikasi dan uji penerimaan"
+        ]
+      },
+      {
+        "key": "cctv",
+        "name": "CCTV / VMS",
+        "state": "NOT_CONNECTED",
+        "description": "Sumber kamera dan analytics belum terhubung. Tidak ada feed pelanggan pada panel ini.",
+        "liveVerified": false,
+        "requirements": [
+          "VMS/kamera dan akun dengan izin yang sesuai",
+          "Adapter stream/events, pembatasan properti dan kebijakan retensi",
+          "Uji kamera nyata dan penanganan gangguan koneksi"
+        ]
+      },
+      {
+        "key": "iot",
+        "name": "IoT Gateway / Smart Room",
+        "state": "SIMULATION_ONLY",
+        "description": "Adaptor MOCK tersedia untuk pengujian; Tuya dan perangkat fisik belum terhubung.",
+        "liveVerified": false,
+        "requirements": [
+          "Project/region Tuya serta inventaris dan capability perangkat",
+          "Implementasi adapter live dan konfirmasi status perangkat",
+          "Uji fisik check-in, pindah kamar, checkout dan pencabutan akses"
+        ]
+      },
+      {
+        "key": "ai",
+        "name": "LEO / AI",
+        "state": "RULE_BASED",
+        "description": "Ringkasan berbasis aturan tersedia; model AI generatif belum terhubung.",
+        "liveVerified": false,
+        "requirements": [
+          "Penyedia/model dan persetujuan kebijakan data serta batas biaya",
+          "Implementasi adapter model dengan timeout dan audit",
+          "Evaluasi jawaban dan izin tindakan; LEO saat ini tetap berbasis aturan"
+        ]
+      }
+    ],
+    "releaseDependencies": [
+      "Supervisi ketiga worker dan volume privat persisten",
+      "Backup/restore UTF-8 dan kunci enkripsi yang sama",
+      "Persetujuan kebijakan retensi dan UAT keamanan/izin",
+      "Validasi layanan nyata sebelum mengganti label simulasi"
+    ]
+  }
+}

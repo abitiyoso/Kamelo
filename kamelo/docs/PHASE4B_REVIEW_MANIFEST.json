@@ -1,0 +1,147 @@
+{
+  "excluded": "Secrets, runtime databases, generated Prisma client, node_modules, .next, scratch schema snapshots and exports excluded. Previous phase changes retained.",
+  "phase": "4B prospects",
+  "files": [
+    {
+      "sha256": "7b17495211a99e0faee6c5cef8cb7f1a68a4ccbf81699db753682475d14e9d12",
+      "path": "prisma/schema.prisma"
+    },
+    {
+      "sha256": "9b644448484fc87f0d98ff0854ffb464fa3d7fab0ccd6d1d6b85abbd4da78731",
+      "path": "prisma/migrations/20261018150000_prospect_pipeline/migration.sql"
+    },
+    {
+      "sha256": "b41667371531f2889f6beecd6d1c1091cdf811fbda5a87b546d4c849353ba849",
+      "path": "lib/prospects.ts"
+    },
+    {
+      "sha256": "71f38d7995f07701c6afd7c199209da1aa4a0d4238099196ff4105f721c01d3b",
+      "path": "app/api/prospects/route.ts"
+    },
+    {
+      "sha256": "e66e8df4fdbec8a9784fcfc1c9c0a11778f7373705ec75dd8061da0fd8d40a28",
+      "path": "app/api/lifecycle/route.ts"
+    },
+    {
+      "sha256": "90a4b7a1352588007aaa7a99adcee2f438a219eadd9f8b95086849489dbdce29",
+      "path": "components/workspace/prospects.tsx"
+    },
+    {
+      "sha256": "af80504e0252be2b0eeb551f0df1e7678663bfeaf59a1d09e0ef53d0f2e9826b",
+      "path": "components/workspace/resident360.tsx"
+    },
+    {
+      "sha256": "713c4cf993e6e985d02354e7923545ca05ca101afdee09f5e333ea4ba91d2c7e",
+      "path": "components/portal.tsx"
+    },
+    {
+      "sha256": "0b7730d7543c78644aad216d4e9911fd36a7c57f3e8270dc3b1a0c0403140b2d",
+      "path": "app/workspace.css"
+    },
+    {
+      "sha256": "266cfd933c99903585a1d66c09e4d97967fafc7aa8a3f1dd1ca605f3ef43322d",
+      "path": "tests/prospects.integration.mjs"
+    },
+    {
+      "sha256": "ea4999549bba660881e0028cd71839e6bbfb7ba8148f3d4418d799588b54d9ea",
+      "path": "scripts/phase4b-qa-migrate.mjs"
+    },
+    {
+      "sha256": "805264b47dd185b2b889277517fbad0af097e3babef009036b5eb544a41675dc",
+      "path": "scripts/phase4b-qa-verify.mjs"
+    },
+    {
+      "sha256": "e0ff210c1879b3d4ac464482225caa053071340842cb9cea3581d2601f97bd35",
+      "path": "package.json"
+    },
+    {
+      "sha256": "73705e8e33ff9e037d5ccfcf1e9e52905c92164efe61b6975da9a3f65cf2910a",
+      "path": "README.md"
+    },
+    {
+      "sha256": "c382c007161119184428a12065977e0157775d0240a51a487e497f9174fce69d",
+      "path": "docs/IMPLEMENTATION_STATUS.md"
+    },
+    {
+      "sha256": "d8e6b0927e78c9e8830d5be6a903c0034cc2d9bd91b3389f01ed42289f8e19d3",
+      "path": "design-qa.md"
+    },
+    {
+      "sha256": "d5e9601219053f0aebd9c7623cd91d71eec841f727f3812c2ce4c48a1d788704",
+      "path": "docs/PHASE4B_PROSPECTS.md"
+    },
+    {
+      "sha256": "09fd1d2fd50ad6fe03398d3abc0d4c40dd4cd8a401780bc7dd5983bfb5b9f12b",
+      "path": "docs/PHASE4B_DESIGN_QA.md"
+    },
+    {
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9",
+      "path": "artifacts/phase4b/acquisition.integration.log"
+    },
+    {
+      "sha256": "b41d06ce8189312e4badbe0daa8205bac98009d8fb2cab870dc8c15d7d0f6d3a",
+      "path": "artifacts/phase4b/conversion-mobile.png"
+    },
+    {
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09",
+      "path": "artifacts/phase4b/identity.integration.log"
+    },
+    {
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1",
+      "path": "artifacts/phase4b/integration.log"
+    },
+    {
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4",
+      "path": "artifacts/phase4b/lifecycle.integration.log"
+    },
+    {
+      "sha256": "35084c408b9fcdcfdabf011d5de266d6dcec3ba95b5736f9e66b47c43fafce9c",
+      "path": "artifacts/phase4b/migration-preservation.json"
+    },
+    {
+      "sha256": "b53497f90e91ffed6cdbf65dd063623f0b44a34b9c90963087a8cf9da5ac1aac",
+      "path": "artifacts/phase4b/offer-desktop.png"
+    },
+    {
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368",
+      "path": "artifacts/phase4b/operations.integration.log"
+    },
+    {
+      "sha256": "70e87da9b33db2383df1ccf198cf2064f63406b7fd2a076bad83f95bdbffc191",
+      "path": "artifacts/phase4b/prospects-desktop.png"
+    },
+    {
+      "sha256": "cb753863cb270a002ce7bd0470820585067271313e8a07fbd2009d614eae0821",
+      "path": "artifacts/phase4b/prospects-mobile-320.png"
+    },
+    {
+      "sha256": "789694bbdc9c62bfb45b066af8c27860ede49bd93b8e383b14049d9664f78ded",
+      "path": "artifacts/phase4b/prospects-tests.json"
+    },
+    {
+      "sha256": "534556cf116215b4bc48a19d65b30fa7024875ccb9a5d244f802fc01e5c5e529",
+      "path": "artifacts/phase4b/prospects.integration.log"
+    },
+    {
+      "sha256": "428b304303f70ef73aa2dc2e2d1c8c28fbac18f1c75c220f7c3df129843e5af5",
+      "path": "artifacts/phase4b/regression-results.json"
+    },
+    {
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459",
+      "path": "artifacts/phase4b/tenant-smart.integration.log"
+    },
+    {
+      "sha256": "d4ba3b32f0e14b672f49439a7173247e3ba846d8e01ebdf241cfd4af89b243ca",
+      "path": "artifacts/phase4b/unit-tests.log"
+    },
+    {
+      "sha256": "73110d759dfa245982333fc05c333362101b2e08cd715fa6ba7fee044159198c",
+      "path": "artifacts/phase4b/verification-summary.json"
+    },
+    {
+      "sha256": "f5e6f57ad7ed0c98bb7f362c8be1d2bcba2f473ca45304d5d98eadf6fd73c78e",
+      "path": "artifacts/phase4b/workspace.integration.log"
+    }
+  ],
+  "branch": "codex/phase4b-prospects"
+}

@@ -1,0 +1,163 @@
+{
+  "branch": "codex/phase4f-scoped-messaging",
+  "files": [
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "09577c29dbf3b6ea53114894b706bcc0db5c8b05e74980d251c0a59e2be6b4e6"
+    },
+    {
+      "path": "prisma/migrations/20261019050000_scoped_messages/migration.sql",
+      "sha256": "fd767c855013c05b6dbd29d8bf2c330b1fe2acecb0ffb3c5ca3d9de3c9349f2a"
+    },
+    {
+      "path": "lib/messages.ts",
+      "sha256": "45d30b0ef45fe3509dab1b015548d36ead711fed07209d7b1894771e630a19ba"
+    },
+    {
+      "path": "app/api/messages/route.ts",
+      "sha256": "ceae4ce8fcf7862ff8e805a3d0978a701d12bbd6ae238e4418adebc2c1d1a8a4"
+    },
+    {
+      "path": "components/workspace/messages.tsx",
+      "sha256": "ac27153e52cb264255a17cef969c517ecc4a26db05766ab2de8747786a5ca583"
+    },
+    {
+      "path": "components/portal.tsx",
+      "sha256": "b38772dbcb80bedaf532a9c2e751fe8d69caeedde332dfa23fcd9fafe842480d"
+    },
+    {
+      "path": "components/identity/resident-portal.tsx",
+      "sha256": "f4fd96c523d5f123181c1d3e0c4b616c27dac4195897736896ff42c52c0a6dad"
+    },
+    {
+      "path": "tests/messages.integration.mjs",
+      "sha256": "4a6c4216e481486caa765ef8dce9bab4c8e3523069b176d6ba39c3068bb1fc15"
+    },
+    {
+      "path": "scripts/phase4f-qa-migrate.mjs",
+      "sha256": "882f37b0abd0cb68083b5788cd89a9b461bc92b60fc91c7ee8802377754942ab"
+    },
+    {
+      "path": "scripts/phase4f-qa-verify.mjs",
+      "sha256": "c06b73849aa802940ee2bdc6098ca55463d30a8337a40c6a0e1f3ff26b86d88a"
+    },
+    {
+      "path": "package.json",
+      "sha256": "d4ae028a65534abff4c1f7153a84d56d4c006f3dbf3fbcd36e449bc554deae3b"
+    },
+    {
+      "path": "README.md",
+      "sha256": "d830c90083d1b18332c336814068a37b09df5822c32b87a998911536c0857741"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "e305a547f8b93218c3edbfb540060981c8bf6521869981571e477e5a514e2968"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "6583fdd86c6aafee988530bd1fb268fca0615c1fbc88b24af1c1c7e4a1dc0aba"
+    },
+    {
+      "path": "docs/PHASE4F_SCOPED_MESSAGES.md",
+      "sha256": "d02a77991445f1e0d7b19840a9e3e2f885ca296af49326249f0cb6134c84e9e4"
+    },
+    {
+      "path": "docs/PHASE4F_DESIGN_QA.md",
+      "sha256": "26a56b7b14f2461cfc99e3b7bd7cefd24c47714a42fcd1c60d118b417ce3b85e"
+    },
+    {
+      "path": "artifacts/phase4f/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/phase4f/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/phase4f/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/phase4f/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/phase4f/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/phase4f/messages-checkout-disabled.png",
+      "sha256": "d44e23e63fb560ca9415193204e9289ef0e81ad90659f3b3bc3fc1c9a285df01"
+    },
+    {
+      "path": "artifacts/phase4f/messages-final-owner.png",
+      "sha256": "ae1baaa3efa2c33b9f238e47e8d7071812561981a90b30e3088d0a554106a8fb"
+    },
+    {
+      "path": "artifacts/phase4f/messages-owner-desktop.png",
+      "sha256": "fef0eb38d6c99767decc3b098abeb14d448276e08fb4a372911240d3111c3318"
+    },
+    {
+      "path": "artifacts/phase4f/messages-owner-mobile320.png",
+      "sha256": "cf9230312d02e6f6edec20508aefab22b586d07097ad66859adac5e7858c1110"
+    },
+    {
+      "path": "artifacts/phase4f/messages-staff-desktop.png",
+      "sha256": "fc9b90fb775b0581f24bc948e29b2b8975d87a81f01a25c2ad5fd2527e09676f"
+    },
+    {
+      "path": "artifacts/phase4f/messages-tenant-desktop.png",
+      "sha256": "829c7922033317ed988d3b0f499714994917fb8463c38a161f820ac5c0a2b0b2"
+    },
+    {
+      "path": "artifacts/phase4f/messages-tenant-mobile390.png",
+      "sha256": "f34e5ecb333193710d60b2489a289bdd0d05aecbd7d2378881f9ce4d65dcbe63"
+    },
+    {
+      "path": "artifacts/phase4f/messages-tests.json",
+      "sha256": "8f21ddecda24438b6f0ab202c7ea76e53389e088edd3911d770efb093b81d3bb"
+    },
+    {
+      "path": "artifacts/phase4f/messages.integration.log",
+      "sha256": "df9108c55db59745297d94a18d236974cb55f02e3478dcf97d1c43ca820d58cf"
+    },
+    {
+      "path": "artifacts/phase4f/migration-preservation.json",
+      "sha256": "25abfc4c6c3cdf643f7ff46bf7a8d3b55bb2fca9d7b0c24ac820cd2979da3a6c"
+    },
+    {
+      "path": "artifacts/phase4f/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/phase4f/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/phase4f/regression-results.json",
+      "sha256": "800703b917e6658446c2cc942b8c81508446814ff03258bc345b7eafd793645a"
+    },
+    {
+      "path": "artifacts/phase4f/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/phase4f/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/phase4f/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/phase4f/unit-tests.log",
+      "sha256": "7ba40fbee480c90e5af4229130e476dc9eaa82452c35ccfaa049710d52d95732"
+    },
+    {
+      "path": "artifacts/phase4f/workspace.integration.log",
+      "sha256": "387e486149cfa74cdc54450ff39b22fdc959e606eb0c85aacdf49c930f614f86"
+    }
+  ],
+  "phase": "4F scoped messaging",
+  "excluded": "Secrets, runtime databases, generated clients, node_modules, .next and nested exports excluded. Earlier phase review changes retained. Applied migration bytes copied unchanged."
+}

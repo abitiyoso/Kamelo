@@ -1,0 +1,8 @@
+PASS pending access gate / hashed single-use link / forwarded link / cooldown / anti-enumeration without duplicate identity
+PASS challenge expiry and persisted five-attempt lockout
+PASS scoped verified staff invitation / reserved plan seat / recipient check / concurrent idempotent acceptance / revocation
+PASS invitation expiry / resend invalidates old link / issuer authority recheck / one identity with multiple organizations / foreign switch denied / revoked invite denied
+PASS tenant claims existing stay without duplicate guest / own invoices only / no organization access / explicit device consent / checkout service gate with financial history preserved
+PASS self-only session revocation / verified email change retains old address until completion / revokes every old session
+PASS reset anti-enumeration / single-use / password replacement and session invalidation / old reset-link compatibility
+PASS revoked occupant loses stale session / authenticated outbox worker / parallel queue claims / local sink only

@@ -1,0 +1,85 @@
+{
+  "responsive": [
+    {
+      "broken": 1,
+      "client": 305,
+      "scroll": 305,
+      "view": "tenant-bills",
+      "width": 320
+    },
+    {
+      "broken": 1,
+      "client": 375,
+      "scroll": 375,
+      "view": "tenant-bills",
+      "width": 390
+    },
+    {
+      "broken": 1,
+      "client": 805,
+      "scroll": 805,
+      "view": "tenant-bills",
+      "width": 820
+    },
+    {
+      "brokenVisible": 0,
+      "client": 305,
+      "scroll": 305,
+      "view": "owner-dashboard",
+      "width": 320
+    },
+    {
+      "brokenVisible": 0,
+      "client": 375,
+      "scroll": 375,
+      "view": "owner-dashboard",
+      "width": 390
+    },
+    {
+      "brokenVisible": 0,
+      "client": 805,
+      "scroll": 805,
+      "view": "owner-dashboard",
+      "width": 820
+    },
+    {
+      "brokenVisible": 0,
+      "client": 1425,
+      "scroll": 1425,
+      "view": "owner-dashboard",
+      "width": 1440
+    },
+    {
+      "brokenVisible": 0,
+      "client": 305,
+      "scroll": 305,
+      "view": "tenant-bills-final",
+      "width": 320
+    },
+    {
+      "brokenVisible": 0,
+      "client": 375,
+      "scroll": 375,
+      "view": "tenant-bills-final",
+      "width": 390
+    },
+    {
+      "brokenVisible": 0,
+      "client": 805,
+      "scroll": 805,
+      "view": "tenant-bills-final",
+      "width": 820
+    }
+  ],
+  "workflows": [
+    "owner resident search/detail",
+    "owner all menu routes/gates",
+    "staff assigned task progress persisted",
+    "staff vacant room readiness persisted",
+    "tenant service request persisted",
+    "tenant proof upload pending with unchanged balance",
+    "owner manual proof approval updates tenant balance once",
+    "admin organization search and pending subscription queue",
+    "mobile More menu and Escape"
+  ]
+}

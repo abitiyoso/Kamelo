@@ -1,3 +1,4 @@
+import { occupantForSession } from "./identity";
 import { randomBytes, randomUUID, createHash } from "node:crypto";
 import { mkdir, writeFile, unlink, readFile } from "node:fs/promises";
 import path from "node:path";
@@ -26,11 +27,36 @@ export const safeProofSelect = {
   reviewedAt: true,
 } as const;
 export async function tenantLinkRecord(token: string) {
+  if (token.startsWith("account:")) {
+    const grant = await occupantForSession();
+    if (!grant || !grant.canViewBilling) return null;
+    const invoice = await db.invoice.findFirst({
+      where: {
+        id: token.slice(8),
+        stayId: grant.stayId,
+        status: { not: "DRAFT" },
+      },
+    });
+    if (!invoice) return null;
+    return {
+      id: "account:" + grant.id,
+      invoiceId: invoice.id,
+      includeAccess: false,
+      expiresAt: new Date(Date.now() + 60000),
+      revokedAt: null,
+      tokenHash: "",
+      createdAt: grant.createdAt,
+      accountGrantId: grant.id,
+      accountUserId: grant.userId,
+    };
+  }
   if (!/^[a-f0-9]{64}$/.test(token)) return null;
   const link = await db.tenantLink.findUnique({
     where: { tokenHash: hashToken(token) },
   });
-  return link && !link.revokedAt && link.expiresAt > new Date() ? link : null;
+  return link && !link.revokedAt && link.expiresAt > new Date()
+    ? { ...link, accountGrantId: null, accountUserId: null }
+    : null;
 }
 const date = z
   .string()
@@ -186,6 +212,16 @@ function storagePath(key: string) {
 export async function proofFile(key: string) {
   return readFile(storagePath(key));
 }
+export async function storeProofBytes(bytes: Buffer) {
+  const key = randomUUID(),
+    target = storagePath(key);
+  await mkdir(path.dirname(target), { recursive: true, mode: 0o700 });
+  await writeFile(target, bytes, { flag: "wx", mode: 0o600 });
+  return key;
+}
+export async function removeProofFile(key: string) {
+  await unlink(storagePath(key)).catch(() => {});
+}
 export async function limitedFormData(request: Request) {
   const maximum = MAX_PROOF_SIZE + 65536,
     declared = Number(request.headers.get("content-length") || 0);
@@ -246,9 +282,27 @@ export async function uploadProof(token: string, form: FormData) {
           where: { id: link.invoiceId },
           include: { property: true },
         });
-        const current = await tx.tenantLink.findUnique({
-          where: { id: link.id },
-        });
+        const current = link.accountGrantId
+          ? await tx.occupantAccess
+              .findFirst({
+                where: {
+                  id: link.accountGrantId,
+                  userId: link.accountUserId!,
+                  stayId: invoice.stayId,
+                  status: "ACTIVE",
+                  revokedAt: null,
+                  canViewBilling: true,
+                },
+              })
+              .then((g) =>
+                g
+                  ? {
+                      revokedAt: g.revokedAt,
+                      expiresAt: new Date(Date.now() + 60000),
+                    }
+                  : null,
+              )
+          : await tx.tenantLink.findUnique({ where: { id: link.id } });
         if (!current || current.revokedAt || current.expiresAt <= new Date())
           throw new Error("Tautan tidak valid atau sudah kedaluwarsa.");
         const payments = await tx.payment.findMany({
@@ -297,7 +351,7 @@ export async function uploadProof(token: string, form: FormData) {
         await tx.audit.create({
           data: {
             organizationId: invoice.property.organizationId,
-            actorId: "tenant-link:" + link.id,
+            actorId: link.accountUserId || "tenant-link:" + link.id,
             action: "PAYMENT_PROOF_UPLOADED",
             targetId: proof.id,
             metadata: { invoiceId: invoice.id, amount },

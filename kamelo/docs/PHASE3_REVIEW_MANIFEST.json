@@ -1,0 +1,298 @@
+{
+  "phase": 3,
+  "branch": "codex/phase3-identity-access-email",
+  "files": [
+    {
+      "path": ".dockerignore",
+      "sha256": "f5aed524e556842a023db00fb4bdd2f85a2177c89c537d59a9e7dcc55217b8a9"
+    },
+    {
+      "path": ".env.example",
+      "sha256": "7497b58f43ab7eeb375f2767be0b5c987149ba9b3efa8197f4ecc58b68551fbf"
+    },
+    {
+      "path": "README.md",
+      "sha256": "ac979aab1871e944951caa9be5fca24ad19c3c6dae889e3c15337655ca673860"
+    },
+    {
+      "path": "app/[page]/page.tsx",
+      "sha256": "cf10eac84a23bcc26204a60da28b28a2b4a81c92a510948ac7dd83784d1b8051"
+    },
+    {
+      "path": "app/api/account/route.ts",
+      "sha256": "db42b67e1b0840d150fd65af7ca371f725a612797605d99bbe1d79a6c4fa3128"
+    },
+    {
+      "path": "app/api/auth/route.ts",
+      "sha256": "6c0db85925d51cf44801cd83e7c570969bc5b3921eb9794b687cfde57eda4ecf"
+    },
+    {
+      "path": "app/api/invitations/route.ts",
+      "sha256": "e8ef7abeed88cc49cc8d774195d0c24864365f519716c7efbf7d9f6886b7297a"
+    },
+    {
+      "path": "app/api/jobs/mail/route.ts",
+      "sha256": "a13720a822d6cb2097cfbff078371a8ae82f902b3a18631c205f62432a54217d"
+    },
+    {
+      "path": "app/api/manage/route.ts",
+      "sha256": "db55c3609ef6ba256f6c1a554464043211af1a6ffb442b539840a56d6e454581"
+    },
+    {
+      "path": "app/api/resident/route.ts",
+      "sha256": "f8819d6b77ee5e74905fc9577998a8de641c6ae7d7e6985f3d1ba3bff7e05c3b"
+    },
+    {
+      "path": "app/api/stay/[token]/route.ts",
+      "sha256": "f12b6b7200754f8bab8553c2f73420eaa4654522fea20374d7f5e9686d390a9d"
+    },
+    {
+      "path": "app/resident/[[...section]]/page.tsx",
+      "sha256": "57a60f45e16896cd331eb8be398cca83917cc4c98af8b44c5e5b370159d140d0"
+    },
+    {
+      "path": "app/workspace.css",
+      "sha256": "a36c882022adcee0ce8d3a1dfe3a32c1c3d2bdcf708d9bc84443d7623cb29f99"
+    },
+    {
+      "path": "artifacts/phase3/account-mobile.png",
+      "sha256": "4f65d97d15cebb7d78a55b5b1995692c2e7bc5ec8265cddd36940c5370c89d62"
+    },
+    {
+      "path": "artifacts/phase3/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/phase3/identity-tests.json",
+      "sha256": "b04f96d62e958e1eb388419688a3adc5da6a76ce42ae8bc834f8b1b27e3917b8"
+    },
+    {
+      "path": "artifacts/phase3/identity.integration.log",
+      "sha256": "ebea343443df9ea3bcea3d3f1a7137c3f7eb209b8a48779729fe19cd7a726d1b"
+    },
+    {
+      "path": "artifacts/phase3/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/phase3/migration-preservation.json",
+      "sha256": "b62dfa78a0a005493b912143339522035e91d26713a2c24c6f2cd12299abfee7"
+    },
+    {
+      "path": "artifacts/phase3/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/phase3/owner-invitations-desktop.png",
+      "sha256": "89b626b9d0fcafaf65f846e4191eb86da5759240835c47af47e6cbe93b3927c3"
+    },
+    {
+      "path": "artifacts/phase3/regression-results.json",
+      "sha256": "e4d5f36f676f96c1febcca94804cd4fbe45b2b9ea2614d9fd4eb82f8211bc9dd"
+    },
+    {
+      "path": "artifacts/phase3/resident-billing-desktop.png",
+      "sha256": "927960e82ab9e359fe1e635bac965fc3f9bee1d870bb2077a6d19b2d1982e1e6"
+    },
+    {
+      "path": "artifacts/phase3/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/phase3/workspace.integration.log",
+      "sha256": "e52fe6b90d942928943624bd46d8fc4b14d76e73ca93b1d5b2aee5d4907a539f"
+    },
+    {
+      "path": "artifacts/phase3/workspaces-desktop.png",
+      "sha256": "682cfd4e3c50bdd1c6b5e5ea4771f981cdd5651d5a1e8a90a2d51ad3ee6b528c"
+    },
+    {
+      "path": "artifacts/phase3/workspaces-mobile.png",
+      "sha256": "9db35205ec7421bd56982a1dbd51bccaf1caf071a2278d2e7f30d3db5ee3e8c6"
+    },
+    {
+      "path": "components/auth-form.tsx",
+      "sha256": "51be85801b185e18d00af82b2d289dc904617d646e854815288c83bb00d8b3e7"
+    },
+    {
+      "path": "components/identity/account-settings.tsx",
+      "sha256": "60df78e5907c0fd6c83db276ebec13454b2038b50d5c06166e1c6b79aa2c37a7"
+    },
+    {
+      "path": "components/identity/api.ts",
+      "sha256": "2351becad55b03be378b6295a98786fd39974795abf2e53b0303e9587801aee4"
+    },
+    {
+      "path": "components/identity/frame.tsx",
+      "sha256": "827b39f596f371c8682ac346747530fe5c10143c3f9c27fb309c029b666e76b3"
+    },
+    {
+      "path": "components/identity/invite-center.tsx",
+      "sha256": "b7bcaef424cb8d5ab974f0d321576c91243b7b619d806fe2820ac3bd1554ed68"
+    },
+    {
+      "path": "components/identity/resident-portal.tsx",
+      "sha256": "fa3a6f5ced3b14b8732990239a44a07eac9de5631b31c0157a8727e68bad4e53"
+    },
+    {
+      "path": "components/identity/screens.tsx",
+      "sha256": "49cfc79f14a2a965515d5e68a48f298287cbdcc6bc31d3fe85043610983dc187"
+    },
+    {
+      "path": "components/portal.tsx",
+      "sha256": "1c311c496f0a92e3c79145bce7b3f8e9f948469397a65ed8ec3d2d566ac862aa"
+    },
+    {
+      "path": "components/stay-portal.tsx",
+      "sha256": "5035ae1f5a602abae43456e72f187a82f0a1c715cd23cf47993af818e5fa5aaa"
+    },
+    {
+      "path": "components/team.tsx",
+      "sha256": "e991cf6bce39416ea6b5a2c7019c06d2995ce47e2df1d77c72d3c588e87a3f50"
+    },
+    {
+      "path": "components/workspace/admin.tsx",
+      "sha256": "12bb5beec860beed87c094c07b08c9d665e3fe258290e60bcf6151d8dcef768f"
+    },
+    {
+      "path": "components/workspace/card.tsx",
+      "sha256": "2e8d0c0cad5d6f3f0d02aebbf90ad733c63e35305861266bd552194a34c4e14a"
+    },
+    {
+      "path": "components/workspace/modules.tsx",
+      "sha256": "23e1feb75c014ffb47ff5c26bdf0ac4063c47ffe41bb4befc2ca00e83d3f9ff4"
+    },
+    {
+      "path": "components/workspace/shell.tsx",
+      "sha256": "305f3c045128f4880e3d6b756553d931de0a231056c06355f48652bc995ed534"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "8279481b6352e63403e236742fe81ab326350133267130ecc7ba39baa0e60cbc"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "658b885c76cb92d572afe673efbe393162dfbc0bfd3a2bd020f8c87d0cfef570"
+    },
+    {
+      "path": "docs/PHASE3_DESIGN_QA.md",
+      "sha256": "258aa9c7eeb8c9ddd0025b5a09063e3ffc021b5d3e99b333798689a110c7e413"
+    },
+    {
+      "path": "docs/PHASE3_IDENTITY_ACCESS_EMAIL.md",
+      "sha256": "ed44207ef763eff1861d6eebdeed924a59b38714212880afeb50ecdb2b346921"
+    },
+    {
+      "path": "lib/auth.ts",
+      "sha256": "279087c1f4a1ca7882504dbd40bc4513c272adb76a9fd9d145711a04080c48fc"
+    },
+    {
+      "path": "lib/email/catalog.json",
+      "sha256": "4841189e6c3c1efa264bb021b25a1918e1e6f7b87adcd86784338b10fcd05cfe"
+    },
+    {
+      "path": "lib/email/outbox.ts",
+      "sha256": "f26d74631af5fa332bc817f3766d0e635493c08a12436c324ed68d3e876905e1"
+    },
+    {
+      "path": "lib/email/templates.mjs",
+      "sha256": "27e26655aa531a4d8fed0ce50c8adff89128d6c35694586d2fe03a2821f36f56"
+    },
+    {
+      "path": "lib/email/transport.mjs",
+      "sha256": "795bbd7a01854788827ed9ead335141884410158f6d3c6abca836fbacaf23747"
+    },
+    {
+      "path": "lib/identity-policy.mjs",
+      "sha256": "3a120864ab1c1e24bb2e0ba1d2fdd664995e2629527cf8e8fb369ffe17026f1f"
+    },
+    {
+      "path": "lib/identity.ts",
+      "sha256": "1b1243c43485f1aaa6e77287d40a816031d45788c207e0fa3b75ac9340882fd3"
+    },
+    {
+      "path": "lib/invitations.ts",
+      "sha256": "c86da993e098b0ae3498d3f158cb96bf3ab382defdf7a9883342f4b52b272004"
+    },
+    {
+      "path": "lib/operations.ts",
+      "sha256": "deb7013969c93696da01541f26d24b89348ef83fe51976de9493ab9a06ffb0f1"
+    },
+    {
+      "path": "lib/tenant.ts",
+      "sha256": "c3aec8e7d9e48dc5a7ece61964771b3f6147dfcfc5466ea272e8b63081611f53"
+    },
+    {
+      "path": "package.json",
+      "sha256": "7486dbc5c42a935f2e4160ebfd24b38aabad0fcc9564da41757150c111917185"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "dc639dc30c61185aab4867a6efb7678e9bfd4186b16a383dbdfccd81f6340d1f"
+    },
+    {
+      "path": "prisma/migrations/20261018090000_identity_access_email/migration.sql",
+      "sha256": "0b1a40729ee1e56f7254da920472ce20a6c1920f4e75a16c043c49f9c0ad6802"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "e7b81eb5a639d8391677d088db85897ba9ca3ce57fd6e0cc20ac90c87c0993fd"
+    },
+    {
+      "path": "scripts/mail-worker.mjs",
+      "sha256": "fa5250f4f34ebba3e8fc73bda4f3f157b1d94777253bd601fd8876d77b86d58a"
+    },
+    {
+      "path": "scripts/phase2-qa-preview.mjs",
+      "sha256": "2b7f89d7de2416325dad1be86ca255b197b21dc1b1633d72f41f01b552aec9c6"
+    },
+    {
+      "path": "scripts/phase3-qa-migrate.mjs",
+      "sha256": "02dde1f541bc92e0ba3969952195f07a5fab27221129e745bd1aa1bf8f8a7c65"
+    },
+    {
+      "path": "scripts/phase3-qa-verify.mjs",
+      "sha256": "2395709850983529282f94c86bb0e8503f3ea83507a4ee745bbed65cc5ac6fef"
+    },
+    {
+      "path": "tests/acquisition.integration.mjs",
+      "sha256": "8463c01006d13aca14e544cf40c209c85748da5317cefa95fd2b53736c1b468b"
+    },
+    {
+      "path": "tests/email.test.mjs",
+      "sha256": "0cc01e4d6b74d18d565d3d48ebb2b02a2dc5f45eda51708b2843ca30c04d438d"
+    },
+    {
+      "path": "tests/helpers/identity.mjs",
+      "sha256": "ff20e36eb12d92cbfc20565bb95c78c5007b409c2cc2ae31b7898fc74a804077"
+    },
+    {
+      "path": "tests/identity.integration.mjs",
+      "sha256": "2e93bc34ac632a33664ea67fbd85c53e50c307ae4afbffbfab3c4797fe7c34b0"
+    },
+    {
+      "path": "tests/integration.mjs",
+      "sha256": "f40f51a1401ac9dd2410b46a23c79aa5097999aede061d0275459b24dbd7d5c3"
+    },
+    {
+      "path": "tests/operations.integration.mjs",
+      "sha256": "f33e4ac68326c8a2822b0f2adf59cbff9ea3df0fcca3b81da8eefae4518af0ca"
+    },
+    {
+      "path": "tests/tenant-smart.integration.mjs",
+      "sha256": "4acdc0a01a6d1684090ea32834ec15c7efc450b8cf51241c36a7435d8b5fb3be"
+    },
+    {
+      "path": "tests/workspace.integration.mjs",
+      "sha256": "1825da8e5f2cd54c7a2d7a851d1ebf5e6342b332ebdf382d8a959058d7ef4365"
+    }
+  ],
+  "excludes": [
+    "secrets",
+    "databases",
+    "node_modules",
+    "build output"
+  ],
+  "committed": false,
+  "pushed": false
+}

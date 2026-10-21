@@ -1,0 +1,9 @@
+PASS owner/unauthenticated/staff/organization/CSRF boundaries
+PASS consent/date/property validation; idempotent lead capture without identities or stays
+PASS scheduled survey, complete/revised quote, follow-up activity and optimistic revision checks
+PASS loss reasons, closed follow-up clearing and explicit reopen preserve history
+PASS atomic conversion/rollback, agreed quote, duplicate retry and no implicit billing/grant/contract
+PASS competing prospects cannot occupy the same interval; losing transaction leaves no orphan profile
+PASS explicit returning profile reuse preserves person/history and rejects cross-property claims
+PASS hotel conversion requires checkout date and creates a reservation without early check-in
+PASS append-only activity, bounded history/list pagination, scoped search/filter and truthful counts

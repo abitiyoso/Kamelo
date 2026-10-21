@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-20",
+  "environment": "disposable QA 3001/55432",
+  "desktop": {
+    "documentWidth": 1265,
+    "width": 1280
+  },
+  "mobile390": {
+    "documentWidth": 375,
+    "width": 390
+  },
+  "table390": {
+    "clientWidth": 311,
+    "scrollWidth": 650
+  },
+  "mobile320": {
+    "documentWidth": 305,
+    "width": 320
+  },
+  "table320": {
+    "clientWidth": 241,
+    "scrollLeft": 409,
+    "scrollWidth": 650
+  },
+  "flow": {
+    "invoiceAmount": 50000,
+    "invoiceRemainingBefore": 600000,
+    "invoiceRemainingAfter": 550000,
+    "invoicePaidBefore": 400000,
+    "invoicePaidAfter": 450000,
+    "openingAmount": 50000,
+    "openingRemainingBefore": 1250000,
+    "openingRemainingAfter": 1200000
+  },
+  "checks": [
+    "Owner applied source/status/search filters and saw invoice plus opening file",
+    "Invoice and opening approvals saved independently through unified UI",
+    "Approved-history filter shows both retained decisions",
+    "Final mobile action labels are short with full accessible source/reference names",
+    "390 and 320 px document widths fit; table action column reachable by horizontal scrolling",
+    "Final mobile action opens exact opening detail and immutable approved note"
+  ]
+}

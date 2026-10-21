@@ -1,0 +1,12 @@
+PASS fresh owner-only receipt access, cross-owner isolation, anonymous/staff and hostile-origin denial
+PASS confirmation, real dates since cutover, integer amounts, source balance and review details are enforced
+PASS partial receipt is idempotent, encrypted and reduces debt while entering cash/chart once without fake invoices
+PASS full settlement closes outstanding count and prevents overcollection
+PASS opening receipts reuse scoped bank matching and prevent correction while matched; source stays immutable
+PASS exact reversal reopens debt and corrects original-period cash while retaining source and reserved references
+PASS database independently blocks source void, receipt edits/deletion, malformed offsets and excess collection
+PASS simultaneous receipts cannot overcollect and cash CSV includes original plus correction records
+PASS database row locking prevents overcollection even through concurrent direct inserts
+PASS historical receipt corrections update their original reporting date without fabricated current cash
+PASS bounded receipt pages and membership revocation apply to financial history
+PASS 11 opening receipt API scenario groups

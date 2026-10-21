@@ -1,0 +1,222 @@
+{
+  "phase": "4J XLSX room/resident onboarding",
+  "branch": "codex/phase4j-xlsx-imports",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "bf197edb9eeddf2a8d7f67aff84cdf9fa1712a92f307dff8bf8953b5217daab3"
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "sha256": "560f13e2ba33edaac8639dec56af74013466b53616a7a50904d6d4eab17b7cd0"
+    },
+    {
+      "path": "README.md",
+      "sha256": "1fa9b063d4e22b3885cdf02f02faa41a4333b3ef69bc4a0329c5edd0fa7fcce4"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "e7dc497d949a6b00550ae430111053c88ab491f741a58f65068bd7e6c682585f"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "0e2811cd66b7e27ad2ceddf127bff736ba20b39f9d6a3a645ed3fa54c6053610"
+    },
+    {
+      "path": "lib/import-workbook.mjs",
+      "sha256": "259dc1ce5030771083a3aa8ae4f7a0147502a3b7c00b0d58ab2acd412b1322a6"
+    },
+    {
+      "path": "app/api/import-files/route.ts",
+      "sha256": "29e78fdc49fa087141f9709556ff5e49b9ed66a07ed28e2120ea5f35a66733ab"
+    },
+    {
+      "path": "components/workspace/import-file.tsx",
+      "sha256": "04fbff5e0fa75aa6d4034f2cb5c8a9c8cabed6299047d4efb303dd6500803244"
+    },
+    {
+      "path": "components/workspace/room-import.tsx",
+      "sha256": "bf88fec43d80cb335227f3574f8ae8f2971a180721cba0e3fe6906ece6708bd6"
+    },
+    {
+      "path": "components/workspace/resident-import.tsx",
+      "sha256": "ee3eed4c15678dfee94eedb19b9cfbb1a77919f504d1164022b834a2a32df62b"
+    },
+    {
+      "path": "public/templates/kamelo-kamar.xlsx",
+      "sha256": "3bf93548d6fc9f3f57026890be7bff0992e01ca0d00e0e88f0fa9aff402c2710"
+    },
+    {
+      "path": "public/templates/kamelo-penghuni.xlsx",
+      "sha256": "4b4368a1cce45a8bb2796fcacdb6c32fb1328cf8edb1c379bb4432dd3920bfd6"
+    },
+    {
+      "path": "tests/helpers/xlsx.mjs",
+      "sha256": "2ed8c364b2495e61e2798a2140607528048e656b9fe8ffacd0b3590c326a3227"
+    },
+    {
+      "path": "tests/import-workbook.test.mjs",
+      "sha256": "4a39f8bd4d4a162203c4b0c8a84dde6fac9e20f788bb171d2b602bb417faa75d"
+    },
+    {
+      "path": "tests/import-files.integration.mjs",
+      "sha256": "05d49a5cab622aeb34185eaf181fc7e562dd5dda04038d23b4f62c74a3e30f17"
+    },
+    {
+      "path": "scripts/phase4j-xlsx-templates.mjs",
+      "sha256": "35f9a7c8a93a4b141af6e4113e3e527cd5c0538e1cadfdcfaa11976bba168474"
+    },
+    {
+      "path": "scripts/phase4j-qa-verify.mjs",
+      "sha256": "51da2a0509fa941c675327e8f3629fc2459df60f24d7533f56d56a4055717c69"
+    },
+    {
+      "path": "scripts/phase4j-review-sync.mjs",
+      "sha256": "825d82bc4a71e4660654e244eee1484966dc60ed10f112b7a280619d94974c2c"
+    },
+    {
+      "path": "docs/PHASE4J_XLSX_IMPORTS.md",
+      "sha256": "26e47dd34d6a908fff8ec05f95f48fbc00a432ef2639e5704e1d09a01e645f4a"
+    },
+    {
+      "path": "docs/PHASE4J_DESIGN_QA.md",
+      "sha256": "5029ae606a1e8c852453aef84f12f7d117509c5fe5b189a6ff6ce2b76d0b4a3c"
+    },
+    {
+      "path": "artifacts/phase4j/build.log",
+      "sha256": "df7d03f0c34d053743d5b61cbbb98d050cc608fc935994e21e080cf6803de52b"
+    },
+    {
+      "path": "artifacts/phase4j/unit.log",
+      "sha256": "940e52d01e99e8b0b690e8f77f64dcae2dc6dc6f9d7bde057ba7ac8abc82e203"
+    },
+    {
+      "path": "artifacts/phase4j/typecheck.log",
+      "sha256": "829a092d2d4e2d2e3928ea2b15abfae5970280655cd91c9a73b11b168d1f8815"
+    },
+    {
+      "path": "artifacts/phase4j/regression-results.json",
+      "sha256": "70ee54e2bea9250e3458d5f19277ddf593225d87125415d43b9c25e7b270474d"
+    },
+    {
+      "path": "artifacts/phase4j/import-files-api.json",
+      "sha256": "98515f9f6287da8d3faa08b269dd91828c694ce47a6de860f6c55b4c98b01075"
+    },
+    {
+      "path": "artifacts/phase4j/browser-metrics.json",
+      "sha256": "d626bfff0511e569d4f23d2053d8d747d64378582a9d6483c6b3f5cb29872910"
+    },
+    {
+      "path": "artifacts/phase4j/templates-http.json",
+      "sha256": "b5229d670936a54bc1ba2302c1bc570c646b503f876ba48ac0dc44884e81f095"
+    },
+    {
+      "path": "artifacts/phase4j/xlsx-desktop-mapping.png",
+      "sha256": "045c14ab93b4e2178f36ab5452e8ff6b220bc9ad2064614d8ce1c4c4072a1215"
+    },
+    {
+      "path": "artifacts/phase4j/xlsx-desktop-preview.png",
+      "sha256": "a86a91e32ce433ef2ec98a41b2d199bf284dc75e0619e269c0862ae2cfba394a"
+    },
+    {
+      "path": "artifacts/phase4j/xlsx-desktop-saved.png",
+      "sha256": "66f2375a01f6c1cd3cf5a9e789a64708e8d05e605c9eedf5dc8f89839828609a"
+    },
+    {
+      "path": "artifacts/phase4j/xlsx-mobile-390.png",
+      "sha256": "0624c4c384aa9a926ab309a9a4e9782b1576df75161444fc538e29f9a073edc4"
+    },
+    {
+      "path": "artifacts/phase4j/xlsx-mobile-320.png",
+      "sha256": "64f679e3bb846ccae999da607d557e8386a551534833523584ea575ab87671ab"
+    },
+    {
+      "path": "artifacts/phase4j/xlsx-resident-mobile-390.png",
+      "sha256": "e7af28eb4083c9335692da10059db0df29b293617e390a909b2e0259956a5d99"
+    },
+    {
+      "path": "artifacts/phase4j/xlsx-resident-preview.png",
+      "sha256": "397c303aa1cf6a1c51b68792410724b683109dab2eb64d574bae6190779943cf"
+    },
+    {
+      "path": "artifacts/phase4j/xlsx-resident-saved.png",
+      "sha256": "50e0a2fbd1e8d38b7056507cc60b2e22705691f9a52339ac07570287c568a9a6"
+    },
+    {
+      "path": "artifacts/phase4j/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/phase4j/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/phase4j/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/phase4j/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/phase4j/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/phase4j/workspace.integration.log",
+      "sha256": "e52e9b4bb338491cbff371026dcbad30bd9979ee5aa0a6ffd4dc5df41899f34e"
+    },
+    {
+      "path": "artifacts/phase4j/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/phase4j/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/phase4j/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/phase4j/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/phase4j/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/phase4j/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/phase4j/privacy.integration.log",
+      "sha256": "9203cd6d96eee6519f5a688bd1c53dcd27763ca66c8526b15acdbfa2e1bc6ec2"
+    },
+    {
+      "path": "artifacts/phase4j/room-import.integration.log",
+      "sha256": "f42a888f174f7e81ea7a459f01c841b6cd678865b978279efa7af374f1ef0569"
+    },
+    {
+      "path": "artifacts/phase4j/resident-import.integration.log",
+      "sha256": "bc71737bceaa78d973a9067d70e87c7e479cb0906ac04bc5c1e92fcc1cf3f524"
+    },
+    {
+      "path": "artifacts/phase4j/import-files.integration.log",
+      "sha256": "3ca4a3472d384ac4d886058ae11899ce18e187138085ae09fd19cd25309c47d9"
+    }
+  ],
+  "excluded": [
+    ".env*",
+    ".local-secrets",
+    "runtime databases",
+    "node_modules",
+    "generated",
+    ".next"
+  ],
+  "schemaMigration": false,
+  "commit": false,
+  "push": false,
+  "mainDatabaseMigration": false
+}

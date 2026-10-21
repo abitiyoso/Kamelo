@@ -1,0 +1,33 @@
+✔ invoice totals include discounts and reject unsafe amounts (1.1387ms)
+✔ partial payment and overpayment protection (0.2558ms)
+✔ booking dates handle calendar boundaries (3.0464ms)
+✔ overlap excludes adjacent reservations (0.1744ms)
+✔ billing day retains month-end semantics (0.1474ms)
+✔ room limits reject whole batch (0.1491ms)
+✔ operational status and occupancy are separate (0.1335ms)
+✔ future monthly occupancy does not mark a room occupied early (0.1852ms)
+✔ device capabilities and offline validation (0.2786ms)
+✔ identity policy defaults and configured limits are bounded (1.2426ms)
+✔ all approved transactional drafts render escaped HTML and plain text (1.1856ms)
+✔ SMTP readiness enforces TLS and disables unsafe attachment access (0.2552ms)
+✔ external delivery fails closed without explicit live gate AND approved recipient (0.6302ms)
+✔ expense movements preserve partial payments and reject overpayment/overrefund/unsafe IDR (1.1545ms)
+✔ cash report compares explicit equal-day intervals across leap/month boundaries (2.4444ms)
+✔ accounting CSV escapes formulas, delimiters and newlines while preserving signed numeric cash (0.4367ms)
+✔ approved photo and logo bytes match the locked asset manifest (6.6443ms)
+✔ public showcase cannot access operational API, storage or executable HTML (1.0022ms)
+✔ deposit liability movement preserves reserved deductions and bounded integer IDR (1.1613ms)
+✔ deposit states distinguish due, held, pending deductions and settled liability (0.2186ms)
+✔ idempotency hash ignores object key order but binds financial values and actor (0.7961ms)
+✔ proof validation rejects executable content, mismatched signatures and invalid amounts (0.9156ms)
+✔ SaaS periods preserve calendar boundaries and validate months (1.8543ms)
+✔ SaaS entries cannot overpay or overrefund and financial state is distinct from entitlement (0.2049ms)
+✔ all seven backoffice logo/photos retain approved v5.3 bytes (6.2241ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 195.7826

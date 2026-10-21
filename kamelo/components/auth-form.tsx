@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { IdentityFrame } from "./identity/frame";
 import Link from "next/link";
 import { plans, rupiah } from "@/lib/plans";
 export function AuthForm({
@@ -9,11 +10,13 @@ export function AuthForm({
   mode: string;
   selectedPlan?: string;
 }) {
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
   const requestedPlan = plans.find((p) => p.id === selectedPlan);
   const [error, setError] = useState(""),
     [pending, setPending] = useState(false),
     [message, setMessage] = useState("");
-  const register = mode === "register",
+  const register = mode === "register" || mode === "invite-register",
     forgot = mode === "forgot-password",
     reset = mode === "reset-password";
   async function submit(e: React.FormEvent<HTMLFormElement>) {
@@ -34,7 +37,16 @@ export function AuthForm({
               : reset
                 ? "reset"
                 : "login",
-          token: new URLSearchParams(location.search).get("token"),
+          token:
+            new URLSearchParams(location.hash.slice(1)).get("token") ||
+            new URLSearchParams(location.search).get("token"),
+          ...(mode === "invite-register"
+            ? {
+                invitationToken: new URLSearchParams(
+                  location.hash.slice(1),
+                ).get("token"),
+              }
+            : {}),
           ...(register && requestedPlan
             ? { requestedPlan: requestedPlan.id }
             : {}),
@@ -51,26 +63,8 @@ export function AuthForm({
     }
   }
   return (
-    <main className="auth-wrap">
-      <div className="auth-intro">
-        <span className="eyebrow">SELAMAT DATANG DI KAMELO</span>
-        <h1>
-          Urus Properti
-          <br />
-          Jadi Gampang.
-        </h1>
-        <p>
-          Satu tempat untuk kamar, penghuni, dan tagihan Anda. Kamelo Core siap
-          digunakan tanpa perangkat pintar.
-        </p>
-        <div className="auth-photo">
-          <img
-            src="/images/properties/guesthouse.webp"
-            alt="Interior kamar ilustrasi"
-          />
-        </div>
-      </div>
-      <section className="auth-card">
+    <IdentityFrame>
+      <section className="authbox-form">
         <span className="pill">Kamelo by ELENIO</span>
         <h2>
           {register
@@ -101,7 +95,7 @@ export function AuthForm({
             penagihan otomatis.
           </p>
         )}
-        <form onSubmit={submit}>
+        <form method="post" onSubmit={submit}>
           {register && (
             <>
               <label>
@@ -160,7 +154,7 @@ export function AuthForm({
               {message}
             </p>
           )}
-          <button disabled={pending}>
+          <button className="btn wide" disabled={pending || !ready}>
             {pending
               ? "Memproses…"
               : register
@@ -184,6 +178,6 @@ export function AuthForm({
           </Link>
         </p>
       </section>
-    </main>
+    </IdentityFrame>
   );
 }

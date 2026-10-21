@@ -1,0 +1,238 @@
+{
+  "phase": "4N opening portal reminders",
+  "branch": "codex/phase4n-opening-portal-reminders",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "6179f3370b9c12c8d57de69c92828b8c3774b6484e892a51ff68317d72120e3c"
+    },
+    {
+      "path": "README.md",
+      "sha256": "0af4f0e2f56865be7123a4796fe54e6297338d8147302775d6ad63984e93f313"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "7918625c2cf34c8094474d74ea4cb1b4c2f6e1954b97982f9edc72437b4963ac"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "d68bfc01f7898f76e9f4c8a3d6f2db96d5c98216c898bc875e11b810e5c41241"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "fb30d9365e93850b4794681aa927a0e6a861a60694cb63652374d18d1de9ff83"
+    },
+    {
+      "path": "prisma/migrations/20261020100000_opening_portal_reminders/migration.sql",
+      "sha256": "7544cc1cfce71f30f0c4292248ee0de4c1b14b1a625cb9ea663c3da386217bd2"
+    },
+    {
+      "path": "lib/opening-reminders.ts",
+      "sha256": "e6a924c78a3cc3719bc7bdec0ba836e678e11e5f402208923e3ef96306a14a28"
+    },
+    {
+      "path": "lib/opening-tenant.ts",
+      "sha256": "55dffcba08333ddbc8c3644a6661f556a11009962208292c07c2e4a3a79cbe25"
+    },
+    {
+      "path": "app/api/opening-balances/route.ts",
+      "sha256": "7342768e72707b8cabad9ff73728d5d84f4cf6d64117d4460362943e85a26f8a"
+    },
+    {
+      "path": "app/api/opening-tenant/route.ts",
+      "sha256": "a889d8c7912594c7ab784453abc0b7abe68d76931febab54ebbf187e929d72df"
+    },
+    {
+      "path": "components/workspace/opening-reminders.tsx",
+      "sha256": "8debb7e679d63e39f762db68db27bad47943d8e041f498ee42dde047cd1f6488"
+    },
+    {
+      "path": "components/workspace/opening-evidence.tsx",
+      "sha256": "d8ffa8b47ff01ad5150133eabf83cba49cebb7812731f22b7541986024de8163"
+    },
+    {
+      "path": "components/workspace/opening-balances.tsx",
+      "sha256": "01e79e52d377e2f7fe8170c12654543a53ced4ad720466c35b845244c4ec3bf9"
+    },
+    {
+      "path": "components/identity/opening-balances.tsx",
+      "sha256": "228ac7717177d0fd4b2ab59b10a6f87c51d9feff7814d97d6707cf8816da4590"
+    },
+    {
+      "path": "tests/opening-reminders.integration.mjs",
+      "sha256": "0ca21fe0ef825e269508c3b061982c0c64bb5117b543c934b120a9c511d6a4b3"
+    },
+    {
+      "path": "scripts/phase4n-qa-migrate.mjs",
+      "sha256": "f206f7d6a6de35ef6139442aa4fda5bbdfc27baece4566c9655e7bea20cec9d8"
+    },
+    {
+      "path": "scripts/phase4n-qa-verify.mjs",
+      "sha256": "156c7e0cf0db09d596342c3c29eb0c79f6bb24b96fece40788d8cfcbd3858954"
+    },
+    {
+      "path": "scripts/phase4n-review-sync.mjs",
+      "sha256": "16f79d66bae14f0c4506a370e053ae8e2e3a82da7820dc0087c6e45cde6fd06b"
+    },
+    {
+      "path": "docs/PHASE4N_PORTAL_REMINDERS.md",
+      "sha256": "c797089045c4c1b5acef0a8fe3af1965845f01f70c57f6ad8e00db88171911e7"
+    },
+    {
+      "path": "docs/PHASE4N_DESIGN_QA.md",
+      "sha256": "63ec25de104416c2c21b9cd0209228608658a8016efbdcf4375f753ee1a41e71"
+    },
+    {
+      "path": "artifacts/phase4n/build.log",
+      "sha256": "84a2dd3fc2319967d2a65626936b1fed2e30a016840edd06e85d7a85acf50f63"
+    },
+    {
+      "path": "artifacts/phase4n/unit.log",
+      "sha256": "138b2d2811e2ce2aa2aa643312839225dec74ea547b55c35a1094bda615d717e"
+    },
+    {
+      "path": "artifacts/phase4n/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/phase4n/migration-preservation.json",
+      "sha256": "2eea4cc713fdb5eeb7a36fa59c714665817b0cec574e0da2a6812b576d9c3a0a"
+    },
+    {
+      "path": "artifacts/phase4n/regression-results.json",
+      "sha256": "36a9f59e88d3367ce44e45448f83c05011a5bd63a40674deb7c11582c2af8cdf"
+    },
+    {
+      "path": "artifacts/phase4n/opening-reminders-api.json",
+      "sha256": "ada1e98b0fb8cb8b54e80ea3c7ac5f792d76654be37a2e157fa1b1de12bef432"
+    },
+    {
+      "path": "artifacts/phase4n/browser-metrics.json",
+      "sha256": "27e11e201d6df204b835fde844edcdd7a93c1de1463a3d3280851eb64a0752ee"
+    },
+    {
+      "path": "artifacts/phase4n/owner-reminder-published.png",
+      "sha256": "82637ec11b18778e25c65fb37e20ce673e2897c72ad77e3ab84135072480598e"
+    },
+    {
+      "path": "artifacts/phase4n/owner-reminder-mobile-390.png",
+      "sha256": "acaffe6fbaf786d6872a9124794762f12fa3fb8264ff3fd6b26567fe9202524d"
+    },
+    {
+      "path": "artifacts/phase4n/tenant-reminder-desktop.png",
+      "sha256": "63a07fb7934281eeb8445ce5a1d71bd1ab25352d24fc5ea929a97a84b657c908"
+    },
+    {
+      "path": "artifacts/phase4n/tenant-reminder-mobile-390.png",
+      "sha256": "1a423f796e96ac8303701f0e1cd31ac5aad9fd12b1a9e702deef592020875e81"
+    },
+    {
+      "path": "artifacts/phase4n/tenant-reminder-mobile-320.png",
+      "sha256": "9aee097356ea5fea278c0766d9c609f72f47d9d796484cd4581ebda254809858"
+    },
+    {
+      "path": "artifacts/phase4n/tenant-reminder-pagination.png",
+      "sha256": "978022fdc455931457b0ab9cbbade56db9a442609afa7f9f9edbb019039a8d8e"
+    },
+    {
+      "path": "artifacts/phase4n/opening-tenant-final.log",
+      "sha256": "8a3440bf16236f0cd0415690f0b6ad653b4f3fd2b7a57e807de1266bcaa28c02"
+    },
+    {
+      "path": "artifacts/phase4n/opening-reminders-final.log",
+      "sha256": "75026937f8db921bd99ffda7fb6c5ffda26764fe1ebbe331369bb39c1898b888"
+    },
+    {
+      "path": "artifacts/phase4n/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/phase4n/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/phase4n/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/phase4n/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/phase4n/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/phase4n/workspace.integration.log",
+      "sha256": "05595edfccc6cfe59506dfe6e4a51746156ef02854cc771087e196a9aa90b341"
+    },
+    {
+      "path": "artifacts/phase4n/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/phase4n/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/phase4n/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/phase4n/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/phase4n/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/phase4n/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/phase4n/privacy.integration.log",
+      "sha256": "9203cd6d96eee6519f5a688bd1c53dcd27763ca66c8526b15acdbfa2e1bc6ec2"
+    },
+    {
+      "path": "artifacts/phase4n/room-import.integration.log",
+      "sha256": "f42a888f174f7e81ea7a459f01c841b6cd678865b978279efa7af374f1ef0569"
+    },
+    {
+      "path": "artifacts/phase4n/resident-import.integration.log",
+      "sha256": "bc71737bceaa78d973a9067d70e87c7e479cb0906ac04bc5c1e92fcc1cf3f524"
+    },
+    {
+      "path": "artifacts/phase4n/import-files.integration.log",
+      "sha256": "3ca4a3472d384ac4d886058ae11899ce18e187138085ae09fd19cd25309c47d9"
+    },
+    {
+      "path": "artifacts/phase4n/opening-balances.integration.log",
+      "sha256": "2e7579fbdf802941ddc5b2e045a94a15f41d026d14ca932760a68340fbdb438e"
+    },
+    {
+      "path": "artifacts/phase4n/opening-receipts.integration.log",
+      "sha256": "e815fd244ca72862ea4b25816b4a785f27d80d4deccf5c78b4d48d5c06af9986"
+    },
+    {
+      "path": "artifacts/phase4n/opening-tenant.integration.log",
+      "sha256": "d3f0d8b65f18e98322d8669d0e9f14289ce2cf8964578ba00770ef660322fce5"
+    },
+    {
+      "path": "artifacts/phase4n/opening-reminders.integration.log",
+      "sha256": "3f1c24d2a8e1e096c25bf7cbafe6dde8aad4c1cb1cfcfacd78c5e14117cabedd"
+    }
+  ],
+  "excluded": [
+    ".env*",
+    ".local-secrets",
+    "runtime databases",
+    "storage/payment-proofs",
+    "node_modules",
+    "generated",
+    ".next"
+  ],
+  "committed": false,
+  "pushed": false,
+  "deployed": false
+}

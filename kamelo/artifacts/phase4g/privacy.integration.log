@@ -1,0 +1,8 @@
+PASS verified account contexts, anonymous/platform boundaries, filter and origin enforcement
+PASS self-only private JSON summary uses current account and active grants without credentials or other residents
+PASS reviewed encrypted requests, exact retries, forged-requester isolation and single open request per type
+PASS personal requests stay private from same-organization roles; reviewed referenced responses do not claim erasure
+PASS competing review/withdrawal rejects stale revisions while account, invoices, payments, messages and mail remain unchanged
+PASS source and encrypted review history immutable, complete totals and history beyond thirty rows
+PASS scoped request queues paginate complete history and summary refuses over-limit rather than truncating
+PASS revoked platform privilege and pending identities cannot access privacy operations

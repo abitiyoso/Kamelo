@@ -1,0 +1,225 @@
+{
+  "phase": "4L opening receivable collections",
+  "branch": "codex/phase4l-opening-receipts",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "c7b773d8a0f6c083bde5cf8fe494d92de894e46fadc98fc9fe48df1aea9695ee"
+    },
+    {
+      "path": "README.md",
+      "sha256": "6dee9a8b647534734941da177273dafeadc1d36b5759740c6b6b4c55db8f80ec"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "b0242a1259b1d730a453a7338eb47e1cdd20e07583e3ccc605bc2947e096a9d6"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "7ac29b49008f6f2c74715f86c4de94ce5856b6d0885df4e8597927441530a7d4"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "ef6586a3ab025a3cfe5c6554e933318451191099137b8606dc6986b247c099ee"
+    },
+    {
+      "path": "prisma/migrations/20261019120000_opening_receipts/migration.sql",
+      "sha256": "0b920a0874d813f2e83c7e5c753bd05a7df310e70575a60d1c355d8c905663b4"
+    },
+    {
+      "path": "lib/opening-receipts.ts",
+      "sha256": "750a3ebcf1fc432951f015b1f1c91652e4b5d513601c87c10dd9665de90aeb5e"
+    },
+    {
+      "path": "lib/opening-balances.ts",
+      "sha256": "83344460be636914047855728b1fe7238d5efc62a85664f01e244c3ec66d7744"
+    },
+    {
+      "path": "lib/finance-report.ts",
+      "sha256": "e9197fa55ad2164c7293d945b7e562d2fd75a604fb7c4b29796ff461464069c5"
+    },
+    {
+      "path": "lib/finance.ts",
+      "sha256": "6f45370374c2e022f84e01376ce11018dfe9b38c34c3d6dc680296c55a6a5dd7"
+    },
+    {
+      "path": "app/api/opening-balances/route.ts",
+      "sha256": "3245f680c8977a75d8e1727b350d24b5f0c43a08cf70c3147867d298efbc992c"
+    },
+    {
+      "path": "app/api/finance/route.ts",
+      "sha256": "15d8cf722dc61adfb7ff3596f5ce65f8537d899b259ff9fbfe4a7a6bff6ec38a"
+    },
+    {
+      "path": "components/workspace/opening-receipts.tsx",
+      "sha256": "a070bb1eaf26b6ed33baf256756fde2af820800fb81527e15933feb526fbc838"
+    },
+    {
+      "path": "components/workspace/opening-balances.tsx",
+      "sha256": "a1b2a3ff6ef97cd697f8edc4671061bbc88ef34da6a44ad29227f773d3c4b61c"
+    },
+    {
+      "path": "components/workspace/finance.tsx",
+      "sha256": "3e75b94b25bff50c9bf5ae2b5488865090f6899c9e7eae7a3372182cc8406ac1"
+    },
+    {
+      "path": "tests/opening-receipts.integration.mjs",
+      "sha256": "7b517deaacec5bda8d4b1d2f3ed078837e0de630c200a38872c5b4029d9565ec"
+    },
+    {
+      "path": "scripts/phase4l-qa-migrate.mjs",
+      "sha256": "7851a8966108e486bc31a3c1f4719126896e6f3d762ac0cebd22789871a36abf"
+    },
+    {
+      "path": "scripts/phase4l-qa-verify.mjs",
+      "sha256": "fc8d445662d3138b12b6eaa8b0a325d972af328c20293402668a9b47889a7f32"
+    },
+    {
+      "path": "scripts/phase4l-review-sync.mjs",
+      "sha256": "85fce11b156f439681efe7fda8b39baf5013c5d0f6036b4fa0dc53727ad7bdd5"
+    },
+    {
+      "path": "docs/PHASE4L_OPENING_RECEIPTS.md",
+      "sha256": "6a6151e30fc0ccb16d48a87c71157072a6fd4193a4bae62d67060d6c869c8380"
+    },
+    {
+      "path": "docs/PHASE4L_DESIGN_QA.md",
+      "sha256": "9384880fdadc814883617dfb49e8ce4e5e502eaf2356f5de8dd96c7856a52ae0"
+    },
+    {
+      "path": "artifacts/phase4l/build.log",
+      "sha256": "cf10e03a747c4cc13e6fe49a02d94e816189b8c9998092cf794b8b9206769392"
+    },
+    {
+      "path": "artifacts/phase4l/unit.log",
+      "sha256": "27915b6405ae445087082bf9202831e70d30bb530935e9df218f3882f1b8b697"
+    },
+    {
+      "path": "artifacts/phase4l/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/phase4l/migration-preservation.json",
+      "sha256": "e445b1cffab8f0b5f35becb7f1acfd8e61308f223f6159db364291376daed47d"
+    },
+    {
+      "path": "artifacts/phase4l/regression-results.json",
+      "sha256": "5b3216598b0a20965f132b7baddc462b364e60bd124d080a3866bfc5146a4ac5"
+    },
+    {
+      "path": "artifacts/phase4l/opening-receipts-api.json",
+      "sha256": "bfeaea143c4d3bf49654c32a58541eaa9abd37b05f2a31e7faa6f3e4eb68fdd6"
+    },
+    {
+      "path": "artifacts/phase4l/browser-metrics.json",
+      "sha256": "31f2622080716682d886bba2fc82ef37066dbc9d71cada86bc665d8ddd60745f"
+    },
+    {
+      "path": "artifacts/phase4l/receipt-desktop-form.png",
+      "sha256": "79da7ce7d44a935a1cb414ec6135eaf840b29c64f02746a7974ca79e882f47c4"
+    },
+    {
+      "path": "artifacts/phase4l/receipt-desktop-saved.png",
+      "sha256": "7a28572a7bab8f2816e5cf4028f1e4281450aabd0ac93ca3160fd860a6631014"
+    },
+    {
+      "path": "artifacts/phase4l/receipt-desktop-corrected.png",
+      "sha256": "4b432fb0f58e8e42dcb3a20d795cd90c6165dcac964357c64ee054862f5df6e1"
+    },
+    {
+      "path": "artifacts/phase4l/receipt-bank-match.png",
+      "sha256": "62c2e9b7afc7582e01d690760ecf9a545e333d45ef9785127f34b2ea9a2bd22f"
+    },
+    {
+      "path": "artifacts/phase4l/receipt-mobile-390.png",
+      "sha256": "6878c76bb8c263d51a8cdae9e6180c0b45ed697a2b0772c17b4fdb6b23dff70e"
+    },
+    {
+      "path": "artifacts/phase4l/receipt-mobile-320.png",
+      "sha256": "62f221eecdbd025a70ba75a23c83e1a173400d48b0ad7f68182218e4a68139fe"
+    },
+    {
+      "path": "artifacts/phase4l/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/phase4l/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/phase4l/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/phase4l/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/phase4l/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/phase4l/workspace.integration.log",
+      "sha256": "a52fc424eb1270ebb662565538873685d9a95bbcc5da02c7ac42719984a0b4d5"
+    },
+    {
+      "path": "artifacts/phase4l/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/phase4l/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/phase4l/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/phase4l/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/phase4l/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/phase4l/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/phase4l/privacy.integration.log",
+      "sha256": "9203cd6d96eee6519f5a688bd1c53dcd27763ca66c8526b15acdbfa2e1bc6ec2"
+    },
+    {
+      "path": "artifacts/phase4l/room-import.integration.log",
+      "sha256": "f42a888f174f7e81ea7a459f01c841b6cd678865b978279efa7af374f1ef0569"
+    },
+    {
+      "path": "artifacts/phase4l/resident-import.integration.log",
+      "sha256": "bc71737bceaa78d973a9067d70e87c7e479cb0906ac04bc5c1e92fcc1cf3f524"
+    },
+    {
+      "path": "artifacts/phase4l/import-files.integration.log",
+      "sha256": "3ca4a3472d384ac4d886058ae11899ce18e187138085ae09fd19cd25309c47d9"
+    },
+    {
+      "path": "artifacts/phase4l/opening-balances.integration.log",
+      "sha256": "2e7579fbdf802941ddc5b2e045a94a15f41d026d14ca932760a68340fbdb438e"
+    },
+    {
+      "path": "artifacts/phase4l/opening-receipts.integration.log",
+      "sha256": "e815fd244ca72862ea4b25816b4a785f27d80d4deccf5c78b4d48d5c06af9986"
+    }
+  ],
+  "excluded": [
+    ".env*",
+    ".local-secrets",
+    "runtime databases",
+    "node_modules",
+    "generated",
+    ".next"
+  ],
+  "committed": false,
+  "pushed": false,
+  "deployed": false
+}

@@ -14,6 +14,8 @@ ENV HOSTNAME=0.0.0.0
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static
 COPY --from=build /app/public ./public
+COPY --from=build /app/lib/worker-client.mjs ./lib/worker-client.mjs
+COPY --from=build /app/scripts/operations-worker.mjs /app/scripts/mail-worker.mjs /app/scripts/reminder-worker.mjs ./scripts/
 RUN mkdir -p /app/storage/payment-proofs /app/.local-secrets && chown -R node:node /app/storage /app/.local-secrets
 USER node
 EXPOSE 3000

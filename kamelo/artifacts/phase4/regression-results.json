@@ -1,0 +1,35 @@
+{
+  "completedAt": "2026-10-18T10:32:29.959Z",
+  "externalEmail": false,
+  "environment": "disposable QA 55432 / loopback 3001",
+  "results": [
+    {
+      "script": "integration",
+      "passed": true
+    },
+    {
+      "script": "operations.integration",
+      "passed": true
+    },
+    {
+      "script": "tenant-smart.integration",
+      "passed": true
+    },
+    {
+      "script": "acquisition.integration",
+      "passed": true
+    },
+    {
+      "script": "identity.integration",
+      "passed": true
+    },
+    {
+      "script": "workspace.integration",
+      "passed": true
+    },
+    {
+      "script": "lifecycle.integration",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+PASS public pages / unauthorized API
+PASS registration / atomic free-plan onboarding
+PASS room limits / organization isolation
+PASS occupancy / invoice discounts / partial payment / concurrent overpayment / dashboard aggregation
+PASS draft / issue / issued immutability / audited void
+PASS upgrade authorization / Starter 20-room limit / recurring idempotency
+PASS concurrent hotel conflicts / check-in / checkout readiness
+PASS mock capabilities / mapping isolation / command confirmation audit
+PASS assigned staff room readiness preserves rates and property boundaries
+PASS staff creation / user limit / multiple properties / explicit payment and device grants / revocation
+PASS offline command rejection preserves confirmed state
+PASS expired plan restricts paid features without deleting data
+PASS downgrade retains history and restricts growth
+PASS invoice pagination / all-history totals / direct invoice isolation
+PASS CSRF origin enforcement
+ALL INTEGRATION SCENARIOS PASSED. Test-only records retained for inspection.

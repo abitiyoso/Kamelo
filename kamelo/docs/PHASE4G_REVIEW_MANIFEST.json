@@ -1,0 +1,171 @@
+{
+  "phase": "4G personal privacy requests",
+  "branch": "codex/phase4g-privacy-requests",
+  "files": [
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "29bc062e29fe67a91c64f24037eb670315c440129b421074a5e236f6468e0ffc"
+    },
+    {
+      "path": "prisma/migrations/20261019070000_privacy_requests/migration.sql",
+      "sha256": "4aed25b279b2ab3a694c2d54d2005bae45e74c6cf105d55178d9af3ce14f783e"
+    },
+    {
+      "path": "lib/privacy.ts",
+      "sha256": "df02146b591385f2d686544d6d61c6bdf219894405f73e5bd09066b1e98da3a8"
+    },
+    {
+      "path": "lib/privacy-rules.mjs",
+      "sha256": "ff062069dcc5874f569f78c55fab070d16fdf9b57620b75ee3472da8c406c4f5"
+    },
+    {
+      "path": "app/api/privacy/route.ts",
+      "sha256": "124ebd29800f87c58b3e3d69cb8eafe523f7cbbfdbeddd290221ab8e63a9cc15"
+    },
+    {
+      "path": "components/workspace/privacy.tsx",
+      "sha256": "ccf5c4d1de30894c7cd7029a9f7b515207229045a2b09f3856c1ff12db031ca4"
+    },
+    {
+      "path": "components/identity/account-settings.tsx",
+      "sha256": "7f5962a28c313bc4a5e0ce52f82bc70bccc2d8dbae1dc6ef29284423560e30ae"
+    },
+    {
+      "path": "components/workspace/admin.tsx",
+      "sha256": "7e8fcb3943a03da690291f3ef3a0747f8e5424b0d37dd2a6ec26129553bda05d"
+    },
+    {
+      "path": "tests/privacy.test.mjs",
+      "sha256": "7244d283d335143159e513faf159fb4ace96d8f5a365ac13b38029b5d1593fc6"
+    },
+    {
+      "path": "tests/privacy.integration.mjs",
+      "sha256": "12e19c9fd0640aa2d758144c633da45ea6b98143b02a8985391c9d7756fb4e8a"
+    },
+    {
+      "path": "scripts/phase4g-qa-migrate.mjs",
+      "sha256": "7111a27a5fc46e56d7f731e4b36fd45d301f2d948cf9e6a0db8f17f5c8eb8e01"
+    },
+    {
+      "path": "scripts/phase4g-qa-verify.mjs",
+      "sha256": "2ebbafbcb2e04562df7efdf6ea3a1de5ab9a0326ecf969215c33d0be7f72c6c3"
+    },
+    {
+      "path": "package.json",
+      "sha256": "f09d72a0987ee8189449111beaa3eebe20d05ed1f4a290ab11fe4e91156709a3"
+    },
+    {
+      "path": "README.md",
+      "sha256": "f7d3580307937a2cdf0ea4364dfa039824ae5ea0968e50fb855d7d894c67eb1c"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "34c0fcd5011c637e900558ad9ce78bda11af3a6a32a0d5009142f77f4653a277"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "eb9e07c8b25a98fb0e7e379777be5adb78d1148d55a88827145b98a9ca4da7e3"
+    },
+    {
+      "path": "docs/PHASE4G_PRIVACY_REQUESTS.md",
+      "sha256": "03b824cf0146ca57ddeefbafc89a165e0fa7a2f2d9e10c8f72f8504821ead040"
+    },
+    {
+      "path": "docs/PHASE4G_DESIGN_QA.md",
+      "sha256": "35fb49fdb5aa9df2c8e21ae69553c617291371401f9ce2a13bc3630a910cd274"
+    },
+    {
+      "path": "artifacts/phase4g/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/phase4g/browser-download-check.json",
+      "sha256": "d3786d8ad17ac8c7a4a8116df238fe2ce01201f29209609b91f7ac3361f13414"
+    },
+    {
+      "path": "artifacts/phase4g/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/phase4g/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/phase4g/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/phase4g/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/phase4g/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/phase4g/migration-preservation.json",
+      "sha256": "c8a89869e8c1461fcbd06b77956eb7bc67bf6f4415eae51e388a5001c65afd82"
+    },
+    {
+      "path": "artifacts/phase4g/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/phase4g/privacy-admin-response.png",
+      "sha256": "0f1da3d6162e9aa949fa885f86fde50cae40d6ba777e5c962760de8b86ec0a96"
+    },
+    {
+      "path": "artifacts/phase4g/privacy-owner-desktop.png",
+      "sha256": "0af6ea5b471a1b2262964fc03102c9d80e8bb461ef411e13dad98158284ca7bf"
+    },
+    {
+      "path": "artifacts/phase4g/privacy-owner-mobile320.png",
+      "sha256": "2b23e9c0d31aeff3b48c6c75cfcf7b46a07bbec63710eedb06d109a76fe1bc58"
+    },
+    {
+      "path": "artifacts/phase4g/privacy-owner-mobile390.png",
+      "sha256": "e1b6456d35d51e3eb586f613dbe9f669b311b2ed69d1ec2fe326785741d27373"
+    },
+    {
+      "path": "artifacts/phase4g/privacy-owner-response-final.png",
+      "sha256": "8fc2998e0ec8030d8ab5cc3a64087a73a204700d8ddbacc45d9ac06ce7340342"
+    },
+    {
+      "path": "artifacts/phase4g/privacy-tests.json",
+      "sha256": "d8fd430ad0ba44310cd3eda1a724c2b63b8379a4d1b9c660a5d064fd03534d45"
+    },
+    {
+      "path": "artifacts/phase4g/privacy.integration.log",
+      "sha256": "6376b03c0032132490e14446d379b01d98a6aba8aa9cc8f599d8c6cdb93dc883"
+    },
+    {
+      "path": "artifacts/phase4g/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/phase4g/regression-results.json",
+      "sha256": "0dc47717396defd4e414f246446f8a37a9303e30b4e3f70bab6d07a6a99c794b"
+    },
+    {
+      "path": "artifacts/phase4g/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/phase4g/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/phase4g/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/phase4g/unit-tests.log",
+      "sha256": "be915d2383c93521616d653414b96a2e29cb534a80b98c503ff348d4c605daab"
+    },
+    {
+      "path": "artifacts/phase4g/workspace.integration.log",
+      "sha256": "2c2997cb9ee9a009ead1d3f6ad6fa25b80aa62db0bd3da7cef814aac9cb5a4e1"
+    }
+  ],
+  "excluded": "Secrets, downloaded personal JSON, runtime databases, generated clients, node_modules, .next and nested exports excluded. Earlier phase review changes retained; applied migration bytes copied unchanged."
+}

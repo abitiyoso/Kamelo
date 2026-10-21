@@ -1,0 +1,41 @@
+✔ invoice totals include discounts and reject unsafe amounts (1.5312ms)
+✔ partial payment and overpayment protection (0.3225ms)
+✔ booking dates handle calendar boundaries (3.4486ms)
+✔ overlap excludes adjacent reservations (0.2655ms)
+✔ billing day retains month-end semantics (0.2425ms)
+✔ room limits reject whole batch (0.2746ms)
+✔ operational status and occupancy are separate (0.2805ms)
+✔ future monthly occupancy does not mark a room occupied early (0.2408ms)
+✔ device capabilities and offline validation (0.4024ms)
+✔ identity policy defaults and configured limits are bounded (2.731ms)
+✔ all approved transactional drafts render escaped HTML and plain text (1.7144ms)
+✔ SMTP readiness enforces TLS and disables unsafe attachment access (0.2698ms)
+✔ external delivery fails closed without explicit live gate AND approved recipient (1.0929ms)
+✔ expense movements preserve partial payments and reject overpayment/overrefund/unsafe IDR (1.9082ms)
+✔ cash report compares explicit equal-day intervals across leap/month boundaries (3.1723ms)
+✔ accounting CSV escapes formulas, delimiters and newlines while preserving signed numeric cash (0.5621ms)
+✔ approved photo and logo bytes match the locked asset manifest (8.1551ms)
+✔ public showcase cannot access operational API, storage or executable HTML (1.5698ms)
+✔ deposit liability movement preserves reserved deductions and bounded integer IDR (1.511ms)
+✔ deposit states distinguish due, held, pending deductions and settled liability (0.2402ms)
+✔ idempotency hash ignores object key order but binds financial values and actor (0.8263ms)
+✔ privacy responses require review while withdrawal and reconsideration remain account-controlled (3.6031ms)
+✔ privacy review never accepts deletion/execution/account-closure claims as workflow states (0.7402ms)
+✔ proof validation rejects executable content, mismatched signatures and invalid amounts (1.9451ms)
+✔ CSV handles BOM, CRLF, quoted commas and explicit reordered mapping (3.7292ms)
+✔ malformed quotes and bounds reject entire input (1.7648ms)
+✔ row errors flag formulas, locale money, duplicate Unicode identities, mismatched cells (1.3402ms)
+✔ quoted escape accepted and whitespace-only records ignored (1.7461ms)
+✔ SaaS periods preserve calendar boundaries and validate months (3.4343ms)
+✔ SaaS entries cannot overpay or overrefund and financial state is distinct from entitlement (0.3394ms)
+✔ support transitions require reopen and distinguish owner closure from platform resolution (0.721ms)
+✔ integration readiness never equates configured credentials with a verified live connection or exposes secrets (0.4801ms)
+✔ all seven backoffice logo/photos retain approved v5.3 bytes (9.3794ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 371.2435

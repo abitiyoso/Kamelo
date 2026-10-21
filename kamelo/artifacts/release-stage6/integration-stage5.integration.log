@@ -1,0 +1,4 @@
+PASS Only active platform context sees offline acceptance prerequisites; credentials never establish live verification
+PASS Read-only safe platform report preserves cash, stays, documents and email outbox hashes
+PASS Revoked platform authority is rechecked for every preflight report request
+Integration stage 5 API groups passed: 3

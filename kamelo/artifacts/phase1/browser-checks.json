@@ -1,0 +1,192 @@
+{
+  "modules": [
+    {
+      "role": "Pemilik",
+      "module": "⌂Ringkasan",
+      "content": 805,
+      "heading": "Bisnis lebih mudah dipantau."
+    },
+    {
+      "role": "Pemilik",
+      "module": "▦Properti & Kamar",
+      "content": 393,
+      "heading": "Status setiap kamar lebih jelas."
+    },
+    {
+      "role": "Pemilik",
+      "module": "◈Database Penghuni",
+      "content": 891,
+      "heading": "Riwayat penghuni terhubung dalam satu profil."
+    },
+    {
+      "role": "Pemilik",
+      "module": "◇Prospek Sewa",
+      "content": 579,
+      "heading": "Calon penghuni tidak lagi tercecer."
+    },
+    {
+      "role": "Pemilik",
+      "module": "▤Kontrak & Deposit",
+      "content": 427,
+      "heading": "Masa tinggal dan deposit lebih tertata."
+    },
+    {
+      "role": "Pemilik",
+      "module": "▧Tagihan & Pembayaran",
+      "content": 443,
+      "heading": "Penagihan tidak perlu tercecer."
+    },
+    {
+      "role": "Pemilik",
+      "module": "✓Pekerjaan",
+      "content": 616,
+      "heading": "Operasional harian lebih terarah."
+    },
+    {
+      "role": "Pemilik",
+      "module": "✉Kotak Masuk",
+      "content": 487,
+      "heading": "Komunikasi penghuni lebih terkelola."
+    },
+    {
+      "role": "Pemilik",
+      "module": "▣Tamu & Paket",
+      "content": 493,
+      "heading": "Kunjungan dan kiriman tercatat."
+    },
+    {
+      "role": "Pemilik",
+      "module": "◉CCTV & AI",
+      "content": 527,
+      "heading": "Temuan CCTV dapat ditindaklanjuti."
+    },
+    {
+      "role": "Pemilik",
+      "module": "⚡Smart Room",
+      "content": 431,
+      "heading": "Kontrol perangkat lebih terkelola."
+    },
+    {
+      "role": "Pemilik",
+      "module": "✦LEO Insights",
+      "content": 698,
+      "heading": "Prioritas hari ini lebih mudah diketahui."
+    },
+    {
+      "role": "Pemilik",
+      "module": "▥Keuangan",
+      "content": 553,
+      "heading": "Arus kas properti lebih transparan."
+    },
+    {
+      "role": "Pemilik",
+      "module": "♧Tim & Akses",
+      "content": 509,
+      "heading": "Akses tim terkelola sesuai tanggung jawab."
+    },
+    {
+      "role": "Staf",
+      "module": "⌂Tugas Hari Ini",
+      "content": 590,
+      "heading": "Tugas jelas, pekerjaan lebih terarah."
+    },
+    {
+      "role": "Staf",
+      "module": "▦Kesiapan Kamar",
+      "content": 341,
+      "heading": "Kamar siap sebelum penghuni datang."
+    },
+    {
+      "role": "Staf",
+      "module": "◈Insiden",
+      "content": 389,
+      "heading": "Setiap laporan punya tindak lanjut."
+    },
+    {
+      "role": "Staf",
+      "module": "◇Pesan",
+      "content": 356,
+      "heading": "Komunikasi operasional lebih rapi."
+    },
+    {
+      "role": "Staf",
+      "module": "▤Jadwal Shift",
+      "content": 409,
+      "heading": "Pembagian jadwal lebih jelas."
+    },
+    {
+      "role": "Staf",
+      "module": "▧Tamu & Paket",
+      "content": 385,
+      "heading": "Kedatangan tamu lebih terkoordinasi."
+    },
+    {
+      "role": "Staf",
+      "module": "✓Maintenance",
+      "content": 415,
+      "heading": "Perbaikan bisa diikuti sampai selesai."
+    },
+    {
+      "role": "Penghuni",
+      "module": "⌂Beranda",
+      "content": 412,
+      "heading": "Semua kebutuhan tinggal dalam satu tempat."
+    },
+    {
+      "role": "Penghuni",
+      "module": "▦Tagihan",
+      "content": 395,
+      "heading": "Tagihan lebih mudah dipahami."
+    },
+    {
+      "role": "Penghuni",
+      "module": "◈Layanan",
+      "content": 364,
+      "heading": "Lapor kebutuhan kamar lebih praktis."
+    },
+    {
+      "role": "Penghuni",
+      "module": "◇Kamar Saya",
+      "content": 272,
+      "heading": "Informasi dan kontrol kamar dalam satu portal."
+    },
+    {
+      "role": "Penghuni",
+      "module": "▤Akses Kamar",
+      "content": 461,
+      "heading": "Akses digital sesuai izin tinggal."
+    },
+    {
+      "role": "Penghuni",
+      "module": "▧Fasilitas",
+      "content": 435,
+      "heading": "Pesan fasilitas tanpa chat berulang."
+    },
+    {
+      "role": "Penghuni",
+      "module": "✓Pesan",
+      "content": 401,
+      "heading": "Tetap terhubung dengan pengelola."
+    }
+  ],
+  "checks": [
+    "28 role/module screens populated",
+    "detail dialog open, content and Escape close",
+    "billing all/action filter changes rows",
+    "role keyboard ArrowRight/Home",
+    "CCTV lobby/parking switch",
+    "FAQ open/close",
+    "mobile menu Escape and anchor close",
+    "320px tenant dialog fits",
+    "Starter CTA opens existing pending-activation registration",
+    "production role hydration and return from registration"
+  ],
+  "viewports": [
+    320,
+    390,
+    820,
+    1440
+  ],
+  "horizontalOverflow": false,
+  "productionConsoleErrors": 0
+}

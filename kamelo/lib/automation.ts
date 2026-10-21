@@ -4,6 +4,7 @@ import { billingDate } from "./domain.mjs";
 import { plans } from "./plans";
 import { syncRoomAccess } from "./smart-access";
 import { localToday } from "./operations";
+import { transferredPeriodInvoice } from "./stay-billing";
 
 // Caller holds the organization lock. Running twice cannot issue duplicate periods.
 export async function runPropertyOperations(
@@ -42,6 +43,7 @@ export async function runPropertyOperations(
         (stay.end && due >= stay.end)
       )
         continue;
+      if (await transferredPeriodInvoice(tx, stay.id, period)) continue;
       if (
         await tx.invoice.findUnique({
           where: { stayId_period: { stayId: stay.id, period } },

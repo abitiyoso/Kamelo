@@ -1,0 +1,12 @@
+{
+  "clientDate": "2026-10-21",
+  "environment": "Retained disposable UTF-8 recovery copy, ports 55433/3002",
+  "postgresAutomaticWalRecoveryCompleted": true,
+  "manualPreviewRestart": true,
+  "ownerSignIn": true,
+  "dashboardLoaded": true,
+  "fullRegressionRerun": false,
+  "priorValidationDate": "2026-10-20",
+  "emailDisabled": true,
+  "productionAcceptance": false
+}

@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-20",
+  "environment": "disposable QA 3001/55432",
+  "responsive": [
+    {
+      "documentWidth": 375,
+      "width": 390
+    },
+    {
+      "documentWidth": 305,
+      "width": 320
+    }
+  ],
+  "flow": {
+    "reference": "BROWSER-UI-PROOF-002",
+    "amount": 50000,
+    "remainingBefore": 400000,
+    "remainingPending": 400000,
+    "remainingApproved": 350000,
+    "cashBefore": 1100000,
+    "cashApproved": 1150000
+  },
+  "checks": [
+    "Tenant uploaded synthetic PDF and saw pending status",
+    "Owner reviewed exact reference and approved one new receipt",
+    "Tenant reauthenticated in STAY context and saw approved proof plus review note",
+    "Repeated detail selection preserves detail and refresh feedback",
+    "Proof history bounded scroll region",
+    "No access grants changed through browser"
+  ]
+}

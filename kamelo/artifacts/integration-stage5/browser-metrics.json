@@ -1,0 +1,21 @@
+{
+  "metrics": [
+    {
+      "screen": "platform-390",
+      "scrollWidth": 375,
+      "width": 375
+    },
+    {
+      "screen": "platform-320",
+      "scrollWidth": 305,
+      "width": 305
+    }
+  ],
+  "checks": [
+    "platform-only preflight card",
+    "per-service prerequisites expand",
+    "simulation and rule-based labels retained",
+    "no network/send/activation controls"
+  ],
+  "consoleErrors": []
+}

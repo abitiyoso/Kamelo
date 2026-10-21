@@ -1,0 +1,283 @@
+{
+  "stage": "Remaining stage 3 scheduled billing reminders",
+  "branch": "codex/reminder-automation",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "71e860117e462c2878e9a727463a7854367f54a22032e412224b66d8e40ef89d"
+    },
+    {
+      "path": "README.md",
+      "sha256": "4db2560228df4a8203f8f009b6112e6141b468ee35bceb0468e205b427adb10a"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "5b9e94b593b75f05079101d6df6dbd24abe2ce094da50ab103026293395a2bd7"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "c5aabe506f18a937b15db13f4c762e13d664e8bdf5af89cc8df778d67d4855df"
+    },
+    {
+      "path": "docs/REMAINING_DELIVERY_STAGES.md",
+      "sha256": "9f5022c659575459223ebf98187bf3a994df5073960116a44e86a67435fe51e2"
+    },
+    {
+      "path": "docs/REMINDER_STAGE3.md",
+      "sha256": "788fb2a7edc3f7082450c9225483091e7fdcaa5e9246c13404654e13ee335b9c"
+    },
+    {
+      "path": "docs/REMINDER_STAGE3_DESIGN_QA.md",
+      "sha256": "182cc6315caede3fecdf96887db1667909f47225c87ba44930bae42dbfca668a"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "ba9c5cee3e2f29b6e7f78cacb144c0d12f795053f6a98628a90aa8beb60af532"
+    },
+    {
+      "path": "prisma/migrations/20261020140000_reminder_automation/migration.sql",
+      "sha256": "7f36f0dbc3ebc798ea909c4adf0c9c1f6c254483a8d0980ac7ec76bbf87030e3"
+    },
+    {
+      "path": "lib/reminder-clock.mjs",
+      "sha256": "7451746b767890409ac072a69f8c59d1272a227286af3979419eae9caa5754a5"
+    },
+    {
+      "path": "lib/reminder-eligibility.ts",
+      "sha256": "83c0a4e1ea5ca1a01c5e021b3753c0183e475a17bad696281db90b0ded13fa72"
+    },
+    {
+      "path": "lib/reminder-automation.ts",
+      "sha256": "f9edaee9019c2d33aa06f3a9da93848016de4a45209d52056f238fd7e89f414e"
+    },
+    {
+      "path": "lib/opening-reminders.ts",
+      "sha256": "78768b9f2c5bdea5f258fafd4d0ca66bef75283bda72c008fc2baddfa050e1da"
+    },
+    {
+      "path": "lib/email/outbox.ts",
+      "sha256": "fcea5a0675cec572795e1942a45ecd6fd5bb201bedb607049f2657327da9ac6d"
+    },
+    {
+      "path": "lib/email/catalog.json",
+      "sha256": "bb8cf9901df2813da0de0df81b4c61d9f0d1b32690de09562ee488c0ef9742d9"
+    },
+    {
+      "path": "app/api/reminder-automation/route.ts",
+      "sha256": "48d35810b9bd4b0101fa1e429cee29c8ce27f9fe401727eeeb815c1737f7ebdd"
+    },
+    {
+      "path": "app/api/resident-reminders/route.ts",
+      "sha256": "76b163466376b5c3b7bf8c395df55837a27ddfa4772cfd56e4c4fbb26c717204"
+    },
+    {
+      "path": "app/api/jobs/reminders/route.ts",
+      "sha256": "967744bc04946bf091727411436178c7f150703b54aa82e5c0dfd21b752eef25"
+    },
+    {
+      "path": "components/workspace/reminder-automation.tsx",
+      "sha256": "57416756ff8e733bc6a7c9e5692446b5f28d8ce3f2b30714c40bb6bcf22730c7"
+    },
+    {
+      "path": "components/identity/resident-reminders.tsx",
+      "sha256": "736482648812e460be15fc01e78ac6e46355d7c4fca4b5014953d5b94cd20ed2"
+    },
+    {
+      "path": "components/identity/resident-portal.tsx",
+      "sha256": "694deedfbf66e9a9762cfa21542d0ba420937c5e49ff95112a0e3b6aa149b9a1"
+    },
+    {
+      "path": "components/portal.tsx",
+      "sha256": "bd8ebf562eb24ef00c65de5f7f1b2d7cf0cb2da9eb45e059e23f046d1cc7058b"
+    },
+    {
+      "path": "scripts/reminder-worker.mjs",
+      "sha256": "d7bf0e42db7e3429ff768aa615344a8e0295342343a72dcd13640d94f30ddd8e"
+    },
+    {
+      "path": "scripts/reminder-qa-migrate.mjs",
+      "sha256": "f36b34b3be55052101738d8db3e1947515bfb6b3ee6e2daa672c42a82076597a"
+    },
+    {
+      "path": "scripts/reminder-qa-verify.mjs",
+      "sha256": "75e8f6c487c0d423b161af82fe9bacaa0c1f185274ab0d33b1391ba03b4c4b4c"
+    },
+    {
+      "path": "scripts/reminder-review-sync.mjs",
+      "sha256": "c5bb9efdb9a51ec20b6cd1d68a471311608035382dbe5cefc7ae1311c7b7a501"
+    },
+    {
+      "path": "tests/reminder.test.mjs",
+      "sha256": "a41ae7f868826b995af32650afb61a2360f91728decd65fa7d3b7fbcd8e25501"
+    },
+    {
+      "path": "tests/reminder.integration.mjs",
+      "sha256": "3795eac00c12e9264e9ddab3efbc505b682e8373176ed8767dc3a9af629526a0"
+    },
+    {
+      "path": "artifacts/reminder-stage3/build.log",
+      "sha256": "59969cbb533a44180c2b11abb36fbfd1cbfdada0a6d6cc5363c9497eb8539673"
+    },
+    {
+      "path": "artifacts/reminder-stage3/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/reminder-stage3/unit.log",
+      "sha256": "8a4983dda8af14fa4b3d3bff901fb9268cb29ccc5535874b9971f7ad69d23a90"
+    },
+    {
+      "path": "artifacts/reminder-stage3/migration-preservation.json",
+      "sha256": "198e2b5ec6c9e10a2da7105d5c68e801c2e982b843a99fb4ab25066f27e90cb5"
+    },
+    {
+      "path": "artifacts/reminder-stage3/regression-results.json",
+      "sha256": "b8b6d5a0fdbf1b5ea674f1ea9a8a2d0336495d5b4006766a442890d479d7091d"
+    },
+    {
+      "path": "artifacts/reminder-stage3/reminder-api.json",
+      "sha256": "177c08b64cb3c32514f78c3f83e039b41bcbf5d60a4fbc69e8c2838aac75e033"
+    },
+    {
+      "path": "artifacts/reminder-stage3/browser-metrics.json",
+      "sha256": "430b96d98b10c2d6304922af5327ac9792a6e90dbf8a638ac819fca85fe776fd"
+    },
+    {
+      "path": "artifacts/reminder-stage3/owner-schedule.png",
+      "sha256": "a317e944dfa8552da4decdc75d8e4b4433aa7131cb5f0065d7539b3e7f13d15b"
+    },
+    {
+      "path": "artifacts/reminder-stage3/owner-history-page2.png",
+      "sha256": "dd5bf2d490d24d4422e57393170464dc80f000c986bdd54d95c0b3f556809acd"
+    },
+    {
+      "path": "artifacts/reminder-stage3/owner-mobile-390.png",
+      "sha256": "9a62abb8e0206624e90da2c74044cfeb44e19d9ea045dc66cc3d0afd3f54b704"
+    },
+    {
+      "path": "artifacts/reminder-stage3/owner-mobile-320.png",
+      "sha256": "5375be6888799a927d3519c18ab6b70facd4faee09936973ecd80b0b07ba7e08"
+    },
+    {
+      "path": "artifacts/reminder-stage3/tenant-home.png",
+      "sha256": "b693629425689c8d19dbda786b17f232e7c14b261b75f826376db8b68c7e9e4f"
+    },
+    {
+      "path": "artifacts/reminder-stage3/tenant-history-page2.png",
+      "sha256": "e8233719f1e9826ab8242add9f54115f79188bba9cf9f46bc35d05539cf0fd91"
+    },
+    {
+      "path": "artifacts/reminder-stage3/tenant-mobile-390.png",
+      "sha256": "543fe7ae53c9208674b38253ece5becca43ef5c32eb5ead2f1c2d412cc439931"
+    },
+    {
+      "path": "artifacts/reminder-stage3/tenant-mobile-320.png",
+      "sha256": "dfc043008aaa8084388fd771df9dbbf70465071b3b4cb55b4d2ab6af3c3eb1a5"
+    },
+    {
+      "path": "artifacts/reminder-stage3/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/reminder-stage3/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/reminder-stage3/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/reminder-stage3/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/reminder-stage3/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/reminder-stage3/workspace.integration.log",
+      "sha256": "86d0821188ffed5572d0957c95203559e4b1198008ebba0d5fe4a253913bff98"
+    },
+    {
+      "path": "artifacts/reminder-stage3/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/reminder-stage3/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/reminder-stage3/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/reminder-stage3/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/reminder-stage3/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/reminder-stage3/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/reminder-stage3/privacy.integration.log",
+      "sha256": "9203cd6d96eee6519f5a688bd1c53dcd27763ca66c8526b15acdbfa2e1bc6ec2"
+    },
+    {
+      "path": "artifacts/reminder-stage3/room-import.integration.log",
+      "sha256": "f42a888f174f7e81ea7a459f01c841b6cd678865b978279efa7af374f1ef0569"
+    },
+    {
+      "path": "artifacts/reminder-stage3/resident-import.integration.log",
+      "sha256": "bc71737bceaa78d973a9067d70e87c7e479cb0906ac04bc5c1e92fcc1cf3f524"
+    },
+    {
+      "path": "artifacts/reminder-stage3/import-files.integration.log",
+      "sha256": "3ca4a3472d384ac4d886058ae11899ce18e187138085ae09fd19cd25309c47d9"
+    },
+    {
+      "path": "artifacts/reminder-stage3/opening-balances.integration.log",
+      "sha256": "2e7579fbdf802941ddc5b2e045a94a15f41d026d14ca932760a68340fbdb438e"
+    },
+    {
+      "path": "artifacts/reminder-stage3/opening-receipts.integration.log",
+      "sha256": "e815fd244ca72862ea4b25816b4a785f27d80d4deccf5c78b4d48d5c06af9986"
+    },
+    {
+      "path": "artifacts/reminder-stage3/opening-tenant.integration.log",
+      "sha256": "d3f0d8b65f18e98322d8669d0e9f14289ce2cf8964578ba00770ef660322fce5"
+    },
+    {
+      "path": "artifacts/reminder-stage3/opening-reminders.integration.log",
+      "sha256": "3f1c24d2a8e1e096c25bf7cbafe6dde8aad4c1cb1cfcfacd78c5e14117cabedd"
+    },
+    {
+      "path": "artifacts/reminder-stage3/proof-queue.integration.log",
+      "sha256": "2d41710e728c6b5c46c2aa5ddc96e9351e8dde2640f8c9ae57e5fde336dccd90"
+    },
+    {
+      "path": "artifacts/reminder-stage3/dashboard.integration.log",
+      "sha256": "779b22d303c841abc6f2c4bb5a8fcfef28429cc459eaae72f74cace51a5e7e86"
+    },
+    {
+      "path": "artifacts/reminder-stage3/reminder.integration.log",
+      "sha256": "65c8dd99301422138730fc7df86794647aa29ca3bd5f0d5ae98f07e7d2d76101"
+    }
+  ],
+  "excluded": [
+    ".env*",
+    ".local-secrets",
+    "mail sink messages",
+    "runtime databases",
+    "storage/payment-proofs",
+    "node_modules",
+    "generated",
+    ".next"
+  ],
+  "committed": false,
+  "pushed": false,
+  "deployed": false
+}

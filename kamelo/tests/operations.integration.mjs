@@ -1,3 +1,4 @@
+import {verifiedFixture,staffFixture} from "./helpers/identity.mjs";
 import assert from "node:assert/strict";
 import { randomBytes, createHash } from "node:crypto";
 import { readFile, writeFile } from "node:fs/promises";
@@ -18,6 +19,7 @@ const suffix = Date.now();
 function client() {
   let cookie = "";
   return {
+    get cookie(){return cookie},
     async call(path, body) {
       const r = await fetch(base + path, {
         method: body ? "POST" : "GET",
@@ -30,9 +32,12 @@ function client() {
       });
       const c = r.headers.get("set-cookie");
       if (c) cookie = c.split(";")[0];
-      return { status: r.status, ...(await r.json()) };
+      const result={ status: r.status, ...(await r.json()) };
+      if(path==="/api/auth"&&body?.action==="register"&&r.status===200)await verifiedFixture(db,base,cookie,body.email);
+      return result;
     },
     async write(action, body) {
+      if(action==="teamAdd")return staffFixture(db,base,cookie,body);
       return this.call("/api/manage", { action, ...body });
     },
   };

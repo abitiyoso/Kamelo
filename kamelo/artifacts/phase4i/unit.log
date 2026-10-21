@@ -1,0 +1,44 @@
+✔ invoice totals include discounts and reject unsafe amounts (5.2588ms)
+✔ partial payment and overpayment protection (0.7563ms)
+✔ booking dates handle calendar boundaries (86.254ms)
+✔ overlap excludes adjacent reservations (0.2329ms)
+✔ billing day retains month-end semantics (0.2445ms)
+✔ room limits reject whole batch (0.2178ms)
+✔ operational status and occupancy are separate (0.22ms)
+✔ future monthly occupancy does not mark a room occupied early (0.1606ms)
+✔ device capabilities and offline validation (0.4148ms)
+✔ identity policy defaults and configured limits are bounded (1.2634ms)
+✔ all approved transactional drafts render escaped HTML and plain text (2.6735ms)
+✔ SMTP readiness enforces TLS and disables unsafe attachment access (0.2261ms)
+✔ external delivery fails closed without explicit live gate AND approved recipient (0.6283ms)
+✔ expense movements preserve partial payments and reject overpayment/overrefund/unsafe IDR (4.8475ms)
+✔ cash report compares explicit equal-day intervals across leap/month boundaries (87.4332ms)
+✔ accounting CSV escapes formulas, delimiters and newlines while preserving signed numeric cash (0.5223ms)
+✔ approved photo and logo bytes match the locked asset manifest (66.1453ms)
+✔ public showcase cannot access operational API, storage or executable HTML (19.8401ms)
+✔ deposit liability movement preserves reserved deductions and bounded integer IDR (1.19ms)
+✔ deposit states distinguish due, held, pending deductions and settled liability (0.2454ms)
+✔ idempotency hash ignores object key order but binds financial values and actor (0.8735ms)
+✔ privacy responses require review while withdrawal and reconsideration remain account-controlled (1.2791ms)
+✔ privacy review never accepts deletion/execution/account-closure claims as workflow states (0.2775ms)
+✔ proof validation rejects executable content, mismatched signatures and invalid amounts (1.122ms)
+✔ resident CSV preserves literal dates and independent due days; canonical Indonesian phones (18.4776ms)
+✔ resident CSV rejects invalid calendar dates, ambiguous money and out-of-range due days (0.5429ms)
+✔ resident import mapping is explicit, distinct and bounded at fifty records (0.8774ms)
+✔ CSV handles BOM, CRLF, quoted commas and explicit reordered mapping (12.3271ms)
+✔ malformed quotes and bounds reject entire input (1.5739ms)
+✔ row errors flag formulas, locale money, duplicate Unicode identities, mismatched cells (1.3568ms)
+✔ quoted escape accepted and whitespace-only records ignored (0.2061ms)
+✔ SaaS periods preserve calendar boundaries and validate months (10.7497ms)
+✔ SaaS entries cannot overpay or overrefund and financial state is distinct from entitlement (0.36ms)
+✔ support transitions require reopen and distinguish owner closure from platform resolution (0.7953ms)
+✔ integration readiness never equates configured credentials with a verified live connection or exposes secrets (0.467ms)
+✔ all seven backoffice logo/photos retain approved v5.3 bytes (29.6298ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 438.1608

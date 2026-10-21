@@ -1,0 +1,33 @@
+{
+  "metrics": [
+    {
+      "screen": "owner-390",
+      "scrollWidth": 375,
+      "width": 375
+    },
+    {
+      "screen": "owner-320",
+      "scrollWidth": 305,
+      "width": 305
+    },
+    {
+      "screen": "tenant-390",
+      "scrollWidth": 375,
+      "width": 375
+    },
+    {
+      "screen": "tenant-320",
+      "scrollWidth": 305,
+      "width": 305
+    }
+  ],
+  "checked": [
+    "Owner save confirmed schedule",
+    "Owner run respects cooldown",
+    "Owner history page 2 remains expanded",
+    "Tenant latest three",
+    "Tenant expand history and page 2",
+    "Tenant current bills navigation"
+  ],
+  "consoleErrors": []
+}

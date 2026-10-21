@@ -1,0 +1,28 @@
+✔ invoice totals include discounts and reject unsafe amounts (1.3548ms)
+✔ partial payment and overpayment protection (0.1968ms)
+✔ booking dates handle calendar boundaries (2.2142ms)
+✔ overlap excludes adjacent reservations (0.162ms)
+✔ billing day retains month-end semantics (0.1387ms)
+✔ room limits reject whole batch (0.1085ms)
+✔ operational status and occupancy are separate (0.1198ms)
+✔ future monthly occupancy does not mark a room occupied early (0.0945ms)
+✔ device capabilities and offline validation (0.2261ms)
+✔ identity policy defaults and configured limits are bounded (1.3447ms)
+✔ all approved transactional drafts render escaped HTML and plain text (1.1933ms)
+✔ SMTP readiness enforces TLS and disables unsafe attachment access (0.3212ms)
+✔ external delivery fails closed without explicit live gate AND approved recipient (0.7785ms)
+✔ approved photo and logo bytes match the locked asset manifest (6.2564ms)
+✔ public showcase cannot access operational API, storage or executable HTML (1.514ms)
+✔ deposit liability movement preserves reserved deductions and bounded integer IDR (1.1842ms)
+✔ deposit states distinguish due, held, pending deductions and settled liability (0.2203ms)
+✔ idempotency hash ignores object key order but binds financial values and actor (0.7526ms)
+✔ proof validation rejects executable content, mismatched signatures and invalid amounts (0.996ms)
+✔ all seven backoffice logo/photos retain approved v5.3 bytes (6.8394ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 189.3024

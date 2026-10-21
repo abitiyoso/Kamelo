@@ -16,6 +16,13 @@ model Organization {
   properties Property[]
   audits Audit[]
   upgrades Upgrade[]
+  memberships OrgMembership[]
+  invitations Invitation[]
+  lifecycleCommands LifecycleCommand[]
+  billingProfile SaaSBillingProfile?
+  subscriptionInvoices SubscriptionInvoice[]
+  subscriptionEvents SubscriptionEvent[]
+  supportCases SupportCase[]
 }
 model User {
   id String @id @default(cuid())
@@ -30,15 +37,34 @@ model User {
   canRecordPayments Boolean @default(false)
   canControlDevices Boolean @default(false)
   propertyIds String[] @default([])
+  accountStatus String @default("LEGACY_ACTIVE")
+  emailVerifiedAt DateTime?
+  phoneVerifiedAt DateTime?
+  notificationsEnabled Boolean @default(true)
+  memberships OrgMembership[]
+  occupantAccesses OccupantAccess[]
+  challenges IdentityChallenge[]
   sessions Session[]
   resets ResetToken[]
   assignedTickets Ticket[]
+  supportAssignments SupportCase[] @relation("SupportAssignee")
+  residentThreads MessageThread[] @relation("MessageResident")
+  privacyRequests PrivacyRequest[]
+  openingShares OpeningShare[]
+  reminderPolicies ReminderPolicy[]
+  reminderDeliveries ReminderDelivery[]
 }
 model Session {
   token String @id
   userId String
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
   expires DateTime
+  contextType String @default("ORG")
+  membershipId String?
+  occupantAccessId String?
+  createdAt DateTime @default(now())
+  userAgent String @default("")
+  @@index([userId, expires])
 }
 model ResetToken {
   token String @id
@@ -62,9 +88,74 @@ model Property {
   tickets Ticket[]
   rooms Room[]
   guests Guest[]
+  prospects Prospect[]
   invoices Invoice[]
   devices Device[]
+  expenses Expense[]
+  financeMatches FinanceMatch[]
+  roomImports RoomImportBatch[]
+  residentImports ResidentImportBatch[]
+  openingBalanceBatches OpeningBalanceBatch[]
+  openingReceivables OpeningReceivable[]
+  reminderPolicy ReminderPolicy?
+  reminderDeliveries ReminderDelivery[]
   @@index([organizationId])
+  financialDocuments FinancialDocument[]
+}
+model FinancialDocument {
+ id String @id @default(cuid())
+ propertyId String
+ property Property @relation(fields:[propertyId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ paymentId String? @unique
+ payment Payment? @relation(fields:[paymentId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ openingReceiptId String? @unique
+ openingReceipt OpeningReceipt? @relation(fields:[openingReceiptId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ number String @unique
+ encryptedSnapshot String
+ snapshotHash String
+ actorId String
+ issuedAt DateTime @default(now())
+ reviews FinancialDocumentReview[]
+ @@index([propertyId,issuedAt,id])
+}
+model FinancialDocumentReview {
+ id String @id @default(cuid())
+ documentId String
+ document FinancialDocument @relation(fields:[documentId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ revision Int
+ action String
+ reviewOn String?
+ encryptedNote String
+ actorId String
+ createdAt DateTime @default(now())
+ @@unique([documentId,revision])
+ @@index([action,reviewOn])
+}
+model RoomImportBatch {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Restrict)
+  actorId String
+  roomCount Int
+  roomSnapshots Json
+  status String @default("COMMITTED")
+  createdAt DateTime @default(now())
+  rolledBackAt DateTime?
+  rolledBackBy String?
+  @@index([propertyId, createdAt, id])
+}
+model ResidentImportBatch {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Restrict)
+  actorId String
+  recordCount Int
+  encryptedSnapshots String
+  status String @default("COMMITTED")
+  createdAt DateTime @default(now())
+  rolledBackAt DateTime?
+  rolledBackBy String?
+  @@index([propertyId, createdAt, id])
 }
 model Room {
   id String @id @default(cuid())
@@ -74,6 +165,7 @@ model Room {
   rate Int
   operational String @default("READY")
   stays Stay[]
+  interestedProspects Prospect[]
   invoices Invoice[]
   devices Device[]
   @@unique([propertyId, number])
@@ -86,6 +178,182 @@ model Guest {
   phone String
   stays Stay[]
   invoices Invoice[]
+  residentProfile ResidentProfile?
+  openingReceivables OpeningReceivable[]
+  @@index([propertyId])
+}
+model OpeningBalanceBatch {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Restrict)
+  asOf String
+  encryptedSourceNote String
+  recordCount Int
+  status String @default("OPEN")
+  actorId String
+  createdAt DateTime @default(now())
+  voidedAt DateTime?
+  voidedBy String?
+  encryptedVoidReason String?
+  rows OpeningReceivable[]
+  @@index([propertyId, createdAt, id])
+}
+model OpeningReceivable {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Restrict)
+  batchId String
+  batch OpeningBalanceBatch @relation(fields: [batchId], references: [id], onDelete: Restrict)
+  guestId String
+  guest Guest @relation(fields: [guestId], references: [id], onDelete: Restrict)
+  reference String
+  sourceKey String
+  amount Int
+  due String
+  status String @default("OPEN")
+  createdAt DateTime @default(now())
+  entries OpeningReceipt[]
+  shares OpeningShare[]
+  proofs OpeningProof[]
+  reminders OpeningReminder[]
+  scheduledReminders ReminderDelivery[]
+  @@index([propertyId, status, due])
+  @@index([batchId])
+  @@index([guestId])
+}
+model OpeningReceipt {
+  id String @id @default(cuid())
+  receivableId String
+  receivable OpeningReceivable @relation(fields: [receivableId], references: [id], onDelete: Restrict)
+  kind String
+  delta Int
+  date String
+  method String
+  reference String
+  encryptedNote String
+  actorId String
+  createdAt DateTime @default(now())
+  reversesId String? @unique
+  reverses OpeningReceipt? @relation("OpeningReceiptReversal", fields: [reversesId], references: [id], onDelete: Restrict)
+  reversal OpeningReceipt? @relation("OpeningReceiptReversal")
+  matches FinanceMatch[]
+  proof OpeningProof?
+  refundOfId String?
+  refundOf OpeningReceipt? @relation("OpeningRefund",fields:[refundOfId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+  refunds OpeningReceipt[] @relation("OpeningRefund")
+  document FinancialDocument?
+  @@index([receivableId, createdAt, id])
+  @@index([date])
+  @@index([refundOfId])
+}
+model OpeningShare {
+ id String @id @default(cuid())
+ receivableId String
+ receivable OpeningReceivable @relation(fields:[receivableId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ grantId String
+ grant OccupantAccess @relation(fields:[grantId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ stayId String
+ stay Stay @relation(fields:[stayId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ actorId String
+ createdAt DateTime @default(now())
+ revokedAt DateTime?
+ revokedBy String?
+ proofs OpeningProof[]
+ reminders OpeningReminder[]
+ scheduledReminders ReminderDelivery[]
+ @@index([receivableId,createdAt])
+ @@index([grantId,userId,stayId])
+}
+model OpeningReminder {
+ id String @id @default(cuid())
+ receivableId String
+ receivable OpeningReceivable @relation(fields:[receivableId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ shareId String
+ share OpeningShare @relation(fields:[shareId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ amount Int
+ due String
+ reference String
+ actorId String
+ createdAt DateTime @default(now())
+ @@index([receivableId,createdAt,id])
+ @@index([shareId,createdAt,id])
+}
+model ReminderPolicy {
+ propertyId String @id
+ property Property @relation(fields:[propertyId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ enabled Boolean @default(false)
+ emailEnabled Boolean @default(false)
+ hour Int @default(9)
+ leadDays Int @default(0)
+ intervalDays Int @default(3)
+ revision Int @default(1)
+ actorId String
+ actor User @relation(fields:[actorId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ lastRunAt DateTime?
+ updatedAt DateTime @updatedAt
+ @@index([enabled,propertyId])
+}
+model ReminderDelivery {
+ id String @id @default(cuid())
+ propertyId String
+ property Property @relation(fields:[propertyId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ invoiceId String?
+ invoice Invoice? @relation(fields:[invoiceId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ receivableId String?
+ receivable OpeningReceivable? @relation(fields:[receivableId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ shareId String?
+ share OpeningShare? @relation(fields:[shareId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ grantId String
+ grant OccupantAccess @relation(fields:[grantId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ channel String
+ scheduledOn String
+ amount Int
+ due String
+ reference String
+ emailHash String
+ policyRevision Int
+ dedupeKey String @unique
+ status String
+ reason String @default("")
+ emailOutboxId String? @unique
+ emailOutbox EmailOutbox? @relation(fields:[emailOutboxId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ createdAt DateTime @default(now())
+ @@index([propertyId,createdAt,id])
+ @@index([grantId,status,createdAt,id])
+ @@index([invoiceId,channel,createdAt])
+ @@index([receivableId,channel,createdAt])
+}
+model OpeningProof {
+ id String @id @default(cuid())
+ receivableId String
+ receivable OpeningReceivable @relation(fields:[receivableId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ shareId String
+ share OpeningShare @relation(fields:[shareId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ uploadedBy String
+ requestKey String
+ requestHash String
+ amount Int
+ date String
+ method String
+ reference String
+ encryptedTenantNote String
+ storageKey String @unique
+ contentHash String
+ mimeType String
+ fileSize Int
+ uploadedAt DateTime @default(now())
+ status String @default("PENDING")
+ encryptedReviewNote String?
+ reviewedAt DateTime?
+ reviewedBy String?
+ receiptId String? @unique
+ receipt OpeningReceipt? @relation(fields:[receiptId],references:[id],onDelete:Restrict,onUpdate:NoAction)
+ @@unique([uploadedBy,requestKey])
+ @@index([receivableId,status,uploadedAt,id])
 }
 model Stay {
   id String @id @default(cuid())
@@ -102,7 +370,62 @@ model Stay {
   accesses SmartAccess[]
   stayLinks StayLink[]
   tickets Ticket[]
+  occupantAccesses OccupantAccess[]
+  openingShares OpeningShare[]
+  contract Contract?
+  convertedProspect Prospect?
+  messageThreads MessageThread[]
+  depositAccount DepositAccount?
+  outgoingTransfers RoomTransfer[] @relation("TransferFrom")
+  incomingTransfer RoomTransfer? @relation("TransferTo")
+  @@index([guestId])
   @@index([roomId, status])
+}
+model Prospect {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Restrict)
+  name String
+  phone String
+  email String @default("")
+  source String
+  consentReference String
+  consentAt DateTime @default(now())
+  interest String @default("")
+  roomId String?
+  room Room? @relation(fields: [roomId], references: [id], onDelete: Restrict)
+  requestedStart String?
+  requestedEnd String?
+  budget Int?
+  stage String @default("NEW")
+  surveyAt DateTime?
+  followUpAt DateTime?
+  offerRent Int?
+  offerTerms String @default("")
+  notes String @default("")
+  lossReason String @default("")
+  revision Int @default(1)
+  convertedStayId String? @unique
+  convertedStay Stay? @relation(fields: [convertedStayId], references: [id], onDelete: Restrict)
+  createdBy String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  activities ProspectActivity[]
+  @@index([propertyId, stage, createdAt])
+  @@index([propertyId, followUpAt])
+  @@index([roomId])
+}
+model ProspectActivity {
+  id String @id @default(cuid())
+  prospectId String
+  prospect Prospect @relation(fields: [prospectId], references: [id], onDelete: Restrict)
+  revision Int
+  kind String
+  note String
+  actorId String
+  metadata Json
+  createdAt DateTime @default(now())
+  @@unique([prospectId, revision])
 }
 model Invoice {
   id String @id @default(cuid())
@@ -124,6 +447,9 @@ model Invoice {
   payments Payment[]
   tenantLinks TenantLink[]
   proofs PaymentProof[]
+  scheduledReminders ReminderDelivery[]
+  @@index([guestId])
+  @@index([propertyId, date])
   @@unique([stayId, period])
 }
 model Payment {
@@ -137,6 +463,76 @@ model Payment {
   actorId String
   createdAt DateTime @default(now())
   proof PaymentProof?
+  financeMatches FinanceMatch[]
+  document FinancialDocument?
+  @@index([invoiceId, date])
+}
+model Expense {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Restrict)
+  description String
+  category String
+  amount Int
+  incurredOn String
+  due String?
+  payee String
+  reference String @default("")
+  note String @default("")
+  status String @default("OPEN")
+  voidReason String @default("")
+  voidedAt DateTime?
+  createdBy String
+  createdAt DateTime @default(now())
+  entries ExpenseEntry[]
+  @@index([propertyId, incurredOn])
+  @@index([propertyId, status, due])
+}
+model ExpenseEntry {
+  id String @id @default(cuid())
+  expenseId String
+  expense Expense @relation(fields: [expenseId], references: [id], onDelete: Restrict)
+  kind String
+  delta Int
+  date String
+  reference String
+  note String
+  actorId String
+  paymentId String?
+  payment ExpenseEntry? @relation("ExpenseRefund", fields: [paymentId], references: [id], onDelete: Restrict)
+  refunds ExpenseEntry[] @relation("ExpenseRefund")
+  reversesId String? @unique
+  reverses ExpenseEntry? @relation("ExpenseReverse", fields: [reversesId], references: [id], onDelete: Restrict)
+  reversal ExpenseEntry? @relation("ExpenseReverse")
+  createdAt DateTime @default(now())
+  financeMatches FinanceMatch[]
+  @@index([expenseId, date])
+  @@index([paymentId])
+  @@unique([expenseId, kind, reference])
+}
+model FinanceMatch {
+  id String @id @default(cuid())
+  propertyId String
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Restrict)
+  paymentId String?
+  payment Payment? @relation(fields: [paymentId], references: [id], onDelete: Restrict)
+  expenseEntryId String?
+  expenseEntry ExpenseEntry? @relation(fields: [expenseEntryId], references: [id], onDelete: Restrict)
+  openingReceiptId String?
+  openingReceipt OpeningReceipt? @relation(fields: [openingReceiptId], references: [id], onDelete: Restrict)
+  statementReference String
+  statementDate String
+  amount Int
+  note String
+  actorId String
+  createdAt DateTime @default(now())
+  revokedAt DateTime?
+  revokedBy String?
+  revokeReason String @default("")
+  @@index([propertyId, createdAt])
+  @@index([paymentId])
+  @@index([expenseEntryId])
+  @@index([openingReceiptId])
 }
 model Device {
   id String @id @default(cuid())
@@ -228,6 +624,110 @@ model RateLimit {
   count Int @default(1)
   expires DateTime
 }
+model SupportCase {
+ id String @id @default(cuid())
+ organizationId String
+ organization Organization @relation(fields:[organizationId],references:[id],onDelete:Restrict)
+ subject String
+ category String
+ priority String @default("NORMAL")
+ status String @default("OPEN")
+ revision Int @default(1)
+ createdBy String
+ assigneeId String?
+ assignee User? @relation("SupportAssignee",fields:[assigneeId],references:[id],onDelete:Restrict)
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ entries SupportEntry[]
+ @@index([organizationId,updatedAt])
+ @@index([status,updatedAt])
+ @@index([assigneeId])
+}
+model SupportEntry {
+ id String @id @default(cuid())
+ caseId String
+ case SupportCase @relation(fields:[caseId],references:[id],onDelete:Restrict)
+ kind String
+ actorId String
+ actorRole String
+ encryptedBody String
+ status String
+ revision Int
+ createdAt DateTime @default(now())
+ @@unique([caseId,revision])
+ @@index([caseId,createdAt])
+}
+model SaaSBillingProfile {
+  organizationId String @id
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Restrict)
+  legalName String
+  address String
+  contactName String
+  contactEmail String
+  encryptedTaxId String?
+  reference String
+  revision Int @default(1)
+  updatedAt DateTime @updatedAt
+}
+model SubscriptionInvoice {
+  id String @id @default(cuid())
+  organizationId String
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Restrict)
+  number String @unique
+  plan String
+  monthlyPrice Int
+  months Int
+  total Int
+  periodStart String
+  periodEnd String
+  due String
+  billingSnapshot Json
+  status String @default("ISSUED")
+  voidReason String @default("")
+  activatedAt DateTime?
+  createdBy String
+  createdAt DateTime @default(now())
+  entries SubscriptionEntry[]
+  events SubscriptionEvent[]
+  @@index([organizationId, createdAt])
+  @@index([organizationId, periodStart, periodEnd])
+  @@index([status, due])
+}
+model SubscriptionEntry {
+  id String @id @default(cuid())
+  invoiceId String
+  invoice SubscriptionInvoice @relation(fields: [invoiceId], references: [id], onDelete: Restrict)
+  kind String
+  delta Int
+  date String
+  reference String
+  note String
+  actorId String
+  receiptId String?
+  receipt SubscriptionEntry? @relation("SubscriptionRefund", fields: [receiptId], references: [id], onDelete: Restrict)
+  refunds SubscriptionEntry[] @relation("SubscriptionRefund")
+  reversesId String? @unique
+  reverses SubscriptionEntry? @relation("SubscriptionReverse", fields: [reversesId], references: [id], onDelete: Restrict)
+  reversal SubscriptionEntry? @relation("SubscriptionReverse")
+  createdAt DateTime @default(now())
+  @@index([invoiceId, createdAt])
+  @@index([receiptId])
+  @@unique([invoiceId, kind, reference])
+}
+model SubscriptionEvent {
+  id String @id @default(cuid())
+  organizationId String
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Restrict)
+  invoiceId String?
+  invoice SubscriptionInvoice? @relation(fields: [invoiceId], references: [id], onDelete: Restrict)
+  kind String
+  note String
+  actorId String
+  metadata Json
+  createdAt DateTime @default(now())
+  @@index([organizationId, createdAt])
+  @@index([invoiceId])
+}
 
 model StayLink {
   id String @id @default(cuid())
@@ -267,4 +767,248 @@ model TicketUpdate {
   note String
   status String
   createdAt DateTime @default(now())
+}
+
+// Identity is separate from business membership and from occupancy.
+model OrgMembership {
+ id String @id @default(cuid())
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Restrict)
+ organizationId String
+ organization Organization @relation(fields:[organizationId],references:[id],onDelete:Restrict)
+ role String
+ status String @default("ACTIVE")
+ propertyIds String[] @default([])
+ canRecordPayments Boolean @default(false)
+ canControlDevices Boolean @default(false)
+ createdAt DateTime @default(now())
+ revokedAt DateTime?
+ @@unique([userId,organizationId])
+ messageAssignments MessageThread[]
+ @@index([organizationId,status])
+}
+model OccupantAccess {
+ id String @id @default(cuid())
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Restrict)
+ stayId String
+ stay Stay @relation(fields:[stayId],references:[id],onDelete:Restrict)
+ status String @default("ACTIVE")
+ canViewBilling Boolean @default(true)
+ canControlDevices Boolean @default(false)
+ includeAccess Boolean @default(false)
+ createdAt DateTime @default(now())
+ revokedAt DateTime?
+ openingShares OpeningShare[]
+  scheduledReminders ReminderDelivery[]
+ @@unique([userId,stayId])
+ @@index([stayId,status])
+}
+model IdentityChallenge {
+ id String @id @default(cuid())
+ userId String
+ user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+ purpose String
+ targetEmail String
+ tokenHash String @unique
+ expiresAt DateTime
+ consumedAt DateTime?
+ attempts Int @default(0)
+ createdAt DateTime @default(now())
+ @@index([userId,purpose,createdAt])
+}
+model Invitation {
+ id String @id @default(cuid())
+ organizationId String
+ organization Organization @relation(fields:[organizationId],references:[id],onDelete:Restrict)
+ issuerId String
+ recipientEmail String
+ kind String
+ propertyIds String[] @default([])
+ stayId String?
+ canRecordPayments Boolean @default(false)
+ canControlDevices Boolean @default(false)
+ includeAccess Boolean @default(false)
+ tokenHash String @unique
+ state String @default("PENDING")
+ expiresAt DateTime
+ acceptedBy String?
+ acceptedAt DateTime?
+ revokedAt DateTime?
+ createdAt DateTime @default(now())
+ @@index([organizationId,state])
+ @@index([recipientEmail,state])
+}
+model EmailOutbox {
+ id String @id @default(cuid())
+ dedupeKey String @unique
+ userId String?
+ organizationId String?
+ template String
+ encryptedPayload String
+ status String @default("QUEUED")
+ attempts Int @default(0)
+ nextAttemptAt DateTime @default(now())
+ leaseUntil DateTime?
+ expiresAt DateTime?
+ acceptedAt DateTime?
+ providerMessageId String?
+ lastErrorCode String?
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ reminderDelivery ReminderDelivery?
+ @@index([status,nextAttemptAt])
+ @@index([userId,createdAt])
+}
+
+// Optional profile; existing Guest and Stay remain canonical. No phone-based identity merge.
+model ResidentProfile {
+ id String @id @default(cuid())
+ guestId String @unique
+ guest Guest @relation(fields:[guestId],references:[id],onDelete:Restrict)
+ email String @default("")
+ encryptedEmergencyContact String?
+ emergencyConsent Boolean @default(false)
+ updatedAt DateTime @updatedAt
+}
+model Contract {
+ id String @id @default(cuid())
+ stayId String @unique
+ stay Stay @relation(fields:[stayId],references:[id],onDelete:Restrict)
+ status String @default("DRAFT")
+ revision Int @default(1)
+ createdAt DateTime @default(now())
+ versions ContractVersion[]
+}
+model ContractVersion {
+ id String @id @default(cuid())
+ contractId String
+ contract Contract @relation(fields:[contractId],references:[id],onDelete:Restrict)
+ revision Int
+ state String
+ start String
+ end String
+ rent Int
+ depositRequired Int
+ terms String
+ signatureReference String @default("")
+ snapshotHash String
+ actorId String
+ createdAt DateTime @default(now())
+ @@unique([contractId,revision])
+}
+model DepositAccount {
+ id String @id @default(cuid())
+ stayId String @unique
+ stay Stay @relation(fields:[stayId],references:[id],onDelete:Restrict)
+ entries DepositEntry[]
+ adjustments DepositAdjustment[]
+ createdAt DateTime @default(now())
+}
+model DepositEntry {
+ id String @id @default(cuid())
+ accountId String
+ account DepositAccount @relation(fields:[accountId],references:[id],onDelete:Restrict)
+ kind String
+ delta Int
+ date String
+ reference String
+ actorId String
+ reversesId String? @unique
+ reverses DepositEntry? @relation("DepositReversal",fields:[reversesId],references:[id],onDelete:Restrict)
+ reversal DepositEntry? @relation("DepositReversal")
+ createdAt DateTime @default(now())
+ @@index([accountId,createdAt])
+}
+model DepositAdjustment {
+ id String @id @default(cuid())
+ accountId String
+ account DepositAccount @relation(fields:[accountId],references:[id],onDelete:Restrict)
+ amount Int
+ reason String
+ inspectionNote String
+ status String @default("PENDING")
+ createdBy String
+ reviewedBy String?
+ reviewedAt DateTime?
+ createdAt DateTime @default(now())
+ @@index([accountId,status])
+}
+model RoomTransfer {
+ id String @id @default(cuid())
+ fromStayId String
+ fromStay Stay @relation("TransferFrom",fields:[fromStayId],references:[id],onDelete:Restrict)
+ toStayId String @unique
+ toStay Stay @relation("TransferTo",fields:[toStayId],references:[id],onDelete:Restrict)
+ date String
+ actorId String
+ createdAt DateTime @default(now())
+ @@index([fromStayId])
+}
+model LifecycleCommand {
+ id String @id @default(cuid())
+ organizationId String
+ organization Organization @relation(fields:[organizationId],references:[id],onDelete:Restrict)
+ key String
+ requestHash String
+ response Json
+ createdAt DateTime @default(now())
+ @@unique([organizationId,key])
+}
+model MessageThread {
+ id String @id @default(cuid())
+ stayId String
+ stay Stay @relation(fields:[stayId],references:[id],onDelete:Restrict)
+ residentUserId String
+ residentUser User @relation("MessageResident",fields:[residentUserId],references:[id],onDelete:Restrict)
+ assigneeId String?
+ assignee OrgMembership? @relation(fields:[assigneeId],references:[id],onDelete:Restrict)
+ status String @default("OPEN")
+ revision Int @default(0)
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ entries MessageEntry[]
+ @@unique([stayId,residentUserId])
+ @@index([assigneeId,updatedAt])
+ @@index([residentUserId,updatedAt])
+ @@index([updatedAt,id])
+}
+model MessageEntry {
+ id String @id @default(cuid())
+ threadId String
+ thread MessageThread @relation(fields:[threadId],references:[id],onDelete:Restrict)
+ revision Int
+ kind String
+ actorId String
+ actorRole String
+ encryptedBody String
+ createdAt DateTime @default(now())
+ @@unique([threadId,revision])
+}
+model PrivacyRequest {
+ id String @id @default(cuid())
+ requesterId String
+ requester User @relation(fields:[requesterId],references:[id],onDelete:Restrict)
+ kind String
+ status String @default("SUBMITTED")
+ revision Int @default(1)
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ entries PrivacyEntry[]
+ @@index([requesterId,updatedAt])
+ @@index([status,updatedAt])
+ @@index([updatedAt,id])
+}
+model PrivacyEntry {
+ id String @id @default(cuid())
+ requestId String
+ request PrivacyRequest @relation(fields:[requestId],references:[id],onDelete:Restrict)
+ revision Int
+ kind String
+ actorId String
+ actorRole String
+ encryptedBody String
+ status String
+ createdAt DateTime @default(now())
+ @@unique([requestId,revision])
 }

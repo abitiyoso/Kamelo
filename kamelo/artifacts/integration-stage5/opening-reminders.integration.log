@@ -1,0 +1,13 @@
+PASS Only scoped owner can preview or publish; no implicit share
+PASS Explicit confirmation, fresh preview and origin required
+PASS Exact retries publish one private snapshot without cash or receipt changes
+PASS Twenty-four-hour cooldown survives concurrent different-key requests
+PASS Database rejects mutated/deleted history and mismatched amount snapshots
+PASS Fresh billing permission and owner membership checked on each request
+PASS Revocation hides old reminders; replacement does not inherit them or bypass cooldown
+PASS Concurrent receipt invalidates stale reminder amount
+PASS Pending evidence suppresses reminder until reviewed
+PASS Bounded owner/tenant history pagination and concurrent first publication
+PASS Settled balance suppresses reminders and retains historical snapshots
+PASS Upcoming and void balances cannot publish reminders
+Opening reminder groups passed: 12

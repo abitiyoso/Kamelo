@@ -1,0 +1,276 @@
+{
+  "stage": "Stage 5 local readiness only; real acceptance pending",
+  "branch": "codex/integration-readiness",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "ca152da75179431fd5d67e7bb97ed0fb1e99ef4f1a5d8d9fee09c88dd2a5b7e5"
+    },
+    {
+      "path": "README.md",
+      "sha256": "e5ef6b49a1a29a9f7304ad22218eabf522c47db3fbd3b14ee9204fa5fc761a3f"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "20972ef1f3bbd99eb4552aff5fb3318e05b96078f924628cd287bb0aecff35a4"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "156214d242db0f60e188e0237f6eef32856027cc3896df84c267b58052e699cc"
+    },
+    {
+      "path": "docker-compose.workers.yml",
+      "sha256": "2d0c357db7dbe28b6de4d22a509b140c7eaae52a8143b9abbc374bc7f9b29f55"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "a0b48edf70800c7b47bf35bfa78a60e2bebcf8d363e917c2fdd10a220345e010"
+    },
+    {
+      "path": "docs/REMAINING_DELIVERY_STAGES.md",
+      "sha256": "0b1bb25bc047d996ebc54f8532b04ecf326ef79e59564169006943e9f21b169d"
+    },
+    {
+      "path": "docs/INTEGRATION_SETUP.md",
+      "sha256": "ab2f53801a79692e827d4c04cc54b34a5984d90d97b6f1ef1a9b00e300890f79"
+    },
+    {
+      "path": "docs/INTEGRATION_STAGE5.md",
+      "sha256": "2cdb3877de0512581396037d0310085c4cb531804ecd13f2b2a4c86bcc89119f"
+    },
+    {
+      "path": "docs/INTEGRATION_STAGE5_DESIGN_QA.md",
+      "sha256": "3967384a79a348f1276430fffe92d548928b5577c06e27721ec894d2b7c9cd5c"
+    },
+    {
+      "path": "docs/INTEGRATION_LIVE_ACCEPTANCE.md",
+      "sha256": "b9578e76957cdd0def42056fecc30654268caf53a8ef1cc502deb73139f656e5"
+    },
+    {
+      "path": "lib/worker-client.mjs",
+      "sha256": "001862ab775da80da52cdd1c6f1efa64cb54f011970f3e68e8ef1980dee9c6cb"
+    },
+    {
+      "path": "lib/integration-preflight.mjs",
+      "sha256": "cbf348c49ae7d167ea0e390c8ceea4ba7fa1be4b4ccdcffd99f5fe9cd0a5639e"
+    },
+    {
+      "path": "scripts/operations-worker.mjs",
+      "sha256": "f12c91c19de2b56c217394f184d2235d650e07ae4771087840ea3b1797713ac1"
+    },
+    {
+      "path": "scripts/mail-worker.mjs",
+      "sha256": "1669a58803a1a684fef3046f5d34d01c886f2e8b6bd13a5042fda82ef5ca10dc"
+    },
+    {
+      "path": "scripts/reminder-worker.mjs",
+      "sha256": "d75f538fa744da53a6f2a528b8a2f1b4533ffc4970b5c5aa36eec07304a7313c"
+    },
+    {
+      "path": "scripts/integration-preflight.mjs",
+      "sha256": "24d1aca8f24b82e561e275f6e9ae6a77267e99a1f32335301e4c32c6563ba1dc"
+    },
+    {
+      "path": "scripts/integration-stage5-qa-verify.mjs",
+      "sha256": "fe10dae33b12c842a797fc5e96ef045fe1a882beceb4e5cde044ef7b8d042aff"
+    },
+    {
+      "path": "scripts/integration-stage5-review-sync.mjs",
+      "sha256": "7dc428a7079513a77de15e4d2ec46b24db7ac3303fafb4bb8be2a58f576b6ef1"
+    },
+    {
+      "path": "app/api/platform-health/route.ts",
+      "sha256": "2173e7ae5bc13e4eeaf16710cfcb72dd42348390781f8c74e215950358738982"
+    },
+    {
+      "path": "components/workspace/platform-health.tsx",
+      "sha256": "6404a1c27e1cb324c3838bf7efd770f01ebefff7859a6690d8d023cb1c411a89"
+    },
+    {
+      "path": "tests/worker.test.mjs",
+      "sha256": "8c55218db6882600752f9e6787f17edcba5f7a8817125139386d32494380760e"
+    },
+    {
+      "path": "tests/worker-transport.test.mjs",
+      "sha256": "e57c422d248da6bde725b0f2ce7205c76103b3948bba55b8f96842a4b68beb8c"
+    },
+    {
+      "path": "tests/iot-provider.test.mjs",
+      "sha256": "f7915ee0d9fcdc4dd47a9b723b6d1c62febd67da56477ff51529541ba81ef8b5"
+    },
+    {
+      "path": "tests/integration-preflight.test.mjs",
+      "sha256": "87eb4271c3b87ede5ce0b08f6010028809e8be6cb058060d01e2770bf42b02fc"
+    },
+    {
+      "path": "tests/integration-stage5.integration.mjs",
+      "sha256": "7aaaeb5dbac667f5313d51c2b4ecbd71f590cfc2769b95230a9dbcb0bc0bad76"
+    },
+    {
+      "path": "artifacts/integration-stage5/build.log",
+      "sha256": "bf2498921fd81414eb9344a7204f11ecee3ce1abee3cab0b324055229f75f51a"
+    },
+    {
+      "path": "artifacts/integration-stage5/unit.log",
+      "sha256": "adbceb56184750dc462940c03aea28eb74f4d276edccbbb6155b601a4f81fa86"
+    },
+    {
+      "path": "artifacts/integration-stage5/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/integration-stage5/provider-contracts.log",
+      "sha256": "abf8c9d95512329015e4ff5f842de659136d8d84e6afcffca82819239abe5552"
+    },
+    {
+      "path": "artifacts/integration-stage5/regression-results.json",
+      "sha256": "8d646c1846c516280abd7f12a0b78a8e1ab1fc26512094eb697f96f2438332b7"
+    },
+    {
+      "path": "artifacts/integration-stage5/preflight-offline.json",
+      "sha256": "5de8cb684fda92df91d130e156ed9ffdca8a128fff3acb9e67750ef4be3aba03"
+    },
+    {
+      "path": "artifacts/integration-stage5/preflight-api.json",
+      "sha256": "69e74fcfbddb92450d1655248bb80c6eb5683c0616ae8f04e7c7545f43ca5d9e"
+    },
+    {
+      "path": "artifacts/integration-stage5/browser-metrics.json",
+      "sha256": "574bb2bf7b0d4d62c2f216294bf5e5aa5b83a9e5b4e41f2aec3f8f46eaffd06b"
+    },
+    {
+      "path": "artifacts/integration-stage5/platform-preflight.png",
+      "sha256": "6a4caaf6ffd9dd266c68e520c9af6b35b78fade7bc7d618773504c013e7c4be3"
+    },
+    {
+      "path": "artifacts/integration-stage5/platform-requirements.png",
+      "sha256": "5a236109b84f27273f0842bb6b8aa1e93d4356ba7486240910f0b2aa3cc9ffcd"
+    },
+    {
+      "path": "artifacts/integration-stage5/platform-mobile-390.png",
+      "sha256": "3b33895386b0547281b09b91653e3939fec1b80bc445350523830c1fdc2ec056"
+    },
+    {
+      "path": "artifacts/integration-stage5/platform-mobile-320.png",
+      "sha256": "f2fe5c5cdd55ac1296bff27976412e030dc9403fb3af87f02b3b0695a44bc2da"
+    },
+    {
+      "path": "artifacts/integration-stage5/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/integration-stage5/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/integration-stage5/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/integration-stage5/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/integration-stage5/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/integration-stage5/workspace.integration.log",
+      "sha256": "071791071cfb12027cb6f99d42a1010b799bd4e93033b1374cc2258a24f33074"
+    },
+    {
+      "path": "artifacts/integration-stage5/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/integration-stage5/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/integration-stage5/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/integration-stage5/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/integration-stage5/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/integration-stage5/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/integration-stage5/privacy.integration.log",
+      "sha256": "9203cd6d96eee6519f5a688bd1c53dcd27763ca66c8526b15acdbfa2e1bc6ec2"
+    },
+    {
+      "path": "artifacts/integration-stage5/room-import.integration.log",
+      "sha256": "f42a888f174f7e81ea7a459f01c841b6cd678865b978279efa7af374f1ef0569"
+    },
+    {
+      "path": "artifacts/integration-stage5/resident-import.integration.log",
+      "sha256": "bc71737bceaa78d973a9067d70e87c7e479cb0906ac04bc5c1e92fcc1cf3f524"
+    },
+    {
+      "path": "artifacts/integration-stage5/import-files.integration.log",
+      "sha256": "3ca4a3472d384ac4d886058ae11899ce18e187138085ae09fd19cd25309c47d9"
+    },
+    {
+      "path": "artifacts/integration-stage5/opening-balances.integration.log",
+      "sha256": "2e7579fbdf802941ddc5b2e045a94a15f41d026d14ca932760a68340fbdb438e"
+    },
+    {
+      "path": "artifacts/integration-stage5/opening-receipts.integration.log",
+      "sha256": "e815fd244ca72862ea4b25816b4a785f27d80d4deccf5c78b4d48d5c06af9986"
+    },
+    {
+      "path": "artifacts/integration-stage5/opening-tenant.integration.log",
+      "sha256": "d3f0d8b65f18e98322d8669d0e9f14289ce2cf8964578ba00770ef660322fce5"
+    },
+    {
+      "path": "artifacts/integration-stage5/opening-reminders.integration.log",
+      "sha256": "3f1c24d2a8e1e096c25bf7cbafe6dde8aad4c1cb1cfcfacd78c5e14117cabedd"
+    },
+    {
+      "path": "artifacts/integration-stage5/proof-queue.integration.log",
+      "sha256": "2d41710e728c6b5c46c2aa5ddc96e9351e8dde2640f8c9ae57e5fde336dccd90"
+    },
+    {
+      "path": "artifacts/integration-stage5/dashboard.integration.log",
+      "sha256": "779b22d303c841abc6f2c4bb5a8fcfef28429cc459eaae72f74cace51a5e7e86"
+    },
+    {
+      "path": "artifacts/integration-stage5/reminder.integration.log",
+      "sha256": "65c8dd99301422138730fc7df86794647aa29ca3bd5f0d5ae98f07e7d2d76101"
+    },
+    {
+      "path": "artifacts/integration-stage5/finance-stage4.integration.log",
+      "sha256": "dcbec2849bf3460d382a74b5ffadbc1ec35504cfc6e5b9110e9a51effa20ea30"
+    },
+    {
+      "path": "artifacts/integration-stage5/integration-stage5.integration.log",
+      "sha256": "cb76bfa5826ff1c26cec64ee938f52c4feeeb797066f2b0af046697d35ef8eee"
+    },
+    {
+      "path": "artifacts/integration-stage5/data-plan.json",
+      "sha256": "f9cca1bb2d7d63820b3f64d7066f486b4e54a58affc22d4c23ff0fcf984d6d16"
+    }
+  ],
+  "excluded": [
+    ".env*",
+    ".local-secrets",
+    "runtime databases",
+    "mail sink messages",
+    "payment evidence",
+    "node_modules",
+    "generated",
+    ".next"
+  ],
+  "committed": false,
+  "pushed": false,
+  "deployed": false,
+  "liveAccepted": false
+}

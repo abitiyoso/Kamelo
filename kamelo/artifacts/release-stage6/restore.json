@@ -1,0 +1,274 @@
+{
+  "completedAt": "2026-10-20T13:12:23.472Z",
+  "scope": "Disposable QA only; no main database or production changes",
+  "sourceEncoding": "WIN1252",
+  "targetEncoding": "UTF8",
+  "toolVersion": "pg_dump (PostgreSQL) 18.6",
+  "dumpMs": 3453,
+  "restoreMs": 2577,
+  "elapsedMs": 22009,
+  "dumpBytes": 15346945,
+  "dumpSha256": "69168792f7bad4d08b30f06d99a7fcfe963d02edbfc2fcd832f08331e196362d",
+  "exportedSnapshot": true,
+  "allPublicTableHashesPreserved": true,
+  "sourceUnchanged": true,
+  "constraintsIndexesTriggersFunctionsPreserved": true,
+  "unicodeRoundTrip": true,
+  "tables": {
+    "Audit": {
+      "count": 14677,
+      "sha256": "40c9184f83a6d3615e16f50c9c5fbfc587cf1adb8f42d6b23d310f7864591992"
+    },
+    "Contract": {
+      "count": 102,
+      "sha256": "ac12f6c1daedea7e6ba6a3f057bf348244a1e1d502f68988b277f6a41a4e4bd5"
+    },
+    "ContractVersion": {
+      "count": 240,
+      "sha256": "bb2d2633126e7159526004048a987026b35a25246e19e9ef1d60305d146bfec6"
+    },
+    "DepositAccount": {
+      "count": 108,
+      "sha256": "63fd16e331fce27d1b36bc71aaa392a6675b1f2483cf73f0cc42c5cf55dfaeb5"
+    },
+    "DepositAdjustment": {
+      "count": 64,
+      "sha256": "32b1ab430a71a7a3dd0c1cd6e1eedafc7b3ff325afab82bf12363e77ded41605"
+    },
+    "DepositEntry": {
+      "count": 326,
+      "sha256": "acf62700da0ea54a41af05595835be85192008cf071b2f16094b3e63640e8c23"
+    },
+    "Device": {
+      "count": 149,
+      "sha256": "134206f5cf74291a9e88c1dbb367130f0af7853b9cc0866f8a8533cc1e732b21"
+    },
+    "EmailOutbox": {
+      "count": 4375,
+      "sha256": "add21b52c38cccf685c5ee0fc34678f66ac49f8e4937a89b58988c99ae6ba357"
+    },
+    "Expense": {
+      "count": 100153,
+      "sha256": "63176ca096cbea7f65167a9d074e1bd1fc387a716711c27df2e05f59924f3423"
+    },
+    "ExpenseEntry": {
+      "count": 1424,
+      "sha256": "d35d6de5bc7020d77c0593c315458a4a138d38402bf08ecced7143cd4271af75"
+    },
+    "FinanceMatch": {
+      "count": 694,
+      "sha256": "8c34bc0e39d79cc387d8302bbab676e258a3f516674bdaea2527f4c14deb6f98"
+    },
+    "FinancialDocument": {
+      "count": 54,
+      "sha256": "9601bfbe07338f91aa6cf9692d91304ca153add274d8f4b6ad268bceb1283030"
+    },
+    "FinancialDocumentReview": {
+      "count": 61,
+      "sha256": "8cfaa893d399d21bf8af13c07ae69b4b2c348be2c0072e362bc6daa7b853c47a"
+    },
+    "Guest": {
+      "count": 2103,
+      "sha256": "89b98842cba9ad42d4964532ac584d0b7ad094e1971a158fe9d5e16bbf94b147"
+    },
+    "IdentityChallenge": {
+      "count": 1637,
+      "sha256": "3a617fe811601cb84b0ca7521974b3a9102ad6109dbabc5ee250e7c65069b774"
+    },
+    "Invitation": {
+      "count": 712,
+      "sha256": "32dbff77069d32b00eebf8d9c2590c0de87eaff4e0fdfd16aec19f75feab3b5c"
+    },
+    "Invoice": {
+      "count": 4194,
+      "sha256": "95364a716aeebf3faca49029738a6315f99afc876f806ccbd4dd890d93acef17"
+    },
+    "LifecycleCommand": {
+      "count": 6689,
+      "sha256": "10f46a963ecc21281382edb63a56ef084f3b4fe4354e7c28bf7638987a2c0d62"
+    },
+    "MessageEntry": {
+      "count": 823,
+      "sha256": "f3a5bd93239606ad2089a4834c5336fcb54d06cbfd916f63798d5b97e5cb2bbd"
+    },
+    "MessageThread": {
+      "count": 36,
+      "sha256": "86bb97be0ae0b5b0b6a0402f19a90f2b574cdb598c6baa7716d594d1c3fc48a0"
+    },
+    "OccupantAccess": {
+      "count": 264,
+      "sha256": "b5c50f6eaf48dd18fa6e5d84f42823875b29132bf192f160f391a0f345f66ff5"
+    },
+    "OpeningBalanceBatch": {
+      "count": 405,
+      "sha256": "80815b5bc90b87bb445267e97dd5bf41ad4f169986b9301b7df2591ddb72e0f6"
+    },
+    "OpeningProof": {
+      "count": 365,
+      "sha256": "8e68eb70ebeda5486c1831bfb4b4b8bccdf5e63d295def3046d16b361c7c6ef0"
+    },
+    "OpeningReceipt": {
+      "count": 417,
+      "sha256": "c771854f1a1c24187484d977b591f89b8db0dae514593181de3a10d885331058"
+    },
+    "OpeningReceivable": {
+      "count": 444,
+      "sha256": "3810373243890774cfce3d3765fc1ae33af67276b3dd6ee3f6c0a8345b2100b3"
+    },
+    "OpeningReminder": {
+      "count": 389,
+      "sha256": "30547f4e538edb2f702e231e1a304949283063a0af2dbb537a7d6be959bc21fb"
+    },
+    "OpeningShare": {
+      "count": 108,
+      "sha256": "fb911fed7396f0201edc7ea3e6cf77aa4514aed90e2282313fc7e761fa5c59ca"
+    },
+    "OrgMembership": {
+      "count": 1614,
+      "sha256": "e5e19c7e7e87d60ba1b61595fe714c5b82067c30445e3917390a690db12539ef"
+    },
+    "Organization": {
+      "count": 2271,
+      "sha256": "dc6243c52940477fe04cbdda7ff945865066ac8059de518ef6ae6a0b58f6af2c"
+    },
+    "Payment": {
+      "count": 299,
+      "sha256": "cde4af7a1217d9072397808817afbbb13a4e70d001b9bab66d182a9a63eedf97"
+    },
+    "PaymentProof": {
+      "count": 412,
+      "sha256": "7669b6a824b1cb8b5f73a69e255d00217f4432edd6604a6ede07d95ee7c98449"
+    },
+    "PrivacyEntry": {
+      "count": 1482,
+      "sha256": "8fb52936dbcb14c85e75210aa568119cb6d22ae402d2b9fea4e831de31b30555"
+    },
+    "PrivacyRequest": {
+      "count": 17477,
+      "sha256": "cac1ac1b9929853324eb0d76b887937cf4363d5ffabc9516907f28cb76fe7521"
+    },
+    "Property": {
+      "count": 745,
+      "sha256": "619051a0dd4aa0b7272fa24d02275a880f52ee98e6b233f7923a78ddd49baa7e"
+    },
+    "Prospect": {
+      "count": 1341,
+      "sha256": "5ca3dc65800a0e1d9747f0901a638ac9a3ed4fb56a2c0dcdeb1824cdcf8f3110"
+    },
+    "ProspectActivity": {
+      "count": 1288,
+      "sha256": "a21ccb255f169aed38f21b72f7ab59753280928528cb1658e51ea4511d927937"
+    },
+    "RateLimit": {
+      "count": 7046,
+      "sha256": "bde93ed9096cf450068b5a7ff7e82200c2bd16751be77a4198d404a990b44604"
+    },
+    "ReminderDelivery": {
+      "count": 420,
+      "sha256": "47249c150b92b9941e21b49bc74e8e7899eac25e0482b0571c1e730f3414561d"
+    },
+    "ReminderPolicy": {
+      "count": 6,
+      "sha256": "4a165fefe3f29ad18c3c1d327b7b374c8264ff5860efd81e191d5eee738b70ac"
+    },
+    "ResetToken": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ResidentImportBatch": {
+      "count": 154,
+      "sha256": "4bfffad153c85a51fcdb23a0eaef299ff429d93b739619a2246d3cccf4142220"
+    },
+    "ResidentProfile": {
+      "count": 95,
+      "sha256": "f8d83a6660fcf2c4beaab64b52b544f3022639f0f4d0d7fbb69335c045b99f40"
+    },
+    "Room": {
+      "count": 2258,
+      "sha256": "e89a9c02e1e10ea4dc19287daf9e5d268de1fc232c4154a5a159f5ab9cfeaa69"
+    },
+    "RoomImportBatch": {
+      "count": 80,
+      "sha256": "0874c14e33f5699b5f01ee6cc4f3f677c3a47d2133b8140bb01794f10e4d8d63"
+    },
+    "RoomTransfer": {
+      "count": 22,
+      "sha256": "fb2980cb6ada528d1ac120869a5b3e198cc37019955251bbbbd6f4748ed4b93d"
+    },
+    "SaaSBillingProfile": {
+      "count": 42,
+      "sha256": "05e3a5f58daa20a8d7694cbc534cfb839bc63d3b30e77676bf74e2a0030858b7"
+    },
+    "Session": {
+      "count": 2055,
+      "sha256": "e22fac77c0a785de9173686768c1d7a68fda3ef1387538ee15142518ba1154c0"
+    },
+    "SmartAccess": {
+      "count": 118,
+      "sha256": "6c3626cb42cb2f3d7c739e92a0a2bf83a32b57e9015733acba05f22c00724313"
+    },
+    "Stay": {
+      "count": 1033,
+      "sha256": "19faabe3da4f7d5fb1d983f36c33376120ce48a9672e6912f60fc5390bccb2f0"
+    },
+    "StayLink": {
+      "count": 181,
+      "sha256": "8a7ebadd348a2e92a9dbb490e73235f859c686bc9f1bcf8f06f2170e678d72b2"
+    },
+    "SubscriptionEntry": {
+      "count": 847,
+      "sha256": "bc262e627cd0bf818a14fe689fb27fb5d49bf79e7a337dd54d0ed3ccf52d3fd8"
+    },
+    "SubscriptionEvent": {
+      "count": 1124,
+      "sha256": "209a1d23db581858be961b5ee70574b05713714e98a38ce0455a87898f7945e1"
+    },
+    "SubscriptionInvoice": {
+      "count": 653,
+      "sha256": "1d6f7a1f17182df20125feba4114bd9e269f04d092b94af84d22eeab933fad9f"
+    },
+    "SupportCase": {
+      "count": 420,
+      "sha256": "7022aac26505af55da3e8e30fa9f3a732440b25134b94775cf76fb815e65478e"
+    },
+    "SupportEntry": {
+      "count": 1030,
+      "sha256": "16d8b4167fc36893a9ec3482f1b5630f7626d3a3d6f93a43bf6bc52e01cc12ab"
+    },
+    "TenantLink": {
+      "count": 302,
+      "sha256": "3254b623416aa4f9c045dbce86bdd4dadd276031f0bf37095ec86b8ba376be3c"
+    },
+    "Ticket": {
+      "count": 361,
+      "sha256": "8cb2a117ab45ee17f2b5da265abca9a466d660a798a46c7d93d84010ee3dd79f"
+    },
+    "TicketUpdate": {
+      "count": 438,
+      "sha256": "1a82fd531c0a857706283b10462f08591855b70787a50feef9f2d503487cb620"
+    },
+    "Upgrade": {
+      "count": 126,
+      "sha256": "05217a6ccb05fa448f4a849f4c8e78c8b2f8d61225aed9362ab61eca4cf8df28"
+    },
+    "User": {
+      "count": 1613,
+      "sha256": "098d6cc92f1b6f327139006bfd82f9dbac58d333c62cf6fea2e26b764c2d7279"
+    },
+    "_prisma_migrations": {
+      "count": 22,
+      "sha256": "69852ea8c6e07f91ef7ce563758c1b989e222683b7c49225f2dd0c593223b4cb"
+    }
+  },
+  "copiedPrivateFiles": 645,
+  "referencedProofFilesVerified": 407,
+  "metadataOnlySyntheticProofFixtures": 170,
+  "copiedHistoryFixturesWithSyntheticHashes": 200,
+  "newMissingEvidenceAfterRestore": 0,
+  "syntheticFixtureException": "Only named metadata-only UUID fixtures and old HISTORY-n rows matching both exact history/history-content fixture hash formulas. Every available file is byte-identical to source. These exceptions must never be used for production evidence acceptance.",
+  "financialDocumentSnapshotsDecryptedAndHashVerified": 54,
+  "privateBackupExcludedFromExport": true,
+  "liveProvidersEnabled": false,
+  "productionRpoRto": "Not established: this is a local synthetic-data rehearsal, not a scheduled production backup or production recovery time guarantee.",
+  "roleAclRestore": "Deliberately remapped to disposable owner; production roles/ACLs require separate acceptance."
+}

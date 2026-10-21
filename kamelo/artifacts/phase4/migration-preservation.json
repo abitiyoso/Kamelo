@@ -1,0 +1,86 @@
+{
+  "before": {
+    "Invoice": {
+      "count": 486,
+      "hash": "eb7dd94448733829bda403c197875d6c097da4a6eba1eec39cba10d76912d07c"
+    },
+    "Payment": {
+      "count": 38,
+      "hash": "188c770c5e052eca33d2ceb331ec9811d6e09478324156728806055c53d481cc"
+    },
+    "Stay": {
+      "count": 91,
+      "hash": "4149ad57bb27f16addd15cba7613afb10694e0e5691772fd6703bf5b2a00bc44"
+    },
+    "Room": {
+      "count": 236,
+      "hash": "2b846e39c55f242c21eb76a9f41e73a9a6ee60863d66c5e16750fd9aaa19cf29"
+    },
+    "Guest": {
+      "count": 91,
+      "hash": "55bcbf25adeb36ce63c646b8b78b8fde46051f5a3007c10a092fcd3378ccfd3b"
+    },
+    "Organization": {
+      "count": 75,
+      "hash": "af18d2136d032147db89f3bfdd1d7b58fde3ef0279682459ba1cfb8021bbdcb1"
+    },
+    "User": {
+      "count": 104,
+      "hash": "eb73702ae3ac17069843d62fec73ca04e493c91e2d4b1eb8c3b486399738b54c"
+    },
+    "Session": {
+      "count": 125,
+      "hash": "3d7720387074f8209ec0397c9373bb22106a06a3af3ed46c586417465459c660"
+    },
+    "OrgMembership": {
+      "count": 105,
+      "hash": "14aa5305ae110e5c710a8c740475c351b8765b41ac83a897d903bc6178c0cd79"
+    },
+    "OccupantAccess": {
+      "count": 6,
+      "hash": "c4a142d0c9a71024dea7572a8b713b62930d4bd9d0bd3bda0377652d6cdd8468"
+    }
+  },
+  "after": {
+    "Invoice": {
+      "count": 486,
+      "hash": "eb7dd94448733829bda403c197875d6c097da4a6eba1eec39cba10d76912d07c"
+    },
+    "Payment": {
+      "count": 38,
+      "hash": "188c770c5e052eca33d2ceb331ec9811d6e09478324156728806055c53d481cc"
+    },
+    "Stay": {
+      "count": 91,
+      "hash": "4149ad57bb27f16addd15cba7613afb10694e0e5691772fd6703bf5b2a00bc44"
+    },
+    "Room": {
+      "count": 236,
+      "hash": "2b846e39c55f242c21eb76a9f41e73a9a6ee60863d66c5e16750fd9aaa19cf29"
+    },
+    "Guest": {
+      "count": 91,
+      "hash": "55bcbf25adeb36ce63c646b8b78b8fde46051f5a3007c10a092fcd3378ccfd3b"
+    },
+    "Organization": {
+      "count": 75,
+      "hash": "af18d2136d032147db89f3bfdd1d7b58fde3ef0279682459ba1cfb8021bbdcb1"
+    },
+    "User": {
+      "count": 104,
+      "hash": "eb73702ae3ac17069843d62fec73ca04e493c91e2d4b1eb8c3b486399738b54c"
+    },
+    "Session": {
+      "count": 125,
+      "hash": "3d7720387074f8209ec0397c9373bb22106a06a3af3ed46c586417465459c660"
+    },
+    "OrgMembership": {
+      "count": 105,
+      "hash": "14aa5305ae110e5c710a8c740475c351b8765b41ac83a897d903bc6178c0cd79"
+    },
+    "OccupantAccess": {
+      "count": 6,
+      "hash": "c4a142d0c9a71024dea7572a8b713b62930d4bd9d0bd3bda0377652d6cdd8468"
+    }
+  }
+}

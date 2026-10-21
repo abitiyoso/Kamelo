@@ -1,0 +1,18 @@
+PASS Default off, bounded pages, CSRF, job secret and fresh owner/property access
+PASS Confirmed owner opt-in, schedule bounds, exact retry and stale revision protection
+PASS Invoice scheduling, no implicit opening share, future suppression, source cooldown and private tenant history
+PASS Email sink only, exact verified recipient and generic portal link without stale balance
+PASS Explicit opening share, manual cooldown interoperability, revocation hides history and cancels queued email; no ledger effects
+PASS Database rejects history mutation/deletion, forged source amounts and cross-tenant binding
+PASS Lead window honored; settlement before dispatch cancels email and clears encrypted payload
+PASS Partial balance changes and policy disable invalidate queued snapshots
+PASS Fresh billing permission and verified recipient address checked again at dispatch
+PASS Pending proof suppresses initial reminders and cancels emails queued before upload
+PASS Revoked policy owner stops automation and queued dispatch
+PASS Uncertain delivery becomes UNKNOWN without automatic resend
+PASS Twenty-per-channel batches progress without starvation; owner/tenant history paginates privately
+PASS Concurrent first publication creates one delivery per channel; expired email is cancelled before sink
+PASS Jakarta start hour, draft/void and distant due dates suppress scheduling
+PASS UNKNOWN email blocks automatic resend beyond the configured cooldown
+PASS Authenticated worker, no-store safe owner response and cash unchanged by notifications
+Reminder automation API groups passed: 17

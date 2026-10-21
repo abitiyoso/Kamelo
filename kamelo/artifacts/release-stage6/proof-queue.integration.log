@@ -1,0 +1,14 @@
+PASS Only owner workspace can read consolidated queue; tenant/staff/cross-owner denied
+PASS Filter bounds and literal search resist malformed or injected parameters
+PASS Mixed queue shows independent source counts, scoped filters and safe metadata
+PASS Scoped details and existing private downloads preserve source and identity boundaries
+PASS Browsing queue, scoped details and private downloads changes neither ledger nor proof decisions
+PASS Write requires fresh owner, origin, explicit confirmation, note and preview digest
+PASS Invoice approval records exactly one canonical payment and retries preserve decision history
+PASS Opening approval records only opening receipt and updates finance once
+PASS Exact existing opening receipt links without duplicate cash
+PASS Rejections preserve both ledgers and are searchable in decision history
+PASS Stale balances cannot be approved and concurrent same-proof decisions record once
+PASS All-property queue and stable mixed-source pagination cover full database records
+PASS Membership revocation also blocks exact-retry commands before replay
+Unified proof queue groups passed: 13

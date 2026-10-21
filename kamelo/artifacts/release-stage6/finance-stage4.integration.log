@@ -1,0 +1,12 @@
+PASS Owner-only scoped issuance, cross-organization/staff denial, CSRF and page bounds
+PASS Confirmed fresh preview, exact-key retry, single source issuance and encrypted immutable snapshot without ledger changes
+PASS Exact invoice grant/opening share controls private viewing and self-contained HTML download; retention notes stay owner-only
+PASS Database protects issued documents and retention history from overwrite/deletion
+PASS Bounded source refund is idempotent, reopens debt, reduces cash once and updates document status without changing issued snapshot
+PASS Refund bank direction, revoke-before-correct, linked refund guard and original-date correction
+PASS Concurrent over-refund is rejected; full refund retains document history and database journal integrity
+PASS Versioned KEEP/HOLD/review schedule records audit without deleting archives or inventing a retention deadline
+PASS Fresh share/grant/owner revocation applies to downloads and list reads
+PASS Later receipt correction preserves its issued document and marks it invalid as an active receipt
+PASS Owner and tenant archives paginate independently; owner retention audit is bounded and tenant-filtered
+Finance stage 4 API groups passed: 11

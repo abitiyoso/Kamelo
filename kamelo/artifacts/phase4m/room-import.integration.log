@@ -1,0 +1,13 @@
+PASS anonymous/cross-organization/origin guards
+PASS staff cannot preview, commit or read owner import history
+PASS preview is read-only and commit requires confirmation and unchanged digest
+PASS atomic commit, exact retry and actor-bound keys; no guests/stays/invoices created
+PASS existing/case-insensitive/invalid-row collisions block entire batch
+PASS expired plan uses free limit and intervening writes invalidate preview
+PASS rollback removes only batch rooms, preserves history and supports exact retry
+PASS edited room blocks rollback atomically, including earlier unchanged rows
+PASS occupied room/cross-organization rollback denied; downstream records preserved
+PASS concurrent identical imports serialize; exactly one new room
+PASS scoped minimal history plus immutable database snapshots and one-way rollback
+PASS revoked membership is revalidated for existing sessions
+PASS 12 room import API scenario groups

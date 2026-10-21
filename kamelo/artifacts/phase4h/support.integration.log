@@ -1,0 +1,7 @@
+PASS owner/platform/staff/anonymous boundaries, origin and filters
+PASS encrypted shared ticket, explicit consent, exact retries and organization isolation without email
+PASS serialized competing replies/claim, stale revision and unauthorized transition guards
+PASS owner replies resume waiting cases, platform resolution, owner closure and explicit reopen retain history
+PASS source and encrypted timeline immutable, revisioned support-only audit and resident finance preserved
+PASS readiness and audit projections expose no private content, send nothing, and reject revoked platform access
+PASS all-history ticket counts, scoped search and paginated immutable conversation/audit

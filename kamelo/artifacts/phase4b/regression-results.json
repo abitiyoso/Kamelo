@@ -1,0 +1,39 @@
+{
+  "completedAt": "2026-10-18T10:54:17.122Z",
+  "externalEmail": false,
+  "environment": "disposable QA 55432 / loopback 3001",
+  "results": [
+    {
+      "script": "integration",
+      "passed": true
+    },
+    {
+      "script": "operations.integration",
+      "passed": true
+    },
+    {
+      "script": "tenant-smart.integration",
+      "passed": true
+    },
+    {
+      "script": "acquisition.integration",
+      "passed": true
+    },
+    {
+      "script": "identity.integration",
+      "passed": true
+    },
+    {
+      "script": "workspace.integration",
+      "passed": true
+    },
+    {
+      "script": "lifecycle.integration",
+      "passed": true
+    },
+    {
+      "script": "prospects.integration",
+      "passed": true
+    }
+  ]
+}

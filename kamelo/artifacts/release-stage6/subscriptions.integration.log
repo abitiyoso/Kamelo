@@ -1,0 +1,9 @@
+PASS explicit platform context, own-organization scope, staff/owner financial denial and CSRF
+PASS customer-owned billing profile, encrypted/masked tax identity, stale revision and login identity preservation
+PASS catalog price and immutable billing snapshots, calendar period/overlap, issuance idempotency and no rent exposure
+PASS partial/exactly-once receipt, duplicate reference, concurrent overpayment guard and no implicit activation
+PASS current paid-period activation, no shortening, explicit legacy replacement and immutable activation history
+PASS source-bounded refunds, append-only corrections/financial snapshots, no implicit entitlement or resident changes
+PASS future service payment cannot activate early; controlled void/reissue and scoped invoice/entry reads
+PASS serialized legacy activation preserves compatibility without invented payment; expiry preserves resident finance/access
+PASS all-history billed/paid totals, bounded directory/invoice/entry/event pagination and safe customer projections

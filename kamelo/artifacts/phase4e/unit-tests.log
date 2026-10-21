@@ -1,0 +1,35 @@
+✔ invoice totals include discounts and reject unsafe amounts (1.4101ms)
+✔ partial payment and overpayment protection (0.2304ms)
+✔ booking dates handle calendar boundaries (2.1746ms)
+✔ overlap excludes adjacent reservations (0.3024ms)
+✔ billing day retains month-end semantics (0.2545ms)
+✔ room limits reject whole batch (0.2717ms)
+✔ operational status and occupancy are separate (0.3313ms)
+✔ future monthly occupancy does not mark a room occupied early (0.1982ms)
+✔ device capabilities and offline validation (0.4582ms)
+✔ identity policy defaults and configured limits are bounded (1.2341ms)
+✔ all approved transactional drafts render escaped HTML and plain text (1.2571ms)
+✔ SMTP readiness enforces TLS and disables unsafe attachment access (0.2322ms)
+✔ external delivery fails closed without explicit live gate AND approved recipient (0.6422ms)
+✔ expense movements preserve partial payments and reject overpayment/overrefund/unsafe IDR (1.7238ms)
+✔ cash report compares explicit equal-day intervals across leap/month boundaries (2.5591ms)
+✔ accounting CSV escapes formulas, delimiters and newlines while preserving signed numeric cash (0.5142ms)
+✔ approved photo and logo bytes match the locked asset manifest (5.9366ms)
+✔ public showcase cannot access operational API, storage or executable HTML (1.0764ms)
+✔ deposit liability movement preserves reserved deductions and bounded integer IDR (1.1711ms)
+✔ deposit states distinguish due, held, pending deductions and settled liability (0.2366ms)
+✔ idempotency hash ignores object key order but binds financial values and actor (0.821ms)
+✔ proof validation rejects executable content, mismatched signatures and invalid amounts (1.5467ms)
+✔ SaaS periods preserve calendar boundaries and validate months (2.5564ms)
+✔ SaaS entries cannot overpay or overrefund and financial state is distinct from entitlement (0.2622ms)
+✔ support transitions require reopen and distinguish owner closure from platform resolution (0.7215ms)
+✔ integration readiness never equates configured credentials with a verified live connection or exposes secrets (0.4643ms)
+✔ all seven backoffice logo/photos retain approved v5.3 bytes (6.0635ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 213.121

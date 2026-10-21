@@ -1,0 +1,91 @@
+{
+  "source": "approved-design/Kamelo_v5_5_Final_Web_v7.html",
+  "sourceSha256": "2fdbe159602dbc1219ff71f30491312caa3f3df19ab681596f4b9d7fec5fcb66",
+  "showcaseMarkupEqual": true,
+  "assets": [
+    {
+      "key": "im0",
+      "path": "public/brand/kamelo-approved.webp",
+      "bytes": 7564,
+      "sha256": "7958e03fd6c5bcd476c4c513fcb9e3ca80532a50a734c2763d8b64e414e07f0e"
+    },
+    {
+      "key": "im1",
+      "path": "public/images/approved/im1.webp",
+      "bytes": 77620,
+      "sha256": "98a1fa84cf746ed4420dd38b6bb33c6875bac557f7b6a9604660d6e73f72a4ac"
+    },
+    {
+      "key": "im2",
+      "path": "public/images/approved/im2.webp",
+      "bytes": 261388,
+      "sha256": "116e5c6f77e912b2ae3563881a19cf7bb732645fd4d675c2970d3566f17f1f8f"
+    },
+    {
+      "key": "im3",
+      "path": "public/images/approved/im3.webp",
+      "bytes": 145834,
+      "sha256": "9b4c2f642003062721894c92db01f929c9b711f42b30d664f78520ef02a8ece5"
+    },
+    {
+      "key": "im4",
+      "path": "public/images/approved/im4.webp",
+      "bytes": 79108,
+      "sha256": "58a772522636a623d4b95285b32eb58995d8cf07c93fdf3976aa2c56751bc865"
+    },
+    {
+      "key": "im5",
+      "path": "public/images/approved/im5.webp",
+      "bytes": 153556,
+      "sha256": "b82561c3cbbbd0419ed7977e9f9b628255a5059d3fc1459f2a0a0723ee876218"
+    },
+    {
+      "key": "im6",
+      "path": "public/images/approved/im6.webp",
+      "bytes": 210412,
+      "sha256": "b7501acc96e04e753b8da8accd7536d9eb6557a89a867487fb831070e482bba9"
+    },
+    {
+      "key": "im7",
+      "path": "public/images/approved/im7.webp",
+      "bytes": 98096,
+      "sha256": "833d4f5e7d4dedf4e090954898bea19703e306b67d117cece6b888a72e8a4070"
+    },
+    {
+      "key": "im8",
+      "path": "public/images/approved/im8.webp",
+      "bytes": 168412,
+      "sha256": "ed084d2e8db64d1bde78dd004b4cfc0950a53f196eae360d19fa707022cc6ab6"
+    },
+    {
+      "key": "im9",
+      "path": "public/images/approved/im9.webp",
+      "bytes": 140116,
+      "sha256": "338d61e7029f85a0a2ad202b1d572567304d79b4dbffb3cf1e27940e0e7bbfec"
+    },
+    {
+      "key": "im10",
+      "path": "public/images/approved/im10.webp",
+      "bytes": 18504,
+      "sha256": "e86e106df576995e55e70ff1bcdcbb74798f15f01640d17456e13abdf8ffe9d3"
+    },
+    {
+      "key": "im11",
+      "path": "public/images/approved/im11.webp",
+      "bytes": 29972,
+      "sha256": "516dcceea9e857ac4d8bc2a4eee4c706fc19f77008bdcb4b741a85981e16d525"
+    },
+    {
+      "key": "im12",
+      "path": "public/images/approved/im12.webp",
+      "bytes": 36798,
+      "sha256": "6e192a45c175dbaee85e64aaa30367ba3aa0f9f2330d8f6dafbb1092d65ecdd1"
+    },
+    {
+      "key": "im13",
+      "path": "public/images/approved/im13.webp",
+      "bytes": 44256,
+      "sha256": "402aaa8c363ab0b44e3c041b5dd82b63345e51f4af90fa3753048d659494c7f3"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+PASS Fresh owner-only property scope, anonymous/staff/tenant/cross-owner denial and page bounds
+PASS Current cash, matched calendar comparison, six-month trend and two-source debt reconcile
+PASS Dashboard shares exact canonical finance cash and net expenses/refunds
+PASS Deposit liability/cash does not inflate income, debt or operating surplus
+PASS Pending priority counts both ledgers without treating evidence as cash
+PASS Tenant home sums only own invoice and explicitly shared debt; revocation and billing permission apply
+PASS Empty property and portfolio summaries retain accurate zero baselines and scope
+PASS Draft, void and future-issued debt excluded from current aggregates
+PASS Owner ten-row drilldown and tenant totals cover debt beyond 50/100 visible invoice limits
+PASS Corrections restate original cash period and debt; zero comparison never fabricates percent
+PASS Net expense refunds may be negative and increase cash surplus without clipped chart values
+PASS Dashboard reads preserve ledger hashes, deny revoked owner and expose no private file metadata
+Dashboard API groups passed: 12

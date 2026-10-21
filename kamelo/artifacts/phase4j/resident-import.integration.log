@@ -1,0 +1,15 @@
+PASS anonymous, cross-organization, staff and origin isolation
+PASS read-only preview, confirmation/digest and intra-file room/identity collision guards
+PASS atomic guest/stay creation, individual due days, exact retries and no unsolicited invoices/accounts/emails
+PASS encrypted immutable import snapshots and scoped minimal history
+PASS whole-batch rollback removes only untouched new guests/stays and retains immutable history
+PASS phone variants require explicit legacy profile selection; no overwrites, overlap denied and reused profile preserved on rollback
+PASS a changed stay rejects entire rollback without deleting earlier batch rows
+PASS even a draft invoice blocks rollback; all financial history stays intact
+PASS contract/deposit relationships block rollback
+PASS pending invitation without a foreign key still blocks deletion of its stay
+PASS hotel end date/status and room readiness preserve canonical business rules
+PASS concurrent commits serialize without duplicate guests/stays
+PASS automated lock is disclosed and canonical access creation prevents destructive rollback
+PASS fresh membership and real downloadable resident template
+PASS 14 resident import API scenario groups

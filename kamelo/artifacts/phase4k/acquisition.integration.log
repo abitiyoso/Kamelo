@@ -1,0 +1,6 @@
+PASS homepage/routes/anchors/optimized photos and complete acquisition information
+PASS paid selection → audited request → free entitlement until admin activates / onboarding explains pending state
+PASS invalid plan rejected / duplicate registration rolls back organization and upgrade atomically
+PASS landing account → property/rooms → individual tenant dates → invoice link → proof upload → confirmed payment exactly once
+PASS owner task lifecycle → logout denies access → login restores persisted property/payment/task
+ALL 5 ACQUISITION GROUPS PASSED. HTTP/API journeys; browser interactions not covered. Synthetic records retained; no external messages/payments sent.

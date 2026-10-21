@@ -1,0 +1,14 @@
+PASS anonymous, cross-owner, staff and hostile-origin access denied
+PASS preview is read-only, requires explicit scoped profile and rejects invalid or duplicate debt
+PASS explicit confirmation, digest binding and exact retries produce one batch without cash or invoice writes
+PASS separate overdue totals, scoped detail, encrypted source notes and duplicate-source blocking
+PASS database blocks edits, deletion, partial void, incomplete batches and cross-property row linkage
+PASS whole-batch void retains source history, blocks profile deletion and allows corrected source re-entry
+PASS concurrent duplicate references commit once
+PASS aggregate totals above PostgreSQL integer range retain exact rupiah values
+PASS real XLSX upload converts native dates and commits through unchanged preview; both templates downloadable
+PASS resident rollback preserves newly imported profiles linked to even voided financial history
+PASS existing Kamelo invoice references cannot be reintroduced as opening debt
+PASS bounded history pagination and all-property totals preserve owner scope
+PASS fresh membership revocation prevents reads and writes
+PASS 13 opening balance API scenario groups

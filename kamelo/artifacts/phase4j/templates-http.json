@@ -1,0 +1,12 @@
+[
+  {
+    "template": "kamar",
+    "passed": true,
+    "records": 2
+  },
+  {
+    "template": "penghuni",
+    "passed": true,
+    "records": 1
+  }
+]

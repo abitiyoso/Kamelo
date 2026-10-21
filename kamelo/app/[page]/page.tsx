@@ -1,4 +1,9 @@
 import { Header, Footer } from "@/components/brand";
+import { IdentityScreen } from "@/components/identity/screens";
+import { AccountSettings } from "@/components/identity/account-settings";
+import { IdentityFrame } from "@/components/identity/frame";
+import { sessionIdentity } from "@/lib/auth";
+import { redirect } from "next/navigation";
 import { AuthForm } from "@/components/auth-form";
 import { notFound } from "next/navigation";
 import { plans } from "@/lib/plans";
@@ -12,14 +17,31 @@ export default async function Page({
   const { page } = await params;
   const query = await searchParams;
   const selectedPlan = plans.find((p) => p.id === query.plan)?.id;
-  if (["login", "register", "forgot-password", "reset-password"].includes(page))
-    return (
-      <>
-        <Header />
-        <AuthForm mode={page} selectedPlan={selectedPlan} />
-        <Footer />
-      </>
+  if (["verify-email", "invite", "workspaces", "account"].includes(page)) {
+    if (["workspaces", "account"].includes(page)) {
+      const s = await sessionIdentity();
+      if (!s) redirect("/login");
+      if (s.user.accountStatus === "PENDING" && page === "workspaces")
+        redirect("/verify-email");
+    }
+    return page === "account" ? (
+      <IdentityFrame>
+        <AccountSettings />
+      </IdentityFrame>
+    ) : (
+      <IdentityScreen mode={page} />
     );
+  }
+  if (
+    [
+      "login",
+      "register",
+      "invite-register",
+      "forgot-password",
+      "reset-password",
+    ].includes(page)
+  )
+    return <AuthForm mode={page} selectedPlan={selectedPlan} />;
   if (!["privacy", "terms"].includes(page)) notFound();
   return (
     <>

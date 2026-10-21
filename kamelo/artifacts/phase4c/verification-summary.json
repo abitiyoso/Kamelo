@@ -1,0 +1,14 @@
+{
+  "productionBuild": "passed",
+  "typecheck": "passed by next build",
+  "productionMigration": false,
+  "subscriptionScenarioGroups": 9,
+  "browser": "Platform context -> directory/search -> customer detail; 320/390px no horizontal overflow; visible 44px invoice action; Escape focus restoration; final invoice action focuses heading; owner-own billing has no admin financial actions",
+  "preview": "http://127.0.0.1:3001/app/settings",
+  "branch": "codex/phase4c-saas-billing",
+  "unitTests": 22,
+  "finalChangeScope": "Final refinements are UI-only: honest expiry labels, responsive invoice rows, visible actions, and invoice focus navigation.",
+  "externalEmail": false,
+  "completedAt": "2026-10-18T11:40:42.6628910Z",
+  "apiScenarioGroups": 68
+}

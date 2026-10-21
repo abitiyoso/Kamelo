@@ -1,0 +1,3041 @@
+/* Approved v7 CSS, isolated from the existing backoffice. */
+#kamelo-public,
+#kamelo-public :where(*) {
+  all: revert;
+  box-sizing: border-box;
+}
+#kamelo-public {
+  display: block;
+  font-size: 16px;
+  line-height: normal;
+}
+
+#kamelo-public {
+  --green: #123d31;
+  --green2: #176448;
+  --green3: #0d2b23;
+  --paper: #f9f7f1;
+  --cream: #f2eee6;
+  --ink: #1e302a;
+  --muted: #67776f;
+  --line: #e5e8e2;
+  --white: #fff;
+  --mint: #e6f1eb;
+  --gold: #b99e75;
+  --shadow: 0 18px 56px rgba(17, 52, 40, 0.075);
+  --radius: 24px;
+}
+#kamelo-public * {
+  box-sizing: border-box;
+}
+html:has(#kamelo-public) {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+#kamelo-public {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+#kamelo-public a {
+  color: inherit;
+  text-decoration: none;
+}
+#kamelo-public button,
+#kamelo-public input {
+  font: inherit;
+}
+#kamelo-public button {
+  cursor: pointer;
+}
+#kamelo-public button:focus-visible,
+#kamelo-public a:focus-visible,
+#kamelo-public input:focus-visible,
+#kamelo-public summary:focus-visible {
+  outline: 3px solid #77b997;
+  outline-offset: 3px;
+}
+#kamelo-public img {
+  display: block;
+  max-width: 100%;
+}
+#kamelo-public h1,
+#kamelo-public h2,
+#kamelo-public h3,
+#kamelo-public h4,
+#kamelo-public p {
+  margin-top: 0;
+}
+#kamelo-public h1,
+#kamelo-public h2,
+#kamelo-public h3 {
+  letter-spacing: -0.047em;
+  line-height: 1.095;
+}
+#kamelo-public p {
+  line-height: 1.65;
+  color: var(--muted);
+}
+#kamelo-public .container {
+  width: min(1224px, calc(100% - 56px));
+  margin-inline: auto;
+}
+#kamelo-public .section {
+  padding: 82px 0;
+}
+#kamelo-public .eyebrow {
+  color: var(--green2);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 19px;
+}
+#kamelo-public .eyebrow:before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
+}
+#kamelo-public .section-title {
+  font-size: clamp(34px, 3.8vw, 55px);
+  font-weight: 740;
+  max-width: 740px;
+  margin: 0 0 15px;
+}
+#kamelo-public .lead {
+  font-size: 17px;
+  max-width: 690px;
+}
+#kamelo-public .caption {
+  font-size: 12px;
+  color: #7a8881;
+}
+#kamelo-public .btn {
+  border-radius: 11px;
+  padding: 13px 20px;
+  font-weight: 750;
+  font-size: 13px;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  justify-content: center;
+  background: var(--green);
+  color: #fff;
+  min-height: 46px;
+  transition: 0.2s;
+}
+#kamelo-public .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 13px 25px rgba(18, 61, 49, 0.13);
+}
+#kamelo-public .btn.outline {
+  color: var(--green);
+  background: rgba(255, 255, 255, 0.87);
+  border-color: #cbdad1;
+}
+#kamelo-public .btn.ghost {
+  background: transparent;
+  color: var(--green);
+  border-color: #baccbf;
+}
+#kamelo-public .btn-light {
+  background: #fff;
+  color: var(--green);
+}
+#kamelo-public .pill {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: #456353;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+}
+#kamelo-public .card {
+  background: var(--white);
+  border: 1px solid #e7eae5;
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+#kamelo-public .icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 20px;
+}
+#kamelo-public .header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #e9eee9;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+#kamelo-public .nav-bar {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+#kamelo-public .logo {
+  width: 165px;
+  aspect-ratio: 565/184;
+  object-fit: contain;
+  object-position: left center;
+}
+#kamelo-public .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-size: 13px;
+  font-weight: 660;
+  color: #41564c;
+}
+#kamelo-public .nav-links a:hover {
+  color: var(--green2);
+}
+#kamelo-public .nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#kamelo-public .burger {
+  display: none;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  color: var(--green);
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
+}
+#kamelo-public .mobile-menu {
+  display: none;
+  position: absolute;
+  top: 78px;
+  left: 0;
+  right: 0;
+  background: white;
+  border-bottom: 1px solid var(--line);
+  padding: 15px 26px 24px;
+  box-shadow: var(--shadow);
+}
+#kamelo-public .mobile-menu.open {
+  display: grid;
+  gap: 2px;
+}
+#kamelo-public .mobile-menu a {
+  padding: 12px 0;
+  font-weight: 650;
+  border-bottom: 1px solid #edf0eb;
+}
+#kamelo-public .mobile-menu a:last-child {
+  border: 0;
+}
+#kamelo-public .hero {
+  position: relative;
+  padding: 30px 0 32px;
+}
+#kamelo-public .hero-content {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  gap: 0;
+  min-height: 540px;
+  background: var(--paper);
+  overflow: hidden;
+}
+#kamelo-public .hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 50px 30px 0;
+  z-index: 2;
+}
+#kamelo-public .hero-left h1 {
+  font-size: clamp(45px, 5.15vw, 76px);
+  line-height: 1.04;
+  font-weight: 790;
+  margin: 0 0 20px;
+}
+#kamelo-public .hero-left h1 em {
+  font-style: normal;
+  color: var(--green2);
+}
+#kamelo-public .hero-left p {
+  font-size: 18px;
+  max-width: 520px;
+  line-height: 1.7;
+  margin: 0;
+}
+#kamelo-public .hero-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+#kamelo-public .hero-under {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 25px;
+  font-size: 12px;
+  color: #5a6f64;
+  font-weight: 650;
+}
+#kamelo-public .hero-under svg {
+  width: 18px;
+  height: 18px;
+  color: var(--green2);
+}
+#kamelo-public .hero-art {
+  position: relative;
+  border-radius: 0 28px 28px 0;
+  min-height: 540px;
+  background: #233c2d;
+  overflow: hidden;
+}
+#kamelo-public .hero-art > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  filter: saturate(0.96);
+}
+#kamelo-public .hero-art:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(6, 32, 25, 0.27), transparent 50%);
+}
+#kamelo-public .hero-floating {
+  position: absolute;
+  z-index: 2;
+  bottom: 29px;
+  left: 25px;
+  right: 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 11px;
+}
+#kamelo-public .floating-widget {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 45px rgba(16, 49, 39, 0.18);
+  border-radius: 16px;
+  padding: 16px;
+}
+#kamelo-public .floating-widget .w-label {
+  font-size: 11px;
+  color: #71837a;
+  font-weight: 650;
+}
+#kamelo-public .floating-widget strong {
+  display: block;
+  font-size: 20px;
+  letter-spacing: -0.035em;
+  color: var(--green);
+  margin: 6px 0 4px;
+}
+#kamelo-public .floating-widget span {
+  font-size: 11px;
+  color: #60756b;
+}
+#kamelo-public .mini-dots {
+  display: flex;
+  gap: 4px;
+  margin-top: 13px;
+}
+#kamelo-public .mini-dots i {
+  height: 5px;
+  border-radius: 10px;
+  background: #dfe9e2;
+  flex: 1;
+}
+#kamelo-public .mini-dots i.done {
+  background: #2d9068;
+}
+#kamelo-public .proof-strip {
+  background: #fff;
+  border-top: 1px solid #edf0ea;
+  border-bottom: 1px solid #edf0ea;
+}
+#kamelo-public .proof-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+#kamelo-public .proof-item {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  padding: 21px 18px;
+  border-right: 1px solid var(--line);
+  font-size: 13px;
+  font-weight: 720;
+}
+#kamelo-public .proof-item:first-child {
+  padding-left: 0;
+}
+#kamelo-public .proof-item:last-child {
+  border-right: 0;
+}
+#kamelo-public .proof-icon {
+  display: grid;
+  place-items: center;
+  background: var(--mint);
+  color: var(--green);
+  width: 39px;
+  height: 39px;
+  flex: 0 0 39px;
+  border-radius: 13px;
+}
+#kamelo-public .audience-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 27px;
+}
+#kamelo-public .persona-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+#kamelo-public .persona-card {
+  position: relative;
+  height: 394px;
+  overflow: hidden;
+  border-radius: 22px;
+  color: white;
+  background: #1a4030;
+}
+#kamelo-public .persona-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s;
+}
+#kamelo-public .persona-card:hover img {
+  transform: scale(1.045);
+}
+#kamelo-public .persona-card:first-child img {
+  transform: scaleX(-1);
+  object-position: center center;
+}
+#kamelo-public .persona-card:first-child:hover img {
+  transform: scaleX(-1) scale(1.045);
+}
+#kamelo-public .persona-card:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      0deg,
+      rgba(7, 34, 26, 0.9) 0%,
+      rgba(7, 34, 26, 0.46) 39%,
+      transparent 77%
+    ),
+    linear-gradient(90deg, rgba(7, 34, 26, 0.3), transparent 64%);
+}
+#kamelo-public .persona-text {
+  position: absolute;
+  z-index: 2;
+  left: 27px;
+  right: 24px;
+  bottom: 25px;
+}
+#kamelo-public .persona-text .pill {
+  background: rgba(255, 255, 255, 0.93);
+  color: var(--green);
+}
+#kamelo-public .persona-text h3 {
+  font-size: 30px;
+  color: white;
+  margin: 14px 0 11px;
+  max-width: 450px;
+}
+#kamelo-public .persona-text p {
+  color: #eff7f1;
+  font-size: 13px;
+  max-width: 480px;
+  margin: 0 0 17px;
+}
+#kamelo-public .persona-more {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  background: #fff;
+  color: var(--green);
+  border: 0;
+  border-radius: 100px;
+  width: 39px;
+  height: 39px;
+  justify-content: center;
+  font-weight: 800;
+}
+#kamelo-public .persona-lines {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 11px;
+}
+#kamelo-public .persona-lines span {
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 5px 9px;
+  font-size: 11px;
+}
+#kamelo-public .solve-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 19px;
+}
+#kamelo-public .solve-item {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  background: #fff;
+  padding: 19px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+}
+#kamelo-public .solve-item .proof-icon {
+  background: #eff4ef;
+}
+#kamelo-public .solve-item strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+#kamelo-public .solve-item p {
+  font-size: 12px;
+  margin: 0;
+}
+#kamelo-public .feature-photo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 36px;
+}
+#kamelo-public .feature-photo.reverse .picture {
+  order: 2;
+}
+#kamelo-public .picture {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #d9dfd4;
+  box-shadow: var(--shadow);
+  min-height: 405px;
+}
+#kamelo-public .picture > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+#kamelo-public .picture .photo-overlay {
+  position: absolute;
+  z-index: 3;
+  bottom: 18px;
+  left: 18px;
+  right: 18px;
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+#kamelo-public .picture .photo-overlay .small-glass {
+  background: rgba(255, 255, 255, 0.94);
+  padding: 12px 15px;
+  border-radius: 13px;
+  box-shadow: 0 10px 23px rgba(0, 0, 0, 0.1);
+  font-size: 12px;
+  color: var(--green);
+  font-weight: 750;
+}
+#kamelo-public .feature-text h2 {
+  font-size: clamp(35px, 3.8vw, 52px);
+  margin: 0 0 15px;
+}
+#kamelo-public .feature-text p {
+  font-size: 16px;
+  max-width: 490px;
+}
+#kamelo-public .short-features {
+  display: grid;
+  gap: 17px;
+  margin-top: 24px;
+}
+#kamelo-public .short-feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #385f4c;
+}
+#kamelo-public .short-feature .proof-icon {
+  width: 35px;
+  height: 35px;
+  flex-basis: 35px;
+}
+#kamelo-public .demo-section {
+  background: linear-gradient(180deg, #f2f0e8, #f7f5f0);
+}
+#kamelo-public .demo-head {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
+}
+#kamelo-public .tab-row {
+  display: flex;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 6px;
+  border-radius: 12px;
+  width: max-content;
+}
+#kamelo-public .tab {
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #657970;
+  font-size: 13px;
+  font-weight: 730;
+  min-width: 108px;
+}
+#kamelo-public .tab.active {
+  background: var(--green);
+  color: #fff;
+}
+#kamelo-public .demo-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(285px, 0.65fr);
+  gap: 22px;
+  align-items: stretch;
+}
+#kamelo-public .demo-device {
+  background: #fff;
+  border: 1px solid #e4e9e3;
+  border-radius: 20px;
+  padding: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+#kamelo-public .browser-top {
+  height: 32px;
+  border-radius: 9px 9px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f3f5f1;
+  border: 1px solid #e9ece8;
+  padding: 0 12px;
+}
+#kamelo-public .browser-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cbd7ce;
+}
+#kamelo-public .browser-url {
+  margin: auto;
+  font-size: 11px;
+  color: #8a968d;
+}
+#kamelo-public .product-window {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 10px 10px;
+  height: 560px;
+  background: #f5f6f2;
+}
+#kamelo-public .product-window img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  background: #f5f6f2;
+}
+#kamelo-public .demo-info {
+  background: var(--green);
+  border-radius: 22px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+#kamelo-public .demo-info .eyebrow {
+  color: #c6d9c8;
+}
+#kamelo-public .demo-info h3 {
+  font-size: 35px;
+  color: #fff;
+  margin: 0 0 13px;
+}
+#kamelo-public .demo-info > p {
+  color: #cdded3;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 22px;
+}
+#kamelo-public .demo-feature-list {
+  display: grid;
+  gap: 14px;
+  margin-bottom: auto;
+}
+#kamelo-public .demo-feature-list div {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 13px;
+  color: #f2fbf7;
+}
+#kamelo-public .demo-check {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  display: grid;
+  place-items: center;
+}
+#kamelo-public .demo-info .btn {
+  margin-top: 30px;
+}
+#kamelo-public .demo-arrows {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+#kamelo-public .round-btn {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  height: 44px;
+  width: 44px;
+  font-size: 18px;
+  color: var(--green);
+}
+#kamelo-public .demo-arrows .round-btn:hover {
+  background: var(--green);
+  color: #fff;
+}
+#kamelo-public .cctv-photo {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 22px;
+  align-items: center;
+}
+#kamelo-public .cctv-visual {
+  overflow: visible;
+  padding: 13px;
+  background: #fff;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+#kamelo-public .cctv-frame {
+  position: relative;
+  overflow: hidden;
+  height: 370px;
+  border-radius: 15px;
+  background: #263d31;
+}
+#kamelo-public .cctv-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#kamelo-public .cam-chip {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.93);
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+#kamelo-public .cctv-thumbs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+#kamelo-public .cctv-thumbs button {
+  padding: 0;
+  height: 124px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: #ddd;
+  border: 3px solid transparent;
+}
+#kamelo-public .cctv-thumbs button.active {
+  border-color: var(--green);
+}
+#kamelo-public .cctv-thumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#kamelo-public .cctv-thumbs span {
+  position: absolute;
+  bottom: 7px;
+  left: 10px;
+  font-size: 11px;
+  font-weight: 750;
+  color: #fff;
+  text-shadow: 0 1px 4px #000;
+}
+#kamelo-public .cctv-values {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+#kamelo-public .cctv-value {
+  background: #f7faf7;
+  border: 1px solid #e3ebe5;
+  border-radius: 14px;
+  padding: 14px 14px 12px;
+}
+#kamelo-public .cctv-value strong {
+  display: block;
+  color: var(--green);
+  font-size: 26px;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+#kamelo-public .cctv-value span {
+  display: block;
+  font-size: 12px;
+  color: #60756a;
+  line-height: 1.45;
+}
+#kamelo-public .cctv-value small {
+  display: block;
+  color: #8a978f;
+  font-size: 11px;
+  margin-top: 4px;
+}
+#kamelo-public .smart-story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  align-items: center;
+}
+#kamelo-public .smart-picture {
+  position: relative;
+  min-height: 460px;
+  border-radius: 22px;
+  overflow: hidden;
+}
+#kamelo-public .smart-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#kamelo-public .smart-chip {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  width: min(250px, 65%);
+  border-radius: 15px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+}
+#kamelo-public .smart-chip strong {
+  font-size: 15px;
+}
+#kamelo-public .smart-row {
+  border-bottom: 1px solid #ebefeb;
+  padding: 11px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+#kamelo-public .smart-row:last-child {
+  border: 0;
+}
+#kamelo-public .smart-led {
+  width: 36px;
+  height: 21px;
+  background: var(--green2);
+  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 3px;
+}
+#kamelo-public .smart-led:after {
+  content: "";
+  background: #fff;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+#kamelo-public .smart-led.off {
+  background: #d6ded7;
+  justify-content: flex-start;
+}
+#kamelo-public .pricing-head {
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto 32px;
+}
+#kamelo-public .pricing-head h2 {
+  max-width: none;
+}
+#kamelo-public .price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+#kamelo-public .price-card {
+  background: #fff;
+  border: 1px solid #e4e8e2;
+  border-radius: 20px;
+  padding: 27px;
+  position: relative;
+}
+#kamelo-public .price-card.featured {
+  border: 1px solid #b7aa8d;
+  box-shadow: 0 19px 45px rgba(16, 61, 49, 0.095);
+}
+#kamelo-public .price-card .popular {
+  position: absolute;
+  top: -13px;
+  right: 20px;
+  background: #b69b71;
+  color: #fff;
+  padding: 6px 11px;
+  font-size: 10px;
+  border-radius: 100px;
+  font-weight: 800;
+}
+#kamelo-public .price-card h3 {
+  font-size: 21px;
+}
+#kamelo-public .price-amount {
+  font-size: 37px;
+  font-weight: 830;
+  letter-spacing: -0.05em;
+  color: var(--green);
+  margin: 14px 0 5px;
+}
+#kamelo-public .price-amount span {
+  font-size: 13px;
+  letter-spacing: 0;
+  font-weight: 500;
+  color: #75837a;
+}
+#kamelo-public .price-card p {
+  font-size: 13px;
+  min-height: 45px;
+}
+#kamelo-public .price-line {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 9px 0;
+  font-size: 13px;
+}
+#kamelo-public .price-line svg {
+  color: #317d5b;
+  width: 16px;
+  height: 16px;
+}
+#kamelo-public .price-card .btn {
+  width: 100%;
+  margin-top: 20px;
+}
+#kamelo-public .add-on {
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  padding: 20px 23px;
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+  align-items: center;
+}
+#kamelo-public .add-on b {
+  color: var(--green);
+}
+#kamelo-public .add-on p {
+  margin: 4px 0 0;
+  font-size: 13px;
+}
+#kamelo-public .faq {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+}
+#kamelo-public .faq-details {
+  display: grid;
+  gap: 11px;
+}
+#kamelo-public .faq-details details {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+#kamelo-public .faq-details summary {
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 740;
+  cursor: pointer;
+}
+#kamelo-public .faq-details p {
+  margin: 12px 0 0;
+  font-size: 13px;
+}
+#kamelo-public .end-cta {
+  background: var(--green);
+  border-radius: 24px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  min-height: 342px;
+}
+#kamelo-public .end-cta .cta-copy {
+  padding: 50px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#kamelo-public .end-cta .eyebrow {
+  color: #cbdbcd;
+}
+#kamelo-public .end-cta h2 {
+  color: #fff;
+  font-size: clamp(33px, 3.5vw, 52px);
+  margin: 0 0 16px;
+}
+#kamelo-public .end-cta p {
+  color: #c9e0d2;
+}
+#kamelo-public .end-cta .cta-actions {
+  display: flex;
+  gap: 9px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+#kamelo-public .end-cta .cta-visual {
+  overflow: hidden;
+  position: relative;
+}
+#kamelo-public .end-cta .cta-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#kamelo-public .end-cta .cta-visual:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(18, 61, 49, 0.35), transparent);
+}
+#kamelo-public footer {
+  background: #0b2a22;
+  color: #d7e6dc;
+  margin-top: 82px;
+  padding: 49px 0 24px;
+}
+#kamelo-public .footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.6fr 0.6fr 0.8fr;
+  gap: 28px;
+}
+#kamelo-public .footer-brand {
+  background: #fff;
+  border-radius: 12px;
+  width: 176px;
+  padding: 7px;
+}
+#kamelo-public .footer-brand img {
+  width: 100%;
+}
+#kamelo-public .footer-grid h4 {
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 0.07em;
+  margin-bottom: 16px;
+}
+#kamelo-public .footer-grid a,
+#kamelo-public .footer-grid p {
+  display: block;
+  font-size: 13px;
+  color: #bbd0c2;
+  line-height: 1.95;
+  margin: 0;
+}
+#kamelo-public .footer-grid a:hover {
+  color: #fff;
+}
+#kamelo-public .copyright {
+  margin-top: 35px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+  color: #93b1a1;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+@media (max-width: 1060px) {
+  #kamelo-public .nav-links {
+    gap: 16px;
+  }
+  #kamelo-public .nav-actions .btn:first-child {
+    display: none;
+  }
+  #kamelo-public .hero-left h1 {
+    font-size: 55px;
+  }
+  #kamelo-public .solve-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+  #kamelo-public .hero-art {
+    min-height: 480px;
+  }
+  #kamelo-public .demo-shell {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .demo-info {
+    min-height: 330px;
+  }
+  #kamelo-public .pricing-head {
+    max-width: 650px;
+  }
+}
+@media (max-width: 800px) {
+  #kamelo-public .container {
+    width: min(100% - 34px, 1224px);
+  }
+  #kamelo-public .nav-bar {
+    height: 72px;
+  }
+  #kamelo-public .logo {
+    width: 139px;
+  }
+  #kamelo-public .nav-links,
+  #kamelo-public .nav-actions .btn {
+    display: none;
+  }
+  #kamelo-public .burger {
+    display: flex;
+  }
+  #kamelo-public .mobile-menu {
+    top: 72px;
+  }
+  #kamelo-public .hero {
+    padding: 12px 0 19px;
+  }
+  #kamelo-public .hero-content {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .hero-left {
+    padding: 26px 0 22px;
+  }
+  #kamelo-public .hero-left h1 {
+    font-size: clamp(43px, 7vw, 64px);
+  }
+  #kamelo-public .hero-left p {
+    font-size: 16px;
+  }
+  #kamelo-public .hero-art {
+    min-height: 440px;
+    border-radius: 20px;
+  }
+  #kamelo-public .hero-floating {
+    bottom: 15px;
+    left: 13px;
+    right: 13px;
+  }
+  #kamelo-public .floating-widget {
+    padding: 11px;
+  }
+  #kamelo-public .floating-widget strong {
+    font-size: 17px;
+  }
+  #kamelo-public .proof-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  #kamelo-public .proof-item {
+    padding: 14px !important;
+    border-bottom: 1px solid var(--line);
+  }
+  #kamelo-public .proof-item:nth-child(2) {
+    border-right: 0;
+  }
+  #kamelo-public .persona-grid,
+  #kamelo-public .feature-photo,
+  #kamelo-public .smart-story,
+  #kamelo-public .cctv-photo,
+  #kamelo-public .faq {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .feature-photo.reverse .picture {
+    order: 0;
+  }
+  #kamelo-public .feature-text {
+    order: 1;
+  }
+  #kamelo-public .feature-photo.reverse .feature-text {
+    order: 1;
+  }
+  #kamelo-public .persona-card {
+    height: 340px;
+  }
+  #kamelo-public .section {
+    padding: 65px 0;
+  }
+  #kamelo-public .demo-head {
+    display: block;
+  }
+  #kamelo-public .demo-head .tab-row {
+    margin-top: 20px;
+  }
+  #kamelo-public .demo-shell {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .smart-picture {
+    min-height: 400px;
+  }
+  #kamelo-public .product-window {
+    height: 540px;
+    min-height: 540px;
+  }
+  #kamelo-public .laptop-screen {
+    height: 360px;
+  }
+  #kamelo-public .phone-screen {
+    height: 470px;
+  }
+  #kamelo-public .price-grid {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .add-on {
+    display: block;
+  }
+  #kamelo-public .add-on .btn {
+    margin-top: 18px;
+  }
+  #kamelo-public .end-cta {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .end-cta .cta-copy {
+    padding: 35px;
+  }
+  #kamelo-public .end-cta .cta-visual {
+    height: 230px;
+  }
+  #kamelo-public .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 500px) {
+  #kamelo-public .hero-left h1 {
+    font-size: 44px;
+  }
+  #kamelo-public .hero-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  #kamelo-public .hero-buttons .btn {
+    padding: 12px;
+  }
+  #kamelo-public .hero-art {
+    min-height: 370px;
+  }
+  #kamelo-public .hero-floating {
+    grid-template-columns: 1fr 1fr;
+  }
+  #kamelo-public .floating-widget {
+    padding: 9px;
+  }
+  #kamelo-public .floating-widget strong {
+    font-size: 15px;
+  }
+  #kamelo-public .floating-widget span,
+  #kamelo-public .floating-widget .w-label {
+    font-size: 10px;
+  }
+  #kamelo-public .proof-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  #kamelo-public .proof-item {
+    font-size: 11px;
+  }
+  #kamelo-public .proof-icon {
+    width: 33px;
+    height: 33px;
+    flex: 0 0 33px;
+  }
+  #kamelo-public .solve-strip {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .persona-text h3 {
+    font-size: 27px;
+  }
+  #kamelo-public .demo-head .tab-row {
+    width: 100%;
+    justify-content: space-between;
+  }
+  #kamelo-public .tab {
+    min-width: 0;
+    flex: 1;
+    padding: 10px;
+  }
+  #kamelo-public .stage-feature {
+    font-size: 11px;
+  }
+  #kamelo-public .product-window {
+    height: 390px;
+    min-height: 390px;
+    padding: 14px;
+  }
+  #kamelo-public .laptop-screen {
+    height: 270px;
+  }
+  #kamelo-public .phone-frame {
+    width: min(250px, 88%);
+    padding: 10px;
+    border-radius: 28px;
+  }
+  #kamelo-public .phone-screen {
+    height: 320px;
+  }
+  #kamelo-public .demo-info h3 {
+    font-size: 28px;
+  }
+  #kamelo-public .demo-info {
+    padding: 24px;
+  }
+  #kamelo-public .picture {
+    min-height: 275px;
+  }
+  #kamelo-public .smart-picture {
+    min-height: 340px;
+  }
+  #kamelo-public .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  #kamelo-public .end-cta .cta-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Kamelo v5.5 UX refinement — preserves existing design and original logo */
+#kamelo-public .header {
+  background: rgba(255, 255, 255, 0.94);
+  transition:
+    box-shadow 0.22s ease,
+    background 0.22s ease;
+}
+#kamelo-public .header.is-scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 8px 32px rgba(15, 51, 39, 0.075);
+}
+#kamelo-public .nav-links a {
+  position: relative;
+  transition: color 0.2s;
+}
+#kamelo-public .nav-links a::after {
+  content: "";
+  height: 2px;
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+  right: 100%;
+  background: var(--green2);
+  border-radius: 3px;
+  transition: right 0.2s;
+}
+#kamelo-public .nav-links a:hover::after,
+#kamelo-public .nav-links a[aria-current="location"]::after {
+  right: 0;
+}
+#kamelo-public .nav-actions .btn {
+  border-radius: 12px;
+}
+#kamelo-public .demo-head {
+  align-items: flex-end;
+}
+#kamelo-public .demo-shell {
+  grid-template-columns: minmax(0, 1.55fr) minmax(290px, 0.65fr);
+  align-items: start;
+}
+#kamelo-public .demo-device {
+  min-width: 0;
+  overflow: hidden;
+}
+#kamelo-public .demo-info {
+  min-width: 0;
+  align-self: stretch;
+  min-height: 660px;
+}
+#kamelo-public .browser-top {
+  position: relative;
+}
+#kamelo-public .browser-expand {
+  border: 0;
+  background: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green);
+  cursor: pointer;
+}
+#kamelo-public .browser-expand:hover {
+  background: var(--mint);
+}
+#kamelo-public .feature-picker {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 3px 8px;
+  scrollbar-width: thin;
+}
+#kamelo-public .dashboard-picker {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 0 3px 12px;
+  scrollbar-width: thin;
+}
+#kamelo-public .section-chip {
+  border: 1px solid #e2e8e2;
+  background: #fff;
+  color: #567064;
+  padding: 8px 11px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 730;
+  white-space: nowrap;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+#kamelo-public .section-chip:hover {
+  border-color: #abc7b5;
+  background: #f8faf8;
+}
+#kamelo-public .section-chip.active {
+  background: #103d31;
+  color: #fff;
+  border-color: #103d31;
+}
+#kamelo-public .feature-button {
+  border: 1px solid #dee8e0;
+  background: white;
+  color: #4b6257;
+  padding: 10px 13px;
+  min-height: 41px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 730;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+#kamelo-public .feature-button:hover {
+  border-color: #a9c5b4;
+  background: #f7faf7;
+}
+#kamelo-public .feature-button.active {
+  background: var(--mint);
+  border-color: #a8c8b4;
+  color: var(--green);
+}
+#kamelo-public .product-window {
+  height: 590px;
+  min-height: 590px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #edf2ed, #f6f2ea);
+  overflow: hidden;
+  border: 1px solid #edf0eb;
+  border-radius: 0 0 14px 14px;
+  padding: 24px;
+  cursor: zoom-in;
+}
+#kamelo-public .device-shell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+#kamelo-public .device-screen {
+  pointer-events: auto;
+  overflow: auto;
+  scroll-behavior: smooth;
+  background: #fff;
+  scrollbar-width: thin;
+}
+#kamelo-public .laptop-frame {
+  width: min(100%, 960px);
+  background: #111f1a;
+  border-radius: 20px;
+  padding: 14px 14px 20px;
+  box-shadow: 0 20px 45px rgba(18, 61, 49, 0.16);
+}
+#kamelo-public .laptop-screen {
+  height: 450px;
+  border-radius: 14px;
+  background: #eff3ef;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+#kamelo-public .laptop-base {
+  width: 88%;
+  height: 14px;
+  border-radius: 0 0 18px 18px;
+  background: linear-gradient(180deg, #cad5cf, #aab7af);
+  margin: 0 auto;
+  position: relative;
+  top: -1px;
+}
+#kamelo-public .laptop-base:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 2px;
+  width: 16%;
+  height: 4px;
+  border-radius: 999px;
+  background: #889891;
+}
+#kamelo-public .phone-frame {
+  width: min(330px, 86%);
+  padding: 14px;
+  background: #10281f;
+  border-radius: 36px;
+  box-shadow: 0 20px 45px rgba(18, 61, 49, 0.16);
+  position: relative;
+}
+#kamelo-public .phone-frame:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 8px;
+  width: 34%;
+  height: 18px;
+  border-radius: 0 0 12px 12px;
+  background: #071711;
+  z-index: 3;
+}
+#kamelo-public .phone-screen {
+  height: 560px;
+  border-radius: 24px;
+  background: #eff3ef;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+#kamelo-public .device-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  object-fit: cover;
+  object-position: top center;
+  background: transparent;
+}
+#kamelo-public .product-window.phone-mode {
+  height: 640px;
+  min-height: 640px;
+}
+#kamelo-public .window-foot {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 3px 1px;
+  color: #72837a;
+  font-size: 11px;
+}
+#kamelo-public .window-foot #screenCounter {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--green);
+}
+#kamelo-public .demo-current {
+  display: inline-block;
+  color: #e4efea;
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  border-radius: 9px;
+  padding: 8px 11px;
+  margin-bottom: 18px;
+  font-size: 12px;
+  font-weight: 750;
+}
+#kamelo-public .demo-feature-list {
+  margin-bottom: 24px;
+}
+#kamelo-public .demo-side-actions {
+  margin-top: auto;
+  display: grid;
+  gap: 12px;
+}
+#kamelo-public .demo-side-actions .btn {
+  margin: 0;
+  display: flex;
+  width: 100%;
+}
+#kamelo-public .demo-detail {
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  text-align: left;
+  padding: 13px 14px;
+  border-radius: 12px;
+  font-weight: 730;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+#kamelo-public .demo-detail:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+#kamelo-public .demo-arrows {
+  align-items: center;
+}
+#kamelo-public .demo-arrow-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+#kamelo-public .cctv-photo {
+  align-items: center;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+}
+#kamelo-public .cctv-visual {
+  align-self: center;
+  max-width: 100%;
+  overflow: hidden;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+#kamelo-public .cctv-frame {
+  height: auto;
+  aspect-ratio: 16/9;
+  min-height: 270px;
+  flex-shrink: 0;
+}
+#kamelo-public .cctv-frame img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  background: #1b2d27;
+}
+#kamelo-public .cctv-thumbs {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 10px;
+}
+#kamelo-public .cctv-thumbs button {
+  min-width: 0;
+  height: 96px;
+}
+#kamelo-public .cctv-thumbs button:hover {
+  border-color: #8fbca2;
+}
+#kamelo-public .cctv-support-copy {
+  font-size: 12px;
+  padding: 8px 4px 0;
+  margin: 0;
+  color: var(--muted);
+}
+#kamelo-public .preview-dialog {
+  width: min(1180px, 95vw);
+  max-height: 92vh;
+  border: none;
+  border-radius: 20px;
+  padding: 0;
+  background: #f7f7f3;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.22);
+}
+#kamelo-public .preview-dialog::backdrop {
+  background: rgba(9, 35, 27, 0.72);
+  backdrop-filter: blur(6px);
+}
+#kamelo-public .preview-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.07);
+}
+#kamelo-public .preview-dialog-head strong {
+  font-size: 15px;
+  color: var(--green);
+}
+#kamelo-public .preview-dialog-head button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--green);
+  cursor: pointer;
+}
+#kamelo-public .preview-dialog-body {
+  overflow: auto;
+  max-height: calc(92vh - 78px);
+  display: grid;
+  place-items: start center;
+  padding: 20px;
+}
+#kamelo-public .preview-dialog-body img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+@media (max-width: 1060px) {
+  #kamelo-public .demo-shell {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .demo-info {
+    min-height: 310px;
+  }
+  #kamelo-public .cctv-photo {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 800px) {
+  #kamelo-public .demo-head {
+    display: block;
+  }
+  #kamelo-public .demo-info {
+    min-height: unset;
+  }
+  #kamelo-public .product-window {
+    min-height: 0;
+  }
+  #kamelo-public .product-window:not(.phone-mode) img {
+    height: auto;
+    width: 100%;
+  }
+  #kamelo-public .product-window.phone-mode {
+    height: 560px;
+  }
+  #kamelo-public .cctv-frame {
+    min-height: 0;
+  }
+  #kamelo-public .cctv-thumbs button {
+    height: 100px;
+  }
+}
+@media (max-width: 500px) {
+  #kamelo-public .demo-info {
+    padding: 25px;
+  }
+  #kamelo-public .demo-info h3 {
+    font-size: 28px;
+  }
+  #kamelo-public .product-window {
+    height: auto;
+    min-height: 0;
+  }
+  #kamelo-public .product-window.phone-mode {
+    height: 430px;
+  }
+  #kamelo-public .product-window:not(.phone-mode) img {
+    height: auto;
+    width: 100%;
+  }
+  #kamelo-public .feature-button {
+    font-size: 11px;
+    padding: 10px 11px;
+  }
+  #kamelo-public .browser-expand {
+    font-size: 10px;
+    padding: 6px;
+  }
+  #kamelo-public .browser-url {
+    font-size: 9px;
+  }
+  #kamelo-public .cctv-thumbs button {
+    height: 75px;
+  }
+  #kamelo-public .cctv-thumbs span {
+    font-size: 10px;
+  }
+  #kamelo-public .window-foot span:last-child {
+    display: none;
+  }
+  #kamelo-public .preview-dialog-body {
+    padding: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #kamelo-public .nav-links a,
+  #kamelo-public .feature-button {
+    transition: none;
+  }
+}
+
+#kamelo-public [hidden] {
+  display: none !important;
+}
+
+/* Kamelo product tour: full-width, content-fitted, responsive tabbed workspace. */
+#kamelo-public .ks-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+#kamelo-public .ks-intro .section-title {
+  max-width: 780px;
+}
+#kamelo-public .ks-roles {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid #e0e6df;
+  border-radius: 16px;
+  flex-shrink: 0;
+}
+#kamelo-public .ks-role {
+  background: transparent;
+  border: 0;
+  padding: 12px 18px;
+  border-radius: 11px;
+  font-size: 13px;
+  font-weight: 750;
+  color: #52665b;
+  min-width: 92px;
+  transition: 0.2s;
+}
+#kamelo-public .ks-role.active {
+  background: #123d31;
+  color: #fff;
+}
+#kamelo-public .ks-showcase {
+  border: 1.5px solid #163c30;
+  border-radius: 25px;
+  background: #f8faf8;
+  overflow: hidden;
+  box-shadow: 0 18px 48px rgba(23, 56, 41, 0.06);
+}
+#kamelo-public .ks-modulebar {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  background: #fafcf9;
+  border-bottom: 1px solid #dce5dc;
+  scroll-snap-type: x mandatory;
+}
+#kamelo-public .ks-module {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  position: relative;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1 0 auto;
+  min-height: 78px;
+  padding: 15px 19px;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid #e5ebe5;
+  color: #416256;
+  font-size: 13px;
+  font-weight: 750;
+  scroll-snap-align: start;
+}
+#kamelo-public .ks-module:last-child {
+  border-right: 0;
+}
+#kamelo-public .ks-module .ks-num {
+  font-size: 10px;
+  color: #91a198;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+}
+#kamelo-public .ks-module.active {
+  background: #123d31;
+  color: #fff;
+}
+#kamelo-public .ks-module.active .ks-num {
+  color: #95c4aa;
+}
+#kamelo-public .ks-module.active:after {
+  content: "";
+  height: 4px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #33a972;
+}
+#kamelo-public .ks-content-head {
+  padding: 28px 30px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 22px;
+  background: #fff;
+}
+#kamelo-public .ks-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  color: #20724e;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+#kamelo-public .ks-content-head h3 {
+  font-size: clamp(24px, 2.5vw, 39px);
+  font-weight: 790;
+  margin: 0 0 8px;
+  line-height: 1.1;
+  color: #153d30;
+  letter-spacing: -0.04em;
+}
+#kamelo-public .ks-content-head p {
+  font-size: 14px;
+  margin: 0;
+  max-width: 720px;
+}
+#kamelo-public .ks-context {
+  white-space: nowrap;
+  border: 1px solid #cde3d5;
+  border-radius: 999px;
+  background: #eaf6ed;
+  color: #286344;
+  font-size: 11px;
+  font-weight: 770;
+  padding: 9px 11px;
+}
+#kamelo-public .ks-status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2aa86a;
+  margin-right: 4px;
+}
+#kamelo-public .ks-app {
+  margin: 0 30px 25px;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 174px minmax(0, 1fr);
+  border: 1px solid #dee8df;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #f5f7f4;
+  box-shadow: 0 8px 24px rgba(21, 57, 42, 0.04);
+}
+#kamelo-public .ks-aside {
+  background: #103a2d;
+  color: #e5efe9;
+  padding: 17px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+#kamelo-public .ks-aside-brand {
+  background: #fff;
+  border-radius: 11px;
+  padding: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  min-height: 50px;
+}
+#kamelo-public .ks-aside-brand img {
+  width: 125px;
+  height: auto;
+  object-fit: contain;
+}
+#kamelo-public .ks-aside-kicker {
+  padding: 0 7px 8px;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #9bc1af;
+}
+#kamelo-public .ks-aside button {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  color: #c8e0d1;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 11px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#kamelo-public .ks-aside button.active {
+  background: #287153;
+  color: #fff;
+}
+#kamelo-public .ks-aside button:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.08);
+}
+#kamelo-public .ks-app-main {
+  padding: 20px 20px 24px;
+  min-width: 0;
+}
+#kamelo-public .ks-app-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 17px;
+}
+#kamelo-public .ks-app-top-title {
+  font-size: 12px;
+  color: #83958a;
+}
+#kamelo-public .ks-app-top-title b {
+  display: block;
+  font-size: 21px;
+  line-height: 1.2;
+  color: #1a3d30;
+  margin-top: 2px;
+  letter-spacing: -0.035em;
+}
+#kamelo-public .ks-app-top-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#kamelo-public .ks-chip {
+  border: 1px solid #dbe7dd;
+  border-radius: 999px;
+  background: #fff;
+  color: #426451;
+  font-size: 11px;
+  padding: 8px 10px;
+  font-weight: 730;
+}
+#kamelo-public .ks-panel {
+  padding: 16px;
+  border: 1px solid #e3eae2;
+  background: #fff;
+  border-radius: 14px;
+  min-width: 0;
+}
+#kamelo-public .ks-panel h4 {
+  font-size: 15px;
+  color: #183c2d;
+  letter-spacing: -0.025em;
+  margin: 0 0 4px;
+  line-height: 1.25;
+}
+#kamelo-public .ks-panel p {
+  font-size: 12px;
+  margin: 0;
+}
+#kamelo-public .ks-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 12px;
+}
+#kamelo-public .ks-stat {
+  border: 1px solid #e3eae3;
+  border-radius: 12px;
+  padding: 13px;
+  background: #fff;
+}
+#kamelo-public .ks-stat small {
+  display: block;
+  color: #7a8e83;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+#kamelo-public .ks-stat strong {
+  display: block;
+  font-size: 22px;
+  color: #133d2c;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+#kamelo-public .ks-stat em {
+  display: block;
+  font-style: normal;
+  color: #819188;
+  font-size: 10px;
+  margin-top: 7px;
+}
+#kamelo-public .ks-columns {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 12px;
+  align-items: stretch;
+}
+#kamelo-public .ks-hero-card {
+  position: relative;
+  border-radius: 13px;
+  overflow: hidden;
+  min-height: 190px;
+  background: #123e31;
+}
+#kamelo-public .ks-hero-card > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#kamelo-public .ks-hero-card:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(5, 49, 32, 0.9),
+    rgba(8, 61, 40, 0.35) 80%
+  );
+}
+#kamelo-public .ks-hero-copy {
+  position: absolute;
+  z-index: 1;
+  top: 17px;
+  left: 18px;
+  max-width: 75%;
+  color: #fff;
+}
+#kamelo-public .ks-hero-copy small {
+  font-size: 10px;
+  color: #d3e8db;
+}
+#kamelo-public .ks-hero-copy strong {
+  display: block;
+  font-size: 22px;
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+  margin: 7px 0;
+}
+#kamelo-public .ks-hero-copy span {
+  display: block;
+  font-size: 11px;
+  color: #e6eee9;
+}
+#kamelo-public .ks-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+#kamelo-public .ks-line {
+  width: 100%;
+  background: #fff;
+  color: #18382b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  border-bottom: 1px solid #edf1ed;
+  padding: 12px 1px;
+  text-align: left;
+  cursor: pointer;
+  min-width: 0;
+}
+#kamelo-public .ks-line:last-child {
+  border-bottom: 0;
+}
+#kamelo-public .ks-line:hover {
+  background: #f9fbf9;
+}
+#kamelo-public .ks-line b {
+  font-size: 12px;
+  display: block;
+  color: #204231;
+}
+#kamelo-public .ks-line small {
+  font-size: 11px;
+  color: #8b978e;
+  display: block;
+  margin-top: 4px;
+}
+#kamelo-public .ks-line .ks-go {
+  font-size: 11px;
+  background: #15563d;
+  border-radius: 7px;
+  color: #fff;
+  padding: 8px 10px;
+  white-space: nowrap;
+  font-weight: 730;
+}
+#kamelo-public .ks-grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+#kamelo-public .ks-grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+#kamelo-public .ks-gap {
+  margin-top: 12px;
+}
+#kamelo-public .ks-bars {
+  height: 125px;
+  display: flex;
+  gap: 13px;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding-top: 16px;
+}
+#kamelo-public .ks-barcol {
+  width: 100%;
+  max-width: 55px;
+  text-align: center;
+}
+#kamelo-public .ks-barpair {
+  height: 102px;
+  display: flex;
+  gap: 5px;
+  align-items: flex-end;
+  justify-content: center;
+}
+#kamelo-public .ks-bar {
+  width: 16px;
+  background: #176b4d;
+  border-radius: 5px 5px 0 0;
+}
+#kamelo-public .ks-bar.alt {
+  background: #d4bf97;
+}
+#kamelo-public .ks-barcol small {
+  color: #8b978e;
+  font-size: 10px;
+}
+#kamelo-public .ks-roomgrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 11px;
+}
+#kamelo-public .ks-room {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid #e5ece5;
+  background: #fff;
+  border-radius: 13px;
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+  min-width: 0;
+}
+#kamelo-public .ks-room:hover {
+  border-color: #8ab49a;
+}
+#kamelo-public .ks-room strong {
+  color: #183e2e;
+  font-size: 15px;
+}
+#kamelo-public .ks-room small {
+  color: #7d8f85;
+  font-size: 11px;
+}
+#kamelo-public .ks-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 999px;
+  padding: 5px 8px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #236345;
+  background: #e8f4eb;
+  width: max-content;
+}
+#kamelo-public .ks-label.warn {
+  color: #9a6534;
+  background: #fff3e4;
+}
+#kamelo-public .ks-label.muted {
+  color: #586d62;
+  background: #edf0ed;
+}
+#kamelo-public .ks-tbl {
+  border: 1px solid #e3eae3;
+  border-radius: 13px;
+  overflow: hidden;
+  background: #fff;
+}
+#kamelo-public .ks-tblhead,
+#kamelo-public .ks-tblrow {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr auto;
+  gap: 10px;
+  padding: 12px 14px;
+  align-items: center;
+  min-width: 0;
+}
+#kamelo-public .ks-tblhead {
+  background: #eff4f0;
+  font-size: 11px;
+  font-weight: 740;
+  color: #697e70;
+}
+#kamelo-public .ks-tblrow {
+  border: 0;
+  border-top: 1px solid #ebefeb;
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  color: #3d5748;
+}
+#kamelo-public .ks-tblrow:hover {
+  background: #f7faf7;
+}
+#kamelo-public .ks-tblrow b {
+  color: #173d2d;
+}
+#kamelo-public .ks-tblrow .ks-go {
+  font-size: 11px;
+  padding: 7px 10px;
+  border-radius: 7px;
+  background: #e4f1e8;
+  color: #176342;
+  font-weight: 760;
+}
+#kamelo-public .ks-camera {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: #173d30;
+  min-height: 220px;
+}
+#kamelo-public .ks-camera img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+#kamelo-public .ks-camera span {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: rgba(255, 255, 255, 0.93);
+  font-size: 11px;
+  color: #184431;
+  font-weight: 760;
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+#kamelo-public .ks-device {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e9efe9;
+  padding: 13px 0;
+}
+#kamelo-public .ks-device:last-child {
+  border-bottom: 0;
+}
+#kamelo-public .ks-device strong {
+  font-size: 13px;
+  color: #214431;
+}
+#kamelo-public .ks-device small {
+  font-size: 11px;
+  color: #718479;
+}
+#kamelo-public .ks-device .ks-off {
+  color: #75867c;
+  background: #edf1ed;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 11px;
+}
+#kamelo-public .ks-device .ks-on {
+  color: #1f6a44;
+  background: #e3f4e8;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 11px;
+}
+#kamelo-public .ks-mini-btn {
+  border: 1px solid #d2e1d5;
+  border-radius: 10px;
+  background: #fff;
+  color: #14523b;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+#kamelo-public .ks-activity {
+  border-left: 2px solid #dce9dd;
+  margin: 8px 0 0 8px;
+  padding-left: 16px;
+}
+#kamelo-public .ks-activity-row {
+  position: relative;
+  padding: 0 0 16px;
+  font-size: 11px;
+  color: #77867d;
+}
+#kamelo-public .ks-activity-row:before {
+  content: "";
+  position: absolute;
+  left: -21px;
+  top: 3px;
+  height: 8px;
+  width: 8px;
+  background: #286a4d;
+  border-radius: 50%;
+}
+#kamelo-public .ks-activity-row strong {
+  display: block;
+  color: #244837;
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+#kamelo-public .ks-app-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px 23px;
+  gap: 18px;
+  color: #7b8c82;
+  font-size: 12px;
+}
+#kamelo-public .ks-app-foot a {
+  color: #166743;
+  font-weight: 780;
+  white-space: nowrap;
+}
+#kamelo-public .ks-detail {
+  border: none;
+  border-radius: 22px;
+  padding: 0;
+  max-width: min(510px, calc(100vw - 26px));
+  width: 100%;
+  box-shadow: 0 35px 90px rgba(12, 45, 29, 0.24);
+  background: #fff;
+  color: #1a3a2b;
+}
+#kamelo-public .ks-detail::backdrop {
+  background: rgba(9, 37, 27, 0.55);
+}
+#kamelo-public .ks-detail-head {
+  background: #f4f8f4;
+  padding: 21px 23px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid #e5ece4;
+}
+#kamelo-public .ks-detail-head b {
+  font-size: 19px;
+}
+#kamelo-public .ks-detail-head button {
+  width: 35px;
+  height: 35px;
+  background: #fff;
+  border: 1px solid #dfe8df;
+  border-radius: 10px;
+  font-size: 18px;
+}
+#kamelo-public .ks-detail-body {
+  padding: 24px;
+}
+#kamelo-public .ks-detail-body p {
+  font-size: 14px;
+  margin: 0 0 20px;
+}
+#kamelo-public .ks-detail-points {
+  display: grid;
+  gap: 9px;
+}
+#kamelo-public .ks-detail-point {
+  padding: 13px 14px;
+  border: 1px solid #e4ebe4;
+  border-radius: 11px;
+  display: flex;
+  gap: 9px;
+  color: #435d4c;
+  font-size: 13px;
+}
+#kamelo-public .ks-detail-point:before {
+  content: "✓";
+  color: #2a8559;
+  font-weight: 800;
+}
+@media (max-width: 1020px) {
+  #kamelo-public .ks-intro {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #kamelo-public .ks-module {
+    padding: 16px 15px;
+    min-height: 65px;
+  }
+  #kamelo-public .ks-aside {
+    display: none;
+  }
+  #kamelo-public .ks-app {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .ks-app-main {
+    padding: 18px;
+  }
+}
+@media (max-width: 700px) {
+  #kamelo-public .ks-content-head {
+    padding: 24px 17px 18px;
+  }
+  #kamelo-public .ks-context {
+    display: none;
+  }
+  #kamelo-public .ks-app {
+    margin: 0 13px 16px;
+  }
+  #kamelo-public .ks-app-main {
+    padding: 13px;
+  }
+  #kamelo-public .ks-app-foot {
+    padding: 0 18px 18px;
+    flex-wrap: wrap;
+  }
+  #kamelo-public .ks-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  #kamelo-public .ks-columns,
+  #kamelo-public .ks-grid2 {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .ks-roomgrid,
+  #kamelo-public .ks-grid3 {
+    grid-template-columns: 1fr 1fr;
+  }
+  #kamelo-public .ks-roles {
+    width: 100%;
+  }
+  #kamelo-public .ks-role {
+    min-width: 0;
+    flex: 1;
+  }
+  #kamelo-public .ks-module {
+    flex: 0 0 auto;
+    min-height: 56px;
+    font-size: 12px;
+  }
+  #kamelo-public .ks-module .ks-num {
+    font-size: 9px;
+  }
+  #kamelo-public .ks-app-top {
+    flex-wrap: wrap;
+  }
+  #kamelo-public .ks-tblhead {
+    display: none;
+  }
+  #kamelo-public .ks-tblrow {
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+  #kamelo-public .ks-tblrow > *:nth-child(2),
+  #kamelo-public .ks-tblrow > *:nth-child(3) {
+    font-size: 11px;
+  }
+  #kamelo-public .ks-tblrow > *:nth-child(4) {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+  }
+  #kamelo-public .ks-app-foot a {
+    white-space: normal;
+  }
+}
+@media (max-width: 390px) {
+  #kamelo-public .ks-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  #kamelo-public .ks-stat strong {
+    font-size: 18px;
+  }
+  #kamelo-public .ks-roomgrid,
+  #kamelo-public .ks-grid3 {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .ks-content-head h3 {
+    font-size: 26px;
+  }
+  #kamelo-public .ks-module {
+    padding: 14px 12px;
+  }
+  #kamelo-public .ks-app-main {
+    padding: 11px;
+  }
+}
+
+/* Kamelo v5.5 — tabbed showcase refinement: approved green detail column, fuller menu, dense app content. */
+#kamelo-public .ks-showcase {
+  background: #f4f3ed;
+  border: 1px solid #e3e7e0;
+  box-shadow: 0 18px 48px rgba(17, 52, 40, 0.075);
+  border-radius: 24px;
+}
+#kamelo-public .ks-modulebar {
+  background: #fff;
+  border-bottom: 1px solid #e2e9e1;
+}
+#kamelo-public .ks-module {
+  min-height: 68px;
+  padding: 13px 14px;
+  font-size: 12px;
+}
+#kamelo-public .ks-module.active {
+  background: #123d31;
+}
+#kamelo-public .ks-content-head {
+  padding: 19px 24px 17px;
+  background: #f9faf7;
+  border-bottom: 1px solid #ebefea;
+}
+#kamelo-public .ks-content-head h3 {
+  font-size: clamp(23px, 2.1vw, 30px);
+  margin-bottom: 5px;
+}
+#kamelo-public .ks-content-head p {
+  font-size: 12.5px;
+  max-width: 620px;
+}
+#kamelo-public .ks-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.66fr) minmax(268px, 0.7fr);
+  gap: 17px;
+  align-items: stretch;
+  margin: 19px 20px 12px;
+}
+#kamelo-public .ks-app {
+  margin: 0;
+  grid-template-columns: 165px minmax(0, 1fr);
+  border: 1px solid #e0e9df;
+  border-radius: 18px;
+  background: #f4f6f3;
+  box-shadow: 0 9px 25px rgba(17, 52, 40, 0.065);
+}
+#kamelo-public .ks-aside {
+  min-width: 0;
+  padding: 14px 9px;
+  background: #0f3b2e;
+  gap: 0;
+  display: flex;
+  flex-direction: column;
+}
+#kamelo-public .ks-aside-brand {
+  padding: 5px;
+  min-height: 46px;
+  margin: 0 2px 7px;
+  border-radius: 10px;
+}
+#kamelo-public .ks-aside-brand img {
+  width: 122px;
+}
+#kamelo-public .ks-aside-kicker {
+  font-size: 9px;
+  padding: 5px 8px 12px;
+  color: #bdd5c4;
+}
+#kamelo-public .ks-aside-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+#kamelo-public .ks-aside button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.3px;
+  font-weight: 670;
+  line-height: 1.2;
+  padding: 9px 8px;
+  border-radius: 8px;
+  min-height: 32px;
+}
+#kamelo-public .ks-aside button.active {
+  background: #2c7857;
+}
+#kamelo-public .ks-nav-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 15px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #bbd4c5;
+}
+#kamelo-public .ks-aside-foot {
+  margin: 13px 2px 0;
+  padding: 13px 10px 9px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  display: grid;
+  gap: 3px;
+}
+#kamelo-public .ks-aside-foot strong {
+  font-size: 11px;
+  color: #f6faf6;
+}
+#kamelo-public .ks-aside-foot span {
+  font-size: 10px;
+  color: #b6cfc0;
+}
+#kamelo-public .ks-app-main {
+  padding: 18px 15px 19px;
+  background: #f5f7f4;
+}
+#kamelo-public .ks-app-top {
+  margin-bottom: 13px;
+}
+#kamelo-public .ks-app-top-title b {
+  font-size: 18px;
+}
+#kamelo-public .ks-chip {
+  font-size: 10px;
+  padding: 6px 8px;
+}
+#kamelo-public .ks-stat {
+  padding: 11px 10px;
+}
+#kamelo-public .ks-stat strong {
+  font-size: 19px;
+}
+#kamelo-public .ks-stat small {
+  font-size: 10px;
+}
+#kamelo-public .ks-stat em {
+  font-size: 9.5px;
+}
+#kamelo-public .ks-panel {
+  padding: 13px;
+  border-radius: 13px;
+}
+#kamelo-public .ks-panel h4 {
+  font-size: 13px;
+}
+#kamelo-public .ks-panel p {
+  font-size: 10.5px;
+}
+#kamelo-public .ks-lines .ks-line {
+  padding: 10px 1px;
+}
+#kamelo-public .ks-line b {
+  font-size: 11px;
+}
+#kamelo-public .ks-line small {
+  font-size: 10px;
+}
+#kamelo-public .ks-roomgrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+#kamelo-public .ks-grid3 {
+  gap: 10px;
+}
+#kamelo-public .ks-sales {
+  background: #103e31;
+  color: #fff;
+  border-radius: 22px;
+  min-height: 0;
+  padding: 26px 25px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 26px rgba(10, 48, 34, 0.1);
+}
+#kamelo-public .ks-sales-top {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  font-weight: 800;
+  color: #d9e9dc;
+}
+#kamelo-public .ks-sales-rule {
+  display: block;
+  width: 21px;
+  height: 1px;
+  background: #bda67d;
+}
+#kamelo-public .ks-sales-current {
+  font-size: 11px;
+  color: #c9ded1;
+  font-weight: 700;
+  margin-top: 20px;
+}
+#kamelo-public .ks-sales h4 {
+  font-size: clamp(26px, 2.25vw, 35px);
+  letter-spacing: -0.05em;
+  line-height: 1.08;
+  color: #fff;
+  margin: 12px 0 14px;
+}
+#kamelo-public .ks-sales p {
+  color: #deeee3;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0 0 17px;
+}
+#kamelo-public .ks-sales-checks {
+  display: grid;
+  gap: 14px;
+  margin: 4px 0 30px;
+  color: #f8fff9;
+  font-size: 12px;
+}
+#kamelo-public .ks-sales-checks div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#kamelo-public .ks-sales-tick {
+  display: inline-grid;
+  place-items: center;
+  height: 25px;
+  width: 25px;
+  background: #215947;
+  border: 1px solid #42745c;
+  border-radius: 50%;
+  flex: 0 0 25px;
+}
+#kamelo-public .ks-sales-next {
+  padding: 13px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.065);
+  margin: 0 0 20px;
+}
+#kamelo-public .ks-sales-next-label {
+  color: #b9d3c6;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+#kamelo-public .ks-sales-next-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #fff;
+  padding: 5px 0;
+  font-weight: 800;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+#kamelo-public .ks-sales-next-button:hover {
+  color: #daf5e0;
+}
+#kamelo-public .ks-sales-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding: 13px 16px;
+  border-radius: 10px;
+  background: #fff;
+  color: #123d31;
+  font-size: 12px;
+  font-weight: 800;
+}
+#kamelo-public .ks-sales-action:hover {
+  background: #e9f4ed;
+}
+#kamelo-public .ks-app-foot {
+  padding: 0 23px 19px;
+}
+@media (max-width: 1120px) {
+  #kamelo-public .ks-layout {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .ks-sales {
+    min-height: 0;
+  }
+  #kamelo-public .ks-sales-checks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 18px;
+  }
+  #kamelo-public .ks-sales-action {
+    margin-top: 0;
+    max-width: 280px;
+  }
+}
+@media (max-width: 780px) {
+  #kamelo-public .ks-content-head {
+    padding: 18px;
+  }
+  #kamelo-public .ks-layout {
+    margin: 14px;
+    gap: 13px;
+  }
+  #kamelo-public .ks-app {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  #kamelo-public .ks-aside {
+    padding: 12px 10px;
+    gap: 0;
+  }
+  #kamelo-public .ks-aside-brand {
+    display: none;
+  }
+  #kamelo-public .ks-aside-kicker {
+    padding: 2px 5px 9px;
+  }
+  #kamelo-public .ks-aside-menu {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    gap: 5px;
+  }
+  #kamelo-public .ks-aside-menu button {
+    flex: 0 0 auto;
+    padding: 9px 11px;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+  #kamelo-public .ks-aside-foot {
+    display: none;
+  }
+  #kamelo-public .ks-app-main {
+    padding: 12px;
+  }
+  #kamelo-public .ks-sales {
+    padding: 22px;
+  }
+  #kamelo-public .ks-sales-checks {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .ks-sales-action {
+    max-width: none;
+  }
+  #kamelo-public .ks-app-foot {
+    padding: 3px 17px 18px;
+  }
+  #kamelo-public .ks-context {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  #kamelo-public .ks-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #kamelo-public .ks-grid2,
+  #kamelo-public .ks-grid3,
+  #kamelo-public .ks-columns {
+    grid-template-columns: 1fr;
+  }
+  #kamelo-public .ks-roomgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #kamelo-public .ks-app-top-actions {
+    display: none;
+  }
+  #kamelo-public .ks-module {
+    min-height: 60px;
+  }
+  #kamelo-public .ks-sales h4 {
+    font-size: 27px;
+  }
+  #kamelo-public .ks-line .ks-go {
+    font-size: 10px;
+    padding: 7px;
+  }
+  #kamelo-public .ks-tblhead,
+  #kamelo-public .ks-tblrow {
+    grid-template-columns: 1fr 1fr auto;
+  }
+  #kamelo-public .ks-tblhead span:nth-child(3),
+  #kamelo-public .ks-tblrow span:nth-child(3) {
+    display: none;
+  }
+}
+
+#kamelo-public .marketing-disclosure {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+
+/* The standalone approved HTML resolves its undeclared Inter face to system-ui.
+   Use that same face without inheriting the legacy Google Inter stylesheet. */
+#kamelo-public {
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+}

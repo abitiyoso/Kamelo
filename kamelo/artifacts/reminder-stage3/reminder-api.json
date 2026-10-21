@@ -1,0 +1,294 @@
+{
+  "groups": 17,
+  "environment": "Disposable QA 55432 / loopback 3001",
+  "externalEmail": false,
+  "ledgerEffects": "Only explicit QA payments; reminders created no financial entries",
+  "sample": {
+    "status": 200,
+    "property": {
+      "id": "cmvgmvkxu03ludy70ggdwqc4i",
+      "name": "Opening Tenant Proof QA"
+    },
+    "policy": {
+      "enabled": true,
+      "emailEnabled": true,
+      "hour": 0,
+      "leadDays": 2,
+      "intervalDays": 3,
+      "revision": 6,
+      "lastRunAt": "2026-10-20T12:02:29.883Z"
+    },
+    "history": [
+      {
+        "id": "cmvgmvnlj03zqdy70v39axz9n",
+        "channel": "PORTAL",
+        "status": "PUBLISHED",
+        "reason": "",
+        "reference": "KH-9A36D577-584",
+        "amount": 100000,
+        "due": "2026-10-20",
+        "createdAt": "2026-10-20T12:02:29.815Z",
+        "emailOutbox": null
+      },
+      {
+        "id": "cmvgmvnhr03zcdy70brbmek5d",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-E87054CA-567",
+        "amount": 100000,
+        "due": "2026-10-20",
+        "createdAt": "2026-10-20T12:02:29.680Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      },
+      {
+        "id": "cmvgmvnhl03z9dy70dylb8uqt",
+        "channel": "PORTAL",
+        "status": "PUBLISHED",
+        "reason": "",
+        "reference": "KH-E87054CA-567",
+        "amount": 100000,
+        "due": "2026-10-20",
+        "createdAt": "2026-10-20T12:02:29.674Z",
+        "emailOutbox": null
+      },
+      {
+        "id": "cmvgmvnd803ypdy70ri2cgmwq",
+        "channel": "EMAIL",
+        "status": "CANCELLED",
+        "reason": "REMINDER_EXPIRED",
+        "reference": "KH-C47A5C9A-D59",
+        "amount": 100000,
+        "due": "2026-10-20",
+        "createdAt": "2026-10-20T12:02:29.516Z",
+        "emailOutbox": {
+          "status": "CANCELLED",
+          "lastErrorCode": "REMINDER_EXPIRED"
+        }
+      },
+      {
+        "id": "cmvgmvncx03ymdy707a05nv69",
+        "channel": "PORTAL",
+        "status": "PUBLISHED",
+        "reason": "",
+        "reference": "KH-C47A5C9A-D59",
+        "amount": 100000,
+        "due": "2026-10-20",
+        "createdAt": "2026-10-20T12:02:29.506Z",
+        "emailOutbox": null
+      },
+      {
+        "id": "cmvgmvn1u03ycdy70x2fllxsg",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-E80DD32C-189",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.106Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      },
+      {
+        "id": "cmvgmvn1r03y9dy70tzjq6t6l",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-E1A5B443-81E",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.104Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      },
+      {
+        "id": "cmvgmvn1p03y6dy7052srh4ub",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-3EDE4E18-EF2",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.101Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      },
+      {
+        "id": "cmvgmvn1j03y3dy70dnks6qmp",
+        "channel": "PORTAL",
+        "status": "PUBLISHED",
+        "reason": "",
+        "reference": "KH-E80DD32C-189",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.095Z",
+        "emailOutbox": null
+      },
+      {
+        "id": "cmvgmvn1i03y1dy70fg8nbczt",
+        "channel": "PORTAL",
+        "status": "PUBLISHED",
+        "reason": "",
+        "reference": "KH-E1A5B443-81E",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.094Z",
+        "emailOutbox": null
+      },
+      {
+        "id": "cmvgmvn1g03xzdy705xgtztqv",
+        "channel": "PORTAL",
+        "status": "PUBLISHED",
+        "reason": "",
+        "reference": "KH-3EDE4E18-EF2",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.093Z",
+        "emailOutbox": null
+      },
+      {
+        "id": "cmvgmvn0x03xvdy70onyon4zd",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-447C4CEF-1A2",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.073Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      },
+      {
+        "id": "cmvgmvn0v03xsdy701albvgwt",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-D6363A89-5A4",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.071Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      },
+      {
+        "id": "cmvgmvn0t03xpdy70kw5pw525",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-0D35BFEB-E6B",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.069Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      },
+      {
+        "id": "cmvgmvn0r03xmdy703nssudyg",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-2AE284E9-BEB",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.067Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      },
+      {
+        "id": "cmvgmvn0p03xjdy70dy8a58ba",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-B0AE7401-7F7",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.065Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      },
+      {
+        "id": "cmvgmvn0m03xgdy7052er36kf",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-CC6EBF0F-446",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.063Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      },
+      {
+        "id": "cmvgmvn0k03xddy70x9s8ec7y",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-1A410D8B-E78",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.060Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      },
+      {
+        "id": "cmvgmvn0h03xady70aihr1iw2",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-D1A028E3-E1E",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.058Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      },
+      {
+        "id": "cmvgmvn0f03x7dy70obi9sdn9",
+        "channel": "EMAIL",
+        "status": "QUEUED",
+        "reason": "",
+        "reference": "KH-4EEE46C9-9EA",
+        "amount": 100000,
+        "due": "2026-10-19",
+        "createdAt": "2026-10-20T12:02:29.055Z",
+        "emailOutbox": {
+          "status": "SINKED",
+          "lastErrorCode": null
+        }
+      }
+    ],
+    "total": 72,
+    "page": 1,
+    "candidates": [],
+    "clock": {
+      "today": "2026-10-20",
+      "hour": 19
+    },
+    "transport": "sink"
+  }
+}

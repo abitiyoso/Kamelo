@@ -1,25 +1,22 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { CashChart } from "./workspace/finance";
+import type { dashboardRead } from "@/lib/dashboard";
 import {
   ArrowUpRight,
   ArrowDownRight,
   Minus,
-  Wallet,
-  BedDouble,
   ReceiptText,
   ClipboardCheck,
-  ArrowRight,
-  CircleAlert,
-  Sparkles,
-  CheckCircle2,
-  RefreshCw,
+  Camera,
+  Zap,
 } from "lucide-react";
-import { PaymentTrend } from "./payment-trend";
-import { Mascot } from "./mascot";
 import { rupiah } from "@/lib/plans";
 import { roomStatus } from "@/lib/domain.mjs";
 import type { DashboardInsightSummary } from "./dashboard-insights";
 import type { OperationTicket } from "./operations-hub";
+import { WorkspaceCard, WorkspaceKpi } from "./workspace/modules";
+import assets from "@/lib/workspace/assets.json";
 type Room = {
   id: string;
   number: string;
@@ -31,26 +28,14 @@ type Summary = DashboardInsightSummary & {
   outstanding: number;
   trend?: { month: string; amount: number }[];
 };
-type LeoResult = {
-  summary: string;
-  items: string[];
-  next: string;
-  module: string;
-};
-const labels: Record<string, string> = {
-  OCCUPIED: "Terisi",
-  AVAILABLE: "Siap huni",
-  RESERVED: "Dipesan",
-  CLEANING: "Bersihkan",
-  MAINTENANCE: "Perawatan",
-};
 export function OwnerDashboard({
   propertyId,
   name,
-  summary,
+  summary: invoiceSummary,
   rooms,
   tickets,
   proofCount,
+  contractExpiring,
   today,
   demo,
   onNavigate,
@@ -64,6 +49,7 @@ export function OwnerDashboard({
   rooms: Room[];
   tickets: OperationTicket[];
   proofCount: number;
+  contractExpiring?: number;
   today: string;
   demo: boolean;
   onNavigate: (module: string) => void;
@@ -71,12 +57,58 @@ export function OwnerDashboard({
   onOverdue: () => void;
   invoiceTable: React.ReactNode;
 }) {
-  const [topic, setTopic] = useState("briefing"),
-    [leo, setLeo] = useState<LeoResult | null>(null),
+  const [live, setLive] = useState<Awaited<
+      ReturnType<typeof dashboardRead>
+    > | null>(null),
+    [page, setPage] = useState(1),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
-  const open = tickets.filter((t) => t.status !== "RESOLVED"),
-    urgent = open.filter((t) => t.priority === "URGENT").length;
+  const sequence = useRef(0),
+    overdueRef = useRef<HTMLDivElement>(null);
+  async function refresh() {
+    const n = ++sequence.current;
+    setBusy(true);
+    setError("");
+    try {
+      const r = await fetch(
+          "/api/dashboard?" +
+            new URLSearchParams({ propertyId, page: String(page) }),
+          { cache: "no-store" },
+        ),
+        d = await r.json();
+      if (!r.ok) throw Error(d.error);
+      if (n === sequence.current) setLive(d);
+    } catch (e) {
+      if (n === sequence.current) {
+        setLive(null);
+        setError(e instanceof Error ? e.message : "Ringkasan belum tersedia.");
+      }
+    } finally {
+      if (n === sequence.current) setBusy(false);
+    }
+  }
+  useEffect(() => {
+    if (demo) return;
+    void refresh();
+    return () => {
+      sequence.current++;
+    };
+  }, [propertyId, demo, page]);
+  const ready = demo || Boolean(live);
+  const summary =
+    !demo && live
+      ? {
+          ...invoiceSummary,
+          income: live.income,
+          outstanding: live.outstanding,
+          overdueCount: live.overdueCount,
+          overdueBalance: live.overdueBalance,
+          incomeDirection: live.incomeDirection,
+          incomeChangePercent: live.incomeChangePercent,
+        }
+      : invoiceSummary;
+  const proofTotal = demo ? proofCount : live?.proofCount;
+  const open = tickets.filter((t) => t.status !== "RESOLVED");
   const cleaning = rooms.filter((r) =>
     ["CLEANING", "MAINTENANCE"].includes(roomStatus(r, r.stays, today)),
   ).length;
@@ -86,327 +118,464 @@ export function OwnerDashboard({
       : summary.incomeDirection === "down"
         ? ArrowDownRight
         : Minus;
-  async function ask(next: string) {
-    setTopic(next);
-    setBusy(true);
-    setError("");
-    try {
-      if (demo) {
-        const insight = summary.insights.find(
-          (i) => i.kind === (next === "rooms" ? "occupancy" : next),
-        );
-        setLeo({
-          summary:
-            next === "tasks"
-              ? "Contoh demo ini belum memiliki tiket pekerjaan."
-              : insight?.text ||
-                `${summary.occupiedCount}/${summary.roomCount} kamar terisi; ${summary.overdueCount} tagihan lewat tempo.`,
-          items: [
-            `Pemasukan ${rupiah(summary.income)}`,
-            `Saldo lewat tempo ${rupiah(summary.overdueBalance)}`,
-          ],
-          next: "Lihat data contoh pada modul terkait. Daftar untuk menggunakan data properti Anda.",
-          module:
-            next === "tasks" ? "tasks" : next === "rooms" ? "rooms" : "billing",
-        });
-      } else {
-        const r = await fetch("/api/leo", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ propertyId, topic: next }),
-        });
-        const b = await r.json();
-        if (!r.ok) throw new Error(b.error);
-        setLeo(b);
-      }
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Ringkasan gagal dimuat.");
-    } finally {
-      setBusy(false);
-    }
-  }
+  const trend = summary.trend || [],
+    max = Math.max(...trend.map((t) => t.amount), 1);
   return (
-    <div className="owner-overview">
-      <section className="overview-hero">
-        <div>
-          <span className="eyebrow">PUSAT KENDALI OWNER</span>
-          <h2>Hari ini lebih terkendali.</h2>
-          <p>
-            {name} ·{" "}
-            {new Intl.DateTimeFormat("id-ID", {
-              weekday: "long",
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-              timeZone: "UTC",
-            }).format(new Date(today + "T00:00:00Z"))}
-          </p>
-          <div className="overview-pulse">
-            <span>
-              <i /> {demo ? "Data contoh" : "Data properti Anda"}
-            </span>
-            <span>
-              {rooms.length} kamar · {summary.occupancyPercent}% terisi
-            </span>
+    <>
+      <div className="grid cols2">
+        <section className="hero">
+          <img
+            className="herobg"
+            src={assets.building}
+            alt="Referensi properti Kamelo"
+          />
+          <div className="herocopy">
+            <small style={{ color: "#c8dbd0" }}>{name}</small>
+            <h2>Operasional properti, lebih terkendali.</h2>
+            <p>
+              Pantau penerimaan, penghuni, pekerjaan, keamanan, dan perangkat.
+            </p>
+            <button className="btn" onClick={() => onNavigate("rooms")}>
+              Buka kamar
+            </button>
           </div>
-        </div>
-        <Mascot pose="welcome" size={125} />
-      </section>
-      <div className="overview-kpis">
-        <article className="overview-kpi blue">
-          <span>
-            <Wallet size={20} /> Pemasukan bulan ini
-          </span>
-          <b>{rupiah(summary.income)}</b>
-          <small className={"metric-direction " + summary.incomeDirection}>
-            <Direction size={15} />
-            {summary.incomeChangePercent === null
-              ? "Belum ada basis pembanding"
-              : `${Math.abs(summary.incomeChangePercent).toLocaleString("id-ID")}% ${summary.incomeDirection === "up" ? "naik" : summary.incomeDirection === "down" ? "turun" : "sama"}`}
-          </small>
-          <p>Dibanding tanggal setara bulan lalu</p>
-        </article>
-        <button className="overview-kpi amber" onClick={onOverdue}>
-          <span>
-            <ReceiptText size={20} /> Lewat jatuh tempo
-          </span>
-          <b>{rupiah(summary.overdueBalance)}</b>
-          <small>
-            {summary.overdueCount} tagihan perlu ditindaklanjuti{" "}
-            <ArrowUpRight size={15} />
-          </small>
-          <p>Saldo tagihan terbit yang belum lunas</p>
-        </button>
-        <button
-          className="overview-kpi teal"
-          onClick={() => onNavigate("rooms")}
-        >
-          <span>
-            <BedDouble size={20} /> Kamar terisi
-          </span>
-          <b>
-            {summary.occupiedCount}
-            <em> / {rooms.length}</em>
-          </b>
-          <small>{summary.occupancyPercent}% okupansi hari ini</small>
-          <div className="overview-progress">
-            <i style={{ width: summary.occupancyPercent + "%" }} />
-          </div>
-        </button>
-        <button
-          className="overview-kpi violet"
-          onClick={() => onNavigate("tasks")}
-        >
-          <span>
-            <ClipboardCheck size={20} /> Pekerjaan terbuka
-          </span>
-          <b>{open.length}</b>
-          <small>
-            {urgent
-              ? `${urgent} perlu diprioritaskan`
-              : "Pantau pekerjaan & komplain"}{" "}
-            <ArrowUpRight size={15} />
-          </small>
-          <p>
-            {open.length
-              ? "Tindak lanjuti hingga selesai"
-              : "Belum ada pekerjaan yang tertunda"}
-          </p>
-        </button>
-      </div>
-      <div className="overview-columns">
-        <div className="overview-main">
-          <PaymentTrend trend={summary.trend || []} />
-          <section className="panel overview-room-panel">
-            <div className="panel-title">
-              <div>
-                <span className="eyebrow">KONDISI PROPERTI</span>
-                <h2>Kamar dalam satu pandangan</h2>
-              </div>
-              <button className="text-link" onClick={() => onNavigate("rooms")}>
-                Kelola <ArrowRight size={16} />
-              </button>
-            </div>
-            <div className="overview-room-map">
-              {rooms.map((r) => {
-                const status = roomStatus(r, r.stays, today);
-                return (
-                  <button
-                    key={r.id}
-                    onClick={() => onRoom(r.id)}
-                    className={status.toLowerCase()}
-                    aria-label={`Kamar ${r.number}: ${labels[status] || status}`}
-                  >
-                    <BedDouble size={19} />
-                    <b>{r.number}</b>
-                    <small>{labels[status] || status}</small>
-                  </button>
-                );
-              })}
-            </div>
-            {!rooms.length && (
-              <p>Tambahkan kamar untuk mulai memantau properti.</p>
-            )}
-            <div className="overview-room-legend">
-              {Object.entries(labels).map(([k, v]) => (
-                <span key={k}>
-                  <i className={k.toLowerCase()} />
-                  {v}
-                </span>
-              ))}
-            </div>
-          </section>
-        </div>
-        <aside className="overview-side">
-          <section className="panel priority-panel">
-            <span className="eyebrow">LANGKAH BERIKUTNYA</span>
-            <h2>Perlu perhatian</h2>
+        </section>
+        <WorkspaceCard title="Prioritas hari ini">
+          <div className="list">
             {[
               {
-                title: "Verifikasi bukti bayar",
-                count: proofCount,
-                desc: "Cocokkan dengan mutasi rekening",
-                module: "billing",
+                title: ready
+                  ? `${summary.overdueCount} ${demo ? "tagihan" : "catatan"} lewat jatuh tempo`
+                  : "Ringkasan piutang belum dimuat",
+                note: ready
+                  ? `${rupiah(summary.overdueBalance)} perlu ditagih${!demo ? " · invoice + saldo awal" : ""}`
+                  : "Muat ringkasan terbaru untuk melihat prioritas",
+                action: demo
+                  ? onOverdue
+                  : () => {
+                      overdueRef.current?.focus();
+                      overdueRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                    },
                 Icon: ReceiptText,
               },
               {
-                title: "Tagihan lewat tempo",
-                count: summary.overdueCount,
-                desc: "Siapkan pengingat untuk penghuni",
-                module: "overdue",
-                Icon: CircleAlert,
+                title:
+                  proofTotal === undefined
+                    ? "Antrean bukti belum dimuat"
+                    : `${proofTotal} bukti menunggu verifikasi`,
+                note: demo
+                  ? "Periksa penerimaan dana sebelum menyetujui"
+                  : "Invoice + saldo awal · periksa dana sebelum menyetujui",
+                action: () => {
+                  onNavigate(demo ? "billing" : "proofs");
+                },
+                Icon: ReceiptText,
               },
               {
-                title: "Kesiapan kamar",
-                count: cleaning,
-                desc: "Kebersihan dan perawatan",
-                module: "rooms",
-                Icon: BedDouble,
+                title: "Peristiwa CCTV perlu review",
+                note: "Belum terhubung ke sumber kamera",
+                action: () => onNavigate("cctv"),
+                Icon: Camera,
               },
               {
-                title: "Pekerjaan mendesak",
-                count: urgent,
-                desc: "Periksa penanggung jawab",
-                module: "tasks",
+                title: "Kontrak mendekati akhir",
+                note:
+                  contractExpiring === undefined
+                    ? "Kontrak belum tercatat pada contoh ini"
+                    : `${contractExpiring} kontrak berakhir dalam 30 hari`,
+                action: () => onNavigate("contracts"),
+                Icon: ReceiptText,
+              },
+              {
+                title: "Tugas menunggu penanganan",
+                note: `${open.length} pekerjaan terbuka · ${cleaning} kamar perlu disiapkan`,
+                action: () => onNavigate("tasks"),
                 Icon: ClipboardCheck,
               },
-            ].map(({ title, count, desc, module, Icon }) => (
-              <button
-                key={title}
-                className="priority-item"
-                onClick={() =>
-                  module === "overdue" ? onOverdue() : onNavigate(module)
-                }
-              >
-                <Icon size={19} />
-                <span>
-                  <b>{title}</b>
-                  <small>{desc}</small>
-                </span>
-                <strong>{count}</strong>
-                <ArrowRight size={15} />
-              </button>
+            ].map(({ title, note, action, Icon }, i) => (
+              <div className="item" key={title}>
+                <div className="left">
+                  <span
+                    className={
+                      "glyph " +
+                      (i === 0 ? "red" : i === 2 || i === 3 ? "gold" : "")
+                    }
+                  >
+                    <Icon size={18} />
+                  </span>
+                  <div>
+                    <strong>{title}</strong>
+                    <small>{note}</small>
+                  </div>
+                </div>
+                <button className="btn small" onClick={action}>
+                  {i === 4 ? "Buka" : "Tinjau"}
+                </button>
+              </div>
             ))}
-            {!proofCount && !summary.overdueCount && !cleaning && !urgent && (
-              <p className="overview-clear">
-                <CheckCircle2 size={17} /> Tidak ada prioritas mendesak yang
-                tercatat.
-              </p>
-            )}
-          </section>
-          <section className="panel leo-operational">
-            <div className="panel-title">
-              <div>
-                <span className="eyebrow">LEO OPERASIONAL</span>
-                <h2>
-                  <Sparkles size={19} /> Baca kondisi hari ini
-                </h2>
-              </div>
-              <Mascot pose="help" size={60} />
-            </div>
-            <p>
-              Ringkasan berbasis aturan dari{" "}
-              {demo ? "data contoh" : "data properti"}. Layanan AI belum
-              terhubung.
-            </p>
-            <div className="leo-question-grid">
-              {[
-                ["briefing", "Ringkasan hari ini"],
-                ["income", "Pemasukan naik / turun?"],
-                ["overdue", "Tagihan mana tertunda?"],
-                ["tasks", "Pekerjaan staf?"],
-                ["rooms", "Kondisi kamar?"],
-              ].map(([k, v]) => (
-                <button
-                  key={k}
-                  className={topic === k && leo ? "active" : "secondary"}
-                  disabled={busy}
-                  onClick={() => void ask(k)}
-                >
-                  {v}
-                </button>
-              ))}
-            </div>
-            {busy && (
-              <p role="status">
-                <RefreshCw size={16} /> Menyusun ringkasan…
-              </p>
-            )}
-            {error && <p role="alert">{error}</p>}
-            {leo && (
-              <div className="leo-answer" aria-live="polite">
-                <b>{leo.summary}</b>
-                <ul>
-                  {leo.items.map((v) => (
-                    <li key={v}>{v}</li>
-                  ))}
-                </ul>
-                <p>{leo.next}</p>
-                <button
-                  className="text-link"
-                  onClick={() =>
-                    topic === "overdue" ? onOverdue() : onNavigate(leo.module)
-                  }
-                >
-                  Lihat & tindak lanjuti <ArrowRight size={16} />
-                </button>
-              </div>
-            )}
-          </section>
-          <section className="panel collection-panel">
-            <span className="eyebrow">TAGIHAN TERBIT BULAN INI</span>
-            <h2>Tingkat pelunasan</h2>
-            <b>
-              {summary.collectionRate === null
-                ? "—"
-                : summary.collectionRate.toLocaleString("id-ID") + "%"}
-            </b>
-            <div className="overview-progress">
-              <i
-                style={{
-                  width: Math.min(100, summary.collectionRate || 0) + "%",
-                }}
-              />
-            </div>
-            <p>
-              {rupiah(summary.collectionPaid)} dibayar dari{" "}
-              {rupiah(summary.collectionTotal)} tagihan bulan ini.
-            </p>
-            <small>
-              Total saldo seluruh tagihan {rupiah(summary.outstanding)}
-            </small>
-          </section>
-        </aside>
+          </div>
+        </WorkspaceCard>
       </div>
-      <section className="panel">
-        <div className="panel-title">
-          <h2>Tagihan terbaru</h2>
-          <button className="text-link" onClick={() => onNavigate("billing")}>
-            Lihat semua <ArrowRight size={16} />
+      {!demo && (
+        <div className="bo-import-history">
+          <button
+            className="btn outline"
+            disabled={busy}
+            onClick={() => void refresh()}
+          >
+            Perbarui ringkasan dashboard
           </button>
+          <p role="status">
+            {error ||
+              (live
+                ? `Saldo terkini per ${live.asOf}. Kas periode ${live.currentStart} sampai ${live.currentEnd}; pembanding ${live.comparisonStart} sampai ${live.comparisonEnd}.`
+                : "Memuat ringkasan gabungan…")}
+          </p>
         </div>
-        {invoiceTable}
-      </section>
-    </div>
+      )}
+      <div className="space" />
+      <div className="grid cols4">
+        <WorkspaceKpi
+          label="Pembayaran diterima"
+          value={ready ? rupiah(summary.income) : "—"}
+          note={
+            !ready
+              ? "Ringkasan kas belum tersedia"
+              : summary.incomeChangePercent === null
+                ? demo
+                  ? "Belum ada pembanding bulan sebelumnya"
+                  : "Kas periode pembanding Rp0; persentase tidak dihitung"
+                : `${summary.incomeChangePercent}% dibanding periode sebelumnya`
+          }
+        />
+        <WorkspaceKpi
+          label="Belum tertagih"
+          value={ready ? rupiah(summary.outstanding) : "—"}
+          note={
+            ready
+              ? `${summary.overdueCount} ${demo ? "tagihan" : "catatan invoice + saldo awal"} melewati jatuh tempo`
+              : "Piutang gabungan belum tersedia"
+          }
+        />
+        <WorkspaceKpi
+          label="Kamar terisi"
+          value={`${summary.occupancyPercent}%`}
+          note={`${summary.occupiedCount} dari ${summary.roomCount} kamar terisi`}
+        />
+        <WorkspaceKpi
+          label="Surplus kas"
+          value={!demo && live ? rupiah(live.surplus) : "—"}
+          note={
+            !demo && live
+              ? `Biaya dibayar bersih ${rupiah(live.expense)}; surplus ${live.surplusChange > 0 ? "naik" : live.surplusChange < 0 ? "turun" : "stabil"} ${rupiah(Math.abs(live.surplusChange))} terhadap pembanding. Deposit terpisah.`
+              : "Lihat laporan periode di menu Keuangan"
+          }
+        />
+      </div>
+      <div className="space" />
+      {!demo && (
+        <>
+          <div ref={overdueRef} tabIndex={-1}>
+            <WorkspaceCard
+              title="Piutang gabungan & tindak lanjut"
+              description="Saldo invoice dan saldo sebelum Kamelo, bukan tambahan kas. Piutang hari ini tidak membentuk riwayat piutang bulanan."
+            >
+              <div className="bo-import-body">
+                {live ? (
+                  <>
+                    <div className="billing-summary">
+                      {live.sources.map((s) => (
+                        <div key={s.source}>
+                          <small>
+                            {s.source === "INVOICE" ? "Invoice" : "Saldo awal"}
+                          </small>
+                          <b>{rupiah(s.outstanding)}</b>
+                          <small>
+                            {s.count} belum lunas · lewat tempo{" "}
+                            {rupiah(s.overdue)} · {s.pendingProofs} bukti
+                            menunggu
+                          </small>
+                        </div>
+                      ))}
+                    </div>
+                    <p>
+                      Kas masuk mencakup pembayaran invoice dan penerimaan saldo
+                      awal setelah koreksi, tanpa deposit. Belum tertagih
+                      mencakup saldo aktif sampai hari ini. Pembanding memakai
+                      tanggal setara bulan sebelumnya; bulan berjalan pada
+                      grafik belum penuh.
+                    </p>
+                    <div
+                      className="bo-import-table"
+                      role="region"
+                      aria-label="Piutang gabungan lewat tempo"
+                      tabIndex={0}
+                    >
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Sumber / referensi</th>
+                            <th>Penghuni / jatuh tempo</th>
+                            <th>Sisa / tindak lanjut</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {live.overdue.rows.map((r: any) => (
+                            <tr key={r.source + r.id}>
+                              <td>
+                                {r.source === "INVOICE"
+                                  ? "Invoice"
+                                  : "Saldo awal"}{" "}
+                                · {r.reference}
+                              </td>
+                              <td>
+                                {r.guestName}
+                                <br />
+                                {r.due}
+                              </td>
+                              <td>
+                                {rupiah(r.remaining)}
+                                <br />
+                                <button
+                                  className="btn outline small"
+                                  onClick={() =>
+                                    onNavigate(
+                                      r.source === "INVOICE"
+                                        ? "billing"
+                                        : "finance",
+                                    )
+                                  }
+                                >
+                                  {r.source === "INVOICE"
+                                    ? "Buka Tagihan"
+                                    : "Buka Keuangan"}
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    {!live.overdue.total && (
+                      <p>Tidak ada piutang aktif yang melewati jatuh tempo.</p>
+                    )}
+                    <div className="bo-import-history">
+                      <button
+                        className="btn outline"
+                        disabled={busy || page <= 1}
+                        onClick={() => setPage(page - 1)}
+                      >
+                        Piutang sebelumnya
+                      </button>
+                      <span>
+                        Halaman {live.overdue.page} · {live.overdue.total}{" "}
+                        catatan lewat tempo
+                      </span>
+                      <button
+                        className="btn outline"
+                        disabled={busy || page * 10 >= live.overdue.total}
+                        onClick={() => setPage(page + 1)}
+                      >
+                        Piutang berikutnya
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <p>
+                    Rincian piutang gabungan belum tersedia. Gunakan tombol
+                    perbarui di atas.
+                  </p>
+                )}
+              </div>
+            </WorkspaceCard>
+          </div>
+          <div className="space" />
+        </>
+      )}
+      <div className="grid split">
+        <WorkspaceCard
+          title="Pendapatan & tunggakan"
+          description={
+            demo
+              ? "Pembayaran yang tercatat selama enam bulan terakhir."
+              : "Kas masuk, biaya dibayar bersih dan surplus enam bulan terakhir; bulan berjalan sampai hari ini."
+          }
+          action={
+            <span className="tag">
+              <Direction size={12} />
+              {!ready
+                ? "Belum dimuat"
+                : summary.incomeDirection === "up"
+                  ? "Naik"
+                  : summary.incomeDirection === "down"
+                    ? "Turun"
+                    : "Stabil"}
+            </span>
+          }
+        >
+          {!demo ? (
+            live ? (
+              <>
+                <CashChart rows={live.trend} />
+                <details>
+                  <summary>Lihat angka grafik</summary>
+                  <div
+                    className="bo-import-table"
+                    role="region"
+                    aria-label="Angka arus kas dashboard"
+                    tabIndex={0}
+                  >
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Bulan</th>
+                          <th>Kas masuk</th>
+                          <th>Biaya bersih</th>
+                          <th>Surplus</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {live.trend.map((t) => (
+                          <tr key={t.month}>
+                            <td>{t.month}</td>
+                            <td>{rupiah(t.income)}</td>
+                            <td>{rupiah(t.outflow)}</td>
+                            <td>{rupiah(t.surplus)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </details>
+              </>
+            ) : (
+              <p>Grafik gabungan belum tersedia.</p>
+            )
+          ) : (
+            <>
+              <div
+                className="bargraph"
+                role="img"
+                aria-label={trend
+                  .map((t) => `${t.month}: ${rupiah(t.amount)}`)
+                  .join("; ")}
+              >
+                {trend.map((t) => (
+                  <div className="barset" key={t.month}>
+                    <div className="bars">
+                      <span
+                        title={rupiah(t.amount)}
+                        style={{
+                          height: Math.max(2, (t.amount / max) * 140) + "px",
+                        }}
+                      />
+                    </div>
+                    <span>
+                      {new Intl.DateTimeFormat("id-ID", {
+                        month: "short",
+                        timeZone: "UTC",
+                      }).format(new Date(t.month + "-01T00:00:00Z"))}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="space" />
+              <div className="legend">
+                <span>
+                  <i className="dot" />
+                  Penerimaan tercatat
+                </span>
+              </div>
+              <p className="bo-muted">
+                Riwayat saldo piutang bulanan belum tersedia.
+              </p>
+            </>
+          )}
+        </WorkspaceCard>
+        <WorkspaceCard
+          title="ELENIO Intelligence"
+          description="Tindak lanjut insiden dan utilitas"
+        >
+          <div className="grid cols2">
+            <button
+              className="bo-photo-button"
+              onClick={() => onNavigate("cctv")}
+            >
+              <img
+                className="photo"
+                src={assets.lobby}
+                alt="Referensi lobby area bersama"
+              />
+              <strong>
+                <Camera size={15} /> CCTV & AI
+              </strong>
+              <small>Belum terhubung</small>
+            </button>
+            <button
+              className="bo-photo-button"
+              onClick={() => onNavigate("iot")}
+            >
+              <img
+                className="photo"
+                src={assets.room}
+                alt="Referensi kamar pintar"
+              />
+              <strong>
+                <Zap size={15} /> Smart Room
+              </strong>
+              <small>Periksa status provider</small>
+            </button>
+          </div>
+          <div className="bo-leo-questions">
+            <button className="btn outline" onClick={() => onNavigate("cctv")}>
+              CCTV & AI
+            </button>
+            <button className="btn light" onClick={() => onNavigate("iot")}>
+              Smart Room
+            </button>
+            <button className="btn outline" onClick={() => onNavigate("leo")}>
+              LEO Insight
+            </button>
+          </div>
+        </WorkspaceCard>
+      </div>
+      <div className="space" />
+      <WorkspaceCard
+        title="Pekerjaan & aktivitas"
+        description="Tindak lanjut yang tercatat pada properti aktif."
+        action={
+          <button
+            className="btn outline small"
+            onClick={() => onNavigate("tasks")}
+          >
+            Lihat tugas
+          </button>
+        }
+      >
+        {open.slice(0, 4).map((t) => (
+          <div className="item" key={t.id}>
+            <div className="left">
+              <span className="glyph">
+                <ClipboardCheck size={18} />
+              </span>
+              <div>
+                <strong>{t.title}</strong>
+                <small>
+                  {t.stay ? `Kamar ${t.stay.room.number} · ` : ""}
+                  {t.assignee?.name || "Belum ditugaskan"}
+                </small>
+              </div>
+            </div>
+            <span className="tag gold">
+              {t.status === "OPEN" ? "Baru" : "Dikerjakan"}
+            </span>
+          </div>
+        ))}
+        {!open.length && <p>Tidak ada pekerjaan terbuka.</p>}
+      </WorkspaceCard>
+    </>
   );
 }

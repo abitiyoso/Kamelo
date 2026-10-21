@@ -77,15 +77,15 @@ export async function operationsAction(
       throw new Error(
         "Staf hanya dapat mengambil tugas untuk dirinya sendiri.",
       );
-    const member = await tx.user.findFirst({
-      where: { id: target, organizationId: user.organizationId },
+    const member = await tx.orgMembership.findFirst({
+      where: { userId: target, organizationId: user.organizationId, status:"ACTIVE" },
     });
     if (
       !member ||
       (member.role !== "OWNER" && !member.propertyIds.includes(property.id))
     )
       throw new Error("Penanggung jawab tidak mempunyai akses properti.");
-    return member.id;
+    return member.userId;
   }
   if (body.action === "ticketCreate") {
     const input = ticketInput.parse(body);

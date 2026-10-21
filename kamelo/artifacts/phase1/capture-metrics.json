@@ -1,0 +1,162 @@
+{
+  "320": {
+    "reference": {
+      "format": "jpeg",
+      "mediaType": "image/jpeg",
+      "width": 305,
+      "height": 11880,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "chromaSubsampling": "4:2:0",
+      "isProgressive": false,
+      "isPalette": false,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 305,
+        "height": 11880
+      }
+    },
+    "implementation": {
+      "format": "jpeg",
+      "mediaType": "image/jpeg",
+      "width": 305,
+      "height": 11983,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "chromaSubsampling": "4:2:0",
+      "isProgressive": false,
+      "isPalette": false,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 305,
+        "height": 11983
+      }
+    }
+  },
+  "desktop": {
+    "reference": {
+      "format": "jpeg",
+      "mediaType": "image/jpeg",
+      "width": 1425,
+      "height": 6959,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "chromaSubsampling": "4:2:0",
+      "isProgressive": false,
+      "isPalette": false,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1425,
+        "height": 6959
+      }
+    },
+    "implementation": {
+      "format": "jpeg",
+      "mediaType": "image/jpeg",
+      "width": 1425,
+      "height": 7023,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "chromaSubsampling": "4:2:0",
+      "isProgressive": false,
+      "isPalette": false,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 1425,
+        "height": 7023
+      }
+    }
+  },
+  "mobile": {
+    "reference": {
+      "format": "jpeg",
+      "mediaType": "image/jpeg",
+      "width": 375,
+      "height": 11068,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "chromaSubsampling": "4:2:0",
+      "isProgressive": false,
+      "isPalette": false,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 375,
+        "height": 11068
+      }
+    },
+    "implementation": {
+      "format": "jpeg",
+      "mediaType": "image/jpeg",
+      "width": 375,
+      "height": 11151,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "chromaSubsampling": "4:2:0",
+      "isProgressive": false,
+      "isPalette": false,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 375,
+        "height": 11151
+      }
+    }
+  },
+  "tablet": {
+    "reference": {
+      "format": "jpeg",
+      "mediaType": "image/jpeg",
+      "width": 805,
+      "height": 7784,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "chromaSubsampling": "4:2:0",
+      "isProgressive": false,
+      "isPalette": false,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 805,
+        "height": 7784
+      }
+    },
+    "implementation": {
+      "format": "jpeg",
+      "mediaType": "image/jpeg",
+      "width": 805,
+      "height": 7847,
+      "space": "srgb",
+      "channels": 3,
+      "depth": "uchar",
+      "density": 72,
+      "chromaSubsampling": "4:2:0",
+      "isProgressive": false,
+      "isPalette": false,
+      "hasProfile": false,
+      "hasAlpha": false,
+      "autoOrient": {
+        "width": 805,
+        "height": 7847
+      }
+    }
+  }
+}

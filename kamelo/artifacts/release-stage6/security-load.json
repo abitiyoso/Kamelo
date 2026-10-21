@@ -1,0 +1,34 @@
+{
+  "completedAt": "2026-10-20T13:13:36.482Z",
+  "groups": 6,
+  "environment": "UTF-8 recovery copy / loopback 3002",
+  "recoveryDocumentHash": "e0e5817f37709c2a3991eee41fdef10c164c27a56f446f628c79ed4726e342a2",
+  "load": {
+    "concurrency": 5,
+    "requests": 150,
+    "errors": 0,
+    "p50Ms": 28,
+    "p95Ms": 146,
+    "maxMs": 223,
+    "financialAndOutboxHashesUnchanged": true,
+    "productionCapacityClaim": false
+  },
+  "hashes": {
+    "Invoice": "95364a716aeebf3faca49029738a6315f99afc876f806ccbd4dd890d93acef17",
+    "Payment": "cde4af7a1217d9072397808817afbbb13a4e70d001b9bab66d182a9a63eedf97",
+    "OpeningReceivable": "3810373243890774cfce3d3765fc1ae33af67276b3dd6ee3f6c0a8345b2100b3",
+    "OpeningReceipt": "c771854f1a1c24187484d977b591f89b8db0dae514593181de3a10d885331058",
+    "PaymentProof": "7669b6a824b1cb8b5f73a69e255d00217f4432edd6604a6ede07d95ee7c98449",
+    "OpeningProof": "8e68eb70ebeda5486c1831bfb4b4b8bccdf5e63d295def3046d16b361c7c6ef0",
+    "FinancialDocument": "9601bfbe07338f91aa6cf9692d91304ca153add274d8f4b6ad268bceb1283030",
+    "FinancialDocumentReview": "8cfaa893d399d21bf8af13c07ae69b4b2c348be2c0072e362bc6daa7b853c47a",
+    "EmailOutbox": "add21b52c38cccf685c5ee0fc34678f66ac49f8e4937a89b58988c99ae6ba357",
+    "Stay": "19faabe3da4f7d5fb1d983f36c33376120ce48a9672e6912f60fc5390bccb2f0",
+    "Room": "e89a9c02e1e10ea4dc19287daf9e5d268de1fc232c4154a5a159f5ab9cfeaa69",
+    "Guest": "89b98842cba9ad42d4964532ac584d0b7ad094e1971a158fe9d5e16bbf94b147",
+    "ExpenseEntry": "d35d6de5bc7020d77c0593c315458a4a138d38402bf08ecced7143cd4271af75"
+  },
+  "emailsSent": 0,
+  "providerCommands": 0,
+  "productionAcceptance": false
+}

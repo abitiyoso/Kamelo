@@ -1,0 +1,33 @@
+{
+  "completedAt": "2026-10-18T09:49:30.401Z",
+  "externalEmail": false,
+  "environment": "disposable QA 55432 / loopback 3001",
+  "results": [
+    {
+      "script": "integration",
+      "passed": true
+    },
+    {
+      "script": "operations.integration",
+      "passed": true
+    },
+    {
+      "script": "tenant-smart.integration",
+      "passed": true
+    },
+    {
+      "script": "acquisition.integration",
+      "passed": true
+    },
+    {
+      "script": "identity.integration",
+      "passed": true
+    },
+    {
+      "script": "workspace.integration",
+      "passed": true
+    }
+  ],
+  "latestIdentityCheckAt": "2026-10-18T10:02:37.024Z",
+  "latestIdentityCheck": "Passed after final invitation decline, public-preview token gate, draft denial and password-change/session-revocation cases."
+}

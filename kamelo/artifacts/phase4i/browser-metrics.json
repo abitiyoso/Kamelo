@@ -1,0 +1,20 @@
+{
+  "metrics": [
+    {
+      "viewport": 390,
+      "tableContent": 701,
+      "table": 311,
+      "document": 375
+    },
+    {
+      "viewport": 320,
+      "tableContent": 701,
+      "table": 241,
+      "document": 305
+    }
+  ],
+  "upload": true,
+  "persistedAfterRestart": true,
+  "confirmedCommit": true,
+  "explicitLegacySelection": true
+}

@@ -1,0 +1,237 @@
+{
+  "phase": "4K opening receivables register",
+  "branch": "codex/phase4k-opening-receivables",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "f9cad1130d014d3428afb1c751476a47c26e82f884758c0180553909056e54e3"
+    },
+    {
+      "path": "README.md",
+      "sha256": "4fcc40789979aedeab9e5148c51d3eff00397ec283bfe12bbd93c644c604322b"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "91e4a88c4833123e291119fcb2e2ec57a5b1950e24a88c75f4fb479a13f269ae"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "735ca5624e167d0c16ca9e07f75927140d1726f035aa565a0321c895e03d5774"
+    },
+    {
+      "path": "app/workspace.css",
+      "sha256": "d78b40b4e60bb8c7db8bf3356e8a7ccfc35f8ed1c8c0444b466bb96106aedc18"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "e71c9adada5a08ff5ec3ce9c795eb30dc22531ee6fec15a5dcf07bd4898e1e18"
+    },
+    {
+      "path": "prisma/migrations/20261019095000_opening_receivables/migration.sql",
+      "sha256": "68860832f9211b4cfcc33ca915a41120e1e342dc0b8c408a0479e9004a496ea8"
+    },
+    {
+      "path": "lib/opening-balances-csv.mjs",
+      "sha256": "bac5fad1c4d0ee1a3d8d2d2faff6cb1bab57930da18ea3c3e52106bada406e11"
+    },
+    {
+      "path": "lib/opening-balances.ts",
+      "sha256": "201621caf5517fc5ed9ef75c38163c1ea50d64edb7e559498ff929776024b028"
+    },
+    {
+      "path": "lib/resident-import.ts",
+      "sha256": "d062ae2690dca8be3ce34a8138446772ef78474d57cd4908eeb6b2edd8b399c6"
+    },
+    {
+      "path": "lib/import-workbook.mjs",
+      "sha256": "b6d0f598f1e5fdc3790e99151ab5f388514816b0b2fe2144fc134304091c72c2"
+    },
+    {
+      "path": "app/api/opening-balances/route.ts",
+      "sha256": "e1bfeb7aa69911f3ccb8e9c1340866ada1891858f72cd4050c244881b9c5921b"
+    },
+    {
+      "path": "app/api/import-files/route.ts",
+      "sha256": "f70eebe48a2ae6a67ea82f00e3683240443e7cb35ad9532310d74c7e6899538a"
+    },
+    {
+      "path": "components/workspace/opening-balances.tsx",
+      "sha256": "4b4d3104d5a67340077440c7eb5c472e1e582c10861da7c0bb294f758fa74e2b"
+    },
+    {
+      "path": "components/workspace/import-file.tsx",
+      "sha256": "9765e699c3bf747e4cae062a5700f2653676c31840c4b39793c581a15d7d551e"
+    },
+    {
+      "path": "components/workspace/finance.tsx",
+      "sha256": "9a7c6c51c18034c28cc6fcc5cd503937e4f3e96cbd749ee88c5ca3a0c4cfd84b"
+    },
+    {
+      "path": "public/templates/kamelo-saldo-awal.csv",
+      "sha256": "943779ce9b589cdb4a0fc5dd1575f202b5e47c25778c5130f15578c1107a543b"
+    },
+    {
+      "path": "public/templates/kamelo-saldo-awal.xlsx",
+      "sha256": "3e640a7c00181fabee6cba28a7aa503317fffde0ea85b218e845fc1fb2a94524"
+    },
+    {
+      "path": "tests/opening-balances.test.mjs",
+      "sha256": "b2700f748ec132e2d5da04e1e91e1a0ce36ce908748437da061a32ae5ef892f0"
+    },
+    {
+      "path": "tests/opening-balances.integration.mjs",
+      "sha256": "910d2b30c24b605a6e59fe27229983c6f77ad4fae9e695dbcb1868ca41e29f6a"
+    },
+    {
+      "path": "scripts/phase4k-opening-template.mjs",
+      "sha256": "73f4de16d8a33d94910bdd44f7ac9e5813911e79b5c399358dc3f7049b2c0be4"
+    },
+    {
+      "path": "scripts/phase4k-qa-migrate.mjs",
+      "sha256": "fd4dd4c3e98e49f74befb76d3a8555500707d2361a387392f5d22748f1638e40"
+    },
+    {
+      "path": "scripts/phase4k-qa-verify.mjs",
+      "sha256": "6f71ec383f527ffa1700b25b1d7f96c32510abccc2f6c6a8546d172348648783"
+    },
+    {
+      "path": "scripts/phase4k-review-sync.mjs",
+      "sha256": "53495e1709875038812538c973ef5fee132896695ab5dba396793b857e683414"
+    },
+    {
+      "path": "docs/PHASE4K_OPENING_RECEIVABLES.md",
+      "sha256": "cf5a9276aec654d0b3391f0d5d7f7cd77faa36234849a078bcd14849684e4cb2"
+    },
+    {
+      "path": "docs/PHASE4K_DESIGN_QA.md",
+      "sha256": "7a917ed1295e30bd7877e63c838c9c081043212c2bb1554dbd5eb8b7b4ede586"
+    },
+    {
+      "path": "artifacts/phase4k/build.log",
+      "sha256": "7a4148910052d954f2213574575461801ed396f6865031722dbe8cb9c40e8b61"
+    },
+    {
+      "path": "artifacts/phase4k/unit.log",
+      "sha256": "70871702bd0a2c0802b8cdfcc9241fee153e1c25d78e196fb381b7a62492e4b1"
+    },
+    {
+      "path": "artifacts/phase4k/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/phase4k/migration-preservation.json",
+      "sha256": "1be2402c0b6c8989020a5ab749fb4bba81d6d8012eebb8cee61cd452472e2359"
+    },
+    {
+      "path": "artifacts/phase4k/regression-results.json",
+      "sha256": "115ae12309bb9697b726bc1730983234c96bd9e1dc4096fcc7d81971a8566b47"
+    },
+    {
+      "path": "artifacts/phase4k/opening-balances-api.json",
+      "sha256": "76ec2e6367fc4a74d7397aff22d01ec5288781358e657c94103674dff9676f15"
+    },
+    {
+      "path": "artifacts/phase4k/browser-metrics.json",
+      "sha256": "0ddea016bd7f1ca82e4fac6222260b504e31de8b34b648f9f05bdcb9ffe938b0"
+    },
+    {
+      "path": "artifacts/phase4k/opening-desktop-preview.png",
+      "sha256": "8f4f3d6eac104f213bbdc4a5eaec6a7288d4b688d4fc1f0c7a4a526e1d17b965"
+    },
+    {
+      "path": "artifacts/phase4k/opening-desktop-saved.png",
+      "sha256": "f3c6e7e6d7b67cf0a8210ce274f7f86237ec8fc39103ecaf855b8a2d0e083bd7"
+    },
+    {
+      "path": "artifacts/phase4k/opening-desktop-detail.png",
+      "sha256": "a3f1ce3df97b46124488414bda71994842a4e514bdb5ad9780bfdd646fee5009"
+    },
+    {
+      "path": "artifacts/phase4k/opening-mobile-390.png",
+      "sha256": "15b898550db613da8cdc2fd9ece55a3030eef63aae753ab1e30b887f87370ecb"
+    },
+    {
+      "path": "artifacts/phase4k/opening-mobile-320.png",
+      "sha256": "59de422253ee5409dd475f006a6566eea88cdc36d968bf964db3a081d9aa0091"
+    },
+    {
+      "path": "artifacts/phase4k/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/phase4k/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/phase4k/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/phase4k/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/phase4k/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/phase4k/workspace.integration.log",
+      "sha256": "aa474e83c81f3f6ced06e985ecb687be665924b2ab99beb6bad64e5476fa77e6"
+    },
+    {
+      "path": "artifacts/phase4k/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/phase4k/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/phase4k/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/phase4k/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/phase4k/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/phase4k/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/phase4k/privacy.integration.log",
+      "sha256": "9203cd6d96eee6519f5a688bd1c53dcd27763ca66c8526b15acdbfa2e1bc6ec2"
+    },
+    {
+      "path": "artifacts/phase4k/room-import.integration.log",
+      "sha256": "f42a888f174f7e81ea7a459f01c841b6cd678865b978279efa7af374f1ef0569"
+    },
+    {
+      "path": "artifacts/phase4k/resident-import.integration.log",
+      "sha256": "bc71737bceaa78d973a9067d70e87c7e479cb0906ac04bc5c1e92fcc1cf3f524"
+    },
+    {
+      "path": "artifacts/phase4k/import-files.integration.log",
+      "sha256": "3ca4a3472d384ac4d886058ae11899ce18e187138085ae09fd19cd25309c47d9"
+    },
+    {
+      "path": "artifacts/phase4k/opening-balances.integration.log",
+      "sha256": "2e7579fbdf802941ddc5b2e045a94a15f41d026d14ca932760a68340fbdb438e"
+    }
+  ],
+  "excluded": [
+    ".env*",
+    ".local-secrets",
+    "runtime databases",
+    "node_modules",
+    "generated",
+    ".next"
+  ],
+  "committed": false,
+  "pushed": false,
+  "deployed": false
+}

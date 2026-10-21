@@ -1,0 +1,30 @@
+[
+  {
+    "path": "public/brand/kamelo-backoffice.png",
+    "sha256": "adbf4217b5a3793d3b9eb830b0bbfb622fba6e365425b732a3a549fbf175c8fd"
+  },
+  {
+    "path": "public/images/backoffice/building.jpeg",
+    "sha256": "233b80aa88ef9df0a0684b482b68fc99cadfce82400355c8438983fea3a846c3"
+  },
+  {
+    "path": "public/images/backoffice/room.jpeg",
+    "sha256": "56bbdd2a564b74a3b175c555cff82f0bb3995afeb4df83d7a14339fcfbd0026e"
+  },
+  {
+    "path": "public/images/backoffice/lobby.jpeg",
+    "sha256": "9dcf551b7f54e52f8b2c6d44b152e0f61af678a327377225f02867ee138c03eb"
+  },
+  {
+    "path": "public/images/backoffice/parking.jpeg",
+    "sha256": "3308aa6b81ecd3ee57375f17a119972a69bedda04533fe85d856273c92540d64"
+  },
+  {
+    "path": "public/images/backoffice/corridor.jpeg",
+    "sha256": "bea20abbd0d488e9911b47c5f637087389bc65b3bc692f97417f11be657b492a"
+  },
+  {
+    "path": "public/images/backoffice/emergency.jpeg",
+    "sha256": "79fc384a1d228d3f7e650909b30550def4a24e86cf3698ec0bf594ef1d25819a"
+  }
+]

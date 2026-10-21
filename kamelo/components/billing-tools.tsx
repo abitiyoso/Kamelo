@@ -46,11 +46,13 @@ export function BillingTools({
   demo,
   canReview,
   mutate,
+  showProofQueue = true,
 }: {
   invoices: BillingToolInvoice[];
   propertyId: string;
   demo: boolean;
   canReview: boolean;
+  showProofQueue?: boolean;
   mutate: (action: string, data: Record<string, unknown>) => Promise<void>;
 }) {
   const [links, setLinks] = useState<Record<string, TenantLink>>({});
@@ -352,177 +354,186 @@ export function BillingTools({
         )}
       </section>
 
-      <section
-        className="panel billing-proof-queue"
-        aria-labelledby="billing-proof-title"
-      >
-        <div className="panel-title">
-          <h2 id="billing-proof-title">
-            <FileCheck2 size={21} aria-hidden="true" /> Verifikasi bukti bayar
-          </h2>
-          <span className="tenant-status unpaid">{proofs.length} menunggu</span>
-        </div>
-        <p className="billing-intro">
-          Cocokkan bukti dengan mutasi rekening sebelum menyetujui. Unggahan
-          penghuni belum dihitung sebagai pembayaran.
-        </p>
-        {!canReview && !demo && (
-          <div className="tenant-notice">
-            <FileCheck2 size={18} aria-hidden="true" />
-            <p>
-              Akun Anda belum memiliki izin mencatat pembayaran. Hubungi pemilik
-              untuk verifikasi.
-            </p>
+      {showProofQueue && (
+        <section
+          className="panel billing-proof-queue"
+          aria-labelledby="billing-proof-title"
+        >
+          <div className="panel-title">
+            <h2 id="billing-proof-title">
+              <FileCheck2 size={21} aria-hidden="true" /> Verifikasi bukti bayar
+            </h2>
+            <span className="tenant-status unpaid">
+              {proofs.length} menunggu
+            </span>
           </div>
-        )}
-        {demo && (
-          <div className="tenant-notice">
-            <FileCheck2 size={18} aria-hidden="true" />
-            <p>
-              Contoh bukti dalam mode demo. Verifikasi pembayaran tersedia pada
-              akun properti.
-            </p>
-          </div>
-        )}
-        {!proofs.length ? (
-          <div className="billing-empty">
-            <FileCheck2 size={28} aria-hidden="true" />
-            <div>
-              <strong>Belum ada bukti yang perlu diperiksa.</strong>
+          <p className="billing-intro">
+            Cocokkan bukti dengan mutasi rekening sebelum menyetujui. Unggahan
+            penghuni belum dihitung sebagai pembayaran.
+          </p>
+          {!canReview && !demo && (
+            <div className="tenant-notice">
+              <FileCheck2 size={18} aria-hidden="true" />
               <p>
-                Penghuni dapat mengunggah bukti melalui tautan tagihan pribadi.
+                Akun Anda belum memiliki izin mencatat pembayaran. Hubungi
+                pemilik untuk verifikasi.
               </p>
             </div>
-          </div>
-        ) : (
-          <div className="billing-proof-list">
-            {proofs.map(({ proof, invoice }) => (
-              <article className="billing-proof" key={proof.id}>
-                <div className="billing-proof-info">
-                  <strong>
-                    {invoice.guest.name}{" "}
-                    <span>· Kamar {invoice.room.number}</span>
-                  </strong>
-                  <p>
-                    {invoice.number} · {tenantDate(proof.date)} ·{" "}
-                    {paymentMethodNames[proof.method] || proof.method}
-                  </p>
-                  <b>{rupiah(proof.amount)}</b>
-                  {proof.reference && (
-                    <p className="tenant-reference">{proof.reference}</p>
-                  )}
-                </div>
-                <div className="billing-inline-actions">
-                  {!demo && (
-                    <a
-                      className="button secondary"
-                      href={`/api/proofs/${encodeURIComponent(proof.id)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Lihat bukti <ArrowUpRight size={15} aria-hidden="true" />
-                    </a>
-                  )}
-                  <button
-                    className="secondary"
-                    type="button"
-                    disabled={demo || !canReview || !!pending}
-                    onClick={() => {
-                      setError("");
-                      setReviewing({ proofId: proof.id, decision: "REJECT" });
-                    }}
-                  >
-                    Tolak
-                  </button>
-                  <button
-                    type="button"
-                    disabled={demo || !canReview || !!pending}
-                    onClick={() => {
-                      setError("");
-                      setReviewing({ proofId: proof.id, decision: "APPROVE" });
-                    }}
-                  >
-                    <CheckCircle2 size={16} aria-hidden="true" /> Verifikasi
-                  </button>
-                </div>
-                {reviewing?.proofId === proof.id && (
-                  <form
-                    className="billing-confirm"
-                    onSubmit={(event) => reviewProof(event, proof.id)}
-                  >
-                    <div className="panel-title">
-                      <h3>
-                        {reviewing.decision === "APPROVE"
-                          ? "Setujui pembayaran?"
-                          : "Tolak bukti pembayaran?"}
-                      </h3>
-                      <button
-                        className="secondary billing-close"
-                        type="button"
-                        aria-label="Batal verifikasi"
-                        disabled={!!pending}
-                        onClick={() => setReviewing(null)}
-                      >
-                        <X size={16} aria-hidden="true" />
-                      </button>
-                    </div>
+          )}
+          {demo && (
+            <div className="tenant-notice">
+              <FileCheck2 size={18} aria-hidden="true" />
+              <p>
+                Contoh bukti dalam mode demo. Verifikasi pembayaran tersedia
+                pada akun properti.
+              </p>
+            </div>
+          )}
+          {!proofs.length ? (
+            <div className="billing-empty">
+              <FileCheck2 size={28} aria-hidden="true" />
+              <div>
+                <strong>Belum ada bukti yang perlu diperiksa.</strong>
+                <p>
+                  Penghuni dapat mengunggah bukti melalui tautan tagihan
+                  pribadi.
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div className="billing-proof-list">
+              {proofs.map(({ proof, invoice }) => (
+                <article className="billing-proof" key={proof.id}>
+                  <div className="billing-proof-info">
+                    <strong>
+                      {invoice.guest.name}{" "}
+                      <span>· Kamar {invoice.room.number}</span>
+                    </strong>
                     <p>
-                      {reviewing.decision === "APPROVE"
-                        ? `Persetujuan akan mencatat pembayaran ${rupiah(proof.amount)} pada tagihan ${invoice.number}.`
-                        : "Tagihan tetap belum lunas. Penghuni dapat melihat alasan dan mengunggah bukti yang benar."}
+                      {invoice.number} · {tenantDate(proof.date)} ·{" "}
+                      {paymentMethodNames[proof.method] || proof.method}
                     </p>
-                    <label>
-                      Catatan{" "}
-                      {reviewing.decision === "REJECT"
-                        ? "penolakan"
-                        : "(opsional)"}
-                      <textarea
-                        name="reviewNote"
-                        required={reviewing.decision === "REJECT"}
-                        minLength={
-                          reviewing.decision === "REJECT" ? 3 : undefined
-                        }
-                        maxLength={500}
-                        rows={2}
-                        disabled={!!pending}
-                        placeholder={
-                          reviewing.decision === "REJECT"
-                            ? "Contoh: nominal pada bukti tidak terbaca"
-                            : "Contoh: sesuai mutasi rekening"
-                        }
-                      />
-                    </label>
-                    {reviewing.decision === "APPROVE" && (
-                      <label className="checkbox">
-                        <input
-                          type="checkbox"
-                          name="confirmed"
-                          required
-                          disabled={!!pending}
-                        />
-                        Saya sudah memeriksa penerimaan dana sebesar{" "}
-                        {rupiah(proof.amount)}.
-                      </label>
+                    <b>{rupiah(proof.amount)}</b>
+                    {proof.reference && (
+                      <p className="tenant-reference">{proof.reference}</p>
                     )}
-                    <button type="submit" disabled={!!pending}>
-                      {pending === proof.id && (
-                        <Loader2
-                          className="tenant-spinner"
-                          size={16}
-                          aria-hidden="true"
-                        />
-                      )}
-                      {reviewing.decision === "APPROVE"
-                        ? "Setujui & catat pembayaran"
-                        : "Simpan penolakan"}
+                  </div>
+                  <div className="billing-inline-actions">
+                    {!demo && (
+                      <a
+                        className="button secondary"
+                        href={`/api/proofs/${encodeURIComponent(proof.id)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Lihat bukti{" "}
+                        <ArrowUpRight size={15} aria-hidden="true" />
+                      </a>
+                    )}
+                    <button
+                      className="secondary"
+                      type="button"
+                      disabled={demo || !canReview || !!pending}
+                      onClick={() => {
+                        setError("");
+                        setReviewing({ proofId: proof.id, decision: "REJECT" });
+                      }}
+                    >
+                      Tolak
                     </button>
-                  </form>
-                )}
-              </article>
-            ))}
-          </div>
-        )}
-      </section>
+                    <button
+                      type="button"
+                      disabled={demo || !canReview || !!pending}
+                      onClick={() => {
+                        setError("");
+                        setReviewing({
+                          proofId: proof.id,
+                          decision: "APPROVE",
+                        });
+                      }}
+                    >
+                      <CheckCircle2 size={16} aria-hidden="true" /> Verifikasi
+                    </button>
+                  </div>
+                  {reviewing?.proofId === proof.id && (
+                    <form
+                      className="billing-confirm"
+                      onSubmit={(event) => reviewProof(event, proof.id)}
+                    >
+                      <div className="panel-title">
+                        <h3>
+                          {reviewing.decision === "APPROVE"
+                            ? "Setujui pembayaran?"
+                            : "Tolak bukti pembayaran?"}
+                        </h3>
+                        <button
+                          className="secondary billing-close"
+                          type="button"
+                          aria-label="Batal verifikasi"
+                          disabled={!!pending}
+                          onClick={() => setReviewing(null)}
+                        >
+                          <X size={16} aria-hidden="true" />
+                        </button>
+                      </div>
+                      <p>
+                        {reviewing.decision === "APPROVE"
+                          ? `Persetujuan akan mencatat pembayaran ${rupiah(proof.amount)} pada tagihan ${invoice.number}.`
+                          : "Tagihan tetap belum lunas. Penghuni dapat melihat alasan dan mengunggah bukti yang benar."}
+                      </p>
+                      <label>
+                        Catatan{" "}
+                        {reviewing.decision === "REJECT"
+                          ? "penolakan"
+                          : "(opsional)"}
+                        <textarea
+                          name="reviewNote"
+                          required={reviewing.decision === "REJECT"}
+                          minLength={
+                            reviewing.decision === "REJECT" ? 3 : undefined
+                          }
+                          maxLength={500}
+                          rows={2}
+                          disabled={!!pending}
+                          placeholder={
+                            reviewing.decision === "REJECT"
+                              ? "Contoh: nominal pada bukti tidak terbaca"
+                              : "Contoh: sesuai mutasi rekening"
+                          }
+                        />
+                      </label>
+                      {reviewing.decision === "APPROVE" && (
+                        <label className="checkbox">
+                          <input
+                            type="checkbox"
+                            name="confirmed"
+                            required
+                            disabled={!!pending}
+                          />
+                          Saya sudah memeriksa penerimaan dana sebesar{" "}
+                          {rupiah(proof.amount)}.
+                        </label>
+                      )}
+                      <button type="submit" disabled={!!pending}>
+                        {pending === proof.id && (
+                          <Loader2
+                            className="tenant-spinner"
+                            size={16}
+                            aria-hidden="true"
+                          />
+                        )}
+                        {reviewing.decision === "APPROVE"
+                          ? "Setujui & catat pembayaran"
+                          : "Simpan penolakan"}
+                      </button>
+                    </form>
+                  )}
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
     </div>
   );
 }

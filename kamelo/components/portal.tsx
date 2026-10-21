@@ -1,4 +1,23 @@
 "use client";
+import { MessagesWorkspace } from "./workspace/messages";
+import { Resident360Workspace } from "./workspace/resident360";
+import { ProspectsWorkspace } from "./workspace/prospects";
+import { CustomerBillingWorkspace } from "./workspace/subscriptions";
+import { FinanceWorkspace } from "./workspace/finance";
+import { InviteCenter } from "./identity/invite-center";
+import { StaffTasks, StaffRooms } from "./workspace/staff";
+import { RoomImportCenter } from "./workspace/room-import";
+import { ResidentImportCenter } from "./workspace/resident-import";
+import { WorkspaceShell } from "./workspace/shell";
+import {
+  CctvReadiness,
+  LeoWorkspace,
+  ResidentDirectory,
+  UnavailableModule,
+  WorkspaceAccount,
+  WorkspaceCard,
+} from "./workspace/modules";
+import { workspaceNavigation } from "@/lib/workspace/navigation";
 import { OwnerDashboard } from "./owner-dashboard";
 import {
   OperationsHub,
@@ -43,6 +62,8 @@ import { plans, rupiah } from "@/lib/plans";
 import { demoProperty } from "@/lib/demo";
 import { roomStatus } from "@/lib/domain.mjs";
 import { BillingTools } from "./billing-tools";
+import { ProofQueue } from "./workspace/proof-queue";
+import { ReminderAutomation } from "./workspace/reminder-automation";
 import {
   DashboardInsights,
   type DashboardInsightSummary,
@@ -101,6 +122,7 @@ type Device = {
   syncedAt: string;
 };
 type Property = {
+  contractExpiring?: number;
   id: string;
   name: string;
   type: string;
@@ -152,7 +174,13 @@ const localDate = () =>
     month: "2-digit",
     day: "2-digit",
   }).format(new Date());
-export function Portal({ demo = false }: { demo?: boolean }) {
+export function Portal({
+  demo = false,
+  initialRole = "OWNER",
+}: {
+  demo?: boolean;
+  initialRole?: string;
+}) {
   const path = usePathname();
   const raw = path.split("/")[2] || "dashboard";
   const initial = ["guests", "bookings"].includes(raw) ? "rooms" : raw;
@@ -163,6 +191,8 @@ export function Portal({ demo = false }: { demo?: boolean }) {
       plan: string;
       user: {
         name: string;
+        email?: string;
+        phone?: string;
         role: string;
         platformAdmin: boolean;
         canRecordPayments: boolean;
@@ -193,11 +223,12 @@ export function Portal({ demo = false }: { demo?: boolean }) {
     [selectedStay, setSelectedStay] = useState<Stay | null>(null);
   const [roomsView, setRoomsView] = useState("rooms");
   const loadSequence = useRef(0);
+  const [focusProofQueue, setFocusProofQueue] = useState(false);
   useDialogFocus(Boolean(modal), () => setModal(""));
-  async function load() {
+  async function load(background = false) {
     const requestId = ++loadSequence.current;
     try {
-      setLoading(true);
+      if (!background) setLoading(true);
       const r = await fetch(
         "/api/manage?page=" +
           invoicePage +
@@ -245,7 +276,10 @@ export function Portal({ demo = false }: { demo?: boolean }) {
       if (requested === "tasks") {
         setTab("rooms");
         setRoomsView("tasks");
-      } else if (requested && modules.some((m) => m[0] === requested))
+      } else if (
+        requested &&
+        workspaceNavigation.owner.some((m) => m[0] === requested)
+      )
         setTab(requested);
       setHotel(
         new URLSearchParams(location.search).get("property") === "hotel",
@@ -314,7 +348,7 @@ export function Portal({ demo = false }: { demo?: boolean }) {
   ) as Property | undefined;
   const plan =
     plans.find((p) => p.id === (demo ? "starter" : data?.plan)) ?? plans[0];
-  const owner = demo || data?.user.role === "OWNER";
+  const owner = demo || (data?.user.role ?? initialRole) === "OWNER";
   const canPay = owner || data?.user.canRecordPayments;
   const canControl = owner || data?.user.canControlDevices;
   const today = demo ? "2026-10-13" : localDate();
@@ -490,6 +524,7 @@ export function Portal({ demo = false }: { demo?: boolean }) {
           "ticketCreate",
           "ticketUpdate",
           "guestSettings",
+          "roomReadiness",
         ].includes(action)
       )
         throw e;
@@ -498,6 +533,7 @@ export function Portal({ demo = false }: { demo?: boolean }) {
     }
   }
   function navigate(next: string) {
+    setFocusProofQueue(false);
     setRoomsView("rooms");
     setInvoicePage(0);
     setTab(next);
@@ -671,611 +707,564 @@ export function Portal({ demo = false }: { demo?: boolean }) {
     </div>
   );
   return (
-    <div className="portal">
-      <aside className="sidebar">
-        <Brand />
-        <span className="side-label">WORKSPACE</span>
-        <nav>
-          {modules.map(([key, label, Icon]) => (
-            <button
-              className={tab === key ? "active" : ""}
-              onClick={() => navigate(key)}
-              key={key}
-            >
-              <Icon size={20} />
-              {label}
-              {key === "iot" && <span className="side-new">Opsional</span>}
+    <WorkspaceShell
+      role={owner ? "owner" : "staff"}
+      page={tab}
+      onNavigate={navigate}
+      name={demo ? "Pengunjung Demo" : data?.user.name || "Memuat akun"}
+      context={property?.name || "Properti Anda"}
+      plan={plan.name}
+      demo={demo}
+      onLogout={async () => {
+        if (demo) {
+          location.href = "/";
+          return;
+        }
+        await fetch("/api/auth", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "logout" }),
+        });
+        location.href = "/login";
+      }}
+      propertyPicker={
+        <select
+          hidden={!demo && (data?.properties.length ?? 0) < 2}
+          aria-label="Pilih properti"
+          value={demo ? (hotel ? "hotel" : "kos") : propertyId}
+          onChange={(e) => {
+            if (demo) setHotel(e.target.value === "hotel");
+            else setPropertyId(e.target.value);
+            setSelectedRoom(null);
+            setSelectedInvoice(null);
+            setModal("");
+            setInvoicePage(0);
+          }}
+        >
+          {demo ? (
+            <>
+              <option value="kos">Kos Melati</option>
+              <option value="hotel">Guest House Harmoni</option>
+            </>
+          ) : (
+            data?.properties.map((p) => (
+              <option key={p.id} value={p.id}>
+                {p.name}
+              </option>
+            ))
+          )}
+        </select>
+      }
+    >
+      <main className="bo-main">
+        {error && (
+          <div className="error" role="alert">
+            {error}{" "}
+            <button className="plain" onClick={() => setError("")}>
+              Tutup
             </button>
-          ))}
-        </nav>
-        <div className="side-bottom">
-          <div className="plan-mini">
-            <span className="pill">PAKET {plan.name.toUpperCase()}</span>
-            <p>
-              {plan.rooms} kamar · {plan.properties} properti
-            </p>
-            <button className="text-link" onClick={() => navigate("settings")}>
-              Lihat paket <ArrowUpRight size={15} />
-            </button>
-          </div>
-          <a href="https://wa.me/6281933328899">
-            Butuh bantuan? Hubungi kami ↗
-          </a>
-          <div className="profile">
-            <span className="avatar">
-              {demo ? "D" : (data?.user.name[0] ?? "A")}
-            </span>
-            <div>
-              <b>{demo ? "Pengunjung Demo" : data?.user.name}</b>
-              <small>
-                {demo
-                  ? "Data simulasi"
-                  : data?.user.role === "OWNER"
-                    ? "Pemilik properti"
-                    : "Staf properti"}
-              </small>
-            </div>
-            <button
-              className="icon-button"
-              aria-label="Keluar"
-              onClick={async () => {
-                if (demo) location.href = "/";
-                else {
-                  await fetch("/api/auth", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ action: "logout" }),
-                  });
-                  location.href = "/login";
-                }
-              }}
-            >
-              <LogOut size={17} />
-            </button>
-          </div>
-        </div>
-      </aside>
-      <div className="portal-body">
-        <header className="portal-header">
-          <div>
-            <span className="muted">Properti Anda</span>
-            {demo ? (
-              <select
-                value={hotel ? "hotel" : "kos"}
-                onChange={(e) => {
-                  setHotel(e.target.value === "hotel");
-                  setSelectedRoom(null);
-                }}
-              >
-                <option value="kos">Kos Melati</option>
-                <option value="hotel">Guest House Harmoni</option>
-              </select>
-            ) : (
-              <select
-                value={propertyId}
-                onChange={(e) => {
-                  setPropertyId(e.target.value);
-                  setSelectedRoom(null);
-                  setSelectedInvoice(null);
-                  setModal("");
-                  setInvoicePage(0);
-                }}
-                aria-label="Pilih properti"
-              >
-                {data?.properties.map((p) => (
-                  <option value={p.id} key={p.id}>
-                    {p.name}
-                  </option>
-                ))}
-              </select>
-            )}
-          </div>
-          <div>
-            <span className="date-label">
-              {new Intl.DateTimeFormat("id-ID", {
-                dateStyle: "long",
-                timeZone: "Asia/Jakarta",
-              }).format(new Date(today + "T00:00:00Z"))}
-            </span>
-            <span className="top-icon">
-              <ShieldCheck size={19} />
-            </span>
-          </div>
-        </header>
-        {demo && (
-          <div className="demo-notice">
-            <span>
-              <b>Mode Demo</b> · Data simulasi, hanya-baca. Tidak ada data
-              pelanggan nyata.
-            </span>
-            <Link href="/register">
-              Buat akun gratis <ArrowUpRight size={15} />
-            </Link>
           </div>
         )}
-        <main className="workspace">
-          {error && (
-            <div className="error" role="alert">
-              {error}{" "}
-              <button className="plain" onClick={() => setError("")}>
-                Tutup
-              </button>
-            </div>
-          )}
-          {success && (
-            <div className="success" role="status">
-              {success}
-            </div>
-          )}
-          {loading ? (
-            <div className="empty" role="status">
-              Memuat properti…
-            </div>
-          ) : !property ? (
-            <div className="empty">
-              <DoorOpen size={40} />
-              <h1>
-                {error ? "Properti belum dapat dimuat" : "Belum ada properti."}
-              </h1>
-              <p>Siapkan properti pertama Anda untuk mulai mengelola.</p>
-              {error ? (
-                <button onClick={() => load()}>Coba kembali</button>
-              ) : (
-                <a className="button" href="/onboarding">
-                  Tambahkan Properti
-                </a>
-              )}
-              <div className="settings-plans">
-                {plans
-                  .filter((p) => p.id !== "free")
-                  .map((p) => (
-                    <article key={p.id}>
-                      <h3>{p.name}</h3>
-                      <p>
-                        {p.rooms} kamar · {rupiah(p.price)} / bulan
-                      </p>
-                      <button
-                        disabled={demo || pending || !owner}
-                        onClick={() => mutate("upgrade", { plan: p.id })}
-                      >
-                        Ajukan Upgrade
-                      </button>
-                    </article>
-                  ))}
-              </div>
-              <p>Upgrade ditinjau admin. Data tetap disimpan.</p>
-            </div>
-          ) : (
-            <>
-              <div className="page-heading">
-                <div>
-                  <span className="eyebrow">
-                    {property.name.toUpperCase()} ·{" "}
-                    {property.city || "INDONESIA"}
-                  </span>
-                  <h1>
-                    {tab === "dashboard"
-                      ? "Selamat datang" + (demo ? ", Pak Andi." : ".")
-                      : tab === "rooms"
-                        ? "Kamar & Tamu"
-                        : tab === "billing"
-                          ? "Tagihan"
-                          : tab === "iot"
-                            ? "Smart IoT"
-                            : "Pengaturan"}
-                  </h1>
-                  <p>
-                    {tab === "dashboard"
-                      ? "Lihat keadaan properti Anda hari ini."
-                      : tab === "rooms"
-                        ? "Setiap kamar dan penghuninya, tersusun rapi."
-                        : tab === "billing"
-                          ? "Pantau tagihan dan catat pembayaran dengan mudah."
-                          : tab === "iot"
-                            ? "Perangkat pintar bersifat opsional."
-                            : "Sesuaikan properti dan paket dengan kebutuhan Anda."}
-                  </p>
-                </div>
-                {tab === "dashboard" ? (
-                  <button
-                    onClick={() => {
-                      navigate("billing");
-                      open("invoice");
-                    }}
-                    disabled={demo}
-                  >
-                    <Plus size={18} /> Buat Tagihan
-                  </button>
-                ) : tab === "rooms" ? (
-                  <button
-                    disabled={demo || !owner}
-                    onClick={() => open("room")}
-                  >
-                    <Plus size={18} /> Tambah Kamar
-                  </button>
-                ) : tab === "billing" ? (
-                  <button disabled={demo} onClick={() => open("invoice")}>
-                    <Plus size={18} /> Buat Tagihan
-                  </button>
-                ) : null}
-              </div>
-              {tab === "rooms" && (
-                <div
-                  className="room-subnav"
-                  role="group"
-                  aria-label="Tampilan kamar dan pekerjaan"
-                >
-                  <button
-                    className={roomsView === "rooms" ? "active" : "secondary"}
-                    onClick={() => setRoomsView("rooms")}
-                  >
-                    <BedDouble size={16} /> Kamar & penghuni
-                  </button>
-                  <button
-                    className={roomsView === "tasks" ? "active" : "secondary"}
-                    onClick={() => setRoomsView("tasks")}
-                  >
-                    <ClipboardCheck size={16} /> Pekerjaan & komplain{" "}
-                    <span>
-                      {
-                        (property.tickets || []).filter(
-                          (t) => t.status !== "RESOLVED",
-                        ).length
-                      }
-                    </span>
-                  </button>
-                </div>
-              )}
-              {tab === "dashboard" && (
-                <OwnerDashboard
-                  key={property.id}
-                  propertyId={property.id}
-                  name={property.name}
-                  summary={{
-                    ...summary,
-                    outstanding,
-                    trend:
-                      property.summary?.trend ||
-                      Array.from({ length: 6 }, (_, i) => {
-                        const d = new Date(today + "T00:00:00Z");
-                        d.setUTCDate(1);
-                        d.setUTCMonth(d.getUTCMonth() - 5 + i);
-                        const month = d.toISOString().slice(0, 7);
-                        return {
-                          month,
-                          amount: invoices
-                            .flatMap((i) => i.payments)
-                            .filter(
-                              (p) =>
-                                p.date.startsWith(month) && p.date <= today,
-                            )
-                            .reduce((s, p) => s + p.amount, 0),
-                        };
-                      }),
-                  }}
-                  rooms={rooms}
-                  tickets={property.tickets || []}
-                  proofCount={
-                    billingInvoices
-                      .flatMap((i) => i.proofs || [])
-                      .filter((p) => p.status === "PENDING").length
-                  }
-                  today={today}
-                  demo={demo}
-                  onNavigate={(next) => {
-                    navigate(next === "tasks" ? "rooms" : next);
-                    if (next === "tasks") setRoomsView("tasks");
-                  }}
-                  onRoom={(id) => {
-                    navigate("rooms");
-                    setSelectedRoom(rooms.find((r) => r.id === id) || null);
-                  }}
-                  onOverdue={() => {
-                    navigate("billing");
-                    setFilter("OVERDUE");
-                  }}
-                  invoiceTable={invoiceTable(
-                    demo ? invoices.slice(-5).reverse() : invoices.slice(0, 5),
-                  )}
-                />
-              )}
-              {tab === "rooms" && roomsView === "rooms" && (
-                <>
-                  <div className="toolbar">
-                    <div className="search">
-                      <Search size={18} />
-                      <input
-                        placeholder="Cari kamar atau nama penghuni…"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        aria-label="Cari kamar"
-                      />
-                    </div>
-                    <select
-                      value={filter}
-                      onChange={(e) => setFilter(e.target.value)}
-                      aria-label="Filter status kamar"
+        {success && (
+          <div className="success" role="status">
+            {success}
+          </div>
+        )}
+        {loading ? (
+          <div className="empty" role="status">
+            Memuat properti…
+          </div>
+        ) : !property ? (
+          <div className="empty">
+            <DoorOpen size={40} />
+            <h1>
+              {error ? "Properti belum dapat dimuat" : "Belum ada properti."}
+            </h1>
+            <p>Siapkan properti pertama Anda untuk mulai mengelola.</p>
+            {error ? (
+              <button onClick={() => load()}>Coba kembali</button>
+            ) : (
+              <a className="button" href="/onboarding">
+                Tambahkan Properti
+              </a>
+            )}
+            <div className="settings-plans">
+              {plans
+                .filter((p) => p.id !== "free")
+                .map((p) => (
+                  <article key={p.id}>
+                    <h3>{p.name}</h3>
+                    <p>
+                      {p.rooms} kamar · {rupiah(p.price)} / bulan
+                    </p>
+                    <button
+                      disabled={demo || pending || !owner}
+                      onClick={() => mutate("upgrade", { plan: p.id })}
                     >
-                      <option value="ALL">Semua status</option>
-                      {[
-                        "AVAILABLE",
-                        "OCCUPIED",
-                        "RESERVED",
-                        "CLEANING",
-                        "MAINTENANCE",
-                      ].map((s) => (
-                        <option key={s} value={s}>
-                          {statusNames[s]}
-                        </option>
-                      ))}
-                    </select>
-                    <span>{rooms.length} kamar</span>
+                      Ajukan Upgrade
+                    </button>
+                  </article>
+                ))}
+            </div>
+            <p>Upgrade ditinjau admin. Data tetap disimpan.</p>
+          </div>
+        ) : (
+          <>
+            <div
+              className="page-heading"
+              hidden={
+                !["rooms", "billing", "iot", "settings"].includes(tab) || !owner
+              }
+            >
+              <div>
+                <span className="eyebrow">
+                  {property.name.toUpperCase()} · {property.city || "INDONESIA"}
+                </span>
+                <h1>
+                  {tab === "dashboard"
+                    ? "Selamat datang" + (demo ? ", Pak Andi." : ".")
+                    : tab === "rooms"
+                      ? "Kamar & Tamu"
+                      : tab === "billing"
+                        ? "Tagihan"
+                        : tab === "iot"
+                          ? "Smart IoT"
+                          : "Pengaturan"}
+                </h1>
+                <p>
+                  {tab === "dashboard"
+                    ? "Lihat keadaan properti Anda hari ini."
+                    : tab === "rooms"
+                      ? "Setiap kamar dan penghuninya, tersusun rapi."
+                      : tab === "billing"
+                        ? "Pantau tagihan dan catat pembayaran dengan mudah."
+                        : tab === "iot"
+                          ? "Perangkat pintar bersifat opsional."
+                          : "Sesuaikan properti dan paket dengan kebutuhan Anda."}
+                </p>
+              </div>
+              {tab === "dashboard" ? (
+                <button
+                  onClick={() => {
+                    navigate("billing");
+                    open("invoice");
+                  }}
+                  disabled={demo}
+                >
+                  <Plus size={18} /> Buat Tagihan
+                </button>
+              ) : tab === "rooms" ? (
+                <button disabled={demo || !owner} onClick={() => open("room")}>
+                  <Plus size={18} /> Tambah Kamar
+                </button>
+              ) : tab === "billing" ? (
+                <button disabled={demo} onClick={() => open("invoice")}>
+                  <Plus size={18} /> Buat Tagihan
+                </button>
+              ) : null}
+            </div>
+            {tab === "rooms" && owner && (
+              <div
+                className="room-subnav"
+                role="group"
+                aria-label="Tampilan kamar dan pekerjaan"
+              >
+                <button
+                  className={roomsView === "rooms" ? "active" : "secondary"}
+                  onClick={() => setRoomsView("rooms")}
+                >
+                  <BedDouble size={16} /> Kamar & penghuni
+                </button>
+                <button
+                  className={roomsView === "tasks" ? "active" : "secondary"}
+                  onClick={() => setRoomsView("tasks")}
+                >
+                  <ClipboardCheck size={16} /> Pekerjaan & komplain{" "}
+                  <span>
+                    {
+                      (property.tickets || []).filter(
+                        (t) => t.status !== "RESOLVED",
+                      ).length
+                    }
+                  </span>
+                </button>
+              </div>
+            )}
+            {tab === "dashboard" && owner && (
+              <OwnerDashboard
+                key={property.id}
+                propertyId={property.id}
+                contractExpiring={property.contractExpiring}
+                name={property.name}
+                summary={{
+                  ...summary,
+                  outstanding,
+                  trend:
+                    property.summary?.trend ||
+                    Array.from({ length: 6 }, (_, i) => {
+                      const d = new Date(today + "T00:00:00Z");
+                      d.setUTCDate(1);
+                      d.setUTCMonth(d.getUTCMonth() - 5 + i);
+                      const month = d.toISOString().slice(0, 7);
+                      return {
+                        month,
+                        amount: invoices
+                          .flatMap((i) => i.payments)
+                          .filter(
+                            (p) => p.date.startsWith(month) && p.date <= today,
+                          )
+                          .reduce((s, p) => s + p.amount, 0),
+                      };
+                    }),
+                }}
+                rooms={rooms}
+                tickets={property.tickets || []}
+                proofCount={
+                  billingInvoices
+                    .flatMap((i) => i.proofs || [])
+                    .filter((p) => p.status === "PENDING").length
+                }
+                today={today}
+                demo={demo}
+                onNavigate={(next) => {
+                  if (next === "proofs") {
+                    navigate("billing");
+                    setFocusProofQueue(true);
+                  } else navigate(next);
+                }}
+                onRoom={(id) => {
+                  navigate("rooms");
+                  setSelectedRoom(rooms.find((r) => r.id === id) || null);
+                }}
+                onOverdue={() => {
+                  navigate("billing");
+                  setFilter("OVERDUE");
+                }}
+                invoiceTable={invoiceTable(
+                  demo ? invoices.slice(-5).reverse() : invoices.slice(0, 5),
+                )}
+              />
+            )}
+            {tab === "rooms" && owner && roomsView === "rooms" && (
+              <>
+                {!demo && (
+                  <RoomImportCenter
+                    key={property.id}
+                    propertyId={property.id}
+                    onChange={() => void load(true)}
+                  />
+                )}
+                {!demo && (
+                  <ResidentImportCenter
+                    key={property.id + "residents"}
+                    propertyId={property.id}
+                    onChange={() => void load(true)}
+                  />
+                )}
+                <div className="toolbar">
+                  <div className="search">
+                    <Search size={18} />
+                    <input
+                      placeholder="Cari kamar atau nama penghuni…"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      aria-label="Cari kamar"
+                    />
                   </div>
-                  {selectedRoom ? (
-                    <section className="panel room-detail">
-                      <button
-                        className="text-link"
-                        onClick={() => setSelectedRoom(null)}
-                      >
-                        ← Semua kamar
-                      </button>
-                      <h2>Kamar {selectedRoom.number}</h2>
-                      <p>
-                        {rupiah(selectedRoom.rate)} /{" "}
-                        {property.type === "KOS" ? "bulan" : "malam"} ·{" "}
-                        {
-                          statusNames[
-                            roomStatus(selectedRoom, selectedRoom.stays, today)
-                          ]
-                        }
-                      </p>
-                      <button
-                        disabled={demo || !owner}
-                        onClick={() => open("roomUpdate", selectedRoom)}
-                      >
-                        Edit Kamar
-                      </button>
-                      {selectedRoom.operational !== "READY" && (
-                        <button
-                          className="secondary"
-                          disabled={demo || pending}
-                          onClick={() =>
-                            mutate("roomReadiness", {
-                              roomId: selectedRoom.id,
-                              operational: "READY",
-                            })
-                          }
-                        >
-                          Tandai Kamar Siap
-                        </button>
-                      )}
-                      <h3>Riwayat penghuni & reservasi</h3>
-                      {selectedRoom.stays.map((s) => (
-                        <article className="stay-detail" key={s.id}>
-                          <div>
-                            <b>{s.guest.name}</b>
-                            <p>
-                              {s.start} → {s.end ?? "Tanpa tanggal akhir"} ·{" "}
-                              {statusNames[s.status]}
-                            </p>
-                            <small>{s.guest.phone}</small>
-                            {property.type === "KOS" && (
-                              <p>
-                                <CalendarClock size={14} aria-hidden="true" />{" "}
-                                Jatuh tempo berulang tanggal {s.billingDay}{" "}
-                                setiap bulan · Tarif {rupiah(s.rate)}
-                              </p>
-                            )}
-                          </div>
-                          <div>
-                            {property.type === "KOS" &&
-                              s.status === "ACTIVE" && (
-                                <button
-                                  className="secondary"
-                                  disabled={demo || !owner || pending}
-                                  onClick={() => {
-                                    setSelectedStay(s);
-                                    open("tenantSettings", selectedRoom);
-                                  }}
-                                >
-                                  <Pencil size={15} aria-hidden="true" /> Atur
-                                  penghuni & jatuh tempo
-                                </button>
-                              )}
-                            {["ACTIVE", "CHECKED_IN"].includes(s.status) &&
-                              s.start <= today &&
-                              (!s.end || s.end > today) && (
-                                <StayShare
-                                  stayId={s.id}
-                                  propertyId={property.id}
-                                  demo={demo}
-                                />
-                              )}
-                            {property.type === "KOS" &&
-                              s.status === "ACTIVE" &&
-                              s.start > today && (
-                                <button
-                                  disabled={demo}
-                                  className="secondary"
-                                  onClick={() =>
-                                    void mutate("transition", {
-                                      stayId: s.id,
-                                      status: "CANCELLED",
-                                    })
-                                  }
-                                >
-                                  Batalkan masa tinggal
-                                </button>
-                              )}
-                            {s.status === "CONFIRMED" && (
-                              <>
-                                <button
-                                  disabled={demo}
-                                  onClick={() =>
-                                    mutate("transition", {
-                                      stayId: s.id,
-                                      status: "CHECKED_IN",
-                                    })
-                                  }
-                                >
-                                  Check-in
-                                </button>
-                                <button
-                                  className="secondary"
-                                  disabled={demo}
-                                  onClick={() =>
-                                    mutate("transition", {
-                                      stayId: s.id,
-                                      status: "CANCELLED",
-                                    })
-                                  }
-                                >
-                                  Batalkan
-                                </button>
-                              </>
-                            )}
-                            {["ACTIVE", "CHECKED_IN"].includes(s.status) &&
-                              s.start <= today && (
-                                <button
-                                  disabled={demo}
-                                  onClick={() => {
-                                    if (
-                                      confirm(
-                                        "Konfirmasi check-out penghuni ini?",
-                                      )
-                                    )
-                                      void mutate("transition", {
-                                        stayId: s.id,
-                                        status: "CHECKED_OUT",
-                                      });
-                                  }}
-                                >
-                                  Check-out
-                                </button>
-                              )}
-                          </div>
-                        </article>
-                      ))}
-                      {!selectedRoom.stays.length && (
-                        <p>Belum ada penghuni atau tamu.</p>
-                      )}
+                  <select
+                    value={filter}
+                    onChange={(e) => setFilter(e.target.value)}
+                    aria-label="Filter status kamar"
+                  >
+                    <option value="ALL">Semua status</option>
+                    {[
+                      "AVAILABLE",
+                      "OCCUPIED",
+                      "RESERVED",
+                      "CLEANING",
+                      "MAINTENANCE",
+                    ].map((s) => (
+                      <option key={s} value={s}>
+                        {statusNames[s]}
+                      </option>
+                    ))}
+                  </select>
+                  <span>{rooms.length} kamar</span>
+                </div>
+                {selectedRoom ? (
+                  <section className="panel room-detail">
+                    <button
+                      className="text-link"
+                      onClick={() => setSelectedRoom(null)}
+                    >
+                      ← Semua kamar
+                    </button>
+                    <h2>Kamar {selectedRoom.number}</h2>
+                    <p>
+                      {rupiah(selectedRoom.rate)} /{" "}
+                      {property.type === "KOS" ? "bulan" : "malam"} ·{" "}
+                      {
+                        statusNames[
+                          roomStatus(selectedRoom, selectedRoom.stays, today)
+                        ]
+                      }
+                    </p>
+                    <button
+                      disabled={demo || !owner}
+                      onClick={() => open("roomUpdate", selectedRoom)}
+                    >
+                      Edit Kamar
+                    </button>
+                    {selectedRoom.operational !== "READY" && (
                       <button
                         className="secondary"
-                        disabled={demo}
-                        onClick={() => open("stay", selectedRoom)}
+                        disabled={demo || pending}
+                        onClick={() =>
+                          mutate("roomReadiness", {
+                            roomId: selectedRoom.id,
+                            operational: "READY",
+                          })
+                        }
                       >
-                        <Plus size={17} />
-                        {property.type === "KOS"
-                          ? "Tambah penghuni"
-                          : "Tambah reservasi"}
+                        Tandai Kamar Siap
                       </button>
-                      <h3>Tagihan kamar</h3>
-                      {invoiceTable(
-                        invoices.filter((i) => i.room.id === selectedRoom.id),
-                      )}
-                      {!demo && (
-                        <div className="pagination">
-                          <button
-                            className="secondary"
-                            disabled={invoicePage === 0}
-                            onClick={() => setInvoicePage((p) => p - 1)}
-                          >
-                            Sebelumnya
-                          </button>
-                          <span>Halaman {invoicePage + 1}</span>
-                          <button
-                            className="secondary"
-                            disabled={
-                              (invoicePage + 1) * 50 >=
-                              (property.summary?.invoiceCount ?? 0)
-                            }
-                            onClick={() => setInvoicePage((p) => p + 1)}
-                          >
-                            Berikutnya
-                          </button>
-                        </div>
-                      )}
-                      <h3>Perangkat terhubung</h3>
-                      {property.devices
-                        .filter((d) => d.roomId === selectedRoom.id)
-                        .map((d) => (
-                          <p key={d.id}>
-                            {d.name} · Simulasi ·{" "}
-                            {d.online ? "Online" : "Offline"}
+                    )}
+                    <h3>Riwayat penghuni & reservasi</h3>
+                    {selectedRoom.stays.map((s) => (
+                      <article className="stay-detail" key={s.id}>
+                        <div>
+                          <b>{s.guest.name}</b>
+                          <p>
+                            {s.start} → {s.end ?? "Tanpa tanggal akhir"} ·{" "}
+                            {statusNames[s.status]}
                           </p>
-                        ))}
-                    </section>
-                  ) : (
-                    <div className="room-grid">
-                      {rooms
-                        .filter(
-                          (r) =>
-                            (filter === "ALL" ||
-                              roomStatus(r, r.stays, today) === filter) &&
-                            `${r.number} ${r.stays.map((s) => s.guest.name).join(" ")}`
-                              .toLowerCase()
-                              .includes(query.toLowerCase()),
-                        )
-                        .map((r) => {
-                          const status = roomStatus(r, r.stays, today);
-                          const stay = r.stays.find((s) =>
-                            ["ACTIVE", "CHECKED_IN", "CONFIRMED"].includes(
-                              s.status,
-                            ),
-                          );
-                          return (
-                            <article className="room-card" key={r.id}>
-                              <div>
-                                <span className="room-icon">
-                                  <DoorOpen size={23} />
-                                </span>
-                                <span
-                                  className={
-                                    "badge " +
-                                    (status === "OCCUPIED"
-                                      ? "blue"
-                                      : status === "AVAILABLE"
-                                        ? "green"
-                                        : "orange")
-                                  }
-                                >
-                                  {statusNames[status]}
-                                </span>
-                              </div>
-                              <h3>Kamar {r.number}</h3>
-                              <p>{stay?.guest.name ?? "Belum ada penghuni"}</p>
-                              <small>
-                                {rupiah(r.rate)} /{" "}
-                                {property.type === "KOS" ? "bulan" : "malam"}
-                              </small>
-                              <div className="room-card-footer">
+                          <small>{s.guest.phone}</small>
+                          {property.type === "KOS" && (
+                            <p>
+                              <CalendarClock size={14} aria-hidden="true" />{" "}
+                              Jatuh tempo berulang tanggal {s.billingDay} setiap
+                              bulan · Tarif {rupiah(s.rate)}
+                            </p>
+                          )}
+                        </div>
+                        <div>
+                          {property.type === "KOS" && s.status === "ACTIVE" && (
+                            <button
+                              className="secondary"
+                              disabled={demo || !owner || pending}
+                              onClick={() => {
+                                setSelectedStay(s);
+                                open("tenantSettings", selectedRoom);
+                              }}
+                            >
+                              <Pencil size={15} aria-hidden="true" /> Atur
+                              penghuni & jatuh tempo
+                            </button>
+                          )}
+                          {["ACTIVE", "CHECKED_IN"].includes(s.status) &&
+                            s.start <= today &&
+                            (!s.end || s.end > today) && (
+                              <StayShare
+                                stayId={s.id}
+                                propertyId={property.id}
+                                demo={demo}
+                              />
+                            )}
+                          {property.type === "KOS" &&
+                            s.status === "ACTIVE" &&
+                            s.start > today && (
+                              <button
+                                disabled={demo}
+                                className="secondary"
+                                onClick={() =>
+                                  void mutate("transition", {
+                                    stayId: s.id,
+                                    status: "CANCELLED",
+                                  })
+                                }
+                              >
+                                Batalkan masa tinggal
+                              </button>
+                            )}
+                          {s.status === "CONFIRMED" && (
+                            <>
+                              <button
+                                disabled={demo}
+                                onClick={() =>
+                                  mutate("transition", {
+                                    stayId: s.id,
+                                    status: "CHECKED_IN",
+                                  })
+                                }
+                              >
+                                Check-in
+                              </button>
+                              <button
+                                className="secondary"
+                                disabled={demo}
+                                onClick={() =>
+                                  mutate("transition", {
+                                    stayId: s.id,
+                                    status: "CANCELLED",
+                                  })
+                                }
+                              >
+                                Batalkan
+                              </button>
+                            </>
+                          )}
+                          {["ACTIVE", "CHECKED_IN"].includes(s.status) &&
+                            s.start <= today && (
+                              <button
+                                disabled={demo}
+                                onClick={() => {
+                                  if (
+                                    confirm(
+                                      "Konfirmasi check-out penghuni ini?",
+                                    )
+                                  )
+                                    void mutate("transition", {
+                                      stayId: s.id,
+                                      status: "CHECKED_OUT",
+                                    });
+                                }}
+                              >
+                                Check-out
+                              </button>
+                            )}
+                        </div>
+                      </article>
+                    ))}
+                    {!selectedRoom.stays.length && (
+                      <p>Belum ada penghuni atau tamu.</p>
+                    )}
+                    <button
+                      className="secondary"
+                      disabled={demo}
+                      onClick={() => open("stay", selectedRoom)}
+                    >
+                      <Plus size={17} />
+                      {property.type === "KOS"
+                        ? "Tambah penghuni"
+                        : "Tambah reservasi"}
+                    </button>
+                    <h3>Tagihan kamar</h3>
+                    {invoiceTable(
+                      invoices.filter((i) => i.room.id === selectedRoom.id),
+                    )}
+                    {!demo && (
+                      <div className="pagination">
+                        <button
+                          className="secondary"
+                          disabled={invoicePage === 0}
+                          onClick={() => setInvoicePage((p) => p - 1)}
+                        >
+                          Sebelumnya
+                        </button>
+                        <span>Halaman {invoicePage + 1}</span>
+                        <button
+                          className="secondary"
+                          disabled={
+                            (invoicePage + 1) * 50 >=
+                            (property.summary?.invoiceCount ?? 0)
+                          }
+                          onClick={() => setInvoicePage((p) => p + 1)}
+                        >
+                          Berikutnya
+                        </button>
+                      </div>
+                    )}
+                    <h3>Perangkat terhubung</h3>
+                    {property.devices
+                      .filter((d) => d.roomId === selectedRoom.id)
+                      .map((d) => (
+                        <p key={d.id}>
+                          {d.name} · Simulasi ·{" "}
+                          {d.online ? "Online" : "Offline"}
+                        </p>
+                      ))}
+                  </section>
+                ) : (
+                  <div className="room-grid">
+                    {rooms
+                      .filter(
+                        (r) =>
+                          (filter === "ALL" ||
+                            roomStatus(r, r.stays, today) === filter) &&
+                          `${r.number} ${r.stays.map((s) => s.guest.name).join(" ")}`
+                            .toLowerCase()
+                            .includes(query.toLowerCase()),
+                      )
+                      .map((r) => {
+                        const status = roomStatus(r, r.stays, today);
+                        const stay = r.stays.find((s) =>
+                          ["ACTIVE", "CHECKED_IN", "CONFIRMED"].includes(
+                            s.status,
+                          ),
+                        );
+                        return (
+                          <article className="room-card" key={r.id}>
+                            <div>
+                              <span className="room-icon">
+                                <DoorOpen size={23} />
+                              </span>
+                              <span
+                                className={
+                                  "badge " +
+                                  (status === "OCCUPIED"
+                                    ? "blue"
+                                    : status === "AVAILABLE"
+                                      ? "green"
+                                      : "orange")
+                                }
+                              >
+                                {statusNames[status]}
+                              </span>
+                            </div>
+                            <h3>Kamar {r.number}</h3>
+                            <p>{stay?.guest.name ?? "Belum ada penghuni"}</p>
+                            <small>
+                              {rupiah(r.rate)} /{" "}
+                              {property.type === "KOS" ? "bulan" : "malam"}
+                            </small>
+                            <div className="room-card-footer">
+                              <button
+                                className="text-link"
+                                onClick={() => setSelectedRoom(r)}
+                              >
+                                Lihat detail <ArrowUpRight size={16} />
+                              </button>
+                              {status === "AVAILABLE" && (
                                 <button
-                                  className="text-link"
-                                  onClick={() => setSelectedRoom(r)}
+                                  className="icon-button"
+                                  disabled={demo}
+                                  aria-label={
+                                    "Tambah penghuni kamar " + r.number
+                                  }
+                                  onClick={() => open("stay", r)}
                                 >
-                                  Lihat detail <ArrowUpRight size={16} />
+                                  <Plus size={17} />
                                 </button>
-                                {status === "AVAILABLE" && (
-                                  <button
-                                    className="icon-button"
-                                    disabled={demo}
-                                    aria-label={
-                                      "Tambah penghuni kamar " + r.number
-                                    }
-                                    onClick={() => open("stay", r)}
-                                  >
-                                    <Plus size={17} />
-                                  </button>
-                                )}
-                              </div>
-                            </article>
-                          );
-                        })}
-                    </div>
-                  )}
-                </>
-              )}
-              {tab === "rooms" && roomsView === "tasks" && (
+                              )}
+                            </div>
+                          </article>
+                        );
+                      })}
+                  </div>
+                )}
+              </>
+            )}
+            {(tab === "tasks" ||
+              (tab === "dashboard" && !owner) ||
+              (tab === "rooms" && roomsView === "tasks")) &&
+              (!owner ? (
+                <StaffTasks
+                  property={property.name}
+                  tickets={property.tickets || []}
+                  pending={pending}
+                  mutate={mutate}
+                />
+              ) : (
                 <OperationsHub
                   key={property.id}
                   tickets={property.tickets || []}
@@ -1298,458 +1287,668 @@ export function Portal({ demo = false }: { demo?: boolean }) {
                   mutate={mutate}
                   pending={pending}
                 />
-              )}
-              {tab === "billing" && (
-                <>
-                  <div className="billing-summary">
-                    <div>
-                      <small>Total tagihan aktif</small>
-                      <b>
-                        {rupiah(
-                          property.summary?.total ??
-                            invoices
-                              .filter(
-                                (i) => !["VOID", "DRAFT"].includes(i.status),
-                              )
-                              .reduce((s, i) => s + i.total, 0),
-                        )}
-                      </b>
-                    </div>
-                    <div>
-                      <small>Pembayaran diterima</small>
-                      <b>
-                        {rupiah(
-                          property.summary?.paid ??
-                            invoices
-                              .filter(
-                                (i) => !["VOID", "DRAFT"].includes(i.status),
-                              )
-                              .reduce((s, i) => s + paid(i), 0),
-                        )}
-                      </b>
-                    </div>
-                    <div>
-                      <small>Belum dibayar</small>
-                      <b>{rupiah(outstanding)}</b>
-                    </div>
-                  </div>
-                  <div className="toolbar">
-                    <div className="search">
-                      <Search size={17} />
-                      <input
-                        aria-label="Cari tagihan"
-                        placeholder="Cari pada halaman ini…"
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                      />
-                    </div>
-                    <select
-                      aria-label="Filter tagihan"
-                      value={filter}
-                      onChange={(e) => {
-                        setInvoicePage(0);
-                        setFilter(e.target.value);
-                      }}
-                    >
-                      <option value="ALL">Semua tagihan</option>
-                      <option value="UNPAID">Belum lunas</option>
-                      <option value="OVERDUE">Lewat jatuh tempo</option>
-                      <option value="PAID">Lunas</option>
-                    </select>
-                    {property.type === "KOS" && (
-                      <button
-                        className="secondary"
-                        disabled={demo || !plan.recurring}
-                        onClick={() => open("recurring")}
-                      >
-                        Tagihan Berulang
-                      </button>
-                    )}
-                    <a className="button secondary" href="#billing-tools">
-                      Pengingat & bukti bayar
-                    </a>
-                  </div>
-                  <section className="panel">
-                    {invoiceTable(
-                      invoices.filter(
-                        (i) =>
-                          `${i.number} ${i.guest.name}`
-                            .toLowerCase()
-                            .includes(query.toLowerCase()) &&
-                          (filter === "ALL" ||
-                            (filter === "UNPAID" && balance(i) > 0) ||
-                            (filter === "OVERDUE" &&
-                              balance(i) > 0 &&
-                              i.due < today) ||
-                            (filter === "PAID" &&
-                              i.status === "UNPAID" &&
-                              balance(i) === 0)),
-                      ),
-                    )}
-                  </section>
-                  {!demo && (
-                    <div className="pagination">
-                      <button
-                        className="secondary"
-                        disabled={invoicePage === 0 || loading}
-                        onClick={() => setInvoicePage((p) => p - 1)}
-                      >
-                        Sebelumnya
-                      </button>
-                      <span>
-                        Halaman {invoicePage + 1} ·{" "}
-                        {property.summary?.invoiceCount ?? invoices.length}{" "}
-                        tagihan total
-                      </span>
-                      <button
-                        className="secondary"
-                        disabled={
-                          (invoicePage + 1) * 50 >=
-                            (property.summary?.invoiceCount ?? 0) || loading
-                        }
-                        onClick={() => setInvoicePage((p) => p + 1)}
-                      >
-                        Berikutnya
-                      </button>
-                    </div>
+              ))}
+
+            {tab === "rooms" && !owner && (
+              <StaffRooms
+                rooms={rooms}
+                today={today}
+                pending={pending}
+                mutate={mutate}
+              />
+            )}
+            {tab === "account" && (
+              <WorkspaceAccount
+                enabled={!demo}
+                name={demo ? "Pengunjung Demo" : data?.user.name || ""}
+                email={data?.user.email}
+                phone={data?.user.phone}
+                role={owner ? "Pemilik" : "Staf"}
+                context={property.name}
+                onSettings={owner ? () => navigate("settings") : undefined}
+              />
+            )}
+            {tab === "team" &&
+              owner &&
+              (data ? (
+                <Team
+                  members={data.team}
+                  properties={data.properties}
+                  disabled={pending}
+                  mutate={mutate}
+                />
+              ) : (
+                <UnavailableModule
+                  title="Tim & Akses"
+                  description="Masuk untuk mengelola akses staf."
+                />
+              ))}
+            {tab === "team" && owner && !demo && data && (
+              <InviteCenter
+                properties={data.properties}
+                stays={data.properties.flatMap((p) =>
+                  p.rooms.flatMap((r) =>
+                    r.stays
+                      .filter((s) =>
+                        [
+                          "ACTIVE",
+                          "CONFIRMED",
+                          "RESERVED",
+                          "CHECKED_IN",
+                        ].includes(s.status),
+                      )
+                      .map((s) => ({
+                        id: s.id,
+                        name: s.guest.name,
+                        room: r.number,
+                        propertyId: p.id,
+                      })),
+                  ),
+                )}
+                onChange={() => void load()}
+              />
+            )}
+            {tab === "residents" &&
+              owner &&
+              (!demo ? (
+                <Resident360Workspace
+                  key={property.id + tab}
+                  propertyId={property.id}
+                  view="residents"
+                  rooms={rooms}
+                  onRooms={() => navigate("rooms")}
+                  onTeam={() => navigate("team")}
+                  onChange={() => void load(true)}
+                />
+              ) : (
+                <ResidentDirectory
+                  rows={rooms.flatMap((r) =>
+                    r.stays.map((s) => ({
+                      id: s.id,
+                      name: s.guest.name,
+                      phone: s.guest.phone,
+                      room: r.number,
+                      status: s.status,
+                      start: s.start,
+                      end: s.end,
+                    })),
                   )}
-                  <div id="billing-tools">
-                    <BillingTools
-                      key={property.id}
-                      invoices={billingInvoices}
-                      propertyId={property.id}
-                      demo={demo}
-                      canReview={Boolean(canPay)}
-                      mutate={mutate}
+                  onOpen={(id) => {
+                    const room = rooms.find((r) =>
+                      r.stays.some((s) => s.id === id),
+                    );
+                    navigate("rooms");
+                    setSelectedRoom(room || null);
+                  }}
+                />
+              ))}
+            {tab === "contracts" &&
+              owner &&
+              (!demo ? (
+                <Resident360Workspace
+                  key={property.id + tab}
+                  propertyId={property.id}
+                  view="contracts"
+                  rooms={rooms}
+                  onRooms={() => navigate("rooms")}
+                  onTeam={() => navigate("team")}
+                  onChange={() => void load(true)}
+                />
+              ) : (
+                <UnavailableModule
+                  title="Kontrak & Deposit"
+                  description="Masuk ke workspace untuk menyiapkan kontrak dan mencatat deposit properti Anda."
+                />
+              ))}
+            {tab === "cctv" && owner && <CctvReadiness />}
+            {tab === "leo" && owner && (
+              <LeoWorkspace propertyId={property.id} demo={demo} />
+            )}
+            {tab === "finance" &&
+              owner &&
+              (!demo ? (
+                <FinanceWorkspace
+                  key={property.id + tab}
+                  propertyId={property.id}
+                  properties={data?.properties || []}
+                  onBilling={() => navigate("billing")}
+                />
+              ) : (
+                <>
+                  <WorkspaceCard
+                    title="Keuangan"
+                    description="Penerimaan dan piutang berasal dari catatan pembayaran properti."
+                  >
+                    <div className="grid cols2">
+                      <article className="kpi">
+                        <small>Penerimaan bulan ini</small>
+                        <h2>{rupiah(summary.income)}</h2>
+                      </article>
+                      <article className="kpi">
+                        <small>Belum dibayar</small>
+                        <h2>{rupiah(outstanding)}</h2>
+                      </article>
+                    </div>
+                    <button
+                      className="btn outline"
+                      onClick={() => navigate("billing")}
+                    >
+                      Buka transaksi tagihan
+                    </button>
+                  </WorkspaceCard>
+                  <div className="space" />
+                  <UnavailableModule
+                    title="Pengeluaran & surplus"
+                    description="Pencatatan pengeluaran dan ledger kas belum tersedia. Surplus tidak dihitung tanpa data biaya."
+                  />
+                </>
+              ))}
+            {tab === "leads" &&
+              owner &&
+              (!demo ? (
+                <ProspectsWorkspace
+                  key={property.id + tab}
+                  propertyId={property.id}
+                  type={property.type}
+                  rooms={rooms}
+                  onResidents={() => navigate("residents")}
+                  onChange={() => void load(true)}
+                />
+              ) : (
+                <UnavailableModule
+                  title="Prospek & Penyewaan"
+                  description="Masuk ke workspace untuk mencatat prospek dan membuat masa tinggal properti Anda."
+                />
+              ))}
+            {tab === "messages" && !demo && (
+              <MessagesWorkspace key={property.id} propertyId={property.id} />
+            )}
+            {(demo
+              ? ["messages", "visitors", "alerts"]
+              : ["visitors", "alerts"]
+            ).includes(tab) && (
+              <UnavailableModule
+                title={
+                  workspaceNavigation[owner ? "owner" : "staff"].find(
+                    (n) => n[0] === tab,
+                  )?.[1] || "Layanan"
+                }
+                description="Modul ini memerlukan backend, izin, dan alur verifikasi sebelum dapat digunakan."
+                requirements={
+                  tab === "contracts"
+                    ? [
+                        "Kontrak berversi dan persetujuan para pihak",
+                        "Ledger deposit terpisah dari pembayaran sewa",
+                      ]
+                    : undefined
+                }
+              />
+            )}
+            {tab === "billing" && (
+              <>
+                <div className="billing-summary">
+                  <div>
+                    <small>Total tagihan aktif</small>
+                    <b>
+                      {rupiah(
+                        property.summary?.total ??
+                          invoices
+                            .filter(
+                              (i) => !["VOID", "DRAFT"].includes(i.status),
+                            )
+                            .reduce((s, i) => s + i.total, 0),
+                      )}
+                    </b>
+                  </div>
+                  <div>
+                    <small>Pembayaran diterima</small>
+                    <b>
+                      {rupiah(
+                        property.summary?.paid ??
+                          invoices
+                            .filter(
+                              (i) => !["VOID", "DRAFT"].includes(i.status),
+                            )
+                            .reduce((s, i) => s + paid(i), 0),
+                      )}
+                    </b>
+                  </div>
+                  <div>
+                    <small>Belum dibayar</small>
+                    <b>{rupiah(outstanding)}</b>
+                  </div>
+                </div>
+                <div className="toolbar">
+                  <div className="search">
+                    <Search size={17} />
+                    <input
+                      aria-label="Cari tagihan"
+                      placeholder="Cari pada halaman ini…"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
                     />
                   </div>
-                </>
-              )}
-              {tab === "iot" && (
-                <>
-                  <div className="notice">
-                    <b>Mode simulasi · Tuya live belum tersedia</b>
-                    <p>
-                      Kamelo tetap bisa digunakan tanpa IoT. Perangkat simulasi
-                      tidak mengendalikan perangkat nyata. Hubungi ELENIO untuk
-                      penyiapan Tuya terbantu.
-                    </p>
-                    <a href="https://wa.me/6281933328899">
-                      Minta bantuan penyiapan ↗
-                    </a>
+                  <select
+                    aria-label="Filter tagihan"
+                    value={filter}
+                    onChange={(e) => {
+                      setInvoicePage(0);
+                      setFilter(e.target.value);
+                    }}
+                  >
+                    <option value="ALL">Semua tagihan</option>
+                    <option value="UNPAID">Belum lunas</option>
+                    <option value="OVERDUE">Lewat jatuh tempo</option>
+                    <option value="PAID">Lunas</option>
+                  </select>
+                  {property.type === "KOS" && (
+                    <button
+                      className="secondary"
+                      disabled={demo || !plan.recurring}
+                      onClick={() => open("recurring")}
+                    >
+                      Tagihan Berulang
+                    </button>
+                  )}
+                  <a className="button secondary" href="#billing-tools">
+                    Pengingat & bukti bayar
+                  </a>
+                </div>
+                <section className="panel">
+                  {invoiceTable(
+                    invoices.filter(
+                      (i) =>
+                        `${i.number} ${i.guest.name}`
+                          .toLowerCase()
+                          .includes(query.toLowerCase()) &&
+                        (filter === "ALL" ||
+                          (filter === "UNPAID" && balance(i) > 0) ||
+                          (filter === "OVERDUE" &&
+                            balance(i) > 0 &&
+                            i.due < today) ||
+                          (filter === "PAID" &&
+                            i.status === "UNPAID" &&
+                            balance(i) === 0)),
+                    ),
+                  )}
+                </section>
+                {!demo && (
+                  <div className="pagination">
+                    <button
+                      className="secondary"
+                      disabled={invoicePage === 0 || loading}
+                      onClick={() => setInvoicePage((p) => p - 1)}
+                    >
+                      Sebelumnya
+                    </button>
+                    <span>
+                      Halaman {invoicePage + 1} ·{" "}
+                      {property.summary?.invoiceCount ?? invoices.length}{" "}
+                      tagihan total
+                    </span>
+                    <button
+                      className="secondary"
+                      disabled={
+                        (invoicePage + 1) * 50 >=
+                          (property.summary?.invoiceCount ?? 0) || loading
+                      }
+                      onClick={() => setInvoicePage((p) => p + 1)}
+                    >
+                      Berikutnya
+                    </button>
                   </div>
-                  <button
-                    className="secondary"
-                    disabled={demo || !owner}
-                    onClick={() => mutate("mockDevice", {})}
-                  >
-                    <Plus size={17} /> Tambah perangkat simulasi
-                  </button>
-                  <button
-                    className="secondary"
-                    disabled={demo || !owner || !rooms.length}
-                    onClick={() => open("mockLock")}
-                  >
-                    <KeyRound size={17} aria-hidden="true" /> Tambah kunci
-                    digital simulasi
-                  </button>
-                  <div className="device-grid">
-                    {property.devices.map((d) => (
-                      <article className="panel device" key={d.id}>
-                        <div className="panel-title">
-                          {d.kind === "LOCK" ? (
-                            <KeyRound
-                              size={24}
-                              color="#7c3aed"
-                              aria-hidden="true"
-                            />
-                          ) : (
-                            <Lightbulb
-                              size={24}
-                              color="#d97706"
-                              aria-hidden="true"
-                            />
-                          )}
-                          <span
-                            className={"badge " + (d.online ? "green" : "red")}
-                          >
-                            {d.online ? "Online" : "Offline"}
-                          </span>
-                        </div>
-                        <h3>{d.name}</h3>
-                        <span className="badge blue">Simulasi</span>
-                        <label>
-                          Petakan ke kamar
-                          <select
-                            disabled={demo || !owner || pending}
-                            value={d.roomId ?? ""}
-                            onChange={(e) =>
-                              mutate("mapDevice", {
-                                deviceId: d.id,
-                                roomId: e.target.value,
-                              })
-                            }
-                          >
-                            <option value="" disabled>
-                              Belum dipetakan
+                )}
+                <div id="billing-tools">
+                  {!demo && owner && (
+                    <ReminderAutomation
+                      key={property.id + "reminders"}
+                      propertyId={property.id}
+                    />
+                  )}
+                  {!demo && owner && (
+                    <ProofQueue
+                      key={property.id + "proof-queue"}
+                      propertyId={property.id}
+                      focusOnMount={focusProofQueue && !loading}
+                      onChange={() => void load(true)}
+                    />
+                  )}
+                  <BillingTools
+                    key={property.id}
+                    invoices={billingInvoices}
+                    propertyId={property.id}
+                    demo={demo}
+                    canReview={Boolean(canPay)}
+                    showProofQueue={demo || !owner}
+                    mutate={mutate}
+                  />
+                </div>
+              </>
+            )}
+            {tab === "iot" && (
+              <>
+                <div className="notice">
+                  <b>Mode simulasi · Tuya live belum tersedia</b>
+                  <p>
+                    Kamelo tetap bisa digunakan tanpa IoT. Perangkat simulasi
+                    tidak mengendalikan perangkat nyata. Hubungi ELENIO untuk
+                    penyiapan Tuya terbantu.
+                  </p>
+                  <a href="https://wa.me/6281933328899">
+                    Minta bantuan penyiapan ↗
+                  </a>
+                </div>
+                <button
+                  className="secondary"
+                  disabled={demo || !owner}
+                  onClick={() => mutate("mockDevice", {})}
+                >
+                  <Plus size={17} /> Tambah perangkat simulasi
+                </button>
+                <button
+                  className="secondary"
+                  disabled={demo || !owner || !rooms.length}
+                  onClick={() => open("mockLock")}
+                >
+                  <KeyRound size={17} aria-hidden="true" /> Tambah kunci digital
+                  simulasi
+                </button>
+                <div className="device-grid">
+                  {property.devices.map((d) => (
+                    <article className="panel device" key={d.id}>
+                      <div className="panel-title">
+                        {d.kind === "LOCK" ? (
+                          <KeyRound
+                            size={24}
+                            color="#7c3aed"
+                            aria-hidden="true"
+                          />
+                        ) : (
+                          <Lightbulb
+                            size={24}
+                            color="#d97706"
+                            aria-hidden="true"
+                          />
+                        )}
+                        <span
+                          className={"badge " + (d.online ? "green" : "red")}
+                        >
+                          {d.online ? "Online" : "Offline"}
+                        </span>
+                      </div>
+                      <h3>{d.name}</h3>
+                      <span className="badge blue">Simulasi</span>
+                      <label>
+                        Petakan ke kamar
+                        <select
+                          disabled={demo || !owner || pending}
+                          value={d.roomId ?? ""}
+                          onChange={(e) =>
+                            mutate("mapDevice", {
+                              deviceId: d.id,
+                              roomId: e.target.value,
+                            })
+                          }
+                        >
+                          <option value="" disabled>
+                            Belum dipetakan
+                          </option>
+                          {rooms.map((r) => (
+                            <option value={r.id} key={r.id}>
+                              Kamar {r.number}
                             </option>
-                            {rooms.map((r) => (
-                              <option value={r.id} key={r.id}>
-                                Kamar {r.number}
-                              </option>
-                            ))}
-                          </select>
-                        </label>
-                        <small>
-                          Sinkronisasi:{" "}
-                          {new Date(d.syncedAt).toLocaleString("id-ID", {
-                            timeZone: "Asia/Jakarta",
-                          })}
-                        </small>
-                        {d.kind !== "LOCK" &&
-                          Object.entries(d.capabilities).map(([code, cap]) =>
-                            cap.type === "boolean" ? (
-                              <button
-                                className={d.state[code] ? "" : "secondary"}
+                          ))}
+                        </select>
+                      </label>
+                      <small>
+                        Sinkronisasi:{" "}
+                        {new Date(d.syncedAt).toLocaleString("id-ID", {
+                          timeZone: "Asia/Jakarta",
+                        })}
+                      </small>
+                      {d.kind !== "LOCK" &&
+                        Object.entries(d.capabilities).map(([code, cap]) =>
+                          cap.type === "boolean" ? (
+                            <button
+                              className={d.state[code] ? "" : "secondary"}
+                              disabled={
+                                demo || !canControl || !d.online || pending
+                              }
+                              key={code}
+                              onClick={() =>
+                                mutate("device", {
+                                  deviceId: d.id,
+                                  command: { code, value: !d.state[code] },
+                                })
+                              }
+                            >
+                              {pending
+                                ? "Menunggu konfirmasi…"
+                                : d.state[code]
+                                  ? "Matikan"
+                                  : "Nyalakan"}{" "}
+                              {code}
+                            </button>
+                          ) : (
+                            <label key={code}>
+                              {code}
+                              <input
+                                type="number"
+                                min={cap.min}
+                                max={cap.max}
+                                defaultValue={Number(d.state[code])}
                                 disabled={
                                   demo || !canControl || !d.online || pending
                                 }
-                                key={code}
-                                onClick={() =>
+                                onBlur={(e) =>
                                   mutate("device", {
                                     deviceId: d.id,
-                                    command: { code, value: !d.state[code] },
+                                    command: {
+                                      code,
+                                      value: Number(e.target.value),
+                                    },
                                   })
                                 }
-                              >
-                                {pending
-                                  ? "Menunggu konfirmasi…"
-                                  : d.state[code]
-                                    ? "Matikan"
-                                    : "Nyalakan"}{" "}
-                                {code}
-                              </button>
-                            ) : (
-                              <label key={code}>
-                                {code}
-                                <input
-                                  type="number"
-                                  min={cap.min}
-                                  max={cap.max}
-                                  defaultValue={Number(d.state[code])}
-                                  disabled={
-                                    demo || !canControl || !d.online || pending
-                                  }
-                                  onBlur={(e) =>
-                                    mutate("device", {
-                                      deviceId: d.id,
-                                      command: {
-                                        code,
-                                        value: Number(e.target.value),
-                                      },
-                                    })
-                                  }
-                                />
-                              </label>
-                            ),
-                          )}
-                        {d.kind !== "LOCK" && (
-                          <label className="guest-control-setting">
-                            <input
-                              type="checkbox"
-                              checked={Boolean(d.guestControllable)}
-                              disabled={demo || !owner || pending || !d.roomId}
-                              onChange={(e) =>
-                                void mutate("guestDeviceConfig", {
-                                  deviceId: d.id,
-                                  enabled: e.target.checked,
-                                })
-                              }
-                            />{" "}
-                            Autorisasi kontrol di portal penghuni (simulasi)
-                          </label>
+                              />
+                            </label>
+                          ),
                         )}
-                        <SmartAccessPanel
-                          device={{
-                            ...d,
-                            kind: d.kind || "SWITCH",
-                            automationEnabled: d.automationEnabled ?? false,
-                          }}
-                          demo={demo}
-                          canConfigure={Boolean(owner)}
-                          pending={pending}
-                          mutate={mutate}
-                        />
-                        {!d.online && (
-                          <p className="error">
-                            Perangkat sedang offline. Periksa koneksi sebelum
-                            mencoba kembali.
-                          </p>
-                        )}
-                      </article>
-                    ))}
+                      {d.kind !== "LOCK" && (
+                        <label className="guest-control-setting">
+                          <input
+                            type="checkbox"
+                            checked={Boolean(d.guestControllable)}
+                            disabled={demo || !owner || pending || !d.roomId}
+                            onChange={(e) =>
+                              void mutate("guestDeviceConfig", {
+                                deviceId: d.id,
+                                enabled: e.target.checked,
+                              })
+                            }
+                          />{" "}
+                          Autorisasi kontrol di portal penghuni (simulasi)
+                        </label>
+                      )}
+                      <SmartAccessPanel
+                        device={{
+                          ...d,
+                          kind: d.kind || "SWITCH",
+                          automationEnabled: d.automationEnabled ?? false,
+                        }}
+                        demo={demo}
+                        canConfigure={Boolean(owner)}
+                        pending={pending}
+                        mutate={mutate}
+                      />
+                      {!d.online && (
+                        <p className="error">
+                          Perangkat sedang offline. Periksa koneksi sebelum
+                          mencoba kembali.
+                        </p>
+                      )}
+                    </article>
+                  ))}
+                </div>
+                {!property.devices.length && (
+                  <div className="empty">
+                    <Wifi />
+                    <h3>Belum menghubungkan perangkat pintar.</h3>
+                    <p>Kamelo tetap bisa digunakan tanpa IoT.</p>
                   </div>
-                  {!property.devices.length && (
-                    <div className="empty">
-                      <Wifi />
-                      <h3>Belum menghubungkan perangkat pintar.</h3>
-                      <p>Kamelo tetap bisa digunakan tanpa IoT.</p>
-                    </div>
-                  )}
-                </>
-              )}
-              {tab === "settings" && (
-                <>
-                  <section className="panel settings-panel">
-                    <span className="eyebrow">OTOMASI OPERASIONAL</span>
-                    <h2>Tagihan rutin & sinkronisasi akses</h2>
-                    <p>
-                      Tagihan kos dibuat saat tanggal jatuh tempo masing-masing
-                      penghuni tercapai. Satu tagihan per penghuni per periode;
-                      bulan pendek mengikuti tanggal terakhir. Pengiriman
-                      WhatsApp tetap manual.
-                    </p>
-                    <label className="guest-control-setting">
-                      <input
-                        type="checkbox"
-                        checked={Boolean(property.billingAutomation)}
-                        disabled={
-                          demo ||
-                          !owner ||
-                          pending ||
-                          !plan.recurring ||
-                          property.type !== "KOS"
-                        }
-                        onChange={(e) =>
-                          void mutate("operationsConfig", {
-                            enabled: e.target.checked,
-                          })
-                        }
-                      />{" "}
-                      Aktifkan penerbitan tagihan kos otomatis (paket berbayar)
-                    </label>
-                    <p>
-                      Terakhir dijalankan:{" "}
-                      {property.operationsLastRunAt
-                        ? new Date(property.operationsLastRunAt).toLocaleString(
-                            "id-ID",
-                            { timeZone: "Asia/Jakarta" },
-                          )
-                        : "Belum pernah"}
-                      . Worker perlu tetap berjalan agar jadwal otomatis
-                      diproses.
-                    </p>
+                )}
+              </>
+            )}
+            {tab === "settings" && (
+              <>
+                <section className="panel settings-panel">
+                  <span className="eyebrow">OTOMASI OPERASIONAL</span>
+                  <h2>Tagihan rutin & sinkronisasi akses</h2>
+                  <p>
+                    Tagihan kos dibuat saat tanggal jatuh tempo masing-masing
+                    penghuni tercapai. Satu tagihan per penghuni per periode;
+                    bulan pendek mengikuti tanggal terakhir. Pengiriman WhatsApp
+                    tetap manual.
+                  </p>
+                  <label className="guest-control-setting">
+                    <input
+                      type="checkbox"
+                      checked={Boolean(property.billingAutomation)}
+                      disabled={
+                        demo ||
+                        !owner ||
+                        pending ||
+                        !plan.recurring ||
+                        property.type !== "KOS"
+                      }
+                      onChange={(e) =>
+                        void mutate("operationsConfig", {
+                          enabled: e.target.checked,
+                        })
+                      }
+                    />{" "}
+                    Aktifkan penerbitan tagihan kos otomatis (paket berbayar)
+                  </label>
+                  <p>
+                    Terakhir dijalankan:{" "}
+                    {property.operationsLastRunAt
+                      ? new Date(property.operationsLastRunAt).toLocaleString(
+                          "id-ID",
+                          { timeZone: "Asia/Jakarta" },
+                        )
+                      : "Belum pernah"}
+                    . Worker perlu tetap berjalan agar jadwal otomatis diproses.
+                  </p>
+                  <button
+                    className="secondary"
+                    disabled={demo || !owner || pending}
+                    onClick={() => void mutate("operationsRun", {})}
+                  >
+                    Jalankan sekarang
+                  </button>
+                </section>
+                <GuestSettings
+                  key={property.id}
+                  property={property}
+                  owner={Boolean(owner)}
+                  demo={demo}
+                  pending={pending}
+                  mutate={mutate}
+                />
+                <section className="panel settings-panel">
+                  <h2>Informasi properti</h2>
+                  <p>
+                    <b>{property.name}</b> ·{" "}
+                    {property.type === "KOS" ? "Kos" : "Hotel / Guest House"} ·{" "}
+                    {property.city}
+                  </p>
+                  <div className="modal-actions">
                     <button
                       className="secondary"
-                      disabled={demo || !owner || pending}
-                      onClick={() => void mutate("operationsRun", {})}
+                      disabled={demo || !owner}
+                      onClick={() => open("propertyUpdate")}
                     >
-                      Jalankan sekarang
+                      Edit Properti
                     </button>
-                  </section>
-                  <GuestSettings
-                    key={property.id}
-                    property={property}
-                    owner={Boolean(owner)}
-                    demo={demo}
-                    pending={pending}
+                    <a className="button secondary" href="/onboarding">
+                      Tambah Properti
+                    </a>
+                  </div>
+                </section>
+                <section className="panel settings-panel">
+                  <span className="eyebrow">LANGGANAN</span>
+                  <h2>Paket {plan.name}</h2>
+                  <p>
+                    {rooms.length} kamar pada properti ini · batas total
+                    organisasi {plan.rooms} kamar · {plan.properties} properti ·{" "}
+                    {plan.users} pengguna
+                  </p>
+                  <p>
+                    Perubahan paket tidak menghapus catatan keuangan dan data
+                    lama.
+                  </p>
+                  <div className="settings-plans">
+                    {plans
+                      .filter((p) => p.id !== "free")
+                      .map((p) => (
+                        <article key={p.id}>
+                          <h3>{p.name}</h3>
+                          <b>{rupiah(p.price)} / bulan</b>
+                          <p>
+                            {p.rooms} kamar · {p.properties} properti ·{" "}
+                            {p.users} akun
+                          </p>
+                          <button
+                            disabled={
+                              demo || !owner || pending || plan.id === p.id
+                            }
+                            onClick={() => mutate("upgrade", { plan: p.id })}
+                          >
+                            {plan.id === p.id
+                              ? "Paket aktif"
+                              : "Ajukan Upgrade"}
+                          </button>
+                        </article>
+                      ))}
+                  </div>
+                  <p className="notice">
+                    Permintaan akan ditinjau admin. Tidak ada pembayaran
+                    otomatis atau konfirmasi pembayaran palsu.
+                  </p>
+                  {data?.upgrades.map((u) => (
+                    <p key={u.id}>
+                      Permintaan {u.plan}: <b>{u.status}</b>
+                    </p>
+                  ))}
+                </section>
+                {!demo && owner && data && <CustomerBillingWorkspace own />}
+                {!demo && owner && data && (
+                  <Team
+                    members={data.team}
+                    properties={data.properties}
+                    disabled={pending}
                     mutate={mutate}
                   />
-                  <section className="panel settings-panel">
-                    <h2>Informasi properti</h2>
+                )}
+                <section className="panel settings-panel">
+                  <h2>Keamanan & bantuan</h2>
+                  <p>
+                    Akses staf dibatasi oleh penugasan properti di server.
+                    Pemilik dapat mengubah penugasan staf melalui Pengguna &
+                    Staf.
+                  </p>
+                  <Link href="/forgot-password">Pulihkan kata sandi</Link> ·{" "}
+                  <a href="https://wa.me/6281933328899">Hubungi ELENIO</a>
+                  {data?.user.platformAdmin && (
                     <p>
-                      <b>{property.name}</b> ·{" "}
-                      {property.type === "KOS" ? "Kos" : "Hotel / Guest House"}{" "}
-                      · {property.city}
+                      <a href="/admin">Buka administrasi platform</a>
                     </p>
-                    <div className="modal-actions">
-                      <button
-                        className="secondary"
-                        disabled={demo || !owner}
-                        onClick={() => open("propertyUpdate")}
-                      >
-                        Edit Properti
-                      </button>
-                      <a className="button secondary" href="/onboarding">
-                        Tambah Properti
-                      </a>
-                    </div>
-                  </section>
-                  <section className="panel settings-panel">
-                    <span className="eyebrow">LANGGANAN</span>
-                    <h2>Paket {plan.name}</h2>
-                    <p>
-                      {rooms.length} kamar pada properti ini · batas total
-                      organisasi {plan.rooms} kamar · {plan.properties} properti
-                      · {plan.users} pengguna
-                    </p>
-                    <p>
-                      Perubahan paket tidak menghapus catatan keuangan dan data
-                      lama.
-                    </p>
-                    <div className="settings-plans">
-                      {plans
-                        .filter((p) => p.id !== "free")
-                        .map((p) => (
-                          <article key={p.id}>
-                            <h3>{p.name}</h3>
-                            <b>{rupiah(p.price)} / bulan</b>
-                            <p>
-                              {p.rooms} kamar · {p.properties} properti ·{" "}
-                              {p.users} akun
-                            </p>
-                            <button
-                              disabled={
-                                demo || !owner || pending || plan.id === p.id
-                              }
-                              onClick={() => mutate("upgrade", { plan: p.id })}
-                            >
-                              {plan.id === p.id
-                                ? "Paket aktif"
-                                : "Ajukan Upgrade"}
-                            </button>
-                          </article>
-                        ))}
-                    </div>
-                    <p className="notice">
-                      Permintaan akan ditinjau admin. Tidak ada pembayaran
-                      otomatis atau konfirmasi pembayaran palsu.
-                    </p>
-                    {data?.upgrades.map((u) => (
-                      <p key={u.id}>
-                        Permintaan {u.plan}: <b>{u.status}</b>
-                      </p>
-                    ))}
-                  </section>
-                  {!demo && owner && data && (
-                    <Team
-                      members={data.team}
-                      properties={data.properties}
-                      disabled={pending}
-                      mutate={mutate}
-                    />
                   )}
-                  <section className="panel settings-panel">
-                    <h2>Keamanan & bantuan</h2>
-                    <p>
-                      Akses staf dibatasi oleh penugasan properti di server.
-                      Pemilik dapat mengubah penugasan staf melalui Pengguna &
-                      Staf.
-                    </p>
-                    <Link href="/forgot-password">Pulihkan kata sandi</Link> ·{" "}
-                    <a href="https://wa.me/6281933328899">Hubungi ELENIO</a>
-                    {data?.user.platformAdmin && (
-                      <p>
-                        <a href="/admin">Buka administrasi platform</a>
-                      </p>
-                    )}
-                  </section>
-                </>
-              )}
-            </>
-          )}
-        </main>
-      </div>
+                </section>
+              </>
+            )}
+          </>
+        )}
+      </main>
       {modal && (
         <div
           className="modal-backdrop"
@@ -2290,6 +2489,6 @@ export function Portal({ demo = false }: { demo?: boolean }) {
           </section>
         </div>
       )}
-    </div>
+    </WorkspaceShell>
   );
 }

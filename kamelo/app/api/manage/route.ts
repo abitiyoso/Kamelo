@@ -1,3 +1,5 @@
+import {closeStayLifecycle} from "@/lib/lifecycle";
+import {transferredPeriodInvoice} from "@/lib/stay-billing";
 import { runPropertyOperations } from "@/lib/automation";
 import {
   operationsAction,
@@ -5,10 +7,11 @@ import {
   ticketInclude,
 } from "@/lib/operations";
 import { NextRequest, NextResponse } from "next/server";
+import { subscriptionEvent } from "@/lib/subscriptions";
 import { Prisma } from "@/generated/prisma";
 import { z } from "zod";
 import { db } from "@/lib/db";
-import { currentUser, rateLimit } from "@/lib/auth";
+import { currentUser, rateLimit, sessionIdentity } from "@/lib/auth";
 import { plans } from "@/lib/plans";
 import {
   assertCapacity,
@@ -52,6 +55,9 @@ export async function GET(req: NextRequest) {
     const user = await currentUser();
     if (!user)
       return NextResponse.json({ error: "Silakan masuk." }, { status: 401 });
+    if (!["OWNER", "STAFF"].includes(user.role))
+      return NextResponse.json({ error: "Akses ditolak." }, { status: 403 });
+    const canReadFinance = user.role === "OWNER" || user.canRecordPayments;
     // Reconcile simulation dates on owner/staff reads as well as stay events.
     // No real hardware commands are issued by this provider.
     const lockRooms = await db.device.findMany({
@@ -87,13 +93,14 @@ export async function GET(req: NextRequest) {
     );
     const roomFilter = req.nextUrl.searchParams.get("roomId") || undefined;
     const overdueOnly = req.nextUrl.searchParams.get("filter") === "OVERDUE";
-    const overdueRows = overdueOnly
-      ? await db.$queryRaw<{ id: string }[]>`
+    const overdueRows =
+      overdueOnly && canReadFinance
+        ? await db.$queryRaw<{ id: string }[]>`
       SELECT i.id FROM "Invoice" i JOIN "Property" p ON p.id=i."propertyId"
       LEFT JOIN "Payment" pay ON pay."invoiceId"=i.id
       WHERE p."organizationId"=${user.organizationId} AND i.status NOT IN ('DRAFT','VOID') AND i.due < ${today()}
       GROUP BY i.id HAVING i.total > COALESCE(SUM(pay.amount),0)`
-      : [];
+        : [];
     const invoiceFilter = {
       ...(roomFilter ? { roomId: roomFilter } : {}),
       ...(overdueOnly ? { id: { in: overdueRows.map((r) => r.id) } } : {}),
@@ -107,7 +114,7 @@ export async function GET(req: NextRequest) {
         rooms: { include: { stays: { include: { guest: true } } } },
         guests: { take: 100 },
         invoices: {
-          where: invoiceFilter,
+          where: canReadFinance ? invoiceFilter : { id: { in: [] } },
           take: 50,
           skip: Math.floor(page) * 50,
           orderBy: overdueOnly
@@ -121,49 +128,76 @@ export async function GET(req: NextRequest) {
           },
         },
         devices: { include: { accesses: { select: accessSelect } } },
-        tickets: { include: ticketInclude, orderBy: { updatedAt: "desc" } },
+        tickets: {
+          where: user.role === "STAFF" ? { assigneeId: user.id } : {},
+          include: ticketInclude,
+          orderBy: { updatedAt: "desc" },
+        },
       },
     });
     const properties = await Promise.all(
       rows.map(async ({ encryptedWifiPassword, ...property }) => ({
+        contractExpiring: user.role === "OWNER"? await db.contract.count({where:{status:"ACTIVE",stay:{room:{propertyId:property.id},end:{gte:today(),lte:new Date(Date.parse(today()+"T00:00:00Z")+30*86400000).toISOString().slice(0,10)}}}}):undefined,
         hasWifiPassword: Boolean(encryptedWifiPassword),
         ...property,
-        summary: await propertyMetrics(
-          property.id,
-          today(),
-          roomFilter,
-          overdueOnly ? overdueRows.map((r) => r.id) : undefined,
-        ),
-        pendingProofInvoices: await db.invoice.findMany({
-          where: {
-            propertyId: property.id,
-            proofs: { some: { status: "PENDING" } },
-          },
-          orderBy: { date: "asc" },
-          include: {
-            guest: true,
-            room: true,
-            payments: true,
-            proofs: { select: safeProofSelect },
-          },
-        }),
+        summary: canReadFinance
+          ? await propertyMetrics(
+              property.id,
+              today(),
+              roomFilter,
+              overdueOnly ? overdueRows.map((r) => r.id) : undefined,
+            )
+          : undefined,
+        pendingProofInvoices: canReadFinance
+          ? await db.invoice.findMany({
+              where: {
+                propertyId: property.id,
+                proofs: { some: { status: "PENDING" } },
+              },
+              orderBy: { date: "asc" },
+              include: {
+                guest: true,
+                room: true,
+                payments: true,
+                proofs: { select: safeProofSelect },
+              },
+            })
+          : [],
+        ...(!canReadFinance
+          ? {
+              guests: [],
+              rooms: property.rooms.map((room) => ({
+                ...room,
+                rate: 0,
+                stays: room.stays.map((stay) => ({
+                  ...stay,
+                  rate: 0,
+                  guest: { ...stay.guest, name: "Penghuni", phone: "" },
+                })),
+              })),
+            }
+          : {}),
+        ...(user.role !== "OWNER" && !user.canControlDevices
+          ? { devices: [] }
+          : {}),
       })),
     );
     const invoiceId = req.nextUrl.searchParams.get("invoiceId");
-    const selectedInvoice = invoiceId
-      ? await db.invoice.findFirst({
-          where: {
-            id: invoiceId,
-            propertyId: { in: properties.map((p) => p.id) },
-          },
-          include: {
-            guest: true,
-            room: true,
-            payments: true,
-            proofs: { select: safeProofSelect },
-          },
-        })
-      : null;
+    const selectedInvoice =
+      invoiceId && canReadFinance
+        ? await db.invoice.findFirst({
+            where: {
+              id: invoiceId,
+              propertyId: { in: properties.map((p) => p.id) },
+            },
+            include: {
+              guest: true,
+              room: true,
+              payments: true,
+              proofs: { select: safeProofSelect },
+            },
+          })
+        : null;
     if (invoiceId && !selectedInvoice)
       return NextResponse.json(
         { error: "Tagihan tidak ditemukan atau akses ditolak." },
@@ -179,6 +213,8 @@ export async function GET(req: NextRequest) {
       user: {
         id: user.id,
         name: user.name,
+        email: user.email,
+        phone: user.phone,
         role: user.role,
         platformAdmin: user.platformAdmin,
         canRecordPayments: user.canRecordPayments,
@@ -191,25 +227,14 @@ export async function GET(req: NextRequest) {
           ? user.organization.subscriptionStatus
           : "EXPIRED",
       properties,
-      team:
+      team: user.role === "OWNER" ? (await db.orgMembership.findMany({where:{organizationId:user.organizationId,status:"ACTIVE"},include:{user:{select:{id:true,name:true,email:true,emailVerifiedAt:true}}}})).map(m=>({...m.user,role:m.role,propertyIds:m.propertyIds,canRecordPayments:m.canRecordPayments,canControlDevices:m.canControlDevices})) : [],
+      upgrades:
         user.role === "OWNER"
-          ? await db.user.findMany({
+          ? await db.upgrade.findMany({
               where: { organizationId: user.organizationId },
-              select: {
-                id: true,
-                name: true,
-                email: true,
-                role: true,
-                propertyIds: true,
-                canRecordPayments: true,
-                canControlDevices: true,
-              },
+              orderBy: { createdAt: "desc" },
             })
           : [],
-      upgrades: await db.upgrade.findMany({
-        where: { organizationId: user.organizationId },
-        orderBy: { createdAt: "desc" },
-      }),
     });
   } catch {
     return NextResponse.json(
@@ -232,11 +257,17 @@ export async function POST(req: NextRequest) {
     if (!user)
       return NextResponse.json({ error: "Silakan masuk." }, { status: 401 });
     const body = await req.json();
+    const billingSession = body.action === "activate" ? await sessionIdentity() : null;
+    if(user.role === "PLATFORM_ADMIN" && body.action !== "activate")return NextResponse.json({error:"Gunakan workspace organisasi untuk operasional."},{status:403});
     await rateLimit("manage:" + user.id, 100);
     const result = await db.$transaction(
       async (tx) => {
         // All writes for an organization share a lock: capacity, booking, recurring and payment checks are atomic.
-        await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${user.organizationId}))`;
+        const lockOrganization = body.action === "activate"
+          ? (await tx.upgrade.findUnique({ where: { id: id.parse(body.requestId) }, select: { organizationId: true } }))?.organizationId || user.organizationId
+          : user.organizationId;
+        await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${lockOrganization}))`;
+        if(user.membershipId){const m=await tx.orgMembership.findUnique({where:{id:user.membershipId}});if(!m||m.status!=="ACTIVE"||m.userId!==user.id||m.role!==user.role||m.canRecordPayments!==user.canRecordPayments||m.canControlDevices!==user.canControlDevices||JSON.stringify([...m.propertyIds].sort())!==JSON.stringify([...user.propertyIds].sort()))throw Error("Hak akses berubah. Silakan masuk kembali.")}
         const org = await tx.organization.findUniqueOrThrow({
           where: { id: user.organizationId },
         });
@@ -264,76 +295,15 @@ export async function POST(req: NextRequest) {
           if (user.role !== "OWNER")
             throw new Error("Hanya pemilik yang dapat melakukan tindakan ini.");
         };
-        if (body.action === "teamAdd") {
-          owner();
-          const input = z
-            .object({
-              name: z.string().trim().min(2).max(100),
-              email: z.email().transform((s) => s.toLowerCase()),
-              phone: z.string().regex(/^(?:\+62|62|0)8\d{7,12}$/),
-              password: z.string().min(10).max(128),
-              propertyIds: z.array(id).min(1).max(3),
-              canRecordPayments: z.boolean().default(false),
-              canControlDevices: z.boolean().default(false),
-            })
-            .parse(body);
-          if (
-            (await tx.user.count({ where: { organizationId: org.id } })) >=
-            plan.users
-          )
-            throw new Error("Batas pengguna paket tercapai.");
-          const count = await tx.property.count({
-            where: { id: { in: input.propertyIds }, organizationId: org.id },
-          });
-          if (count !== new Set(input.propertyIds).size)
-            throw new Error("Penugasan properti tidak valid.");
-          const staff = await tx.user.create({
-            data: {
-              ...input,
-              password: hashPassword(input.password),
-              organizationId: org.id,
-              role: "STAFF",
-            },
-          });
-          await audit("STAFF_CREATED", staff.id);
-          return { id: staff.id };
-        }
-        if (body.action === "teamAssign") {
-          owner();
-          const input = z
-            .object({
-              userId: id,
-              propertyIds: z.array(id).max(3),
-              canRecordPayments: z.boolean().optional(),
-              canControlDevices: z.boolean().optional(),
-            })
-            .parse(body);
-          const staff = await tx.user.findFirst({
-            where: { id: input.userId, organizationId: org.id, role: "STAFF" },
-          });
-          if (!staff) throw new Error("Staf tidak ditemukan.");
-          const count = await tx.property.count({
-            where: { id: { in: input.propertyIds }, organizationId: org.id },
-          });
-          if (count !== new Set(input.propertyIds).size)
-            throw new Error("Properti tidak valid.");
-          await tx.user.update({
-            where: { id: staff.id },
-            data: {
-              propertyIds: input.propertyIds,
-              canRecordPayments: input.canRecordPayments,
-              canControlDevices: input.canControlDevices,
-            },
-          });
-          await tx.session.deleteMany({ where: { userId: staff.id } });
-          await audit("STAFF_ASSIGNMENT_UPDATED", staff.id, {
-            propertyIds: input.propertyIds,
-            canRecordPayments:
-              input.canRecordPayments ?? staff.canRecordPayments,
-            canControlDevices:
-              input.canControlDevices ?? staff.canControlDevices,
-          });
-          return { ok: true };
+        if(body.action === "teamAdd") throw new Error("Gunakan undangan staf. Pembuatan akun dengan berbagi kata sandi telah dinonaktifkan.");
+        if(body.action === "teamAssign"){
+          owner();const input=z.object({userId:id,propertyIds:z.array(id).max(3),canRecordPayments:z.boolean().optional(),canControlDevices:z.boolean().optional()}).parse(body);
+          const member=await tx.orgMembership.findFirst({where:{userId:input.userId,organizationId:org.id,role:"STAFF",status:"ACTIVE"},include:{user:true}});if(!member)throw Error("Staf tidak ditemukan.");
+          const count=await tx.property.count({where:{id:{in:input.propertyIds},organizationId:org.id}});if(count!==new Set(input.propertyIds).size)throw Error("Properti tidak valid.");
+          const grants={propertyIds:input.propertyIds,canRecordPayments:input.canRecordPayments??member.canRecordPayments,canControlDevices:input.canControlDevices??member.canControlDevices};
+          await tx.orgMembership.update({where:{id:member.id},data:grants});
+          if(member.user.organizationId===org.id&&member.user.role==="STAFF")await tx.user.update({where:{id:member.userId},data:grants});
+          await tx.session.deleteMany({where:{userId:member.userId}});await audit("STAFF_ASSIGNMENT_UPDATED",member.userId,grants);return {ok:true};
         }
         if (body.action === "property") {
           owner();
@@ -392,11 +362,16 @@ export async function POST(req: NextRequest) {
         if (body.action === "activate") {
           if (!user.platformAdmin)
             throw new Error("Akses administrator platform diperlukan.");
+          const freshAdmin = await tx.user.findUnique({ where: { id: user.id }, select: { platformAdmin: true, accountStatus: true } });
+          if (!freshAdmin?.platformAdmin || ["PENDING", "SUSPENDED", "CLOSED"].includes(freshAdmin.accountStatus)) throw Error("Akses administrator telah berubah.");
+          const freshSession = billingSession ? await tx.session.findUnique({ where: { token: billingSession.token } }) : null;
+          if (!freshSession || freshSession.userId !== user.id || freshSession.expires <= new Date()) throw Error("Sesi administrator telah berakhir.");
           const request = await tx.upgrade.findUniqueOrThrow({
             where: { id: id.parse(body.requestId) },
           });
           if (request.status !== "REQUESTED")
             throw new Error("Permintaan sudah diproses.");
+          const previousEntitlement = await tx.organization.findUniqueOrThrow({ where: { id: request.organizationId }, select: { plan: true, subscriptionStatus: true, planExpiresAt: true } });
           await tx.organization.update({
             where: { id: request.organizationId },
             data: {
@@ -409,6 +384,7 @@ export async function POST(req: NextRequest) {
             where: { id: request.id },
             data: { status: "ACTIVATED" },
           });
+          await subscriptionEvent(tx, request.organizationId, user.id, "LEGACY_MANUAL_ACTIVATION", "Aktivasi manual melalui alur lama; tidak menjadi bukti pembayaran langganan.", { plan: request.plan, requestId: request.id, before: { ...previousEntitlement, planExpiresAt: previousEntitlement.planExpiresAt?.toISOString() || null } });
           await tx.audit.create({
             data: {
               organizationId: request.organizationId,
@@ -481,6 +457,7 @@ export async function POST(req: NextRequest) {
           });
           if (!stay || property.type !== "KOS")
             throw new Error("Penghuni kos tidak ditemukan.");
+          if(input.rate!==stay.rate&&await tx.contract.count({where:{stayId:stay.id,status:"ACTIVE"}}))throw Error("Tarif terikat kontrak yang disepakati. Perubahan tarif memerlukan revisi kontrak terjadwal.");
           await tx.guest.update({
             where: { id: stay.guestId },
             data: { name: input.name, phone: input.phone },
@@ -673,33 +650,7 @@ export async function POST(req: NextRequest) {
                 : {}),
             },
           });
-          if (input.status === "CHECKED_OUT" && property.type === "HOTEL")
-            await tx.room.update({
-              where: { id: stay.roomId },
-              data: { operational: "CLEANING" },
-            });
-          if (input.status === "CHECKED_OUT" && property.type === "HOTEL") {
-            const ticket = await tx.ticket.create({
-              data: {
-                propertyId: property.id,
-                stayId: stay.id,
-                title: "Bersihkan kamar " + stay.room.number,
-                description:
-                  "Tamu sudah check-out. Bersihkan kamar, lalu tandai kamar siap setelah diperiksa.",
-                category: "CLEANING",
-                priority: "NORMAL",
-                createdBy: user.id,
-                updates: {
-                  create: {
-                    actorId: user.id,
-                    status: "OPEN",
-                    note: "Tiket dibuat otomatis setelah check-out.",
-                  },
-                },
-              },
-            });
-            await audit("CHECKOUT_CLEANING_TICKET_CREATED", ticket.id);
-          }
+          if (["CHECKED_OUT","CANCELLED"].includes(input.status))await closeStayLifecycle(tx,stay.id,input.status,user.id,org.id);
           await audit(input.status, stay.id);
           await syncRoomAccess(tx, stay.roomId, today(), user.id, org.id);
           return { ok: true };
@@ -740,6 +691,8 @@ export async function POST(req: NextRequest) {
                 "Tagihan berulang memerlukan paket berbayar dan penghuni kos aktif.",
               );
             if (!input.period) throw new Error("Periode wajib diisi.");
+            const transferred=await transferredPeriodInvoice(tx,stay.id,input.period);
+            if(transferred)return transferred;
             const [y, m] = input.period.split("-").map(Number);
             due = billingDate(y, m, stay.billingDay);
             if (due < stay.start || (stay.end && due >= stay.end))

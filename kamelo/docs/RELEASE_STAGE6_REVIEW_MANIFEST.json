@@ -1,0 +1,233 @@
+{
+  "stage": "Stage 6 local validation verified; production acceptance pending",
+  "branch": "codex/release-validation",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "dc8b45cb53dc3d1733675b4c1c932b0c8aee83dec006a5db2964960f5dc0c534"
+    },
+    {
+      "path": "README.md",
+      "sha256": "3a33d22a7ece6db1f660901de4787c915b45ee16e0d9d76082a9ae6604067a1f"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "e00c49eaf6ed7e61a5c7c5f7b13109b1cc4ac584296d07c31abe4d9c0a5f374e"
+    },
+    {
+      "path": "docs/DATABASE.md",
+      "sha256": "8df2e88b34ecd0e14657ee68baec06f6db511b43fc96d2c35bf07edaef7c775a"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "39eb29b126af582c4aa412d8204f85718fb54f3281cc04ebac04f77b41120cf2"
+    },
+    {
+      "path": "docs/REMAINING_DELIVERY_STAGES.md",
+      "sha256": "3a982878009dfa8dc49636b9bd5ad50fafe54ca1f8916d870c50f88eaaa4a98f"
+    },
+    {
+      "path": "docs/RELEASE_STAGE6.md",
+      "sha256": "555733e8725b94120baba294e1fe448afd01979cd3809268d4fc21ed6acbf5f8"
+    },
+    {
+      "path": "docs/RELEASE_STAGE6_BROWSER_QA.md",
+      "sha256": "9588500920ecf44405916aae103f2a5ed5ba741b6252420cb88501c11f96c859"
+    },
+    {
+      "path": "scripts/release-restore-drill.mjs",
+      "sha256": "164d7d6cc80be2cc538341fa5d54662c5cc6132e8891fbda863c648c041b18ae"
+    },
+    {
+      "path": "scripts/release-restore-preview.mjs",
+      "sha256": "8e646b031454c4c47ca8959eb06ef6fa67aa5398bb8fe44c3535867a43746149"
+    },
+    {
+      "path": "scripts/release-qa-verify.mjs",
+      "sha256": "50f3bd03196956815f515a3bb6b9075b10d7cb0413efa2e8b8aeedcbe788b70a"
+    },
+    {
+      "path": "scripts/release-review-sync.mjs",
+      "sha256": "39f3a33c9260da02208acc423cb99adaaf329a2c3759ff2aff6ca6c16251ff74"
+    },
+    {
+      "path": "tests/release-stage6.integration.mjs",
+      "sha256": "c82f1212b7631961655c0572f249a6c1c6b793b2ec8b27ba82b9b45219ae5b0d"
+    },
+    {
+      "path": "artifacts/release-stage6/restore.json",
+      "sha256": "e882f74136a6b3d886a387c8ba41f9d9b626c0152993237eaf5afe215f5cc29a"
+    },
+    {
+      "path": "artifacts/release-stage6/regression-results.json",
+      "sha256": "b6417d776f5f7bf159a085baf32bc45b170a45ec1f7e053af593623901e84de8"
+    },
+    {
+      "path": "artifacts/release-stage6/security-load.json",
+      "sha256": "dd551cb090e813cfcd002959e6bd729cd3d1457d7ed3645176ba25c145f42576"
+    },
+    {
+      "path": "artifacts/release-stage6/security-load.log",
+      "sha256": "c87dee62d111d2001272f3ebace5868535a7a0aae34ae5b594b49c1469276c00"
+    },
+    {
+      "path": "artifacts/release-stage6/unit.log",
+      "sha256": "bbc8ccd5acb602aa33424119f450051c93b7a0e15a0f1308b235f2b55004331d"
+    },
+    {
+      "path": "artifacts/release-stage6/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/release-stage6/browser.json",
+      "sha256": "13ac21a20ffcb62244f562e3a1c01c80ba707ecc3d8452a8d0d319c8c22081f9"
+    },
+    {
+      "path": "artifacts/release-stage6/restored-dashboard.png",
+      "sha256": "b256cb1b1e3ace402695efe059afe8ca321334b0202f557c05f4081b0dcedf8d"
+    },
+    {
+      "path": "artifacts/release-stage6/restored-finance.png",
+      "sha256": "2079a04644c660b10b46119c86ee16be19661a972ea470db296741f128ece15b"
+    },
+    {
+      "path": "artifacts/release-stage6/restored-finance-390.png",
+      "sha256": "d2b1eac7862dc92632674eee7a5af4af451d0e2e9c8dc472bd39aa1434bf8ec9"
+    },
+    {
+      "path": "artifacts/release-stage6/restored-finance-320.png",
+      "sha256": "3322f11ecea83d37aaa1a94c4feeb81e44f096f5b6677aca9431eedfcc09a4b6"
+    },
+    {
+      "path": "artifacts/release-stage6/restored-dashboard-restarted.png",
+      "sha256": "d6c047dceed80624be46bbe07380da58d107c8d8ddd18e1cb515bf25e16c15f8"
+    },
+    {
+      "path": "artifacts/release-stage6/restart.json",
+      "sha256": "73be5723cb711721f0d3f674633809e9f164c210a95064ad26fcb1cb28fd9d94"
+    },
+    {
+      "path": "artifacts/release-stage6/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/release-stage6/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/release-stage6/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/release-stage6/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/release-stage6/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/release-stage6/workspace.integration.log",
+      "sha256": "e666124c50dffecef64eba39095e462ec739bb4fef45a3a0cc8fe02b418c0f8a"
+    },
+    {
+      "path": "artifacts/release-stage6/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/release-stage6/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/release-stage6/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/release-stage6/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/release-stage6/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/release-stage6/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/release-stage6/privacy.integration.log",
+      "sha256": "9203cd6d96eee6519f5a688bd1c53dcd27763ca66c8526b15acdbfa2e1bc6ec2"
+    },
+    {
+      "path": "artifacts/release-stage6/room-import.integration.log",
+      "sha256": "f42a888f174f7e81ea7a459f01c841b6cd678865b978279efa7af374f1ef0569"
+    },
+    {
+      "path": "artifacts/release-stage6/resident-import.integration.log",
+      "sha256": "bc71737bceaa78d973a9067d70e87c7e479cb0906ac04bc5c1e92fcc1cf3f524"
+    },
+    {
+      "path": "artifacts/release-stage6/import-files.integration.log",
+      "sha256": "3ca4a3472d384ac4d886058ae11899ce18e187138085ae09fd19cd25309c47d9"
+    },
+    {
+      "path": "artifacts/release-stage6/opening-balances.integration.log",
+      "sha256": "2e7579fbdf802941ddc5b2e045a94a15f41d026d14ca932760a68340fbdb438e"
+    },
+    {
+      "path": "artifacts/release-stage6/opening-receipts.integration.log",
+      "sha256": "e815fd244ca72862ea4b25816b4a785f27d80d4deccf5c78b4d48d5c06af9986"
+    },
+    {
+      "path": "artifacts/release-stage6/opening-tenant.integration.log",
+      "sha256": "d3f0d8b65f18e98322d8669d0e9f14289ce2cf8964578ba00770ef660322fce5"
+    },
+    {
+      "path": "artifacts/release-stage6/opening-reminders.integration.log",
+      "sha256": "3f1c24d2a8e1e096c25bf7cbafe6dde8aad4c1cb1cfcfacd78c5e14117cabedd"
+    },
+    {
+      "path": "artifacts/release-stage6/proof-queue.integration.log",
+      "sha256": "2d41710e728c6b5c46c2aa5ddc96e9351e8dde2640f8c9ae57e5fde336dccd90"
+    },
+    {
+      "path": "artifacts/release-stage6/dashboard.integration.log",
+      "sha256": "779b22d303c841abc6f2c4bb5a8fcfef28429cc459eaae72f74cace51a5e7e86"
+    },
+    {
+      "path": "artifacts/release-stage6/reminder.integration.log",
+      "sha256": "65c8dd99301422138730fc7df86794647aa29ca3bd5f0d5ae98f07e7d2d76101"
+    },
+    {
+      "path": "artifacts/release-stage6/finance-stage4.integration.log",
+      "sha256": "dcbec2849bf3460d382a74b5ffadbc1ec35504cfc6e5b9110e9a51effa20ea30"
+    },
+    {
+      "path": "artifacts/release-stage6/integration-stage5.integration.log",
+      "sha256": "cb76bfa5826ff1c26cec64ee938f52c4feeeb797066f2b0af046697d35ef8eee"
+    },
+    {
+      "path": "artifacts/release-stage6/data-plan.json",
+      "sha256": "17d1d11bb915585da6ce6e3eb17bf7a16849121c142da55b6bf4aeb45946d3e9"
+    }
+  ],
+  "schemaSha256": "41b7c1b3d4ae600993cbc27a851f4018b4ed5321eab6db272c58a237ebd74663",
+  "migrationFilesPreserved": 22,
+  "runtimeApplicationSourceChanged": false,
+  "excluded": [
+    ".env*",
+    ".local-secrets",
+    "database dumps and clusters",
+    "encryption keys",
+    "fixture credentials",
+    "private proof bytes",
+    "mail sink",
+    "node_modules",
+    "generated",
+    ".next"
+  ],
+  "committed": false,
+  "pushed": false,
+  "deployed": false,
+  "productionAccepted": false
+}

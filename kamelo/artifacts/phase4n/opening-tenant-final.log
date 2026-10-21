@@ -1,0 +1,14 @@
+PASS explicit idempotent owner sharing binds exact account/grant/stay and never exposes debt by guest identity alone
+PASS owner-only queue, tenant isolation, same-origin checks, bounded file signatures/MIME and scalar validation
+PASS upload retry returns one pending record, notes are encrypted and no cash/debt changes occur before review
+PASS private file download is limited to fresh owner or exact submitting tenant; no public bearer link works
+PASS confirmed owner approval records exactly one immutable receipt; repeat/review/cross-owner writes cannot duplicate cash
+PASS rejection leaves debt and cash intact and allows a separate corrected resubmission with retained history
+PASS proof links an exact existing receipt without adding cash; later receipt correction is visible in proof status
+PASS concurrent approvals cannot overcollect when submitted proofs exceed the remaining balance
+PASS database and application retain immutable proofs, sharing targets, reviewed decisions and debt sources
+PASS revocation immediately removes tenant/file access; a replacement recipient does not inherit prior user proofs
+PASS fresh billing permission and owner membership revocation also guard bytes and review endpoints
+PASS pending queue limit, 15-minute upload rate limit and failed-upload file cleanup are enforced
+PASS tenant and owner proof history is bounded and paginated without repeated records or private storage metadata
+PASS 13 opening tenant proof API scenario groups

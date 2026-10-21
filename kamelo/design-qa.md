@@ -1,51 +1,86 @@
-# Kamelo landing — concept 2 visual review
+**20 Oct 2026 — Stage 6 local release validation verified; production remains pending.** UTF-8 recovery preserved every public table/schema hash and 22 migration records; 645 private files copied, 54 encrypted financial snapshots recovered, with old synthetic proof fixtures separately accounted for. Six recovered-app security/load groups, all 25 existing API suites, 63 unit tests and typecheck pass. Bounded read load: 150 requests / five concurrent readers / zero errors / p95 146 ms; no production capacity claim. Recovered owner dashboard/receipt archive and 320/390 px browser checks pass. No runtime UI/schema change, main DB migration, live send, commit, push or deployment. See [release report](docs/RELEASE_STAGE6.md), [browser evidence](docs/RELEASE_STAGE6_BROWSER_QA.md) and [remaining gates](docs/REMAINING_DELIVERY_STAGES.md).
 
-Date: 17 October 2026. Route: http://127.0.0.1:3000/.
+**20 Oct 2026 — Stage 5 local readiness verified; live acceptance remains pending.** Shared worker transport now validates origin/secret, rejects redirects and malformed responses, cancels requests on shutdown and bounds reminder cursors. A secret-safe offline preflight and platform-only prerequisite panel distinguish configuration from verified service. Optional Docker worker packaging/template prepared; Docker runtime not tested here. Build/typecheck, 63 unit tests and 25 isolated API suites pass. No schema migration, external provider call/send, main database change, commit, push or deploy. Real service resources/adapters and final release acceptance remain open. See [stage 5 report](docs/INTEGRATION_STAGE5.md), [browser QA](docs/INTEGRATION_STAGE5_DESIGN_QA.md) and [acceptance template](docs/INTEGRATION_LIVE_ACCEPTANCE.md).
 
-## Target and fresh evidence
+**20 Oct 2026 — Remaining stage 4 complete locally: opening refunds, receipt issuance and retained financial archives.** Source-bound refunds/corrections and bank matching preserve cash/debt history. Owners issue immutable encrypted invoice/opening receipts; tenants view/download only currently authorized documents. KEEP/HOLD/review records are versioned without automatic deletion. Build/typecheck, 51 unit tests and 24 integration suites pass, including 11 new finance groups. QA migration preserved every original column value in 58 old tables. No real transfer/email, main database migration, commit, push or deploy. Two stages remain: real configured integration acceptance and final release acceptance; destructive retention policy remains a business/legal release dependency. See [finance report](docs/FINANCE_STAGE4.md), [browser QA](docs/FINANCE_STAGE4_DESIGN_QA.md) and [progress](docs/REMAINING_DELIVERY_STAGES.md).
 
-Exact selected reference: C:/Users/Abi Tiyoso/.codex/generated_images/01a133a4-4ea4-74e1-8c19-4a7241c7d52a/exec-d92c1b3a-585b-40ed-8b80-cb760687b18c.png (725 × 2170). This is the second displayed result of the latest complete landing concepts. Its proportional height at 1440px is about 4310px.
+**20 Oct 2026 — Remaining stage 3 complete locally: scheduled billing reminders.** Owner opt-in Jakarta schedules publish private invoice/opening reminders and optionally queue generic emails. Fresh access/share/balance/proof/policy checks, cooldown/dedupe, immutable history and dispatch cancellation are enforced. Build/typecheck, 49 unit tests and 23 integration suites pass, including 17 reminder groups. QA-only additive migration preserved all 56 pre-existing table hashes. No live SMTP, main database migration, commit, push or deployment. Three stages remain; finance completion is next. See [stage 3 report](docs/REMINDER_STAGE3.md), [browser QA](docs/REMINDER_STAGE3_DESIGN_QA.md), and [progress](docs/REMAINING_DELIVERY_STAGES.md).
 
-Permitted in-app browser access succeeded during this review. Earlier blocked status is superseded. Production desktop viewport: 1440 × 1000; document client/scroll width 1425/1425, height 4455px. Mobile viewport: 390 × 844; client/scroll width 375/375, measured height 8899px. Browser screenshots hide the native scrollbar and can reflow the capture by 15px; comparisons normalize both images proportionally to 720px wide. Captures use logged-out initial state, default reminder, one completed sample task, 20 rooms/one property/one user/recurring off and collapsed FAQs. All photos decoded before capture.
+**20 Oct 2026 — Remaining stage 2 complete locally: combined dashboard and resident home.** Owner KPIs/source drilldown combine invoice and opening debt; finance/report/dashboard share canonical daily cash queries. Current-month comparison, negative-capable six-month chart, actual surplus and combined proof priority are connected. Tenant home sums own invoices and explicitly shared opening debt beyond list pagination. Build/typecheck, 47 unit tests and 207 API groups across 22 suites pass; owner/tenant desktop and 320/390 px checked. No schema migration. See [stage 2 report](docs/DASHBOARD_STAGE2.md), [browser QA](docs/DASHBOARD_STAGE2_DESIGN_QA.md) and [delivery progress](docs/REMAINING_DELIVERY_STAGES.md). Four large stages remain; automated reminders/notifications are next.
 
-- Before: artifacts/journal-review-before-desktop.jpg; artifacts/journal-comparison-before.png.
-- Final: artifacts/journal-review-final-desktop.jpg; artifacts/journal-review-final-mobile.jpg.
-- Source left / implementation right: artifacts/journal-comparison-final.png.
-- Focused comparisons: artifacts/journal-compare-hero.png, journal-compare-pains.png, journal-compare-pricing.png.
-- Mobile inspection: artifacts/journal-mobile-top.png, journal-mobile-middle.png, journal-mobile-bottom.png, journal-mobile-footer.png.
+**20 Oct 2026 — Remaining stage 1 complete locally: unified owner proof queue.** Invoice/opening files share scoped filters, counts, private details and confirmed canonical review while ledgers remain separate. Exact retries, stale-balance checks and existing-receipt linking prevent duplicate cash. Build/typecheck, 44 unit tests and 195 API scenario groups across 21 suites pass. No schema migration; all twenty prior migration hashes retained. See [queue report](docs/PHASE4O_UNIFIED_PROOF_QUEUE.md), [browser QA](docs/PHASE4O_DESIGN_QA.md) and [six-stage progress](docs/REMAINING_DELIVERY_STAGES.md). Five large stages remain; dashboard consolidation is next.
 
-The full comparison and focused desktop/mobile regions were opened and visually inspected, including the footer. The mobile reference is a responsive interpretation of the selected desktop composition; no separate mobile mockup was supplied.
+**20 Oct 2026 — Phase 4N portal reminders:** owners can preview and explicitly publish a historical balance reminder to the exact shared tenant account. Due/open/positive balances only, pending-proof suppression, 24-hour cooldown, immutable snapshots and independent tenant history pagination are enforced. No cash changes or external delivery. Build/typecheck, 44 unit tests and 182 API groups across 20 suites pass; old row hashes preserved in 41 QA tables. Owner/tenant browser flow and mobile layouts verified. See [Phase 4N report](docs/PHASE4N_PORTAL_REMINDERS.md) and [browser QA](docs/PHASE4N_DESIGN_QA.md). Automated/external reminders, unified queue/insights and production acceptance remain pending.
 
-## Findings and correction loop
+**20 Oct 2026 — Phase 4M tenant opening proofs:** explicit account/stay/grant sharing, private resident proof upload, owner rejection/approval and exact existing-receipt linking are implemented. Pending evidence changes neither cash nor debt. Build/typecheck, 44 unit tests and 170 API groups across 19 suites pass; additive migration preserved old values in 39 QA tables. Browser approval and 320/390 px resident layouts verified. See [Phase 4M report](docs/PHASE4M_TENANT_OPENING_PROOFS.md) and [browser QA](docs/PHASE4M_DESIGN_QA.md). Opening reminders, unified insights/queue and production/provider acceptance remain pending.
 
-| Priority | Observed problem | Correction and verification |
-| --- | --- | --- |
-| P1 | Global label column layout made task rows excessively tall. | Scoped row direction, checkbox size and stable accessible names; three compact separate rows now align with the invoice/photo. Completion toggle verified. |
-| P1 | Production desktop hero photo hidden behind its background. | Replaced negative image stacking with explicit image/content/caption layers. Rebuilt and recaptured: photo visible at desktop and mobile. |
-| P2 | Invoice duplicate header/date and spacious lower page diverged from reference. | Compact avatar/date header, single balance, tighter section headings, onboarding, pricing and footer. Whole-page height reduced from 5177 to 4455px. |
-| P2 | Hero specificity prevented narrow-screen layout overrides. | Separated container sizing from layout rules; mobile copy/photo stack and readable face crop verified. |
+**19 Oct 2026 — Phase 4L opening collections:** owners can record partial/full receipts, correct mistaken entries with retained history, and reconcile them manually. Net receipts enter finance cash/chart/movement reports once without creating invoices. Build/typecheck, 44 unit tests and 157 API groups across 18 suites pass; migration preserved old values in 38 QA tables. See [Phase 4L report](docs/PHASE4L_OPENING_RECEIPTS.md) and [browser QA](docs/PHASE4L_DESIGN_QA.md). Opening-ledger tenant visibility, reminders/proofs, refunds, dashboard consolidation and production acceptance remain pending.
 
-No unresolved P0/P1/P2 issue was observed within this route/state and tested sizes.
+**19 Oct 2026 — Phase 4K opening receivables:** owner-only CSV/XLSX register now records historical debt with explicit profile/source review, separate totals and retained whole-batch void history. Build/typecheck, 44 unit tests and 146 isolated API scenario groups pass. QA migration preserved hashes across 36 old business tables. See [Phase 4K report](docs/PHASE4K_OPENING_RECEIVABLES.md) and [browser QA](docs/PHASE4K_DESIGN_QA.md). Collection/settlement, tenant visibility, broader opening accounts and production/provider acceptance remain pending.
 
-## Five fidelity surfaces
+**19 Oct 2026 — Phase 4J XLSX imports:** both room and resident importers now accept XLSX with explicit sheet selection, column mapping, typed dates/text identities and bounded read-only conversion before the existing confirmed import. Build/typecheck, 41 unit tests and 133 isolated API scenario groups pass. See [Phase 4J report](docs/PHASE4J_XLSX_IMPORTS.md) and [browser QA](docs/PHASE4J_DESIGN_QA.md). No schema migration. Opening balances, wider onboarding/production acceptance and live providers remain pending.
 
-| Surface | Final visual assessment |
-| --- | --- |
-| Fonts and typography | Plus Jakarta Sans display / Inter body; strong navy/blue hierarchy, reference-like hero wraps and readable section titles. Small optical differences remain; no clipped headings observed. |
-| Spacing and layout | Same hero, three pains, two property photos, navy Smart stripe, three onboarding steps, three plans plus finder, FAQ, photo closing and navy footer. Compact task/invoice rhythm restored. |
-| Colors and tokens | ELENIO blue, navy, ice blue and white surfaces retained; white invoice text contrast fixed and readable; supplied official logo variants preserved. |
-| Images | Six optimized individual photo assets, natural hospitality direction and working crops. AI illustration captions remain visible. These are generated equivalents, with some subject/crop differences from the concept. |
-| Copy and content | Real prices/limits, tenant dates, manual reminder/proof semantics, activation and hardware availability retained. Additional disclosure/advanced controls deliberately make the page longer than the conceptual image. |
+**19 Oct 2026 — Phase 4I resident CSV imports:** owner upload/paste, seven-column mapping, explicit existing-profile collision review, per-stay billing day, canonical stay creation and guarded rollback are implemented. Build/typecheck, 36 unit tests and 126 isolated API scenario groups pass. See [Phase 4I report](docs/PHASE4I_RESIDENT_IMPORTS.md) and [browser QA](docs/PHASE4I_DESIGN_QA.md). Direct XLSX, opening balances, wider onboarding/production acceptance and live providers remain pending.
 
-Remaining P3 differences: solid white navigation rather than the concept's photo-backed navigation; native accessible checkboxes rather than decorative circles; generated photo variations; truthful feature/activation disclosures and secondary FAQ. These do not prevent the selected visual hierarchy or primary flows.
+**19 Oct 2026 — Phase 4H room imports:** owner room-only CSV upload/paste, column mapping, collision/capacity preview, atomic confirmed import and guarded whole-batch rollback are implemented. Production build/typecheck, 33 unit tests and 112 isolated API scenario groups pass. See [Phase 4H report](docs/PHASE4H_ROOM_IMPORTS.md) and [browser QA](docs/PHASE4H_DESIGN_QA.md). XLSX, resident/balance imports, main database rollout and live providers remain pending.
 
-## Verification
+**19 Oct 2026 — Phase 4G personal privacy:** verified account summary download and encrypted personal privacy requests now connect to the approved Support Center review queue. Responses record review without erasing data or closing accounts. Production build/typecheck, 29 unit tests and 100 isolated API groups passed. See [Phase 4G report](docs/PHASE4G_PRIVACY_REQUESTS.md) and [browser QA](docs/PHASE4G_DESIGN_QA.md). Actual retention/fulfillment policies, imports and production/provider acceptance remain pending.
 
-- Latest production build and type checking passed after the final stacking correction.
-- Formatting check and ten unit tests passed.
-- Five acquisition HTTP/API groups rerun successfully this review. Earlier 28 Core/tenant/smart/operations groups remain historical evidence; they were not rerun for CSS changes.
-- Actual browser: reminder prepare/copy/reset and returned focus; sample task count; Free/Starter/Plus/consultation/invalid plan finder; FAQ; mobile menu; Starter registration to pending activation, property setup and three visible rooms; logout. Details: artifacts/journal-browser-checks.json and docs/LANDING_BROWSER_QA.md.
-- No horizontal document overflow at 320, 390 or 780px. Menu present at tablet breakpoint. Final production console error list empty.
-- Clipboard permission-denial fallback, every keyboard path, full cross-browser/accessibility coverage and complete payment flow through browser clicks were not tested in this review. HTTP/API payment/proof/task journey passed. No external messages, transfers or hardware commands were sent.
+**19 Oct 2026 — Phase 4F scoped messaging:** owner and verified resident conversations now connect to assigned staff through the approved inbox. Threads bind stay plus user identity; encrypted immutable history, routing/revocation, concurrency and checkout restrictions are enforced on the server. Production build/typecheck, 27 unit tests and 92 isolated API groups passed. See [Phase 4F report](docs/PHASE4F_SCOPED_MESSAGES.md) and [browser QA](docs/PHASE4F_DESIGN_QA.md). Live notifications, privacy/import work and production rollout remain pending.
+
+**19 Oct 2026 — Phase 4E support and integration readiness:** owner organization tickets and encrypted revisioned replies connect to the approved platform Support Center; Integrasi & Audit shows safe configuration states, aggregate email queue and scoped support/subscription activity. Production build/typecheck, 27 unit tests and 84 isolated API groups passed. See [Phase 4E report](docs/PHASE4E_SUPPORT_INTEGRATION_HEALTH.md) and [browser QA](docs/PHASE4E_DESIGN_QA.md). No main database rollout or live provider activation; broader V3 work remains.
+
+**18 Oct 2026 — Phase 4D property finance:** owner expense bills, partial payments/refunds/corrections, scoped cash reports/charts, separate deposits, manual reconciliation and safe CSV exports are implemented. Production build/typecheck, 25 unit tests and 77 isolated API scenario groups passed. See [Phase 4D report](docs/PHASE4D_PROPERTY_FINANCE.md) and [browser QA](docs/PHASE4D_DESIGN_QA.md). Main database, deployment and live providers remain pending.
+
+**18 Oct 2026 — Phase 4C SaaS billing:** Customer 360, encrypted/masked organization billing profiles, a separate subscription ledger, partial receipts/refunds/corrections, and explicit paid-period activation are implemented. Owner sees only their own SaaS billing. Production build/typecheck, 22 unit tests and 68 isolated API groups passed. See [Phase 4C report](docs/PHASE4C_SAAS_CUSTOMER_BILLING.md) and [browser QA](docs/PHASE4C_DESIGN_QA.md). External payment/email, production rollout, support cases and remaining V3 modules are pending.
+
+**18 Oct 2026 — Phase 4B prospects:** approved Prospek & Penyewaan now supports consent/source capture, survey and follow-up, revised offers, immutable history and atomic conversion using existing room/stay rules. Production build/typecheck, 20 unit tests and 59 isolated API scenario groups passed. See [Phase 4B report](docs/PHASE4B_PROSPECTS.md) and [browser QA](docs/PHASE4B_DESIGN_QA.md). Broader SaaS Customer 360/subscription accounting and production rollout remain pending.
+
+**18 Oct 2026 — Phase 4A resident/contract/deposit:** Resident 360, versioned manual contracts, room transfers and deposit liability settlement are implemented for review. Production build/typecheck, 20 unit tests and 50 isolated API scenario groups passed. This is a bounded increment, not all Phase 4 requirements. See [Phase 4A report](docs/PHASE4A_RESIDENT_CONTRACT_DEPOSIT.md) and [browser QA](docs/PHASE4A_DESIGN_QA.md). Production migration/deployment and live integrations remain pending.
+
+**18 Oct 2026 — Phase 3 account/access review:** approved green workspace and authentication frame reused for real account, invitations and resident access. Bounded desktop/mobile checks passed; see [Phase 3 visual QA](docs/PHASE3_DESIGN_QA.md) and [implementation/security report](docs/PHASE3_IDENTITY_ACCESS_EMAIL.md). Public v7/v6 assets remain unchanged.
+
+# Phase 2 — approved v5.3 backoffice review
+
+18 October 2026. Review scope: the role shells, Owner overview, Staff queue/readiness, Tenant home/token workflows and Admin organization/subscription shell. Historical public-page parity evidence is preserved in `docs/PHASE1_DESIGN_QA.md`; v7/v6 source files were not redesigned in this phase.
+
+## Reference and evidence
+
+Approved source: `approved-design/Kamelo_v5_3_Complete_Journey_Interactive.html` from the V3 handoff ZIP, served as an isolated local reference. Seven original logo/photos have matching SHA-256 hashes. Prototype executable state, role picker, OTP and fabricated business actions are not used by the app.
+
+Inspected labelled source/implementation comparison sheets in the same artifact:
+- `artifacts/phase2/compare-owner-desktop.png` — full desktop frame, 1440px target.
+- `artifacts/phase2/compare-owner-focus.png` — focused hero, priorities and KPI crop.
+- `artifacts/phase2/compare-staff-mobile.png` — queue, metrics and navigation at 390px target.
+- `artifacts/phase2/compare-tenant-mobile.png` — home structure, original room image and navigation at 390px target.
+
+Mobile comparison uses viewport captures. Full-page browser capture can temporarily change scrollbar/client width and distort percentage-based imagery; it was not used as evidence for a product layout failure. Visible image checks exclude intentionally hidden legacy headers/mascots whose lazy images have not loaded.
+
+## Findings corrected
+
+- Scoped layout resets prevent legacy blue hero padding, navigation fixed height and white hover text from leaking into v5.3.
+- Original green/gold tokens, supplied photos/logo, Segoe UI/system fallback used by the standalone source and source card/grid hierarchy retained.
+- Staff uses the source's separate page heading, three metrics, queue and Buka dialogs. Readiness uses its list/review flow rather than the owner room-management grid.
+- Tenant home follows the source's room hero, billing/service cards and announcements region. Unsupported package/announcement data is stated as unavailable.
+- Redundant selection hidden when the authenticated account has only one property; authorized multi-property switching remains.
+- Mobile More menu has Escape/focus return; bottom padding allows scrolling all content above navigation. Task/readiness dialogs use the existing focus trap.
+- Existing forms/CRUD handlers remain functional and scoped to green styling; no prototype fake saves or permissive role switching added.
+
+## Functional checks
+
+- Owner: resident search and linked room details; role menu routes and unavailable states; pending-proof queue; manual confirmation of synthetic proof; tenant balance updates only after approval.
+- Staff: assigned task progress saved and persisted, then vacant room readiness saved through the final dialog; no ordinary financial navigation/data.
+- Tenant: service request persisted; proof upload remained PENDING with unchanged balance; after Owner approval the same invoice showed APPROVED and the correct reduced balance. Files/links are synthetic QA fixtures only.
+- Admin: verified access guard, organization search, actual pending subscription requests; support/integration prerequisites are explicit. No real activation was performed through the browser.
+- Observed no horizontal document overflow at 320/390/820/1440 for Owner overview and 320/390/820 for tenant billing. No broken visible images in those checked states. Browser final error list empty.
+- Production build/typecheck, 13 unit tests, 33 existing API scenario groups, added workspace permission/deep-link tests and read-only v7 checks passed. Browser workflows supplement the API suites; they are not a full browser test of every CRUD edge case.
+
+## Required data and scope differences
+
+Fixture names, totals, chart bars and statuses are replaced with actual database data. Cash surplus and historical monthly receivables are not fabricated. Invoice links do not inherit stay-service permissions, and stay links do not reveal invoices. Original photo assets remain illustrative. A property picker is shown only when there is an actual selection (or public demo choice); unsupported global search and workspace switching are not simulated.
+
+Legacy owner detail forms and token billing/service forms retain their existing backend contracts and are restyled rather than rebuilt. This is a bounded implementation/visual review, not certification that every inner form or future backend module has complete pixel parity, full WCAG conformance or production readiness. Final customer-facing visual acceptance remains with the owner.
+
+No P0/P1 issue remains observed in the reviewed workflows. No unaddressed P2 layout issue remains observed in the compared frames; data/scope adaptations above are explicit.
 
 final result: passed

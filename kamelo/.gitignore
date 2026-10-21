@@ -8,3 +8,6 @@ generated/
 .local-db/
 storage/
 .local-secrets/
+artifacts/handoff-v3-reference/
+
+.local-db-phase2-qa/

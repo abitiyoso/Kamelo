@@ -1,0 +1,175 @@
+{
+  "files": [
+    {
+      "sha256": "6f1a5a5b4050a0e0bbea5ed3fa7ad038e24cfcb85f1c01c6d933561ddd085e3e",
+      "path": "prisma/schema.prisma"
+    },
+    {
+      "sha256": "c6064f8aab2ee16e959eda8a655024546b6f8522ae1c78637ccd4aac80cbb19c",
+      "path": "prisma/migrations/20261018210000_property_finance/migration.sql"
+    },
+    {
+      "sha256": "0540c2bc489942176557605bae46a72cf8cf907bb6e00158a926ea9ecf528ca7",
+      "path": "lib/finance.ts"
+    },
+    {
+      "sha256": "f5fffe0c4668a095e9cc62322b230b79195cc4f744a90d49435b756ae475a133",
+      "path": "lib/finance-report.ts"
+    },
+    {
+      "sha256": "77c5a52ae84565075bbc091a3ccc562ad36147a5c4001aff9be89ea819c8c558",
+      "path": "lib/finance-rules.mjs"
+    },
+    {
+      "sha256": "96dfe1b7f6512c513d29e84ccf61e412348c92fbe1176a3c94eae9a70ad636cb",
+      "path": "app/api/finance/route.ts"
+    },
+    {
+      "sha256": "47699287f49ce4a17991eeae477a577bd60525f2b84b32d6310509f910b72451",
+      "path": "app/api/lifecycle/route.ts"
+    },
+    {
+      "sha256": "40e5b121d0d2b5bc06ef33b1ccba340c6a37ac56493e3e7cbca7e35c973481b3",
+      "path": "components/workspace/finance.tsx"
+    },
+    {
+      "sha256": "94fa758e5b818dad879521963b373b8e0c57cb33b75a68cec5878e882a43d659",
+      "path": "components/portal.tsx"
+    },
+    {
+      "sha256": "0a2c91d9c273cc765b38748c280a270329b2346749f38b94a9195cf47e6b434a",
+      "path": "components/owner-dashboard.tsx"
+    },
+    {
+      "sha256": "302d0fcc311677d44582476abcd0bd82352cf20da2931ca764fd1ae51c7cc5a8",
+      "path": "app/workspace.css"
+    },
+    {
+      "sha256": "e4e227553137d9470b99972063607926b342d931cdfc01b5d849af92c1db6c95",
+      "path": "tests/finance.test.mjs"
+    },
+    {
+      "sha256": "cf57fdc5e9d2f503304541235d093544881b0e4d2d0857e8b1ce391ea1f7ea46",
+      "path": "tests/finance.integration.mjs"
+    },
+    {
+      "sha256": "f3f22216cab03f8b93e780db308eb40c1c36f587b8aba8f6e2baa109ce63d4c7",
+      "path": "scripts/phase4d-qa-migrate.mjs"
+    },
+    {
+      "sha256": "64cd530335fed945bda921650864390da5f84de30b7368f56fe26614f57ffcb6",
+      "path": "scripts/phase4d-qa-verify.mjs"
+    },
+    {
+      "sha256": "e6243b4a1c005d8ca6185319af56140d8d5d1e15d69710b774dcc037cb6e24fe",
+      "path": "package.json"
+    },
+    {
+      "sha256": "72d0c6b46e2159ac95d9f4374c8ab7a335d832f62af6134cf7052bcd450b746d",
+      "path": "README.md"
+    },
+    {
+      "sha256": "4a332cfe3189d936dc3406f1f8dfdfceacd12b68e385fa4ed6b3fbaeabc62628",
+      "path": "design-qa.md"
+    },
+    {
+      "sha256": "20e2a4c398a1c1de3664379a480520f10ae073c05debdec4b9b96b14bbf5c251",
+      "path": "docs/IMPLEMENTATION_STATUS.md"
+    },
+    {
+      "sha256": "d71a05c65632bad56000905eb95e4d4dc9ae19e66217b146c0f72df4ecbe46c5",
+      "path": "docs/PHASE4D_PROPERTY_FINANCE.md"
+    },
+    {
+      "sha256": "be191446c0d904178f0d9cc9531ea866b31becd075c2c470b434613a71da7b44",
+      "path": "docs/PHASE4D_DESIGN_QA.md"
+    },
+    {
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9",
+      "path": "artifacts/phase4d/acquisition.integration.log"
+    },
+    {
+      "sha256": "16c3329a09d53b6a89a0505698bc3af847fe867baf37254b89edaae32e6f0cb2",
+      "path": "artifacts/phase4d/expense-created-mobile320.png"
+    },
+    {
+      "sha256": "d2cc585e43eee9428dfd1705e8fc0dc1606bec8a226153c4d612514871d25fd0",
+      "path": "artifacts/phase4d/expense-detail-desktop.png"
+    },
+    {
+      "sha256": "f14b516790d73dd51eea75038d28a4380aeeadbd5224ccc75842c8e24824f1f8",
+      "path": "artifacts/phase4d/expense-detail-mobile.png"
+    },
+    {
+      "sha256": "d840cc2aca00dcefc0fb7110cfb5c4ce78e21d8a77ea2e325e272cc88f03e659",
+      "path": "artifacts/phase4d/finance-desktop.png"
+    },
+    {
+      "sha256": "7150f62c2a1bb7d12ea6ec9e4704e3348bb676796b6580b7031d33d316b3a410",
+      "path": "artifacts/phase4d/finance-final-desktop.png"
+    },
+    {
+      "sha256": "ea35060de9eae5f60e5732f1a4724b08b25e1f727667d63467a828a52ccd845d",
+      "path": "artifacts/phase4d/finance-mobile320.png"
+    },
+    {
+      "sha256": "8b450e4cb3d5df8cf6c595f37946d0b92f1f9e17dfd1dd5129d8343b2fb57cda",
+      "path": "artifacts/phase4d/finance-tests.json"
+    },
+    {
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c",
+      "path": "artifacts/phase4d/finance.integration.log"
+    },
+    {
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09",
+      "path": "artifacts/phase4d/identity.integration.log"
+    },
+    {
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1",
+      "path": "artifacts/phase4d/integration.log"
+    },
+    {
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4",
+      "path": "artifacts/phase4d/lifecycle.integration.log"
+    },
+    {
+      "sha256": "4482af3d8eb7538a4e8bfe9af1ad6f09c8ac5d3ab8f628049bd2bea93292326d",
+      "path": "artifacts/phase4d/manual-match-mobile320.png"
+    },
+    {
+      "sha256": "0f78d82ec4a37c723bcae820d0feb53c28471ec16d49b52813329cac2a4bc498",
+      "path": "artifacts/phase4d/migration-preservation.json"
+    },
+    {
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368",
+      "path": "artifacts/phase4d/operations.integration.log"
+    },
+    {
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57",
+      "path": "artifacts/phase4d/prospects.integration.log"
+    },
+    {
+      "sha256": "ee3467bedc3b765ae916c65bd88b90f04c1a8a436da118b542733f91667e07e2",
+      "path": "artifacts/phase4d/regression-results.json"
+    },
+    {
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd",
+      "path": "artifacts/phase4d/subscriptions.integration.log"
+    },
+    {
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459",
+      "path": "artifacts/phase4d/tenant-smart.integration.log"
+    },
+    {
+      "sha256": "3860e5d1fb23087bb02ce3f6d07db71b5a508747a064c67a85c5f3733066d783",
+      "path": "artifacts/phase4d/unit-tests.log"
+    },
+    {
+      "sha256": "baa69eb53354bc8815e9d816ec340b3f0b0c37c33344f354b4a5796461d341a7",
+      "path": "artifacts/phase4d/workspace.integration.log"
+    }
+  ],
+  "branch": "codex/phase4d-property-finance",
+  "excluded": "Secrets, runtime databases, generated clients, node_modules, .next, scratch schemas and nested exports excluded. Earlier phase review changes retained.",
+  "phase": "4D property finance"
+}

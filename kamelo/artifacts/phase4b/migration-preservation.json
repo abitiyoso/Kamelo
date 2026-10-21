@@ -1,0 +1,150 @@
+{
+  "before": {
+    "Invoice": {
+      "count": 609,
+      "hash": "215248f517e7f0cb35ed178cdb3f35c5729a59c9f20deef0ce46fc9481ce81c7"
+    },
+    "Payment": {
+      "count": 45,
+      "hash": "509590ac9187763b9c562396f88882b7e6ec5e221ebe4d863f38900fcbb2d6c7"
+    },
+    "Stay": {
+      "count": 117,
+      "hash": "a53228d9825eb50d7c7df04c23ef2582c3f169a102f005e0dea288b56c30c532"
+    },
+    "Room": {
+      "count": 297,
+      "hash": "053c109e5f6ec9237ce5cfbf3f7fab269e00867b81b898827585e3449f86e0d6"
+    },
+    "Guest": {
+      "count": 166,
+      "hash": "bff576ebbb14e1b1091075fe5e754cbda61643af826bc97d3ec75c78e6cd41ee"
+    },
+    "ResidentProfile": {
+      "count": 3,
+      "hash": "47d40d44bde01a2e3cae1869c479b8556e14b1bad3687955423f5675c913496f"
+    },
+    "Contract": {
+      "count": 5,
+      "hash": "9b57dcd6e8e71aa12ec8e803e8aac7337a136f563b2976a9ef271cb8692ee62b"
+    },
+    "ContractVersion": {
+      "count": 18,
+      "hash": "2793a46bcf94555b3f18e6e30b4f14343d80870e9e2af3027db1da4ed01dfa2b"
+    },
+    "DepositAccount": {
+      "count": 5,
+      "hash": "72503fe4dfec152ed84ce5fa0eba759a65fe45b8cbaa3cc69f47fd62bd0c32d4"
+    },
+    "DepositEntry": {
+      "count": 11,
+      "hash": "2786a11667cc2f10592dea4ea9d93177e1e56dc3e7e98e05bffa59c8e840e582"
+    },
+    "DepositAdjustment": {
+      "count": 2,
+      "hash": "37ed783242549b8267549fa2028bf75a138063998746b3c9b456392ae14df77f"
+    },
+    "RoomTransfer": {
+      "count": 1,
+      "hash": "7bf8ccd1a3cb016baae929589d0f3354d68a061a1d0b58f556dc9293008c7807"
+    },
+    "LifecycleCommand": {
+      "count": 37,
+      "hash": "b515b56493d42afdf08c269b22a67f0676e081d4cf5c492a6585306de58b4c2e"
+    },
+    "Organization": {
+      "count": 97,
+      "hash": "e14ceac0437649ecd8f10cc10400759daedd26970e260e64f37923b4e626752f"
+    },
+    "User": {
+      "count": 134,
+      "hash": "f2c68fa008165d8613bb9988b26d4a9a4ef69666e2155443137fb5c0032f75d2"
+    },
+    "Session": {
+      "count": 164,
+      "hash": "b5328f04439169c5e8457897c89b978cda0536b84b8fdfbf760995888cb0cc83"
+    },
+    "OrgMembership": {
+      "count": 135,
+      "hash": "d559c5d3221246fe03c9faf0b234fe8abb482680e3c14dc540c8e08c51e3203f"
+    },
+    "OccupantAccess": {
+      "count": 11,
+      "hash": "43f7d246579d6fda3e6281016797305a7eb1e84bf49212493d3e820f9dc9946f"
+    }
+  },
+  "after": {
+    "Invoice": {
+      "count": 609,
+      "hash": "215248f517e7f0cb35ed178cdb3f35c5729a59c9f20deef0ce46fc9481ce81c7"
+    },
+    "Payment": {
+      "count": 45,
+      "hash": "509590ac9187763b9c562396f88882b7e6ec5e221ebe4d863f38900fcbb2d6c7"
+    },
+    "Stay": {
+      "count": 117,
+      "hash": "a53228d9825eb50d7c7df04c23ef2582c3f169a102f005e0dea288b56c30c532"
+    },
+    "Room": {
+      "count": 297,
+      "hash": "053c109e5f6ec9237ce5cfbf3f7fab269e00867b81b898827585e3449f86e0d6"
+    },
+    "Guest": {
+      "count": 166,
+      "hash": "bff576ebbb14e1b1091075fe5e754cbda61643af826bc97d3ec75c78e6cd41ee"
+    },
+    "ResidentProfile": {
+      "count": 3,
+      "hash": "47d40d44bde01a2e3cae1869c479b8556e14b1bad3687955423f5675c913496f"
+    },
+    "Contract": {
+      "count": 5,
+      "hash": "9b57dcd6e8e71aa12ec8e803e8aac7337a136f563b2976a9ef271cb8692ee62b"
+    },
+    "ContractVersion": {
+      "count": 18,
+      "hash": "2793a46bcf94555b3f18e6e30b4f14343d80870e9e2af3027db1da4ed01dfa2b"
+    },
+    "DepositAccount": {
+      "count": 5,
+      "hash": "72503fe4dfec152ed84ce5fa0eba759a65fe45b8cbaa3cc69f47fd62bd0c32d4"
+    },
+    "DepositEntry": {
+      "count": 11,
+      "hash": "2786a11667cc2f10592dea4ea9d93177e1e56dc3e7e98e05bffa59c8e840e582"
+    },
+    "DepositAdjustment": {
+      "count": 2,
+      "hash": "37ed783242549b8267549fa2028bf75a138063998746b3c9b456392ae14df77f"
+    },
+    "RoomTransfer": {
+      "count": 1,
+      "hash": "7bf8ccd1a3cb016baae929589d0f3354d68a061a1d0b58f556dc9293008c7807"
+    },
+    "LifecycleCommand": {
+      "count": 37,
+      "hash": "b515b56493d42afdf08c269b22a67f0676e081d4cf5c492a6585306de58b4c2e"
+    },
+    "Organization": {
+      "count": 97,
+      "hash": "e14ceac0437649ecd8f10cc10400759daedd26970e260e64f37923b4e626752f"
+    },
+    "User": {
+      "count": 134,
+      "hash": "f2c68fa008165d8613bb9988b26d4a9a4ef69666e2155443137fb5c0032f75d2"
+    },
+    "Session": {
+      "count": 164,
+      "hash": "b5328f04439169c5e8457897c89b978cda0536b84b8fdfbf760995888cb0cc83"
+    },
+    "OrgMembership": {
+      "count": 135,
+      "hash": "d559c5d3221246fe03c9faf0b234fe8abb482680e3c14dc540c8e08c51e3203f"
+    },
+    "OccupantAccess": {
+      "count": 11,
+      "hash": "43f7d246579d6fda3e6281016797305a7eb1e84bf49212493d3e820f9dc9946f"
+    }
+  }
+}

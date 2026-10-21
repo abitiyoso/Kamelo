@@ -1,3 +1,4 @@
+import {verifiedFixture,staffFixture} from "./helpers/identity.mjs";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { writeFile } from "node:fs/promises";
@@ -33,9 +34,12 @@ function client() {
       });
       const c = r.headers.get("set-cookie");
       if (c) cookie = c.split(";")[0];
-      return { status: r.status, ...(await r.json()) };
+      const result={ status: r.status, ...(await r.json()) };
+      if(action==="register"&&r.status===200)await verifiedFixture(db,base,cookie,data.email);
+      return result;
     },
     async write(action, data = {}) {
+      if(action==="teamAdd")return staffFixture(db,base,cookie,data);
       const r = await fetch(base + "/api/manage", {
         method: "POST",
         headers: {
@@ -393,6 +397,14 @@ try {
   state = await owner.get();
   assert.ok(!JSON.stringify(state).includes("encryptedPin"));
   assert.ok(!JSON.stringify(state).includes('"pin"'));
+  assert.equal(
+    (
+      await fetch(base + "/api/proofs/" + proofId, {
+        headers: { Cookie: staff.cookie },
+      })
+    ).status,
+    403,
+  );
   const staffToken = tokenOf(
     (
       await good(

@@ -1,0 +1,234 @@
+{
+  "phase": "4M tenant opening proofs",
+  "branch": "codex/phase4m-tenant-opening-proofs",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "8c98bf4061b1d55f6e0ad1c62ade93e363c9a4adc7ed39edd0a61f07dc757f20"
+    },
+    {
+      "path": "README.md",
+      "sha256": "9ce79ea605e7586672fb05ac4807d65f7b460ee6b18068f668e02bc224903988"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "f4219bb02d3a97777bb4c7b0f14ff8f7cf18efae3779836c4c8828cc26a66f5c"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "2d0c28560e96833f992f7e3a49b5095d15cc11396fa952d8696220923e14d687"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "bb8a6eb03c383c8b1c78e5388117495b912210b651254419df66f2c86b83ce68"
+    },
+    {
+      "path": "prisma/migrations/20261019140000_opening_tenant_proofs/migration.sql",
+      "sha256": "77b46d87d2265fdb22bc5be832f8245ad1eb052750cbcc34188e4d191e6c0f18"
+    },
+    {
+      "path": "lib/opening-tenant.ts",
+      "sha256": "d91d42a235a91a4c813ea45424212d7216d1e755130d29c47437f585d75a89fd"
+    },
+    {
+      "path": "lib/tenant.ts",
+      "sha256": "7161691930d7013db2ac30ab38398081bee7cc2a6528d9c6f3f530c0e5b0abb0"
+    },
+    {
+      "path": "lib/opening-balances.ts",
+      "sha256": "35c276e0e38601229ba9d3af6ae20091a66755994ce533cf06f2082bf58ff57d"
+    },
+    {
+      "path": "app/api/opening-balances/route.ts",
+      "sha256": "fa188a238253e7c213848d4692a40e2a0c4183a6ff328b53ddef825692953158"
+    },
+    {
+      "path": "app/api/opening-tenant/route.ts",
+      "sha256": "c17e9f4e88a75afbf88515920d7c853fd9ecf180ae387a85d1790645f9c5c3f9"
+    },
+    {
+      "path": "app/api/opening-proofs/[id]/route.ts",
+      "sha256": "ca3213681281764280d2fb755537d8e9d8f938ce851c680571398dee1ea07a8d"
+    },
+    {
+      "path": "components/identity/opening-balances.tsx",
+      "sha256": "27cb63d3f304408a1e2d999645d252c7741d178be9e3458eee2ca9c71aae3235"
+    },
+    {
+      "path": "components/identity/resident-portal.tsx",
+      "sha256": "2699a32ee50ef691442555864027e88963c0fd148a6484f39223a9c0aceaad21"
+    },
+    {
+      "path": "components/workspace/opening-evidence.tsx",
+      "sha256": "14f5e0907247939c90f0bff6d6a7264780c78f053bc91b623a7b465fc3eeca27"
+    },
+    {
+      "path": "components/workspace/opening-receipts.tsx",
+      "sha256": "68e464b77f0a7d5eafa867d55e9b2f215c66b5cae63969c4409c7dd38bca8e27"
+    },
+    {
+      "path": "components/workspace/opening-balances.tsx",
+      "sha256": "cea69aa40074a00d25c57c4fda9002f434d9bf9ba6cc8bad5a424db13d522312"
+    },
+    {
+      "path": "tests/opening-tenant.integration.mjs",
+      "sha256": "e1b940b4ee0eeac71f838e5e046ebe76c51096a1de9388f7f977a4b56a047a24"
+    },
+    {
+      "path": "scripts/phase4m-qa-migrate.mjs",
+      "sha256": "2ae0180cafb6d1c5545e1750780dd2101bdb2ba8ffac4e5680d6c6c3e047683b"
+    },
+    {
+      "path": "scripts/phase4m-qa-verify.mjs",
+      "sha256": "f3304d5dceb555ddc7c0c6abf2fe72d9ef70345c69cf14bb48417b26f13d75f2"
+    },
+    {
+      "path": "scripts/phase4m-review-sync.mjs",
+      "sha256": "ede784736833f9901673f78537ab6449a35b50307ddd2f7e706c0cbb5b641b4f"
+    },
+    {
+      "path": "docs/PHASE4M_TENANT_OPENING_PROOFS.md",
+      "sha256": "543a5902985e15a7796d219962ba9afadd11d8c71f75e4c8d39c49973a2544de"
+    },
+    {
+      "path": "docs/PHASE4M_DESIGN_QA.md",
+      "sha256": "b6910faf82d722ad155b0bb9c1905fb127a89af5317f8c41d182a42673e44ec8"
+    },
+    {
+      "path": "artifacts/phase4m/build.log",
+      "sha256": "fb397bfe674ccc876ca00d2aa7e1bf8800c238226363a99dad13fb6f790eda33"
+    },
+    {
+      "path": "artifacts/phase4m/unit.log",
+      "sha256": "4bd93cb50da9c0bfb1489cd089087b3338120d2304bdf34c69836920cb0bdef6"
+    },
+    {
+      "path": "artifacts/phase4m/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/phase4m/migration-preservation.json",
+      "sha256": "b5cfc96ba04428de7c49807ff2641bf91e479dbd7aaf1a0cd3c178a8e20ebffc"
+    },
+    {
+      "path": "artifacts/phase4m/regression-results.json",
+      "sha256": "051c1c2ada5a2016bc14a716543daf48667a502e2fe1d71859151b6c241227d0"
+    },
+    {
+      "path": "artifacts/phase4m/opening-tenant-api.json",
+      "sha256": "76ec2e6367fc4a74d7397aff22d01ec5288781358e657c94103674dff9676f15"
+    },
+    {
+      "path": "artifacts/phase4m/browser-metrics.json",
+      "sha256": "598ce267ef9d6aff2a7bbcb0e90e2a8ca72457de0d45e2ed71b3b059ae5986a4"
+    },
+    {
+      "path": "artifacts/phase4m/tenant-proof-pending.png",
+      "sha256": "5bb923793c4e1c23d098a998b87968e45c08854f0ab7e78f98deb612038545b0"
+    },
+    {
+      "path": "artifacts/phase4m/owner-proof-approved.png",
+      "sha256": "ee55e7d5b402a294af4780db49eff4357976994fadbad9b427c8086df663ef29"
+    },
+    {
+      "path": "artifacts/phase4m/tenant-proof-approved.png",
+      "sha256": "3cf06ff3f4f5bf261069e22a98e97d9eb11b22a3c1699bf05fd057103ef71741"
+    },
+    {
+      "path": "artifacts/phase4m/tenant-proof-mobile-390.png",
+      "sha256": "8cf6473e4de4caefdf6cf38c0cb3364bda8b3eedc728bf3ae644fd1b3d188058"
+    },
+    {
+      "path": "artifacts/phase4m/tenant-proof-mobile-320.png",
+      "sha256": "52d189c0f908fe5c795639fb6352ac21c874506897431f65ad435f758e683787"
+    },
+    {
+      "path": "artifacts/phase4m/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/phase4m/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/phase4m/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/phase4m/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/phase4m/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/phase4m/workspace.integration.log",
+      "sha256": "2fc0cf9d4b3d03541e0000986e75a1acdd0789fc918560ab01bb76ee32f44fb4"
+    },
+    {
+      "path": "artifacts/phase4m/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/phase4m/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/phase4m/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/phase4m/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/phase4m/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/phase4m/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/phase4m/privacy.integration.log",
+      "sha256": "9203cd6d96eee6519f5a688bd1c53dcd27763ca66c8526b15acdbfa2e1bc6ec2"
+    },
+    {
+      "path": "artifacts/phase4m/room-import.integration.log",
+      "sha256": "f42a888f174f7e81ea7a459f01c841b6cd678865b978279efa7af374f1ef0569"
+    },
+    {
+      "path": "artifacts/phase4m/resident-import.integration.log",
+      "sha256": "bc71737bceaa78d973a9067d70e87c7e479cb0906ac04bc5c1e92fcc1cf3f524"
+    },
+    {
+      "path": "artifacts/phase4m/import-files.integration.log",
+      "sha256": "3ca4a3472d384ac4d886058ae11899ce18e187138085ae09fd19cd25309c47d9"
+    },
+    {
+      "path": "artifacts/phase4m/opening-balances.integration.log",
+      "sha256": "2e7579fbdf802941ddc5b2e045a94a15f41d026d14ca932760a68340fbdb438e"
+    },
+    {
+      "path": "artifacts/phase4m/opening-receipts.integration.log",
+      "sha256": "e815fd244ca72862ea4b25816b4a785f27d80d4deccf5c78b4d48d5c06af9986"
+    },
+    {
+      "path": "artifacts/phase4m/opening-tenant.integration.log",
+      "sha256": "d3f0d8b65f18e98322d8669d0e9f14289ce2cf8964578ba00770ef660322fce5"
+    }
+  ],
+  "excluded": [
+    ".env*",
+    ".local-secrets",
+    "runtime databases",
+    "storage/payment-proofs",
+    "node_modules",
+    "generated",
+    ".next"
+  ],
+  "committed": false,
+  "pushed": false,
+  "deployed": false
+}

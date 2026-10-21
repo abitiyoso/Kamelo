@@ -1,0 +1,11 @@
+{
+  "apiScenarioGroups": 50,
+  "productionBuild": "passed",
+  "finalChangeScope": "Client status labels and selecting the returned stay after transfer/return; backend API suite passed before these UI-only changes.",
+  "externalEmail": false,
+  "typecheck": "passed by next build",
+  "productionMigration": false,
+  "preview": "http://127.0.0.1:3001",
+  "unitTests": 20,
+  "date": "2026-10-18"
+}

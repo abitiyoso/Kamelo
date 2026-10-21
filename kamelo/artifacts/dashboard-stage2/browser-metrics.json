@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-20",
+  "environment": "disposable QA 3001/55432",
+  "ownerDesktop": {
+    "documentWidth": 1265,
+    "width": 1280
+  },
+  "owner390": {
+    "documentWidth": 375,
+    "width": 390
+  },
+  "owner320": {
+    "documentWidth": 305,
+    "width": 320
+  },
+  "tenantDesktop": {
+    "documentWidth": 1280,
+    "width": 1280
+  },
+  "tenant390": {
+    "documentWidth": 375,
+    "width": 390
+  },
+  "tenant320": {
+    "documentWidth": 305,
+    "width": 320
+  },
+  "observed": {
+    "ownerIncome": 300000,
+    "ownerExpense": -50000,
+    "ownerSurplus": 350000,
+    "ownerOutstanding": 2700114,
+    "ownerPendingProofs": 2,
+    "tenantInvoice": 700114,
+    "tenantSharedOpening": 1500000,
+    "tenantOutstanding": 2200114
+  },
+  "checks": [
+    "Owner current cash and surplus agree with synthetic ledger after corrections/refunds",
+    "Current month compared with prior calendar month matching date",
+    "Overdue page 2 preserves totals and source split",
+    "Six-month chart and exact-value table include negative net expense/surplus",
+    "Empty property resets money, debt, proof counts and occupancy to zero",
+    "Proof priority focuses combined queue showing one invoice plus one opening proof",
+    "Tenant exact STAY workspace shows own invoice plus shared opening; unshared historical debt excluded",
+    "Owner and tenant 390/320 px layouts fit document width; temporary viewport reset"
+  ]
+}

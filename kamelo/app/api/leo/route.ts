@@ -23,6 +23,15 @@ export async function POST(req: NextRequest) {
         topic: z.enum(["briefing", "income", "overdue", "rooms", "tasks"]),
       })
       .parse(await req.json());
+    if (
+      user.role !== "OWNER" &&
+      !user.canRecordPayments &&
+      ["briefing", "income", "overdue"].includes(topic)
+    )
+      return NextResponse.json(
+        { error: "Akses keuangan tidak diberikan." },
+        { status: 403 },
+      );
     const property = await db.property.findFirst({
       where: {
         id: propertyId,

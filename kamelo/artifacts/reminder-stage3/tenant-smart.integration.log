@@ -1,0 +1,6 @@
+PASS tenant-specific due dates / edited future recurring invoices / issued invoices preserved
+PASS private hashed/expiring/rotating links / scoped private files / proof validation / manual approval / no duplicate payment
+PASS automatic simulated access / encrypted PIN / date gate / offline pending / permissions / disable / remap / checkout / unpaid balance independent
+PASS same-period trend / all-history overdue totals / old overdue filter / pending proof queue beyond first page
+PASS concurrent proof approval prevents overpayment
+PASS hotel access requires check-in / offline checkout hides PIN until revocation confirmed

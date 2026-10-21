@@ -1,0 +1,103 @@
+{
+  "completedAt": "2026-10-20T12:27:28.727Z",
+  "externalEmail": false,
+  "environment": "disposable QA 55432 / loopback 3001",
+  "results": [
+    {
+      "script": "integration",
+      "passed": true
+    },
+    {
+      "script": "operations.integration",
+      "passed": true
+    },
+    {
+      "script": "tenant-smart.integration",
+      "passed": true
+    },
+    {
+      "script": "acquisition.integration",
+      "passed": true
+    },
+    {
+      "script": "identity.integration",
+      "passed": true
+    },
+    {
+      "script": "workspace.integration",
+      "passed": true
+    },
+    {
+      "script": "lifecycle.integration",
+      "passed": true
+    },
+    {
+      "script": "prospects.integration",
+      "passed": true
+    },
+    {
+      "script": "subscriptions.integration",
+      "passed": true
+    },
+    {
+      "script": "finance.integration",
+      "passed": true
+    },
+    {
+      "script": "support.integration",
+      "passed": true
+    },
+    {
+      "script": "messages.integration",
+      "passed": true
+    },
+    {
+      "script": "privacy.integration",
+      "passed": true
+    },
+    {
+      "script": "room-import.integration",
+      "passed": true
+    },
+    {
+      "script": "resident-import.integration",
+      "passed": true
+    },
+    {
+      "script": "import-files.integration",
+      "passed": true
+    },
+    {
+      "script": "opening-balances.integration",
+      "passed": true
+    },
+    {
+      "script": "opening-receipts.integration",
+      "passed": true
+    },
+    {
+      "script": "opening-tenant.integration",
+      "passed": true
+    },
+    {
+      "script": "opening-reminders.integration",
+      "passed": true
+    },
+    {
+      "script": "proof-queue.integration",
+      "passed": true
+    },
+    {
+      "script": "dashboard.integration",
+      "passed": true
+    },
+    {
+      "script": "reminder.integration",
+      "passed": true
+    },
+    {
+      "script": "finance-stage4.integration",
+      "passed": true
+    }
+  ]
+}

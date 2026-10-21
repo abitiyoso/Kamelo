@@ -44,7 +44,7 @@ Most foreign keys restrict deletion; device room mappings are set to null if a r
 - Evidence file signatures and declared types must agree for JPEG/PNG/PDF, with a maximum of 5 MB. At most five proofs can be pending per invoice; pending/approved duplicate content hashes are rejected. Failed database writes remove the file written by that upload.
 - A `SmartAccess` PIN is AES-256-GCM ciphertext, never plain JSON, audit metadata, or device state. Access is mock-only and requires appropriate stay dates/state, same-property room mapping, enabled automation, online device, and confirmed active simulation before disclosure. Unpaid invoices do not revoke or deny access.
 
-The schema is intentionally smaller than the full PRD model catalog. It does not yet include a full subscription ledger, email-delivery queue, analytics event store, encrypted Tuya connection records, or a dedicated asynchronous device-command table.
+The base-schema description above is historical. Later V3 increments add the subscription ledger, encrypted email outbox, identity/workspace records, opening balances, reminders and financial-document archives described in IMPLEMENTATION_STATUS.md. Live analytics, encrypted Tuya connections and a dedicated asynchronous live-device-command implementation remain pending.
 
 ## Local database
 
@@ -84,7 +84,7 @@ Simulation PINs require a 32-byte `DATA_ENCRYPTION_KEY` encoded as 64 hex charac
 
 ## Backup and restore procedure
 
-Use the managed database provider's encrypted backups and retention policy for a hosted deployment. A PostgreSQL custom-format dump is a portable manual option. The following are operator examples and have not been exercised as a restore drill in this delivery:
+Use the managed database provider's encrypted backups and retention policy for a hosted deployment. A PostgreSQL custom-format dump is a portable manual option. A disposable synthetic-data drill was exercised on 20 October 2026: WIN1252 QA source to a separate UTF-8 cluster, with all public row hashes, migration history and schema definitions preserved, Unicode round-trip, private-file recovery, encrypted-document recovery and scoped application checks. See [the stage 6 report](RELEASE_STAGE6.md) for exact timings, legacy fixture exceptions and remaining production acceptance. The following are general operator examples; they do not authorize running against production:
 
 ```powershell
 # Use a restricted backup location and protect its contents as personal/financial data.
@@ -98,4 +98,4 @@ Use client utilities compatible with the server version. Do not copy `.local-db/
 
 Coordinate a database backup with the private evidence files and the protected PIN encryption key, recording their compatible recovery point. After restoring to an isolated instance, check migration history, record counts, organization/staff isolation, invoice totals versus payment sums, recurring uniqueness, evidence-file availability and scoped downloads, reviewed-proof/payment relationships, tenant link expiry/revocation, and PIN decryption without exposing it in logs. Exercise a representative sign-in/room/billing workflow. Confirm that production notification and live-integration credentials are disabled in the restored test environment. Record recovery duration and data-loss window before relying on the procedure commercially.
 
-Retention periods, customer export/deletion workflows, encryption and access policy, scheduled backup monitoring, and a proven restore drill remain production-readiness work. The development legal pages are drafts and do not establish those operational policies.
+Approved retention periods and destructive export/deletion policy, production backup encryption/access controls, scheduled backup monitoring and a restore on the actual hosting/provider with real roles/ACLs and RPO/RTO remain production-readiness work. The completed local drill does not establish those guarantees. The development legal pages are drafts and do not establish operational policies.

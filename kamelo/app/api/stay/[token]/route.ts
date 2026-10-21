@@ -1,3 +1,4 @@
+import { occupantForSession } from "@/lib/identity";
 import QRCode from "qrcode";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
@@ -14,6 +15,18 @@ const headers = {
   "Referrer-Policy": "no-referrer",
 };
 async function resolve(token: string) {
+  if (token === "account") {
+    const g = await occupantForSession(true);
+    return g
+      ? {
+          ...g,
+          account: true,
+          accountUserId: g.userId,
+          includeAccess: g.includeAccess,
+          expiresAt: new Date(Date.now() + 60000),
+        }
+      : null;
+  }
   if (!/^[a-f0-9]{64}$/.test(token)) return null;
   const link = await db.stayLink.findUnique({
     where: { tokenHash: hashToken(token) },
@@ -25,7 +38,7 @@ async function resolve(token: string) {
     !link.revokedAt &&
     link.expiresAt > new Date() &&
     activeStay(link.stay)
-    ? link
+    ? { ...link, account: false, accountUserId: null, canControlDevices: true }
     : null;
 }
 type Context = { params: Promise<{ token: string }> };
@@ -42,14 +55,38 @@ export async function GET(_req: NextRequest, ctx: Context) {
       async (tx) => {
         const property = initial.stay.room.property;
         await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${property.organizationId}))`;
-        const current = await tx.stayLink.findUnique({
-          where: { id: initial.id },
-          include: {
-            stay: {
-              include: { room: { include: { property: true } }, guest: true },
-            },
-          },
-        });
+        const current = initial.account
+          ? await tx.occupantAccess
+              .findFirst({
+                where: {
+                  id: initial.id,
+                  userId: initial.accountUserId!,
+                  status: "ACTIVE",
+                  revokedAt: null,
+                },
+                include: {
+                  stay: {
+                    include: {
+                      room: { include: { property: true } },
+                      guest: true,
+                    },
+                  },
+                },
+              })
+              .then((g) =>
+                g ? { ...g, expiresAt: new Date(Date.now() + 60000) } : null,
+              )
+          : await tx.stayLink.findUnique({
+              where: { id: initial.id },
+              include: {
+                stay: {
+                  include: {
+                    room: { include: { property: true } },
+                    guest: true,
+                  },
+                },
+              },
+            });
         if (
           !current ||
           current.revokedAt ||
@@ -72,6 +109,10 @@ export async function GET(_req: NextRequest, ctx: Context) {
           );
         const devices = await tx.device.findMany({
           where: {
+            ...(!initial.account ||
+            ("canControlDevices" in current && current.canControlDevices)
+              ? {}
+              : { id: { in: [] } }),
             roomId: stay.roomId,
             propertyId: property.id,
             guestControllable: true,
@@ -165,10 +206,24 @@ export async function POST(req: NextRequest, ctx: Context) {
     const result = await db.$transaction(async (tx) => {
       const property = initial.stay.room.property;
       await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${property.organizationId}))`;
-      const link = await tx.stayLink.findUnique({
-        where: { id: initial.id },
-        include: { stay: true },
-      });
+      const link = initial.account
+        ? await tx.occupantAccess
+            .findFirst({
+              where: {
+                id: initial.id,
+                userId: initial.accountUserId!,
+                status: "ACTIVE",
+                revokedAt: null,
+              },
+              include: { stay: true },
+            })
+            .then((g) =>
+              g ? { ...g, expiresAt: new Date(Date.now() + 60000) } : null,
+            )
+        : await tx.stayLink.findUnique({
+            where: { id: initial.id },
+            include: { stay: true },
+          });
       if (
         !link ||
         link.revokedAt ||
@@ -183,10 +238,10 @@ export async function POST(req: NextRequest, ctx: Context) {
             ...input,
             propertyId: property.id,
             stayId: link.stayId,
-            createdBy: "GUEST",
+            createdBy: initial.accountUserId || "GUEST",
             updates: {
               create: {
-                actorId: "GUEST",
+                actorId: initial.accountUserId || "GUEST",
                 note: "Permintaan diterima oleh pengelola.",
                 status: "OPEN",
               },
@@ -196,13 +251,18 @@ export async function POST(req: NextRequest, ctx: Context) {
         await tx.audit.create({
           data: {
             organizationId: property.organizationId,
-            actorId: "GUEST",
+            actorId: initial.accountUserId || "GUEST",
             action: "GUEST_TICKET_CREATED",
             targetId: ticket.id,
             metadata: {},
           },
         });
       } else if (body.action === "device") {
+        if (
+          initial.account &&
+          (!("canControlDevices" in link) || !link.canControlDevices)
+        )
+          throw Error("Kontrol perangkat tidak diizinkan.");
         const input = z
           .object({
             deviceId: z.string(),
@@ -240,7 +300,7 @@ export async function POST(req: NextRequest, ctx: Context) {
         await tx.audit.create({
           data: {
             organizationId: property.organizationId,
-            actorId: "GUEST",
+            actorId: initial.accountUserId || "GUEST",
             action: "GUEST_MOCK_COMMAND",
             targetId: device.id,
             metadata: { code: input.code, value: input.value },

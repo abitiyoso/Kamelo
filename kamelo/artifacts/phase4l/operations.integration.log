@@ -1,0 +1,8 @@
+PASS stay links: scoped, hashed, rotating, expiring / private encrypted Wi-Fi / QR / owner settings permission
+PASS guest complaint → assignment → staff progress → guest history / cross-property and cross-stay isolation
+PASS guest device controls: explicit owner consent / room boundaries / offline confirmation / revocation
+PASS opt-in recurring automation / individual due dates / concurrent idempotency / plan expiry / protected job endpoint
+PASS LEO scoped live-data rules / origin enforcement / checkout revokes guest services
+PASS hotel active-stay gate / checkout creates one cleaning task / checkout link revocation
+PASS future kos stay cannot checkout or receive services / future cancellation preserves dates
+ALL 7 OPERATIONS SCENARIO GROUPS PASSED. Synthetic records retained.

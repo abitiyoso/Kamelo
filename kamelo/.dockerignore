@@ -8,3 +8,7 @@ generated
 artifacts
 storage
 .local-secrets
+
+.local-db*
+exports
+.env.*

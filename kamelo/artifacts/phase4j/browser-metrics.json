@@ -1,0 +1,20 @@
+{
+  "viewports": [
+    {
+      "document": 375,
+      "width": 390
+    },
+    {
+      "document": 305,
+      "width": 320
+    }
+  ],
+  "resident390": {
+    "width": 390,
+    "document": 375
+  },
+  "roomCommit": true,
+  "residentCommit": true,
+  "editInvalidatesPreview": true,
+  "consoleErrors": 0
+}

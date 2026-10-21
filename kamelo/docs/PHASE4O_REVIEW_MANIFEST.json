@@ -1,0 +1,218 @@
+{
+  "phase": "Remaining stage 1 unified proof queue",
+  "branch": "codex/unified-proof-queue",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "7766f93b6849829445b9de937d0c190c50bdc75100a4798c22a052fc753ec446"
+    },
+    {
+      "path": "README.md",
+      "sha256": "9c6ed92e568216bce7cadea053c83e5ca5482c6e34ceb1108ca021efc9993df1"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "854fa66155ee8b49f268c36ece39d7c8d4e75977ea386820bbcf418e6c92fb57"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "3c7f74af970c1db657873c3a053aab94f43bc5603a565eeeba34efce88284b06"
+    },
+    {
+      "path": "lib/proof-queue.ts",
+      "sha256": "166c221b28eba433247ae6618193d3878ea5799bd67d97bacca5845b690aa1a9"
+    },
+    {
+      "path": "app/api/proof-queue/route.ts",
+      "sha256": "a16106a6d680f1648467f378624bb8078fb47d495d617af38795543da2cd6889"
+    },
+    {
+      "path": "components/workspace/proof-queue.tsx",
+      "sha256": "9ef6cc53fd6f171b4cd90360a60a3f6424e81032b6bad4c752c49867b8e9b52d"
+    },
+    {
+      "path": "components/portal.tsx",
+      "sha256": "33a74b74e4e21b5a174fe6d36e33414f820397b8dd8c5ba19a308e9d03a867eb"
+    },
+    {
+      "path": "components/billing-tools.tsx",
+      "sha256": "a8040f0df271aa4ad6508e6da27b009a1201a9f9c4fe45caaa46adae3bd5d9d2"
+    },
+    {
+      "path": "tests/proof-queue.integration.mjs",
+      "sha256": "805686a88d3dfecd47bfbf519953901193b73fe336ae3323fe4663cdbe72d978"
+    },
+    {
+      "path": "scripts/phase4o-qa-verify.mjs",
+      "sha256": "c8dd6eca6b6f033aca86ba1ccc19cf3d3bb389fd59448f3b5f2bb2c6e26cf3bd"
+    },
+    {
+      "path": "scripts/phase4o-review-sync.mjs",
+      "sha256": "484acd10a6c1971338056320a51d3c9b2be0335cd80af56f627ad912783552d1"
+    },
+    {
+      "path": "docs/PHASE4O_UNIFIED_PROOF_QUEUE.md",
+      "sha256": "c0b7ffa4198e7a83de023e3e20b7c4335c2b991379617524cc85bb9f30f691a0"
+    },
+    {
+      "path": "docs/PHASE4O_DESIGN_QA.md",
+      "sha256": "1436e620657778efa6842d2a4c5a20f32f9a8ed7bbef846f563ce98667eed860"
+    },
+    {
+      "path": "docs/REMAINING_DELIVERY_STAGES.md",
+      "sha256": "ed1cf53afc2ac19a909d4b5abe234fe6718c188a3e04a819eda402b8f53b8d77"
+    },
+    {
+      "path": "artifacts/phase4o/build.log",
+      "sha256": "d630f4ab5ade866c0f11613a7b71e94a5756485e173ec6a6389ab8401031329d"
+    },
+    {
+      "path": "artifacts/phase4o/unit.log",
+      "sha256": "cb1ec5648f4bb23f65e7d53c8138689278ddd92332f6e7540b02ad5f268f7207"
+    },
+    {
+      "path": "artifacts/phase4o/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/phase4o/data-plan.json",
+      "sha256": "c708c46908228de6d18f9be7cc25b507f0752e8be471f316ddbaaecedbe31b9b"
+    },
+    {
+      "path": "artifacts/phase4o/regression-results.json",
+      "sha256": "16b95913e6cc057c377c336cafa3edb3af7540ff723e75a71540fff0a803d9ae"
+    },
+    {
+      "path": "artifacts/phase4o/proof-queue-api.json",
+      "sha256": "27e1f8ca6ef71e90a3d549b2845705842f3393e485a98d1655dee532bfb0a445"
+    },
+    {
+      "path": "artifacts/phase4o/browser-metrics.json",
+      "sha256": "861d195b0009ef450b1eb97909ed546cc69c93f34750a1ec5a5f19b5e105e995"
+    },
+    {
+      "path": "artifacts/phase4o/queue-invoice-approved.png",
+      "sha256": "0fb82c5957fb53580e551380d72a54bd9d53584f8bb3aaa0ff62a4f9b4c0d399"
+    },
+    {
+      "path": "artifacts/phase4o/queue-opening-approved.png",
+      "sha256": "55cfed71e25d7b90ff1aa8fdf3a8317c993a53969e50aed073e8a30ff20e3639"
+    },
+    {
+      "path": "artifacts/phase4o/queue-filters-desktop.png",
+      "sha256": "9c58e8b28362232319b4c10251fa6fd83e43d52b60029935451af7d650049927"
+    },
+    {
+      "path": "artifacts/phase4o/queue-approved-history.png",
+      "sha256": "9ef81b575b6a17fed6e4efbf6e9a9f48e553c628fbf080aad5065d95d9757d63"
+    },
+    {
+      "path": "artifacts/phase4o/queue-mobile-390.png",
+      "sha256": "646a81b8efe862614ed9260117267220ba95cb33817f6d9dda027ed7a0bd36d6"
+    },
+    {
+      "path": "artifacts/phase4o/queue-mobile-actions-390.png",
+      "sha256": "75829eec8599bf9ca3c1f21cbf829ed8faa778fe06d2dcad7dd42e888159ac59"
+    },
+    {
+      "path": "artifacts/phase4o/queue-mobile-320.png",
+      "sha256": "92dd34602e319c36386c25c8f103115a1e5378e7816c306fa8332df2c39860d2"
+    },
+    {
+      "path": "artifacts/phase4o/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/phase4o/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/phase4o/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/phase4o/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/phase4o/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/phase4o/workspace.integration.log",
+      "sha256": "760a99250d5ff9312db2e9ca51923c94fac8c7c8a6f34d773cbfc42890944229"
+    },
+    {
+      "path": "artifacts/phase4o/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/phase4o/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/phase4o/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/phase4o/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/phase4o/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/phase4o/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/phase4o/privacy.integration.log",
+      "sha256": "9203cd6d96eee6519f5a688bd1c53dcd27763ca66c8526b15acdbfa2e1bc6ec2"
+    },
+    {
+      "path": "artifacts/phase4o/room-import.integration.log",
+      "sha256": "f42a888f174f7e81ea7a459f01c841b6cd678865b978279efa7af374f1ef0569"
+    },
+    {
+      "path": "artifacts/phase4o/resident-import.integration.log",
+      "sha256": "bc71737bceaa78d973a9067d70e87c7e479cb0906ac04bc5c1e92fcc1cf3f524"
+    },
+    {
+      "path": "artifacts/phase4o/import-files.integration.log",
+      "sha256": "3ca4a3472d384ac4d886058ae11899ce18e187138085ae09fd19cd25309c47d9"
+    },
+    {
+      "path": "artifacts/phase4o/opening-balances.integration.log",
+      "sha256": "2e7579fbdf802941ddc5b2e045a94a15f41d026d14ca932760a68340fbdb438e"
+    },
+    {
+      "path": "artifacts/phase4o/opening-receipts.integration.log",
+      "sha256": "e815fd244ca72862ea4b25816b4a785f27d80d4deccf5c78b4d48d5c06af9986"
+    },
+    {
+      "path": "artifacts/phase4o/opening-tenant.integration.log",
+      "sha256": "d3f0d8b65f18e98322d8669d0e9f14289ce2cf8964578ba00770ef660322fce5"
+    },
+    {
+      "path": "artifacts/phase4o/opening-reminders.integration.log",
+      "sha256": "3f1c24d2a8e1e096c25bf7cbafe6dde8aad4c1cb1cfcfacd78c5e14117cabedd"
+    },
+    {
+      "path": "artifacts/phase4o/proof-queue.integration.log",
+      "sha256": "2d41710e728c6b5c46c2aa5ddc96e9351e8dde2640f8c9ae57e5fde336dccd90"
+    }
+  ],
+  "excluded": [
+    ".env*",
+    ".local-secrets",
+    "runtime databases",
+    "storage/payment-proofs",
+    "node_modules",
+    "generated",
+    ".next"
+  ],
+  "committed": false,
+  "pushed": false,
+  "deployed": false
+}

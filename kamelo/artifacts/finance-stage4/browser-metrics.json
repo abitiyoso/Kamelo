@@ -1,0 +1,47 @@
+{
+  "metrics": [
+    {
+      "screen": "receipt-desktop",
+      "height": 1100,
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "screen": "receipt-320",
+      "scrollWidth": 305,
+      "width": 305
+    },
+    {
+      "screen": "owner-390",
+      "scrollWidth": 375,
+      "width": 375
+    },
+    {
+      "screen": "owner-320",
+      "scrollWidth": 305,
+      "width": 305
+    },
+    {
+      "screen": "tenant-390",
+      "scrollWidth": 375,
+      "width": 375
+    },
+    {
+      "screen": "tenant-320",
+      "scrollWidth": 305,
+      "width": 305
+    }
+  ],
+  "checks": [
+    "owner confirmed issuance",
+    "owner retention hold",
+    "owner synthetic refund journal 50000 minus 10000",
+    "owner archive page 2 stays expanded",
+    "owner retention audit visible",
+    "tenant archive no retention notes",
+    "tenant archive page 2",
+    "tenant private printable receipt shows current refund"
+  ],
+  "consoleErrors": [],
+  "noRealFundsTransfer": true
+}

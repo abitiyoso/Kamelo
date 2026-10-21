@@ -1,0 +1,175 @@
+{
+  "phase": "4C SaaS billing",
+  "excluded": "Secrets, runtime databases, generated Prisma client, node_modules, .next, scratch schemas and exports excluded. All prior phase review changes retained.",
+  "branch": "codex/phase4c-saas-billing",
+  "files": [
+    {
+      "sha256": "9e811f686d01b004b913ea161320db027c6158be93b05e5c9f092685dd889f3f",
+      "path": "prisma/schema.prisma"
+    },
+    {
+      "sha256": "ea0dc2387d85f0205f7e414a600c911609356144616f4207382bcf1cf58833a5",
+      "path": "prisma/migrations/20261018180000_subscription_ledger/migration.sql"
+    },
+    {
+      "sha256": "595f0639fb8239e5c76b85cba0a07144410aea986856d142d85b09bd717103e1",
+      "path": "lib/subscriptions.ts"
+    },
+    {
+      "sha256": "8db174bca3bec0bba91822db8d61acea8bca0907002c061b8a4837e2361d2486",
+      "path": "lib/subscription-rules.mjs"
+    },
+    {
+      "sha256": "dbeae3b92b2bac091b6244062b7c8b1781bcc827b10dc2273c3ebe1a28ff33ab",
+      "path": "app/api/subscriptions/route.ts"
+    },
+    {
+      "sha256": "51059e1496d02b061358da6fbefd682df167fc877eed9ef3e1bf082152f198c7",
+      "path": "app/api/manage/route.ts"
+    },
+    {
+      "sha256": "76dc0f4e9de9949438c029c1aea01dc4094e75f9d8b7264846c8d9232d52a0ee",
+      "path": "components/workspace/admin-server.tsx"
+    },
+    {
+      "sha256": "1d396cabe0b94f6f0d2081d334d06196e714ec0e8e30bb595f8c025519a5750b",
+      "path": "components/workspace/admin.tsx"
+    },
+    {
+      "sha256": "47dd7140b2293f5b3edb42832107c143acf11347042aa0de1852db257b93e5d8",
+      "path": "components/workspace/subscriptions.tsx"
+    },
+    {
+      "sha256": "5b69b2898f1566353be65838c0cfbb2c24d12801b59a1aa77d4f9985571334d3",
+      "path": "components/portal.tsx"
+    },
+    {
+      "sha256": "f3f5882444d2e26b3f2efc2b914aa60b141707df67270c6a59a8c9d7874b3c1a",
+      "path": "app/workspace.css"
+    },
+    {
+      "sha256": "6312bdaa0791b0555485def3c0405a2d467dd4ed97247bb4e792d98bc93b82e8",
+      "path": "tests/subscriptions.integration.mjs"
+    },
+    {
+      "sha256": "f8bc25257899582b8e3cccc8f9dad1ea228caeb3c309ba60b0092bbe27b5de92",
+      "path": "tests/subscription.test.mjs"
+    },
+    {
+      "sha256": "50b051f4431c45a004465a15e49e665cb9a85ab04ca1bc854ea05dc0474eb0f1",
+      "path": "scripts/phase4c-qa-migrate.mjs"
+    },
+    {
+      "sha256": "6b47b0713de8dcd59d2d7143dff4929222fc7947772304ffc6b77a2a7600a06b",
+      "path": "scripts/phase4c-qa-verify.mjs"
+    },
+    {
+      "sha256": "3e95c684fc2704a02a3d32e9335a86aa51f5b33c49a23f52a0a7ce864b565e25",
+      "path": "package.json"
+    },
+    {
+      "sha256": "7f9549b463d9c7cacdd40cc3998d0c043dd3e1bb12035264f74e91f27033ad33",
+      "path": "README.md"
+    },
+    {
+      "sha256": "aa2a526b1065ced24344528591afcd6cefc3e6a12240bae5f0dd00ee894cde68",
+      "path": "docs/IMPLEMENTATION_STATUS.md"
+    },
+    {
+      "sha256": "1395578030cffe283bee47985e6f330fd004c4808db94a37164269847f0b600b",
+      "path": "design-qa.md"
+    },
+    {
+      "sha256": "198414db16d9fd8b25ae18b2c7be5b7ca50b454c723e654dfdf677b7c40acb76",
+      "path": "docs/PHASE4C_SAAS_CUSTOMER_BILLING.md"
+    },
+    {
+      "sha256": "620eb68b5a3488ea874bc66f605495bebe4e9ecb1b2c8c66b54ebfb4951c6822",
+      "path": "docs/PHASE4C_DESIGN_QA.md"
+    },
+    {
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9",
+      "path": "artifacts/phase4c/acquisition.integration.log"
+    },
+    {
+      "sha256": "38f5894b695040d528afd2a520a8c60f393dcf08113515a6a9760a930db4a426",
+      "path": "artifacts/phase4c/customer-detail-desktop.png"
+    },
+    {
+      "sha256": "26fe984047c22a8087d5e7f0046a9bf288e13c283cecda162ff598075808d121",
+      "path": "artifacts/phase4c/customer-detail-mobile.png"
+    },
+    {
+      "sha256": "7bca38bbff6e0727a921ed4775d99973c91d94cb25d115af2530c1f829e92470",
+      "path": "artifacts/phase4c/customers-desktop.png"
+    },
+    {
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09",
+      "path": "artifacts/phase4c/identity.integration.log"
+    },
+    {
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1",
+      "path": "artifacts/phase4c/integration.log"
+    },
+    {
+      "sha256": "373dcd6e8635922b1956a6b07b51e41cbd6a00dadf45a23bbf966fdddf3c5666",
+      "path": "artifacts/phase4c/invoice-focus-desktop.png"
+    },
+    {
+      "sha256": "c6ef0645e7d2c6842968c4e96f6cc3a5a2d4afc25a5d0cbb547df5253136346b",
+      "path": "artifacts/phase4c/invoices-mobile-320.png"
+    },
+    {
+      "sha256": "881da6a8c4d78815aef0d94bdd7376b1c11d7369b2cbb99cf29e7a5645cc9837",
+      "path": "artifacts/phase4c/invoices-mobile.png"
+    },
+    {
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4",
+      "path": "artifacts/phase4c/lifecycle.integration.log"
+    },
+    {
+      "sha256": "435a92904d9da403ac90801ecd98e9d936f3bf715e396ec523ef1b2afe603413",
+      "path": "artifacts/phase4c/migration-preservation.json"
+    },
+    {
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368",
+      "path": "artifacts/phase4c/operations.integration.log"
+    },
+    {
+      "sha256": "903a7cdbcf8544703865912c6aff4565fea1c42db3f4833a03ba776caaf39aef",
+      "path": "artifacts/phase4c/owner-subscription-desktop.png"
+    },
+    {
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57",
+      "path": "artifacts/phase4c/prospects.integration.log"
+    },
+    {
+      "sha256": "6101b3ce019dbebda5faf669d9c21fe90baf8d7c496d20fe8a085853fab42244",
+      "path": "artifacts/phase4c/regression-results.json"
+    },
+    {
+      "sha256": "ccae8f2ea77ecd43cfc4516573a74b61fb2da5c2aa6cc57ba47e467adba7ccb5",
+      "path": "artifacts/phase4c/subscriptions-tests.json"
+    },
+    {
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd",
+      "path": "artifacts/phase4c/subscriptions.integration.log"
+    },
+    {
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459",
+      "path": "artifacts/phase4c/tenant-smart.integration.log"
+    },
+    {
+      "sha256": "b1cf8b9e39c674938db66501eac2955660a4338bcb6657ed452a5d95328e2b6f",
+      "path": "artifacts/phase4c/unit-tests.log"
+    },
+    {
+      "sha256": "bc25cf74a20bf01fd937c82a7d29f4b7c4f8730059c369ec59057e94e5ff6102",
+      "path": "artifacts/phase4c/verification-summary.json"
+    },
+    {
+      "sha256": "80ad60c3dc96265a8de3ce17569b4b19031ab64159262f82438e2cb4dd5284c2",
+      "path": "artifacts/phase4c/workspace.integration.log"
+    }
+  ]
+}

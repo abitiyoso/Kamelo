@@ -1,0 +1,187 @@
+{
+  "excluded": "Secrets, runtime databases, generated clients, node_modules, .next and nested exports excluded. Previous phase review changes retained.",
+  "files": [
+    {
+      "sha256": "64df057329f9769181244d3e80fa80573e17011d001cb3ff7de4abb99e404183",
+      "path": "prisma/schema.prisma"
+    },
+    {
+      "sha256": "f44b01fc3ec57b9b7789bfa756eb11e2ec1cd554a51826a4b07322e5355ba746",
+      "path": "prisma/migrations/20261018230000_support_cases/migration.sql"
+    },
+    {
+      "sha256": "2efad40d68f0906763c1bb47ec3d65bcce50a73bfd5a521f099e42d222b04e7d",
+      "path": "lib/support.ts"
+    },
+    {
+      "sha256": "98810fb3a72749f45157dbff0cbf8e88aa71ee256e3c64c17cfd4c5f463ad6d1",
+      "path": "lib/support-rules.mjs"
+    },
+    {
+      "sha256": "b2e0edaa5ab0bcaa4bf7fcd8b9c6bcaf70d10e1617c25bd251b2cfed362d014e",
+      "path": "lib/integration-readiness.mjs"
+    },
+    {
+      "sha256": "c1096969df4365fbc4c6ab756f526748a4fa08f0e8eb0307c61323508bcc8571",
+      "path": "app/api/support/route.ts"
+    },
+    {
+      "sha256": "f438dd09a7a7b410673b14778cb7591104b2f49de5492a45c81d08d09e394771",
+      "path": "app/api/platform-health/route.ts"
+    },
+    {
+      "sha256": "16c5e5c5c1553654b87be79bd005f5a683a3953bc50e095ab773ea52dd390074",
+      "path": "components/workspace/support.tsx"
+    },
+    {
+      "sha256": "effb2011ed32d1234c0924161da5bbb00ed9994d2ece5354c376cfbccd5e5819",
+      "path": "components/workspace/platform-health.tsx"
+    },
+    {
+      "sha256": "8e192c74497872eafcf146badd62c8c3e7ab92afc5816e4ee4794332d0be6f0d",
+      "path": "components/workspace/admin.tsx"
+    },
+    {
+      "sha256": "8a23930b0891ef5800e63085a5c28477913720dcbbe096f677495d10d9eb3d84",
+      "path": "components/identity/account-settings.tsx"
+    },
+    {
+      "sha256": "0d323c16be85d77d2a5017eea1a13382276f7ec1b7c84c6486584ddc9d8ed0b6",
+      "path": "app/workspace.css"
+    },
+    {
+      "sha256": "a85a5e0e3c4a00fde8969ec33e7bee6b9c91e62b3e1093f34d8d438fbd1150eb",
+      "path": "tests/support.test.mjs"
+    },
+    {
+      "sha256": "b4fdbe7f3a72a9bc0b8cbf2821c136358862a643af6e35680e0f765540942b43",
+      "path": "tests/support.integration.mjs"
+    },
+    {
+      "sha256": "bb397438bf244d8231aa240a8b65ae372af04fe9ac3489bd2aeb9572ceb9d932",
+      "path": "scripts/phase4e-qa-migrate.mjs"
+    },
+    {
+      "sha256": "def62b638b679cd7a9238c7d9cb0f714542cbada36a1bd4f67957a883c5dc033",
+      "path": "scripts/phase4e-qa-verify.mjs"
+    },
+    {
+      "sha256": "cebe7167fa2bfdf5b9234cb7734ec53a45fd952d969a17440a86c815672f46e1",
+      "path": "package.json"
+    },
+    {
+      "sha256": "3387d41b3120aa9e69141a795ae93ecabfcf6d709f05009b91329cdda317aa9d",
+      "path": "README.md"
+    },
+    {
+      "sha256": "0620fe87e34c1737ce5414e6a682b23cace81013c00e2d95507e8a407d157000",
+      "path": "design-qa.md"
+    },
+    {
+      "sha256": "8d1ff959d6026be61d781f392bed895c9ca288c4ebcc987363ce8a29f2f048d3",
+      "path": "docs/IMPLEMENTATION_STATUS.md"
+    },
+    {
+      "sha256": "3c30b528786ab3aac11c09d7a0093d64f983c1b92a9d7ceefc926c4d3d0e1fc9",
+      "path": "docs/PHASE4E_SUPPORT_INTEGRATION_HEALTH.md"
+    },
+    {
+      "sha256": "e25b4f671968db43a0ffab08f8737a602a155bad40f99a6326a5a68f46ed9d99",
+      "path": "docs/PHASE4E_DESIGN_QA.md"
+    },
+    {
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9",
+      "path": "artifacts/phase4e/acquisition.integration.log"
+    },
+    {
+      "sha256": "25202341b72f9b434c9b53320e37c2aaa0304785dd960b29c7e76f90a851d65b",
+      "path": "artifacts/phase4e/admin-ticket-reply-desktop.png"
+    },
+    {
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c",
+      "path": "artifacts/phase4e/finance.integration.log"
+    },
+    {
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09",
+      "path": "artifacts/phase4e/identity.integration.log"
+    },
+    {
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1",
+      "path": "artifacts/phase4e/integration.log"
+    },
+    {
+      "sha256": "86beda21f333e063a01acf60ae925ed201c3e6cb1955849a911fd29f1ea10a6d",
+      "path": "artifacts/phase4e/integrations-desktop.png"
+    },
+    {
+      "sha256": "a020ecf24a4a0bda67a2c86cd42d52e48ec6a6197721d9f956ce98b8b1ec6f24",
+      "path": "artifacts/phase4e/integrations-mobile320.png"
+    },
+    {
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4",
+      "path": "artifacts/phase4e/lifecycle.integration.log"
+    },
+    {
+      "sha256": "12e41c35d96efef1d25b90a155f0cc2156cc77bb02787e29ff7adde962dfbc55",
+      "path": "artifacts/phase4e/migration-preservation.json"
+    },
+    {
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368",
+      "path": "artifacts/phase4e/operations.integration.log"
+    },
+    {
+      "sha256": "83a5e5fbb2e912d6ea53b85affeac1670be3d76538a9ad78a97e9bc17e2bb720",
+      "path": "artifacts/phase4e/owner-admin-reply-final.png"
+    },
+    {
+      "sha256": "f56433cfaa639d4a5d65be1895b7dd3b96b6830d6a6537ee053f6d2747652f18",
+      "path": "artifacts/phase4e/owner-admin-reply-mobile-final.png"
+    },
+    {
+      "sha256": "17a3de4e0301d5689dd7d10b95cfc8958d1a32c0dac048cac8847fa2569a5fee",
+      "path": "artifacts/phase4e/owner-ticket-desktop.png"
+    },
+    {
+      "sha256": "3a40897f452b5180d1231176c62611249d4bf9def319fe910081474a3e282d45",
+      "path": "artifacts/phase4e/owner-ticket-mobile320.png"
+    },
+    {
+      "sha256": "fc2a2963ea2d42659f3973bff7e4442ab27f0ecc5ad6780f39dcf5015af532df",
+      "path": "artifacts/phase4e/owner-ticket-mobile390.png"
+    },
+    {
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57",
+      "path": "artifacts/phase4e/prospects.integration.log"
+    },
+    {
+      "sha256": "6574fa03427e9867b966b59406a445779af70a72c774961efb24b80528bf3f33",
+      "path": "artifacts/phase4e/regression-results.json"
+    },
+    {
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd",
+      "path": "artifacts/phase4e/subscriptions.integration.log"
+    },
+    {
+      "sha256": "ee28e455a1c1521b8185f6978eda821554ba6df9761e0090ec11e48d9546227c",
+      "path": "artifacts/phase4e/support-tests.json"
+    },
+    {
+      "sha256": "e9d52292f5144bbadd0040f89dce645e677b9c619c8e5c3ff381a8381007e4ad",
+      "path": "artifacts/phase4e/support.integration.log"
+    },
+    {
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459",
+      "path": "artifacts/phase4e/tenant-smart.integration.log"
+    },
+    {
+      "sha256": "67c07bceeb0d030e15ac042f11a3335f48b0b011a2faa3a443d6fbf04333d926",
+      "path": "artifacts/phase4e/unit-tests.log"
+    },
+    {
+      "sha256": "77db8f300be119021d6ef5949b3d9a1dcc560ae7a5dafa92a2386dbe1f937c1c",
+      "path": "artifacts/phase4e/workspace.integration.log"
+    }
+  ],
+  "branch": "codex/phase4e-support-readiness",
+  "phase": "4E support and integration readiness"
+}

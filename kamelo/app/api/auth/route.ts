@@ -1,162 +1,239 @@
 import { NextRequest, NextResponse } from "next/server";
+import { cookies } from "next/headers";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import {
   createSession,
   currentUser,
+  sessionIdentity,
   hashPassword,
   hashToken,
   rateLimit,
   verifyPassword,
 } from "@/lib/auth";
-import { cookies } from "next/headers";
-import { randomBytes } from "node:crypto";
 import { validOrigin } from "@/lib/origin";
+import { issueChallenge, consumeChallenge } from "@/lib/identity";
+import { inviteRecord, assertInvitation } from "@/lib/invitations";
+import { flushLocalMail } from "@/lib/email/outbox";
+import { emailConfig } from "@/lib/email/transport.mjs";
 const credentials = z.object({
-  email: z.email().transform((v) => v.toLowerCase()),
+  email: z.email().transform((v) => v.trim().toLowerCase()),
   password: z.string().min(10).max(128),
 });
+const headers = {
+  "Cache-Control": "private, no-store",
+  "Referrer-Policy": "no-referrer",
+};
 export async function POST(req: NextRequest) {
+  if (!validOrigin(req))
+    return NextResponse.json(
+      { error: "Permintaan tidak diizinkan." },
+      { status: 403, headers },
+    );
   try {
-    if (!validOrigin(req))
-      return NextResponse.json(
-        { error: "Permintaan tidak diizinkan." },
-        { status: 403 },
-      );
     const body = await req.json();
     if (body.action === "logout") {
       const token = (await cookies()).get("kh-session")?.value;
       if (token)
         await db.session.deleteMany({ where: { token: hashToken(token) } });
       (await cookies()).delete("kh-session");
-      return NextResponse.json({ ok: true });
+      return NextResponse.json({ ok: true }, { headers });
     }
     if (body.action === "forgot") {
       const email = z.email().parse(body.email).toLowerCase();
       await rateLimit("reset:" + hashToken(email), 3);
-      if (!process.env.MAIL_ENDPOINT || !process.env.MAIL_API_KEY)
+      if (emailConfig().driver === "disabled")
         return NextResponse.json(
           {
             error:
               "Pengiriman email pemulihan belum tersedia. Hubungi pengelola.",
           },
-          { status: 503 },
+          { status: 503, headers },
         );
       const user = await db.user.findUnique({ where: { email } });
-      if (user) {
-        const token = randomBytes(32).toString("hex");
-        await db.resetToken.create({
-          data: {
-            token: hashToken(token),
-            userId: user.id,
-            expires: new Date(Date.now() + 3600000),
-          },
-        });
-        const response = await fetch(process.env.MAIL_ENDPOINT, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.MAIL_API_KEY}`,
-          },
-          body: JSON.stringify({
-            to: email,
-            subject: "Pulihkan akun KosHotel",
-            text: `Buka ${process.env.APP_URL}/reset-password?token=${token}. Berlaku 1 jam.`,
-          }),
-        });
-        if (!response.ok) throw new Error("Layanan email tidak tersedia.");
-      }
-      return NextResponse.json({
-        ok: true,
-        message: "Jika email terdaftar, tautan pemulihan akan dikirim.",
-      });
+      if (user && !["SUSPENDED", "CLOSED"].includes(user.accountStatus))
+        await db.$transaction((tx) => issueChallenge(tx, user, "RESET"));
+      await flushLocalMail();
+      return NextResponse.json(
+        {
+          ok: true,
+          message:
+            "Jika email terdaftar, permintaan pemulihan akan diproses. Periksa email atau hubungi pengelola jika belum diterima.",
+        },
+        { headers },
+      );
     }
     if (body.action === "reset") {
       const input = z
         .object({
-          token: z.string().length(64),
+          token: z.string().max(150),
           password: z.string().min(10).max(128),
         })
         .parse(body);
+      await rateLimit(
+        "reset-consume:" + hashToken(input.token.split(".")[0]),
+        10,
+      );
+      if (input.token.includes(".")) {
+        const result = await consumeChallenge(
+          input.token,
+          "RESET",
+          input.password,
+        );
+        await flushLocalMail();
+        return NextResponse.json(result, { headers });
+      }
+      // Previously issued one-hour links continue to work during the expand/contract transition.
+      if (!/^[a-f0-9]{64}$/.test(input.token))
+        throw Error("Tautan tidak tersedia.");
       await db.$transaction(async (tx) => {
-        const token = await tx.resetToken.findUnique({
+        const t = await tx.resetToken.findUnique({
           where: { token: hashToken(input.token) },
         });
-        if (!token || token.expires < new Date())
-          throw new Error("Tautan pemulihan tidak valid atau kedaluwarsa.");
-        await tx.resetToken.delete({ where: { token: token.token } });
+        if (!t || t.expires <= new Date())
+          throw Error("Tautan tidak tersedia.");
+        await tx.resetToken.delete({ where: { token: t.token } });
         await tx.user.update({
-          where: { id: token.userId },
+          where: { id: t.userId },
           data: { password: hashPassword(input.password) },
         });
-        await tx.session.deleteMany({ where: { userId: token.userId } });
+        await tx.session.deleteMany({ where: { userId: t.userId } });
       });
-      return NextResponse.json({ ok: true });
+      return NextResponse.json({ ok: true, redirect: "/login" }, { headers });
     }
     const input = credentials.parse(body);
     await rateLimit("login:" + hashToken(input.email));
     if (body.action === "register") {
-      const requestedPlan = z
-        .enum(["free", "starter", "plus"])
-        .optional()
-        .parse(body.requestedPlan);
       const profile = z
-        .object({
-          name: z.string().trim().min(2).max(100),
-          phone: z.string().regex(/^(?:\+62|62|0)8\d{7,12}$/),
-        })
-        .parse(body);
+          .object({
+            name: z.string().trim().min(2).max(100),
+            phone: z.string().regex(/^(?:\+62|62|0)8\d{7,12}$/),
+          })
+          .parse(body),
+        requestedPlan = z
+          .enum(["free", "starter", "plus"])
+          .optional()
+          .parse(body.requestedPlan);
+      const invitationToken =
+        typeof body.invitationToken === "string" ? body.invitationToken : null;
       const user = await db.$transaction(async (tx) => {
-        const org = await tx.organization.create({
-          data: { name: profile.name },
+        await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtext(${"register:" + input.email}))`;
+        const existing = await tx.user.findUnique({
+          where: { email: input.email },
         });
-        if (requestedPlan && requestedPlan !== "free") {
-          const upgrade = await tx.upgrade.create({
-            data: { organizationId: org.id, plan: requestedPlan },
-          });
-          await tx.audit.create({
-            data: {
-              organizationId: org.id,
-              actorId: "registration",
-              action: "UPGRADE_REQUESTED",
-              targetId: upgrade.id,
-              metadata: { plan: requestedPlan },
-            },
-          });
+        if (existing) {
+          if (
+            existing.accountStatus === "PENDING" &&
+            verifyPassword(input.password, existing.password)
+          ) {
+            await issueChallenge(tx, existing, "EMAIL_VERIFY");
+            return existing;
+          }
+          return null;
         }
-        return tx.user.create({
+        let organizationId: string;
+        if (invitationToken) {
+          const inv = await inviteRecord(invitationToken);
+          if (!inv || inv.recipientEmail !== input.email)
+            throw Error("Periksa data undangan.");
+          await assertInvitation(tx, inv);
+          organizationId = inv.organizationId;
+        } else
+          organizationId = (
+            await tx.organization.create({ data: { name: profile.name } })
+          ).id;
+        const created = await tx.user.create({
           data: {
-            ...profile,
             ...input,
+            ...profile,
             password: hashPassword(input.password),
-            organizationId: org.id,
+            organizationId,
+            role: invitationToken ? "IDENTITY" : "OWNER",
+            accountStatus: "PENDING",
           },
         });
+        if (!invitationToken) {
+          await tx.orgMembership.create({
+            data: {
+              userId: created.id,
+              organizationId,
+              role: "OWNER",
+              status: "PENDING",
+            },
+          });
+          if (requestedPlan && requestedPlan !== "free") {
+            const upgrade = await tx.upgrade.create({
+              data: { organizationId, plan: requestedPlan },
+            });
+            await tx.audit.create({
+              data: {
+                organizationId,
+                actorId: "registration",
+                action: "UPGRADE_REQUESTED",
+                targetId: upgrade.id,
+                metadata: { plan: requestedPlan },
+              },
+            });
+          }
+        }
+        await issueChallenge(tx, created, "EMAIL_VERIFY");
+        return created;
       });
-      await createSession(user.id);
-      return NextResponse.json({ ok: true, redirect: "/onboarding" });
+      if (user)
+        await createSession(user.id, req.headers.get("user-agent") || "");
+      await flushLocalMail();
+      return NextResponse.json(
+        {
+          ok: true,
+          redirect: "/verify-email",
+          message:
+            "Jika alamat email dapat digunakan, petunjuk verifikasi akan diproses. Jika sudah memiliki akun, silakan masuk.",
+          deliveryMode: emailConfig().driver,
+        },
+        { headers },
+      );
     }
+    if (body.action !== "login") throw Error("Aksi tidak tersedia.");
     const user = await db.user.findUnique({ where: { email: input.email } });
-    if (!user || !verifyPassword(input.password, user.password))
+    if (
+      !user ||
+      !["PENDING", "ACTIVE", "LEGACY_ACTIVE"].includes(user.accountStatus) ||
+      !verifyPassword(input.password, user.password)
+    )
       return NextResponse.json(
         { error: "Email atau kata sandi salah." },
-        { status: 401 },
+        { status: 401, headers },
       );
-    await createSession(user.id);
-    return NextResponse.json({ ok: true, redirect: "/app/dashboard" });
-  } catch (error) {
+    const redirect = await createSession(
+      user.id,
+      req.headers.get("user-agent") || "",
+    );
+    return NextResponse.json({ ok: true, redirect }, { headers });
+  } catch (e) {
     return NextResponse.json(
       {
         error:
-          error instanceof z.ZodError
+          e instanceof z.ZodError
             ? "Periksa isian Anda. Kata sandi minimal 10 karakter."
             : "Tidak dapat memproses permintaan. Periksa data atau coba kembali.",
       },
-      { status: 400 },
+      { status: 400, headers },
     );
   }
 }
 export async function GET() {
   const user = await currentUser();
-  return NextResponse.json(user ? { name: user.name, role: user.role } : null);
+  if (user)
+    return NextResponse.json({ name: user.name, role: user.role }, { headers });
+  const s = await sessionIdentity();
+  return NextResponse.json(
+    s
+      ? {
+          name: s.user.name,
+          role: "ACCOUNT",
+          needsVerification: s.user.accountStatus === "PENDING",
+        }
+      : null,
+    { headers },
+  );
 }

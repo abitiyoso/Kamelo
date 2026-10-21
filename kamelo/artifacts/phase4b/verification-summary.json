@@ -1,0 +1,14 @@
+{
+  "unitTests": 20,
+  "apiScenarioGroups": 59,
+  "productionBuild": "passed",
+  "finalProspectRerun": "passed against final build including existing unpaid invoice preservation",
+  "prospectScenarioGroups": 9,
+  "productionMigration": false,
+  "externalEmail": false,
+  "browser": "Synthetic capture/follow-up/offer; existing-profile search; dialog persists; success role=status receives focus; Escape restores Kelola; 320/390px no horizontal document/modal overflow",
+  "branch": "codex/phase4b-prospects",
+  "typecheck": "passed by next build",
+  "completedAt": "2026-10-18T11:02:26.2981858Z",
+  "preview": "http://127.0.0.1:3001/app/leads"
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "label": "Prospek Sewa",
+    "text": "Memuat properti…"
+  },
+  {
+    "label": "Kontrak & Deposit",
+    "text": "Kontrak & Deposit\n\nModul ini memerlukan backend, izin, dan alur verifikasi sebelum dapat digunakan.\n\nLayanan belum tersedia\n\nAkses akan dibuka setelah backend dan izin layanan siap"
+  },
+  {
+    "label": "Tagihan & Pembayaran",
+    "text": "DEMO KOS MELATI · Yogyakarta\nTagihan\n\nPantau tagihan dan catat pembayaran dengan mudah.\n\nBuat Tagihan\nTotal tagihan aktif\nRp 9.000.000\nPembayaran diterima\nRp 5.000.000\nBelum dibaya"
+  },
+  {
+    "label": "Pekerjaan",
+    "text": "OPERASIONAL HARIAN\nPekerjaan & komplain\nBuat tiket\n\nCatat permintaan, tetapkan penanggung jawab, dan pantau progres tanpa kehilangan riwayat.\n\nBaru\n1\nDikerjakan\n0\nSelesai\n0\nSemua\n1"
+  },
+  {
+    "label": "Kotak Masuk",
+    "text": "Kotak Masuk\n\nModul ini memerlukan backend, izin, dan alur verifikasi sebelum dapat digunakan.\n\nLayanan belum tersedia\n\nAkses akan dibuka setelah backend dan izin layanan siap.\n\nBel"
+  },
+  {
+    "label": "Tamu & Paket",
+    "text": "Tamu & Paket\n\nModul ini memerlukan backend, izin, dan alur verifikasi sebelum dapat digunakan.\n\nLayanan belum tersedia\n\nAkses akan dibuka setelah backend dan izin layanan siap.\n\nBe"
+  },
+  {
+    "label": "CCTV & AI",
+    "text": "CCTV & Video Analytics\n\nPantau kamera area bersama, tinjau peristiwa AI, dan kelola tindak lanjut.\n\nKoneksi VMS\nBelum terhubung\nGateway belum dikonfigurasi\nPeristiwa terverifikasi\n"
+  },
+  {
+    "label": "Smart Room",
+    "text": "DEMO KOS MELATI · Yogyakarta\nSmart IoT\n\nPerangkat pintar bersifat opsional.\n\nMode simulasi · Tuya live belum tersedia\n\nKamelo tetap bisa digunakan tanpa IoT. Perangkat simulasi tid"
+  },
+  {
+    "label": "LEO Insights",
+    "text": "LEO Insights\n\nRingkasan berbasis aturan dari data properti. AI generatif belum terhubung.\n\nPrioritas operasional\nRingkasan hari ini\nPenerimaan\nTunggakan\nKamar\nPekerjaan"
+  },
+  {
+    "label": "Keuangan",
+    "text": "Keuangan\n\nPenerimaan dan piutang berasal dari catatan pembayaran properti.\n\nPenerimaan bulan ini\nRp 5.000.000\nBelum dibayar\nRp 4.000.000\nBuka transaksi tagihan\nPengeluaran & surplu"
+  },
+  {
+    "label": "Tim & Akses",
+    "text": "Pengguna & Staf\n\nPemilik mengelola properti dan langganan. Staf hanya mengakses properti yang ditugaskan.\n\nBudi QA\n\nphase2-owner@example.test · OWNER\n\nAgus QA\n\nphase2-staff@example"
+  },
+  {
+    "label": "Akun & Pengaturan",
+    "text": "Akun & Pengaturan\n\nInformasi akun, keamanan, dan akses Anda.\n\nProfil Akun\nNama lengkap\nBudi QA\nEmail\nphase2-owner@example.test\nNomor HP\n081200000000\n\nPerubahan profil dan verifikas"
+  }
+]

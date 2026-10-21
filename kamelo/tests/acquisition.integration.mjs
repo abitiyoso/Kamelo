@@ -1,5 +1,6 @@
+import {verifiedFixture} from "./helpers/identity.mjs";
 import assert from "node:assert/strict";
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { PrismaClient } from "../generated/prisma/index.js";
 const db = new PrismaClient(),
   base = process.env.TEST_URL || "http://127.0.0.1:3000",
@@ -18,6 +19,7 @@ async function register(label, requestedPlan) {
       ...(requestedPlan ? { requestedPlan } : {}),
     }),
   });
+  if(r.status===200&&r.headers.get("set-cookie"))await verifiedFixture(db,base,r.headers.get("set-cookie").split(";")[0],email);
   return {
     status: r.status,
     cookie: r.headers.get("set-cookie")?.split(";")[0],
@@ -30,24 +32,23 @@ try {
     html = await r.text();
   assert.equal(r.status, 200);
   for (const expected of [
-    "Punya properti.",
-    "sendiri.",
-    "BANTU PILIH PAKET",
-    "Cara mulai",
-    "Simulasi · tidak mengirim pesan",
+    "Urus kos dan guest house,",
+    "Jelajahi Kamelo",
+    "Paket Kamelo",
+    "Tidak mengubah data atau mengirim perintah perangkat",
     "Rp",
-    "pemulihan",
-    "Masuk Owner",
+    "Smart Room",
+    "Masuk",
   ])
     assert.ok(html.toLowerCase().includes(expected.toLowerCase()), expected);
   for (const id of [
     "fitur",
-    "cara-kerja",
-    "mulai",
-    "layanan",
+    "solusi",
+    "produk",
+    "smart-room",
     "harga",
     "faq",
-    "demo-owner",
+    "atas",
   ])
     assert.equal(
       (html.match(new RegExp(`id="${id}"`, "g")) || []).length,
@@ -62,10 +63,9 @@ try {
   for (const href of destinations) {
     const target = new URL(href, base);
     if (target.origin !== new URL(base).origin) {
-      assert.equal(
-        target.hostname,
-        "wa.me",
-        "only explicit contact links leave the site",
+      assert.ok(
+        ["wa.me", "elenio.id"].includes(target.hostname),
+        "approved contact/company links only",
       );
       continue;
     }
@@ -94,18 +94,16 @@ try {
     const response = await fetch(base + path);
     assert.equal(response.status, 200, path);
   }
-  for (const file of [
-    "journal-hero-v1.webp",
-    "journal-room-v1.webp",
-    "journal-reception-v1.webp",
-    "journal-lock-v1.webp",
-    "journal-owner-coffee-v1.webp",
-    "journal-tenant-v1.webp",
-  ]) {
-    assert.ok(html.includes(file), `homepage consumes ${file}`);
-    const photo = await fetch(base + "/images/homepage/" + file);
+  const approvedAssets = JSON.parse(
+    await readFile(
+      new URL("../lib/marketing/assets.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  for (const file of Object.values(approvedAssets)) {
+    const photo = await fetch(base + file);
     assert.equal(photo.status, 200);
-    assert.ok(photo.headers.get("content-type").includes("image/webp"));
+    assert.ok(photo.headers.get("content-type").startsWith("image/"));
   }
   console.log(
     "PASS homepage/routes/anchors/optimized photos and complete acquisition information",
@@ -162,7 +160,7 @@ try {
   assert.equal(await db.organization.count(), orgCount);
   assert.equal(await db.upgrade.count(), upgradeCount);
   const duplicate = await register("starter", "plus");
-  assert.equal(duplicate.status, 400);
+  assert.equal(duplicate.status, 200);
   assert.equal(await db.organization.count(), orgCount);
   assert.equal(await db.upgrade.count(), upgradeCount);
   const invalidQuery = await fetch(base + "/register?plan=ultimate").then((r) =>

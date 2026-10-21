@@ -1,0 +1,70 @@
+   ▲ Next.js 15.5.27
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 7.2s
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/35) ...
+   Generating static pages (8/35) 
+   Generating static pages (17/35) 
+   Generating static pages (26/35) 
+ ✓ Generating static pages (35/35)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                      847 B         104 kB
+├ ○ /_not-found                             1 kB         104 kB
+├ ƒ /[page]                               4.4 kB         131 kB
+├ ƒ /admin                                 137 B         130 kB
+├ ƒ /admin/[section]                       137 B         130 kB
+├ ƒ /api/account                           214 B         103 kB
+├ ƒ /api/auth                              214 B         103 kB
+├ ƒ /api/dashboard                         214 B         103 kB
+├ ƒ /api/finance                           214 B         103 kB
+├ ƒ /api/import-files                      214 B         103 kB
+├ ƒ /api/invitations                       214 B         103 kB
+├ ƒ /api/jobs                              214 B         103 kB
+├ ƒ /api/jobs/mail                         214 B         103 kB
+├ ƒ /api/jobs/reminders                    214 B         103 kB
+├ ƒ /api/leo                               214 B         103 kB
+├ ƒ /api/lifecycle                         214 B         103 kB
+├ ƒ /api/manage                            214 B         103 kB
+├ ƒ /api/messages                          214 B         103 kB
+├ ƒ /api/opening-balances                  214 B         103 kB
+├ ƒ /api/opening-proofs/[id]               214 B         103 kB
+├ ƒ /api/opening-tenant                    214 B         103 kB
+├ ƒ /api/platform-health                   214 B         103 kB
+├ ƒ /api/privacy                           214 B         103 kB
+├ ƒ /api/proof-queue                       214 B         103 kB
+├ ƒ /api/proofs/[id]                       214 B         103 kB
+├ ƒ /api/prospects                         214 B         103 kB
+├ ƒ /api/reminder-automation               214 B         103 kB
+├ ƒ /api/resident                          214 B         103 kB
+├ ƒ /api/resident-imports                  214 B         103 kB
+├ ƒ /api/resident-reminders                214 B         103 kB
+├ ƒ /api/room-imports                      214 B         103 kB
+├ ƒ /api/stay/[token]                      214 B         103 kB
+├ ƒ /api/subscriptions                     214 B         103 kB
+├ ƒ /api/support                           214 B         103 kB
+├ ƒ /api/tenant/[token]                    214 B         103 kB
+├ ƒ /api/tenant/[token]/proof              214 B         103 kB
+├ ƒ /app/[[...slug]]                       146 B         192 kB
+├ ○ /demo                                  147 B         192 kB
+├ ƒ /demo/owner                          4.05 kB         115 kB
+├ ƒ /demo/tenant                           187 B         139 kB
+├ ○ /manifest.webmanifest                  214 B         103 kB
+├ ƒ /onboarding/[[...slug]]              3.44 kB         115 kB
+├ ○ /pricing                             2.08 kB         113 kB
+├ ƒ /resident/[[...section]]              5.1 kB         151 kB
+├ ƒ /stay/[token]                        5.04 kB         136 kB
+└ ƒ /tenant/[token]                        187 B         139 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/5767-751a17dc770025ec.js      46.4 kB
+  ├ chunks/dade46cd-a740d24e8d912efb.js  54.2 kB
+  └ other shared chunks (total)          2.04 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

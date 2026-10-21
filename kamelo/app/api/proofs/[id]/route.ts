@@ -25,7 +25,9 @@ export async function GET(
       user &&
       user.organizationId === proof.invoice.property.organizationId &&
       (user.role === "OWNER" ||
-        user.propertyIds.includes(proof.invoice.propertyId));
+        (user.role === "STAFF" &&
+          user.canRecordPayments &&
+          user.propertyIds.includes(proof.invoice.propertyId)));
     if (!allowedUser && link?.invoiceId !== proof.invoiceId)
       return NextResponse.json({ error: "Akses ditolak." }, { status: 403 });
     const bytes = await proofFile(proof.storageKey),

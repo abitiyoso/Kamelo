@@ -1,0 +1,8 @@
+PASS owner-only workbook reading, anonymous/staff rejection and same-origin guard
+PASS explicit sheet selection/reordered mapping yields canonical CSV without business writes
+PASS XLSX room conversion connects to existing digest/confirmed atomic import
+PASS 1904 Excel dates and text phones survive resident import with independent due days; no fabricated financial/accounts
+PASS cached formulas, fake/legacy/oversized files, numeric identifiers and invalid mapping are rejected
+PASS converted imports retain downstream guard and can be rolled back in dependency order
+PASS existing session cannot read workbook after membership revocation
+PASS 7 XLSX import API scenario groups

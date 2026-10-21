@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "mode": "OFFLINE_CONFIGURATION_REVIEW",
+  "liveAcceptance": "PENDING_EXTERNAL_SETUP",
+  "networkRequests": 0,
+  "application": {
+    "origin": "LOCAL_HTTP",
+    "worker": "CONFIGURED_UNVERIFIED",
+    "database": "CONFIGURED_UNVERIFIED",
+    "encryption": "CONFIGURED_UNVERIFIED",
+    "privateProofStorage": "DEFAULT_PRIVATE_PATH_UNVERIFIED"
+  },
+  "services": [
+    {
+      "key": "email",
+      "name": "Email transaksional",
+      "state": "LOCAL_ONLY",
+      "description": "Penampung QA lokal; tidak mengirim email nyata.",
+      "liveVerified": false,
+      "requirements": [
+        "Mailbox Hostinger dan alamat pengirim yang disetujui",
+        "SPF/DKIM/DMARC serta pengujian inbox/bounce",
+        "Penerima uji dan izin pengiriman eksplisit"
+      ]
+    },
+    {
+      "key": "payment",
+      "name": "Payment gateway",
+      "state": "NOT_CONNECTED",
+      "description": "Pencatatan pembayaran manual tersedia; webhook dan gateway belum terhubung.",
+      "liveVerified": false,
+      "requirements": [
+        "Rencana gateway/webhook terpisah yang disetujui"
+      ]
+    },
+    {
+      "key": "whatsapp",
+      "name": "WhatsApp Business",
+      "state": "NOT_CONNECTED",
+      "description": "Tautan dan salin pesan tersedia; pengiriman otomatis dan webhook belum terhubung.",
+      "liveVerified": false,
+      "requirements": [
+        "Penyedia resmi, nomor pengirim, template dan persetujuan penerima",
+        "Adapter/webhook terverifikasi dan uji penerimaan"
+      ]
+    },
+    {
+      "key": "cctv",
+      "name": "CCTV / VMS",
+      "state": "NOT_CONNECTED",
+      "description": "Sumber kamera dan analytics belum terhubung. Tidak ada feed pelanggan pada panel ini.",
+      "liveVerified": false,
+      "requirements": [
+        "VMS/kamera dan akun dengan izin yang sesuai",
+        "Adapter stream/events, pembatasan properti dan kebijakan retensi",
+        "Uji kamera nyata dan penanganan gangguan koneksi"
+      ]
+    },
+    {
+      "key": "iot",
+      "name": "IoT Gateway / Smart Room",
+      "state": "SIMULATION_ONLY",
+      "description": "Adaptor MOCK tersedia untuk pengujian; Tuya dan perangkat fisik belum terhubung.",
+      "liveVerified": false,
+      "requirements": [
+        "Project/region Tuya serta inventaris dan capability perangkat",
+        "Implementasi adapter live dan konfirmasi status perangkat",
+        "Uji fisik check-in, pindah kamar, checkout dan pencabutan akses"
+      ]
+    },
+    {
+      "key": "ai",
+      "name": "LEO / AI",
+      "state": "RULE_BASED",
+      "description": "Ringkasan berbasis aturan tersedia; model AI generatif belum terhubung.",
+      "liveVerified": false,
+      "requirements": [
+        "Penyedia/model dan persetujuan kebijakan data serta batas biaya",
+        "Implementasi adapter model dengan timeout dan audit",
+        "Evaluasi jawaban dan izin tindakan; LEO saat ini tetap berbasis aturan"
+      ]
+    }
+  ],
+  "releaseDependencies": [
+    "Supervisi ketiga worker dan volume privat persisten",
+    "Backup/restore UTF-8 dan kunci enkripsi yang sama",
+    "Persetujuan kebijakan retensi dan UAT keamanan/izin",
+    "Validasi layanan nyata sebelum mengganti label simulasi"
+  ]
+}

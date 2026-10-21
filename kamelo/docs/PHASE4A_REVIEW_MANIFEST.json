@@ -1,0 +1,171 @@
+{
+  "files": [
+    {
+      "sha256": "1a4ea50fe62338c965c8c999e23f5af8b367d202471005a2a691daeba57b35ab",
+      "path": "prisma/schema.prisma"
+    },
+    {
+      "sha256": "3ef0b92d33d19fa4ee911ee71af54de666011093165187556d37dea5269e97a4",
+      "path": "prisma/migrations/20261018120000_resident_contract_deposit/migration.sql"
+    },
+    {
+      "sha256": "f9203b80e181c2077813f658f08994c323478d0cd99024391ee1190972af38ef",
+      "path": "lib/lifecycle.ts"
+    },
+    {
+      "sha256": "bec1843bb4771f836eeab1dbfbf9793ac07d6ccf84625c95c4724282b62efe66",
+      "path": "lib/lifecycle-rules.mjs"
+    },
+    {
+      "sha256": "fa5ae3fb61e7ad79dacac51902f0ff1d836c9893112f64f6003b42a5a84cecc4",
+      "path": "lib/stay-billing.ts"
+    },
+    {
+      "sha256": "33e924b16d248d9992e6134e0705e0ab655253c1dd21900ad9a41950e874cd02",
+      "path": "lib/automation.ts"
+    },
+    {
+      "sha256": "0ffd2bcd7cceeeb691d1ae50830ae404a8ea447b3f9ed69f6176be39e9bf16b4",
+      "path": "lib/invitations.ts"
+    },
+    {
+      "sha256": "a8752679aa9c2dff0604e06a89ab4f118265e9ff3dad9bc5bcb9bca9104b3679",
+      "path": "app/api/lifecycle/route.ts"
+    },
+    {
+      "sha256": "b7db95046997f5b7d1a38e423121e3671849820265fb0e04b478a7643b428386",
+      "path": "app/api/manage/route.ts"
+    },
+    {
+      "sha256": "dbea6250799261a642ab7eb87f2bd25cd6811d0992fd692df096bad1ea6ed56d",
+      "path": "app/workspace.css"
+    },
+    {
+      "sha256": "572174f19fafa78c5877c4121895dc9850ca49c388e730ebc89850d6f58eddc6",
+      "path": "components/workspace/resident360.tsx"
+    },
+    {
+      "sha256": "2c0534bc1392ddd28b620dcec022818cafeaf8efddfb10a117d96bee4b0b3478",
+      "path": "components/portal.tsx"
+    },
+    {
+      "sha256": "7c48979c49618917ae6a2aaef04a18fcf01a2af9111a38ef81bfed6e85f156e9",
+      "path": "components/owner-dashboard.tsx"
+    },
+    {
+      "sha256": "751d81cb9d12f8f320c47bdda15fc43aba754d21dcf5f4f98805ebc1a1f17bbf",
+      "path": "components/identity/resident-portal.tsx"
+    },
+    {
+      "sha256": "654fba90c0d8f2b53ed41d7d81c7e99a895715653a77278cb2c5fc155cd2403a",
+      "path": "tests/lifecycle.integration.mjs"
+    },
+    {
+      "sha256": "b1620ae8283d4d9239a59be3af9f4036a1c695f6113cfe8530bc506234e58a29",
+      "path": "tests/lifecycle.test.mjs"
+    },
+    {
+      "sha256": "d661ff8a75c6edcc7358b9109e7f57db4e1ba95cc58353b62207a606bc74bfe3",
+      "path": "scripts/phase4-qa-migrate.mjs"
+    },
+    {
+      "sha256": "c2c80ffb47b5cd964f0331638ed0da2760afdf84bd03413ab363b367d5596e06",
+      "path": "scripts/phase4-qa-verify.mjs"
+    },
+    {
+      "sha256": "b8154d1f77ca9fd00006875c9c235ccf9fab3dfb0ac3dcb5ec6f83264ce25e0b",
+      "path": "package.json"
+    },
+    {
+      "sha256": "453a7412b5d7bede588682a166ec948c1b2ef505cbb9fe9c7cee8381713e341a",
+      "path": "docs/PHASE4A_RESIDENT_CONTRACT_DEPOSIT.md"
+    },
+    {
+      "sha256": "28b5d751c8df6a5986a5f6ea13662210d2624957b202d1d6b09e96dcdf24a8ed",
+      "path": "docs/PHASE4A_DESIGN_QA.md"
+    },
+    {
+      "sha256": "c122c1fe84e66496c7f9e697c4d4b40d46433f89220e7027bb88d47f7e437300",
+      "path": "README.md"
+    },
+    {
+      "sha256": "88b790a474c765db689d5e94ae9de685ac299a290193ff3099b738646f1388c7",
+      "path": "docs/IMPLEMENTATION_STATUS.md"
+    },
+    {
+      "sha256": "8a4ac4d75670f496ca53ba9173660158b2ba17a5a976bdd4cf4eefed1ad51940",
+      "path": "design-qa.md"
+    },
+    {
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9",
+      "path": "artifacts/phase4/acquisition.integration.log"
+    },
+    {
+      "sha256": "0ccab88aab3f72746b241a18964b7abf8623ac8b11f88a4b7294b4afd584b354",
+      "path": "artifacts/phase4/contracts-desktop.png"
+    },
+    {
+      "sha256": "e12b9b802cc1350ac2ff1815ef55ea09eb3ff7fb94d09bc6f5312670c44868bb",
+      "path": "artifacts/phase4/contracts-mobile.png"
+    },
+    {
+      "sha256": "38b894d6de6d60339ccc185e7f1a69d7f39201c70610816c699ab16748cdaa01",
+      "path": "artifacts/phase4/deposit-mobile-320.png"
+    },
+    {
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09",
+      "path": "artifacts/phase4/identity.integration.log"
+    },
+    {
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1",
+      "path": "artifacts/phase4/integration.log"
+    },
+    {
+      "sha256": "1754217fd4987dd4b400280ac98ae4bad5bb0bd31ef124bce0481bac415702de",
+      "path": "artifacts/phase4/lifecycle-tests.json"
+    },
+    {
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4",
+      "path": "artifacts/phase4/lifecycle.integration.log"
+    },
+    {
+      "sha256": "67581376dabd80a3af1d0d0791013ba255e817a77fa9c60917d897aba30dbd8f",
+      "path": "artifacts/phase4/migration-preservation.json"
+    },
+    {
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368",
+      "path": "artifacts/phase4/operations.integration.log"
+    },
+    {
+      "sha256": "63a16a08973d3b738d4673c238f5b9ac564c046b99a28bdcc6e0f0659fb4fe68",
+      "path": "artifacts/phase4/regression-results.json"
+    },
+    {
+      "sha256": "31bc691749705396df592ee270e8722e267f1522d550619a45e701d6e8f335f0",
+      "path": "artifacts/phase4/residents-desktop.png"
+    },
+    {
+      "sha256": "628b330f1801751c372fff124c7069135bce5ed8d3b2d4b0116197f7d9b088e9",
+      "path": "artifacts/phase4/residents-mobile-320.png"
+    },
+    {
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459",
+      "path": "artifacts/phase4/tenant-smart.integration.log"
+    },
+    {
+      "sha256": "3ab622c93736aeeca32a48cf8a4db4592822b97e06541beb4d2471c4e5a4a98f",
+      "path": "artifacts/phase4/unit-tests.log"
+    },
+    {
+      "sha256": "98604960afbceb1bf8e4cfb08b94bb8a3fcfb56eb913cbfab90ceb1c2be6ed6d",
+      "path": "artifacts/phase4/verification-summary.json"
+    },
+    {
+      "sha256": "35af09135e772b2d37eff143ce1a2ac89dae7aab3f6cffbbbce05029a7988e8b",
+      "path": "artifacts/phase4/workspace.integration.log"
+    }
+  ],
+  "excluded": "Secrets, runtime databases, generated Prisma client, node_modules, .next and exports are excluded. Prior Phase 1-3 review changes are retained.",
+  "phase": "4A",
+  "branch": "codex/phase4-resident-contract-deposit"
+}

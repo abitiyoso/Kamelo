@@ -1,0 +1,262 @@
+{
+  "phase": "Remaining stage 2 dashboard and resident balances",
+  "branch": "codex/dashboard-insights",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "4e8f1b06eda025d8a5666b32577c3c3046cc9dc3d2ceadbb895c6df17d82c130"
+    },
+    {
+      "path": "README.md",
+      "sha256": "19808ab3d5e705c9b2f17313cd72ad4ae0acf23bc665e71ad9ab102fc910aa15"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "713362305776251ea016d724bbde4cb3981c0eef8474292b40f46ad6173507d8"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "c46b23f906c8efbecc135f40b991ac631bfb598eac2b4a8e33a682bd30713b54"
+    },
+    {
+      "path": "docs/REMAINING_DELIVERY_STAGES.md",
+      "sha256": "60200c9bd0868fb2f22e8ddbbd700c6874f183692db4c981be4b41b7ce47072a"
+    },
+    {
+      "path": "docs/DASHBOARD_STAGE2.md",
+      "sha256": "a1770783e900f3a3a189fdf5df927db90a721074ffe9213c6e22d6af555b462d"
+    },
+    {
+      "path": "docs/DASHBOARD_STAGE2_DESIGN_QA.md",
+      "sha256": "44c45436242039662684d11c0ce8fabbce3e1b93067826c06440e0e8b3b7ed2a"
+    },
+    {
+      "path": "lib/finance-report.ts",
+      "sha256": "6a61a72ad52ecaa3a5a430f411ac8c33f89fc968ded9d512259bda293b22ce8d"
+    },
+    {
+      "path": "lib/dashboard.ts",
+      "sha256": "9c6a632ec3ed3f13d2d6a2970091641f00792fd5bfe8ba2153186e319219a545"
+    },
+    {
+      "path": "lib/dashboard-periods.mjs",
+      "sha256": "5ce1b329a77e6e562dd1fa27b6df52dc0172448d1339ae747fd86dd6d4179341"
+    },
+    {
+      "path": "lib/resident-finance.ts",
+      "sha256": "4456f135985de0839de72130706ab86efb3c5419d56853c0796343006292c58b"
+    },
+    {
+      "path": "app/api/dashboard/route.ts",
+      "sha256": "ff9e824b0f9fd0549b7f6b606d184afb69d74e8d1e14deb0e20f66fc8ff14430"
+    },
+    {
+      "path": "app/api/resident/route.ts",
+      "sha256": "4fb30dd29065657ffa3278ed7b07c176b7a753249ccdba26bec181b5b148afdb"
+    },
+    {
+      "path": "components/owner-dashboard.tsx",
+      "sha256": "d085aa53a74579f57b1689ca3b38f2f6208de7c7364727e5c933684db118e795"
+    },
+    {
+      "path": "components/workspace/finance.tsx",
+      "sha256": "33bfff759571bf1b3dbc390cce597eab0f764bcb39d4f08a6132607be33ac40a"
+    },
+    {
+      "path": "components/workspace/proof-queue.tsx",
+      "sha256": "a0e05c37c7c75cb2201b3d021e1eb8bccc6cc0e0d93ceaa1d4c054dc094e1258"
+    },
+    {
+      "path": "components/portal.tsx",
+      "sha256": "d4f9719a941db72d051ea62481884f459baae62569a57d16fe7ae62d10738f8c"
+    },
+    {
+      "path": "components/identity/resident-portal.tsx",
+      "sha256": "cef970cd64aa5f105b307d6c665f7aeaba46690dac1431692e70a799d1ada9f8"
+    },
+    {
+      "path": "tests/dashboard.test.mjs",
+      "sha256": "5190af7e26b917e104ca232f0fc2d5b5f0b2d243a7cb3bab97774258ff5a6ed9"
+    },
+    {
+      "path": "tests/dashboard.integration.mjs",
+      "sha256": "d8fb15cef2d395abfd787e6fae43dc5303bda978f544f6f2948b2f166a45982b"
+    },
+    {
+      "path": "scripts/dashboard-qa-verify.mjs",
+      "sha256": "f9aa94ad141023f34d3ccc774869b3d5bce80ad3ebcadb4c87e576ec37836b4d"
+    },
+    {
+      "path": "scripts/dashboard-review-sync.mjs",
+      "sha256": "ae19858af38f74666392483d1a509c0ff085a42e9d49f25cfb10dfb6606c3030"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/build.log",
+      "sha256": "dc93e2b9c573d4a92a10f27e3e093f4fd274637fc5444bc37d587ce194997809"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/unit.log",
+      "sha256": "def08fd659d0d5af87e05255050f215ce2991e3ec1434aa02f9218af134f68c9"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/data-plan.json",
+      "sha256": "c708c46908228de6d18f9be7cc25b507f0752e8be471f316ddbaaecedbe31b9b"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/regression-results.json",
+      "sha256": "d27219e0979328f1d3883c18fa051361f24dced4439c473254a74530094ebac0"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/dashboard-api.json",
+      "sha256": "dfbae6a842e335a84278da818744dc0cc62b363fcc2c6ec5a3944565ff6a0356"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/browser-metrics.json",
+      "sha256": "092714e02524452b89aa4a802c264f9573ad826f18264f9f2ee738b16f3ba797"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/owner-kpis.png",
+      "sha256": "930d4819160f393d7db20f5919a90b006243cda6942dd5a5aea9d7d68d1f28a3"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/owner-debt-page2.png",
+      "sha256": "87bbf30c695bca58bb7913b8ca2114c1dbfac30d7d57071cedc94e9d38f31d4b"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/owner-cash-chart.png",
+      "sha256": "3a6a52ba5790ac76a2fd7df96a34394bfb729d75cd0cc55b4d61ce1acc472ad1"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/owner-empty-property.png",
+      "sha256": "afadd682dfd25fc9cbf8594ee8ade7a5d0ef61e85bbdb65e4d200a4a105de685"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/owner-proof-priority.png",
+      "sha256": "18ae8bb571b4cc6f3dd975b8592308a401f0db73da8911b98aa76b6cd975ad34"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/owner-mobile-390.png",
+      "sha256": "428058ef0a6b3278f56cf94f5467f97fec534535390d852fdae60f313bf8a1ef"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/owner-mobile-320.png",
+      "sha256": "b1113d306342be4c896614bf5a0816a3eb0662d25d87d1b430054ea9efcda26f"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/tenant-home.png",
+      "sha256": "ae8178770a23eaf66db70986c20acb2ad0422fe7d22fbc4401ee7b13ce04d9c4"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/tenant-mobile-390.png",
+      "sha256": "cce0a03d102879276395ca753d45e7cc24bc5488b1608f5649ee07b4232ef6a4"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/tenant-mobile-320.png",
+      "sha256": "fc36d9dff844fb3c6dd0306654a7707dfad36d5b6d159d67f7b329a213464a73"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/workspace.integration.log",
+      "sha256": "b34c041f1f73ad710c802db266ea777306b25b2469a7f3491bddf958e3e73b92"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/privacy.integration.log",
+      "sha256": "9203cd6d96eee6519f5a688bd1c53dcd27763ca66c8526b15acdbfa2e1bc6ec2"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/room-import.integration.log",
+      "sha256": "f42a888f174f7e81ea7a459f01c841b6cd678865b978279efa7af374f1ef0569"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/resident-import.integration.log",
+      "sha256": "bc71737bceaa78d973a9067d70e87c7e479cb0906ac04bc5c1e92fcc1cf3f524"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/import-files.integration.log",
+      "sha256": "3ca4a3472d384ac4d886058ae11899ce18e187138085ae09fd19cd25309c47d9"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/opening-balances.integration.log",
+      "sha256": "2e7579fbdf802941ddc5b2e045a94a15f41d026d14ca932760a68340fbdb438e"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/opening-receipts.integration.log",
+      "sha256": "e815fd244ca72862ea4b25816b4a785f27d80d4deccf5c78b4d48d5c06af9986"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/opening-tenant.integration.log",
+      "sha256": "d3f0d8b65f18e98322d8669d0e9f14289ce2cf8964578ba00770ef660322fce5"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/opening-reminders.integration.log",
+      "sha256": "3f1c24d2a8e1e096c25bf7cbafe6dde8aad4c1cb1cfcfacd78c5e14117cabedd"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/proof-queue.integration.log",
+      "sha256": "2d41710e728c6b5c46c2aa5ddc96e9351e8dde2640f8c9ae57e5fde336dccd90"
+    },
+    {
+      "path": "artifacts/dashboard-stage2/dashboard.integration.log",
+      "sha256": "779b22d303c841abc6f2c4bb5a8fcfef28429cc459eaae72f74cace51a5e7e86"
+    }
+  ],
+  "excluded": [
+    ".env*",
+    ".local-secrets",
+    "runtime databases",
+    "storage/payment-proofs",
+    "node_modules",
+    "generated",
+    ".next"
+  ],
+  "committed": false,
+  "pushed": false,
+  "deployed": false
+}

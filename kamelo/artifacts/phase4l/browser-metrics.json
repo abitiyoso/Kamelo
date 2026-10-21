@@ -1,0 +1,25 @@
+{
+  "screens": [
+    {
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  ],
+  "syntheticData": true,
+  "receiptAmount": 50000,
+  "remainingBefore": 499980,
+  "remainingAfter": 449980,
+  "remainingAfterCorrection": 499980,
+  "cashBefore": 1000020,
+  "cashAfter": 1050020,
+  "cashAfterCorrection": 1000020,
+  "bankMatch": "OPENING receipt PAGE-19 matched manually, no live bank"
+}

@@ -1,0 +1,15 @@
+{
+  "groups": 12,
+  "mainDatabase": false,
+  "externalEmail": false,
+  "readHashesPreserved": {
+    "Invoice": "2d8f8b9d36295e3236050f41eeba2815fcc64034f49a0ec2c7942944f3d33a93",
+    "Payment": "806a9a78b8d0d0d8e609503a141923c156d3aab5173456b5ba5332cae1093424",
+    "OpeningReceivable": "fabb9cb6c4c950971c81d82b1dbfa329411f343a2c8c4145ed3bab75f57f053d",
+    "OpeningReceipt": "1264ba56d57d6c41042cbac3d0fc449fd1df7e01dd0f87cb0b272d3a67ea599a",
+    "OpeningProof": "9920c34b7eb24a973c571da567415e3ba3c7196ac491887e4ebdce3398b8740f",
+    "PaymentProof": "6a31f5810e85cb05102ea3c8e07feb2c2b86f86519829089da96c45bba61c572",
+    "DepositEntry": "a8bfed3df560bc2845b918a000e7b2c1dd4924548f5de77e289447be20ee9560",
+    "ExpenseEntry": "3d48562a19d4c5c58b6bf63956b4f2983476edd840618f401d2cd2402a498fac"
+  }
+}

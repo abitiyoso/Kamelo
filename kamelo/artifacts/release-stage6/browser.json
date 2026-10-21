@@ -1,0 +1,19 @@
+{
+  "environment": "recovered UTF-8 QA / 3002",
+  "ownerSignIn": true,
+  "dashboardLoaded": true,
+  "receiptArchiveCount": 24,
+  "mobile": [
+    {
+      "viewport": 390,
+      "scrollWidth": 375,
+      "width": 375
+    },
+    {
+      "viewport": 320,
+      "scrollWidth": 305,
+      "width": 305
+    }
+  ],
+  "consoleErrors": []
+}

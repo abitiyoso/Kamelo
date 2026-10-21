@@ -1,0 +1,54 @@
+{
+  "before": {
+    "Invoice": {
+      "count": 243,
+      "hash": "cc56d6668c68c209cd9ebb4585d0cbcfdd10514061befe7676965b7af31eb9bb"
+    },
+    "Payment": {
+      "count": 24,
+      "hash": "17c49acd90126e0f9a200c21cfebf046b019747da4d2131001a89ff60c72b8c9"
+    },
+    "Stay": {
+      "count": 51,
+      "hash": "52094d901ed253923aad8fff97da11ffdf3057b967de3e4c3532ff02734a076c"
+    },
+    "Room": {
+      "count": 128,
+      "hash": "f761a359d3e1a15e73bc689305826d43e4ee44219e01d8438e14a172e45ff19d"
+    },
+    "Guest": {
+      "count": 51,
+      "hash": "32ebf808e10678783be815ae5556193acaf6a8eaeb6c01076488d63b5a934392"
+    },
+    "Organization": {
+      "count": 21,
+      "hash": "9f884d263ff9dcd7f0adc2e6bed84a1d4f61e67835b536d327215e3e67fd6f0e"
+    }
+  },
+  "after": {
+    "Invoice": {
+      "count": 243,
+      "hash": "cc56d6668c68c209cd9ebb4585d0cbcfdd10514061befe7676965b7af31eb9bb"
+    },
+    "Payment": {
+      "count": 24,
+      "hash": "17c49acd90126e0f9a200c21cfebf046b019747da4d2131001a89ff60c72b8c9"
+    },
+    "Stay": {
+      "count": 51,
+      "hash": "52094d901ed253923aad8fff97da11ffdf3057b967de3e4c3532ff02734a076c"
+    },
+    "Room": {
+      "count": 128,
+      "hash": "f761a359d3e1a15e73bc689305826d43e4ee44219e01d8438e14a172e45ff19d"
+    },
+    "Guest": {
+      "count": 51,
+      "hash": "32ebf808e10678783be815ae5556193acaf6a8eaeb6c01076488d63b5a934392"
+    },
+    "Organization": {
+      "count": 21,
+      "hash": "9f884d263ff9dcd7f0adc2e6bed84a1d4f61e67835b536d327215e3e67fd6f0e"
+    }
+  }
+}

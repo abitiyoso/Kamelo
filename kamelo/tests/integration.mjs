@@ -1,3 +1,4 @@
+import {verifiedFixture,staffFixture} from "./helpers/identity.mjs";
 import assert from "node:assert/strict";
 import { PrismaClient } from "../generated/prisma/index.js";
 const db = new PrismaClient();
@@ -24,7 +25,9 @@ function client() {
       });
       const c = r.headers.get("set-cookie");
       if (c) cookie = c.split(";")[0];
-      return { status: r.status, ...(await r.json()) };
+      const result={ status: r.status, ...(await r.json()) };
+      if(action==="register"&&r.status===200)await verifiedFixture(db,base,cookie,data.email);
+      return result;
     },
     async get(query = "") {
       const r = await fetch(base + "/api/manage" + query, {
@@ -33,6 +36,7 @@ function client() {
       return { status: r.status, ...(await r.json()) };
     },
     async write(action, data = {}) {
+      if(action==="teamAdd")return staffFixture(db,base,cookie,data);
       const r = await fetch(base + "/api/manage", {
         method: "POST",
         headers: {
@@ -527,8 +531,12 @@ try {
     200,
   );
   assert.equal(
-    (await staff.get()).properties.find((p) => p.id === secondId).rooms[0].rate,
+    (await a.get()).properties.find((p) => p.id === secondId).rooms[0].rate,
     100,
+  );
+  assert.equal(
+    (await staff.get()).properties.find((p) => p.id === secondId).rooms[0].rate,
+    0,
   );
   assert.equal(
     (

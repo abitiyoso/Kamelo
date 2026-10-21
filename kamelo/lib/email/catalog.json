@@ -1,0 +1,82 @@
+{
+  "01": {
+    "subject": "Verifikasi email untuk akun Kamelo Anda",
+    "preheader": "Selesaikan aktivasi akun Anda dengan verifikasi email.",
+    "body": "Halo {{nama}},\n\nTerima kasih sudah mendaftar di Kamelo.\n\nGunakan tautan aman berikut untuk memverifikasi alamat email Anda.\n\nTautan berlaku selama {{menit_verifikasi}} menit dan hanya bisa digunakan satu kali.\n\nCTA: Verifikasi akun → {{url_verifikasi}}\n\nJika Anda tidak merasa mendaftar, abaikan email ini. Jangan bagikan tautan kepada siapa pun.\n\nSalam,\nTim Kamelo by ELENIO"
+  },
+  "02": {
+    "subject": "Akun Kamelo Anda sudah aktif",
+    "preheader": "Siapkan properti dan mulai kelola kamar pertama.",
+    "body": "Halo {{nama}},\n\nAlamat email Anda berhasil diverifikasi. Sekarang Anda bisa menyiapkan properti di Kamelo.\n\nMulai dengan menambahkan nama properti, kamar, dan tarif. Setelah itu, Anda dapat mencatat penghuni serta menerbitkan tagihan.\n\nCTA: Siapkan properti → {{url_onboarding}}\n\nButuh bantuan? Balas email ini atau hubungi tim kami melalui WhatsApp 0819 3332 8899.\n\nSalam,\nTim Kamelo by ELENIO"
+  },
+  "03": {
+    "subject": "Anda diundang mengelola {{nama_properti}} di Kamelo",
+    "preheader": "Tinjau akses dan terima undangan Anda.",
+    "body": "Halo {{nama_penerima}},\n\n{{nama_pengundang}} mengundang Anda untuk bergabung sebagai {{role}} di {{nama_properti}} melalui Kamelo.\n\nAkses Anda terbatas pada properti dan tugas yang telah ditentukan oleh pengelola. Anda tidak perlu menggunakan akun atau kata sandi milik orang lain.\n\nCTA: Tinjau undangan → {{url_undangan}}\n\nUndangan ini berlaku sampai {{waktu_kedaluwarsa}}.\n\nJika undangan tidak ditujukan kepada Anda, abaikan email ini atau balas untuk menghubungi tim kami.\n\nSalam,\nTim Kamelo by ELENIO"
+  },
+  "04": {
+    "subject": "Informasi akses penghuni untuk {{nama_properti}}",
+    "preheader": "Akses tagihan dan informasi masa tinggal dari satu tempat.",
+    "body": "Halo {{nama_penghuni}},\n\nPengelola {{nama_properti}} telah menyiapkan akses Anda ke Kamelo.\n\nMelalui portal penghuni, Anda dapat melihat informasi kamar, tagihan, pengumuman, serta mengajukan bantuan sesuai layanan yang tersedia di properti Anda.\n\nCTA: Buka portal penghuni → {{url_akses_penghuni}}\n\nTautan ini bersifat pribadi. Jangan bagikan kepada orang yang tidak berkepentingan. Jika akses tidak sesuai, hubungi pengelola properti.\n\nSalam,\nTim Kamelo by ELENIO"
+  },
+  "05": {
+    "subject": "Atur ulang kata sandi akun Kamelo",
+    "preheader": "Gunakan tautan aman untuk mengatur kata sandi baru.",
+    "body": "Halo {{nama}},\n\nKami menerima permintaan pengaturan ulang kata sandi akun Kamelo yang terhubung dengan alamat email ini.\n\nCTA: Atur ulang kata sandi → {{url_reset}}\n\nTautan ini berlaku selama {{menit_reset}} menit dan hanya dapat digunakan satu kali.\n\nJika Anda tidak meminta perubahan ini, abaikan email. Kata sandi akun Anda tidak berubah.\n\nSalam,\nTim Kamelo by ELENIO"
+  },
+  "06": {
+    "subject": "Tagihan {{periode}} dari {{nama_properti}} tersedia",
+    "preheader": "Lihat rincian tagihan dan batas pembayarannya.",
+    "body": "Halo {{nama_penghuni}},\n\nTagihan masa tinggal Anda untuk periode {{periode}} sudah tersedia.\n\nProperti: {{nama_properti}}\nNomor tagihan: {{nomor_tagihan}}\nJumlah: {{nominal_tagihan}}\nJatuh tempo: {{tanggal_jatuh_tempo}}\n\nCTA: Lihat tagihan → {{url_tagihan}}\n\nMetode pembayaran dan petunjuk mengikuti informasi dari pengelola. Kamelo tidak meminta PIN, OTP bank, atau kata sandi pembayaran.\n\nSalam,\nPengelola {{nama_properti}} melalui Kamelo"
+  },
+  "07": {
+    "subject": "Pengingat tagihan {{nama_properti}} jatuh tempo {{tanggal_jatuh_tempo}}",
+    "preheader": "Periksa tagihan masa tinggal Anda.",
+    "body": "Halo {{nama_penghuni}},\n\nIni pengingat untuk tagihan {{nomor_tagihan}} sebesar {{sisa_tagihan}} yang akan jatuh tempo pada {{tanggal_jatuh_tempo}}.\n\nCTA: Periksa tagihan → {{url_tagihan}}\n\nJika Anda sudah membayar tetapi status belum berubah, silakan kirim bukti atau hubungi pengelola agar dana dapat diverifikasi.\n\nSalam,\nPengelola {{nama_properti}} melalui Kamelo"
+  },
+  "08": {
+    "subject": "Bukti pembayaran {{nomor_tagihan}} sudah diterima",
+    "preheader": "Pengelola akan memeriksa dana yang diterima.",
+    "body": "Halo {{nama_penghuni}},\n\nKami telah menerima bukti pembayaran untuk tagihan {{nomor_tagihan}}.\n\nStatus: Menunggu verifikasi pengelola.\n\nTagihan belum dinyatakan lunas sampai pengelola mengonfirmasi bahwa dana benar-benar diterima.\n\nCTA: Lihat status pembayaran → {{url_tagihan}}\n\nSalam,\nTim Kamelo by ELENIO"
+  },
+  "09": {
+    "subject": "Pembayaran tagihan {{nomor_tagihan}} telah dikonfirmasi",
+    "preheader": "Kuitansi pembayaran sudah tersedia.",
+    "body": "Halo {{nama_penghuni}},\n\nPengelola {{nama_properti}} telah mengonfirmasi penerimaan pembayaran sebesar {{nominal_diterima}} untuk tagihan {{nomor_tagihan}} pada {{tanggal_pembayaran}}.\n\nStatus tagihan: {{status_tagihan}}.\n\nCTA: Lihat kuitansi → {{url_kuitansi}}\n\nTerima kasih.\nPengelola {{nama_properti}} melalui Kamelo"
+  },
+  "10": {
+    "subject": "Perlu tindak lanjut bukti pembayaran {{nomor_tagihan}}",
+    "preheader": "Pengelola membutuhkan informasi tambahan.",
+    "body": "Halo {{nama_penghuni}},\n\nPengelola {{nama_properti}} telah meninjau bukti pembayaran Anda untuk tagihan {{nomor_tagihan}}, tetapi masih memerlukan konfirmasi tambahan.\n\nCatatan: {{catatan_pengelola_sanitized}}\n\nCTA: Lihat tagihan → {{url_tagihan}}\n\nStatus tagihan belum berubah menjadi lunas. Jika Anda memerlukan bantuan, silakan hubungi pengelola.\n\nSalam,\nTim Kamelo by ELENIO"
+  },
+  "11": {
+    "subject": "Pembaruan laporan {{nomor_tiket}} di {{nama_properti}}",
+    "preheader": "Status permintaan bantuan Anda sudah diperbarui.",
+    "body": "Halo {{nama_penghuni}},\n\nLaporan {{judul_tiket}} sekarang berstatus {{status_tiket}}.\n\nPembaruan: {{ringkasan_update_sanitized}}\n\nCTA: Lihat progres laporan → {{url_laporan}}\n\nSalam,\nPengelola {{nama_properti}} melalui Kamelo"
+  },
+  "12": {
+    "subject": "Permintaan paket {{nama_paket}} sudah diterima",
+    "preheader": "Tim akan meninjau permintaan aktivasi Anda.",
+    "body": "Halo {{nama_owner}},\n\nPermintaan upgrade organisasi {{nama_organisasi}} ke paket {{nama_paket}} sudah tercatat.\n\nStatus: Menunggu aktivasi. Batas kamar dan pengguna belum berubah sampai permintaan disetujui dan diaktifkan oleh administrator.\n\nCTA: Lihat status paket → {{url_pengaturan_paket}}\n\nJika ada pertanyaan, balas email ini untuk menghubungi tim Kamelo.\n\nSalam,\nTim Kamelo by ELENIO"
+  },
+  "13": {
+    "subject": "Paket {{nama_paket}} Kamelo Anda sudah aktif",
+    "preheader": "Lihat fitur dan batas pemakaian paket Anda.",
+    "body": "Halo {{nama_owner}},\n\nPaket {{nama_paket}} untuk organisasi {{nama_organisasi}} telah diaktifkan.\n\nBatas yang berlaku: {{batas_kamar}} kamar · {{batas_properti}} properti · {{batas_pengguna}} pengguna.\n\nCTA: Buka dashboard → {{url_dashboard}}\n\nUntuk kebutuhan CCTV & AI atau Smart Room, hubungi tim kami guna mengetahui opsi integrasi terpisah.\n\nSalam,\nTim Kamelo by ELENIO"
+  },
+  "14": {
+    "subject": "Permintaan konsultasi Kamelo telah diterima",
+    "preheader": "Kami akan menghubungi Anda mengenai kebutuhan properti.",
+    "body": "Halo {{nama_kontak}},\n\nTerima kasih telah menghubungi Kamelo.\n\nKami menerima permintaan Anda mengenai {{jenis_properti}} dengan kebutuhan {{ringkasan_kebutuhan_sanitized}}. Tim kami akan menindaklanjuti melalui kontak yang Anda berikan.\n\nJika ada informasi tambahan, Anda dapat membalas email ini.\n\nSalam,\nTim Kamelo by ELENIO"
+  },
+  "security": {
+    "subject": "Keamanan akun Kamelo Anda diperbarui",
+    "preheader": "Perubahan keamanan telah tercatat.",
+    "body": "Halo {{nama}},\n\n{{perubahan}}\n\nJika Anda tidak melakukan perubahan ini, hubungi pengelola melalui hello@elenio.id.\n\nSalam,\nTim Kamelo by ELENIO"
+  },
+  "payment_reminder": {
+    "subject": "Ada pengingat pembayaran di akun Kamelo Anda",
+    "body": "Pengelola menyiapkan pengingat pembayaran untuk Anda.\n\nBuka portal untuk melihat saldo dan status bukti bayar terbaru. Jika Anda sudah membayar, periksa status pemeriksaan bukti bersama pengelola.\n\nCTA: Buka portal penghuni → {{url_portal}}\n\nKamelo tidak meminta PIN, OTP bank, atau kata sandi pembayaran.\n\nSalam,\nTim Kamelo by ELENIO",
+    "preheader": "Lihat saldo terbaru melalui portal penghuni."
+  }
+}

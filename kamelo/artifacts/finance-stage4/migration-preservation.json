@@ -1,0 +1,1841 @@
+{
+  "scope": "Disposable QA only; all original columns compared",
+  "before": {
+    "Audit": {
+      "columns": [
+        "id",
+        "organizationId",
+        "actorId",
+        "action",
+        "targetId",
+        "metadata",
+        "createdAt"
+      ],
+      "count": 12840,
+      "sha256": "fa297934739df441c1b246aa10c7ec70b51120d5132da1676927674c1ab50f2a"
+    },
+    "Contract": {
+      "columns": [
+        "id",
+        "stayId",
+        "status",
+        "revision",
+        "createdAt"
+      ],
+      "count": 92,
+      "sha256": "2681227c203bf7f0c597aab0f1ec3bbb0f0d4691102f1007fca17e7ac367227b"
+    },
+    "ContractVersion": {
+      "columns": [
+        "id",
+        "contractId",
+        "revision",
+        "state",
+        "start",
+        "end",
+        "rent",
+        "depositRequired",
+        "terms",
+        "signatureReference",
+        "snapshotHash",
+        "actorId",
+        "createdAt"
+      ],
+      "count": 218,
+      "sha256": "d3aab30af289d59c4eda133516ac73dc513e7963dfdc7d0fc86c1bad8cabcf1c"
+    },
+    "DepositAccount": {
+      "columns": [
+        "id",
+        "stayId",
+        "createdAt"
+      ],
+      "count": 96,
+      "sha256": "a6b60b68ce03f8edbbc83cb65baab8b508a4928d2c49625150fc56c719706319"
+    },
+    "DepositAdjustment": {
+      "columns": [
+        "id",
+        "accountId",
+        "amount",
+        "reason",
+        "inspectionNote",
+        "status",
+        "createdBy",
+        "reviewedBy",
+        "reviewedAt",
+        "createdAt"
+      ],
+      "count": 58,
+      "sha256": "ee04917361c3ab4334586aaec813bb87935fa6dcd8ff224770900e95eb027115"
+    },
+    "DepositEntry": {
+      "columns": [
+        "id",
+        "accountId",
+        "kind",
+        "delta",
+        "date",
+        "reference",
+        "actorId",
+        "reversesId",
+        "createdAt"
+      ],
+      "count": 294,
+      "sha256": "f5e7a1ecb8a086d447f280ace428dc92bba85afae63b30bc1c762104fe203853"
+    },
+    "Device": {
+      "columns": [
+        "id",
+        "propertyId",
+        "roomId",
+        "name",
+        "provider",
+        "online",
+        "capabilities",
+        "state",
+        "syncedAt",
+        "automationEnabled",
+        "kind",
+        "guestControllable"
+      ],
+      "count": 137,
+      "sha256": "c86536a1e83109181b861a22e023a0675541d45e30cc8b946b4bdb121e95cfe0"
+    },
+    "EmailOutbox": {
+      "columns": [
+        "id",
+        "dedupeKey",
+        "userId",
+        "organizationId",
+        "template",
+        "encryptedPayload",
+        "status",
+        "attempts",
+        "nextAttemptAt",
+        "leaseUntil",
+        "expiresAt",
+        "acceptedAt",
+        "providerMessageId",
+        "lastErrorCode",
+        "createdAt",
+        "updatedAt"
+      ],
+      "count": 3745,
+      "sha256": "8371de9f97c605d39d98b2afc14b9ec48877d36ace80fc5dce151188ab359028"
+    },
+    "Expense": {
+      "columns": [
+        "id",
+        "propertyId",
+        "description",
+        "category",
+        "amount",
+        "incurredOn",
+        "due",
+        "payee",
+        "reference",
+        "note",
+        "status",
+        "voidReason",
+        "voidedAt",
+        "createdBy",
+        "createdAt"
+      ],
+      "count": 90135,
+      "sha256": "94a3b172160661859363165f7521350d324409d3d00458775d4e483f0dcc9458"
+    },
+    "ExpenseEntry": {
+      "columns": [
+        "id",
+        "expenseId",
+        "kind",
+        "delta",
+        "date",
+        "reference",
+        "note",
+        "actorId",
+        "paymentId",
+        "reversesId",
+        "createdAt"
+      ],
+      "count": 1276,
+      "sha256": "a1b5098b91d753a6dfdf980b483faccc8cc1733fc8360cc3e318ea5b906f48b2"
+    },
+    "FinanceMatch": {
+      "columns": [
+        "id",
+        "propertyId",
+        "paymentId",
+        "expenseEntryId",
+        "statementReference",
+        "statementDate",
+        "amount",
+        "note",
+        "actorId",
+        "createdAt",
+        "revokedAt",
+        "revokedBy",
+        "revokeReason",
+        "openingReceiptId"
+      ],
+      "count": 621,
+      "sha256": "7266e29178bbe471adedd7a8bbf5d0a3b3311c03862c39150b93913cb363b41f"
+    },
+    "Guest": {
+      "columns": [
+        "id",
+        "propertyId",
+        "name",
+        "phone"
+      ],
+      "count": 1891,
+      "sha256": "c85c5c87e3f8ab7eb2ef6d455d577a28c246b5d2f5508f7cebbcc3501243f0dd"
+    },
+    "IdentityChallenge": {
+      "columns": [
+        "id",
+        "userId",
+        "purpose",
+        "targetEmail",
+        "tokenHash",
+        "expiresAt",
+        "consumedAt",
+        "attempts",
+        "createdAt"
+      ],
+      "count": 1419,
+      "sha256": "0241bd2649682ba95458154e3d2533d4c67dd056793951d7c97d756eda89006c"
+    },
+    "Invitation": {
+      "columns": [
+        "id",
+        "organizationId",
+        "issuerId",
+        "recipientEmail",
+        "kind",
+        "propertyIds",
+        "stayId",
+        "canRecordPayments",
+        "canControlDevices",
+        "includeAccess",
+        "tokenHash",
+        "state",
+        "expiresAt",
+        "acceptedBy",
+        "acceptedAt",
+        "revokedAt",
+        "createdAt"
+      ],
+      "count": 604,
+      "sha256": "3147c5d1134b33391e397ab89bd120d71cbd59002d680146daf53a27a9f6bad7"
+    },
+    "Invoice": {
+      "columns": [
+        "id",
+        "propertyId",
+        "roomId",
+        "guestId",
+        "stayId",
+        "number",
+        "date",
+        "due",
+        "period",
+        "status",
+        "total",
+        "items"
+      ],
+      "count": 3620,
+      "sha256": "c214247cc6ae931cfc1386483c2036ef631d5255bff573c9ceaa57c23f6a8eb3"
+    },
+    "LifecycleCommand": {
+      "columns": [
+        "id",
+        "organizationId",
+        "key",
+        "requestHash",
+        "response",
+        "createdAt"
+      ],
+      "count": 5750,
+      "sha256": "0bfeb32f7d7d2e506ac7019083f4745bf8321cd06ed49316f85350064b3de08e"
+    },
+    "MessageEntry": {
+      "columns": [
+        "id",
+        "threadId",
+        "revision",
+        "kind",
+        "actorId",
+        "actorRole",
+        "encryptedBody",
+        "createdAt"
+      ],
+      "count": 732,
+      "sha256": "f2fd511de253c659d4051a5b2039858b2e355789a78de2f3e1bb63d2a6b7c936"
+    },
+    "MessageThread": {
+      "columns": [
+        "id",
+        "stayId",
+        "residentUserId",
+        "assigneeId",
+        "status",
+        "revision",
+        "createdAt",
+        "updatedAt"
+      ],
+      "count": 32,
+      "sha256": "404b0bdbd37b0a9516f7d85409df49a9e05da8b58aa3a57122001f6a9ca60faa"
+    },
+    "OccupantAccess": {
+      "columns": [
+        "id",
+        "userId",
+        "stayId",
+        "status",
+        "canViewBilling",
+        "canControlDevices",
+        "includeAccess",
+        "createdAt",
+        "revokedAt"
+      ],
+      "count": 210,
+      "sha256": "dc4459a26125f7a5ce568e6b5d7bc4251be71f0a17611246fbe529dfe455dfa4"
+    },
+    "OpeningBalanceBatch": {
+      "columns": [
+        "id",
+        "propertyId",
+        "asOf",
+        "encryptedSourceNote",
+        "recordCount",
+        "status",
+        "actorId",
+        "createdAt",
+        "voidedAt",
+        "voidedBy",
+        "encryptedVoidReason"
+      ],
+      "count": 325,
+      "sha256": "1a2c487271b7dd70a34579a222e108208f2ea80e4dd535aec2ec570c4ab6c93c"
+    },
+    "OpeningProof": {
+      "columns": [
+        "id",
+        "receivableId",
+        "shareId",
+        "uploadedBy",
+        "requestKey",
+        "requestHash",
+        "amount",
+        "date",
+        "method",
+        "reference",
+        "encryptedTenantNote",
+        "storageKey",
+        "contentHash",
+        "mimeType",
+        "fileSize",
+        "uploadedAt",
+        "status",
+        "encryptedReviewNote",
+        "reviewedAt",
+        "reviewedBy",
+        "receiptId"
+      ],
+      "count": 291,
+      "sha256": "47faf6bbb9194d2c6e0aeb94c47e9aada0e9057c0d433f4a522ef56af63f4f9b"
+    },
+    "OpeningReceipt": {
+      "columns": [
+        "id",
+        "receivableId",
+        "kind",
+        "delta",
+        "date",
+        "method",
+        "reference",
+        "encryptedNote",
+        "actorId",
+        "createdAt",
+        "reversesId"
+      ],
+      "count": 310,
+      "sha256": "971d9682b02ca792d8523a2d0f8401ecfc1f21026396dbab4f1a3ab4b7a84735"
+    },
+    "OpeningReceivable": {
+      "columns": [
+        "id",
+        "propertyId",
+        "batchId",
+        "guestId",
+        "reference",
+        "sourceKey",
+        "amount",
+        "due",
+        "status",
+        "createdAt"
+      ],
+      "count": 358,
+      "sha256": "6dbe6d1592ca681ab7ca175a84035c6556d0a100aa0214136f2a1df7eb3c6757"
+    },
+    "OpeningReminder": {
+      "columns": [
+        "id",
+        "receivableId",
+        "shareId",
+        "amount",
+        "due",
+        "reference",
+        "actorId",
+        "createdAt"
+      ],
+      "count": 303,
+      "sha256": "b2dfc78a662854b5ef29cecb4203b62d5dc6ad2dffd23882191a037ceb0ce229"
+    },
+    "OpeningShare": {
+      "columns": [
+        "id",
+        "receivableId",
+        "grantId",
+        "userId",
+        "stayId",
+        "actorId",
+        "createdAt",
+        "revokedAt",
+        "revokedBy"
+      ],
+      "count": 79,
+      "sha256": "b64cb59ec2dccf0fed88fd38f078b31acfcfe5df4ebfd15320d50b267fa0a4f7"
+    },
+    "OrgMembership": {
+      "columns": [
+        "id",
+        "userId",
+        "organizationId",
+        "role",
+        "status",
+        "propertyIds",
+        "canRecordPayments",
+        "canControlDevices",
+        "createdAt",
+        "revokedAt"
+      ],
+      "count": 1400,
+      "sha256": "6b983e6d5cadae598956c7bf16e677d9d8bc698fb6e04da835c037179256f748"
+    },
+    "Organization": {
+      "columns": [
+        "id",
+        "name",
+        "plan",
+        "planExpiresAt",
+        "subscriptionStatus"
+      ],
+      "count": 2005,
+      "sha256": "5d61b41d5f0761c5be24a447310ce596cb708cc048c36c388875c40a9cce4aee"
+    },
+    "Payment": {
+      "columns": [
+        "id",
+        "invoiceId",
+        "amount",
+        "date",
+        "method",
+        "reference",
+        "actorId",
+        "createdAt"
+      ],
+      "count": 225,
+      "sha256": "f63333c9b28cf6591098b82ebe2d9d5e6dc9482344a6f332ce8d10977c47344f"
+    },
+    "PaymentProof": {
+      "columns": [
+        "id",
+        "invoiceId",
+        "amount",
+        "date",
+        "method",
+        "reference",
+        "status",
+        "storageKey",
+        "mimeType",
+        "fileSize",
+        "contentHash",
+        "reviewNote",
+        "reviewedBy",
+        "reviewedAt",
+        "paymentId",
+        "uploadedAt"
+      ],
+      "count": 336,
+      "sha256": "a4e55ad30600e2ebd3dd26b7d4cf75f386452e7134ffbb2799fe26107a2e1ee4"
+    },
+    "PrivacyEntry": {
+      "columns": [
+        "id",
+        "requestId",
+        "revision",
+        "kind",
+        "actorId",
+        "actorRole",
+        "encryptedBody",
+        "status",
+        "createdAt"
+      ],
+      "count": 1308,
+      "sha256": "e9cd9033fae128b36bf63d18e39885dc76727713a1a716abdf5b76809debb087"
+    },
+    "PrivacyRequest": {
+      "columns": [
+        "id",
+        "requesterId",
+        "kind",
+        "status",
+        "revision",
+        "createdAt",
+        "updatedAt"
+      ],
+      "count": 15421,
+      "sha256": "e0af3a9a7e226b8f1b07a5f45c932dbf627a42d95397d40e86145db9106465b7"
+    },
+    "Property": {
+      "columns": [
+        "id",
+        "organizationId",
+        "name",
+        "type",
+        "city",
+        "encryptedWifiPassword",
+        "guestInstructions",
+        "supportPhone",
+        "wifiSsid",
+        "billingAutomation",
+        "operationsLastRunAt"
+      ],
+      "count": 663,
+      "sha256": "53c32cff87d564a109379b8d67e9870db9f3e0fd0ddd11e4195c019bc7a261c6"
+    },
+    "Prospect": {
+      "columns": [
+        "id",
+        "propertyId",
+        "name",
+        "phone",
+        "email",
+        "source",
+        "consentReference",
+        "consentAt",
+        "interest",
+        "roomId",
+        "requestedStart",
+        "requestedEnd",
+        "budget",
+        "stage",
+        "surveyAt",
+        "followUpAt",
+        "offerRent",
+        "offerTerms",
+        "notes",
+        "lossReason",
+        "revision",
+        "convertedStayId",
+        "createdBy",
+        "createdAt",
+        "updatedAt"
+      ],
+      "count": 1225,
+      "sha256": "6b99b6921119825bcc422949d634a958ac6bce3d3fb13e933c8276a7a9513dd2"
+    },
+    "ProspectActivity": {
+      "columns": [
+        "id",
+        "prospectId",
+        "revision",
+        "kind",
+        "note",
+        "actorId",
+        "metadata",
+        "createdAt"
+      ],
+      "count": 1178,
+      "sha256": "9d38e5b97f4bccaa374c9626f9abb744aab06f09505c7dce7e89b5fa401a513a"
+    },
+    "RateLimit": {
+      "columns": [
+        "key",
+        "count",
+        "expires"
+      ],
+      "count": 6114,
+      "sha256": "119ca83b2ddaa43d9edb1c2326810f23cbb2a680926d534666e791b0825e27b1"
+    },
+    "ReminderDelivery": {
+      "columns": [
+        "id",
+        "propertyId",
+        "invoiceId",
+        "receivableId",
+        "shareId",
+        "grantId",
+        "userId",
+        "channel",
+        "scheduledOn",
+        "amount",
+        "due",
+        "reference",
+        "emailHash",
+        "policyRevision",
+        "dedupeKey",
+        "status",
+        "reason",
+        "emailOutboxId",
+        "createdAt"
+      ],
+      "count": 276,
+      "sha256": "3606c51449e11a0fa9cf34608322c02e5912999bfe7940aa01933b2ac198a7a5"
+    },
+    "ReminderPolicy": {
+      "columns": [
+        "propertyId",
+        "enabled",
+        "emailEnabled",
+        "hour",
+        "leadDays",
+        "intervalDays",
+        "revision",
+        "actorId",
+        "lastRunAt",
+        "updatedAt"
+      ],
+      "count": 4,
+      "sha256": "c64845b91ed9bd26a132710b0604e0f90db50dba0d39496169215714f28a2ccb"
+    },
+    "ResetToken": {
+      "columns": [
+        "token",
+        "userId",
+        "expires"
+      ],
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ResidentImportBatch": {
+      "columns": [
+        "id",
+        "propertyId",
+        "actorId",
+        "recordCount",
+        "encryptedSnapshots",
+        "status",
+        "createdAt",
+        "rolledBackAt",
+        "rolledBackBy"
+      ],
+      "count": 132,
+      "sha256": "957bf001008714066a9fbb0a80d8f33565837d618f77af004e70792a5a71a7ba"
+    },
+    "ResidentProfile": {
+      "columns": [
+        "id",
+        "guestId",
+        "email",
+        "encryptedEmergencyContact",
+        "emergencyConsent",
+        "updatedAt"
+      ],
+      "count": 87,
+      "sha256": "f53903dff1dd1465cacefd3de0f72edabc2a6a1f085f80669e8d73506d378fda"
+    },
+    "Room": {
+      "columns": [
+        "id",
+        "propertyId",
+        "number",
+        "rate",
+        "operational"
+      ],
+      "count": 2032,
+      "sha256": "7dbb382991a09294f9fb0a2b701266fc07a5303d17896cccf65c924913e534b2"
+    },
+    "RoomImportBatch": {
+      "columns": [
+        "id",
+        "propertyId",
+        "actorId",
+        "roomCount",
+        "roomSnapshots",
+        "status",
+        "createdAt",
+        "rolledBackAt",
+        "rolledBackBy"
+      ],
+      "count": 70,
+      "sha256": "aedee2d2f42a1449108459b33af979100bc37c6de545ec06d4b5e30078b2bf37"
+    },
+    "RoomTransfer": {
+      "columns": [
+        "id",
+        "fromStayId",
+        "toStayId",
+        "date",
+        "actorId",
+        "createdAt"
+      ],
+      "count": 20,
+      "sha256": "9e93221007418f04ac58f05715feb6705b8d0147a0b479abad741fbb9fe8ec32"
+    },
+    "SaaSBillingProfile": {
+      "columns": [
+        "organizationId",
+        "legalName",
+        "address",
+        "contactName",
+        "contactEmail",
+        "encryptedTaxId",
+        "reference",
+        "revision",
+        "updatedAt"
+      ],
+      "count": 38,
+      "sha256": "0c80a8ebfe23e3fce7aea5c58703eb3185415e5c283cae8782259e27671bbae0"
+    },
+    "Session": {
+      "columns": [
+        "token",
+        "userId",
+        "expires",
+        "contextType",
+        "createdAt",
+        "membershipId",
+        "occupantAccessId",
+        "userAgent"
+      ],
+      "count": 1786,
+      "sha256": "76741c41ca5ff7f9550a929a7d0a61bcbd503d69941e4181f15efd2e469b11c5"
+    },
+    "SmartAccess": {
+      "columns": [
+        "id",
+        "deviceId",
+        "stayId",
+        "status",
+        "validFrom",
+        "validUntil",
+        "encryptedPin",
+        "provider",
+        "createdAt",
+        "revokedAt"
+      ],
+      "count": 108,
+      "sha256": "7288aa7d6ce16f95d0dcba0189507ec749a42912f1d4a4f8f1fbcbf996426ded"
+    },
+    "Stay": {
+      "columns": [
+        "id",
+        "roomId",
+        "guestId",
+        "start",
+        "end",
+        "rate",
+        "billingDay",
+        "status"
+      ],
+      "count": 911,
+      "sha256": "98590c4b67a21ff418c92dd09ade0b5c5c3a1db399a8c755369195a1643aa6fb"
+    },
+    "StayLink": {
+      "columns": [
+        "id",
+        "stayId",
+        "tokenHash",
+        "includeAccess",
+        "expiresAt",
+        "revokedAt",
+        "createdAt"
+      ],
+      "count": 167,
+      "sha256": "57967159cf3c19f3c764ddcd2789a7611d78ba4e7086ec77c7ef8bc0e08d444c"
+    },
+    "SubscriptionEntry": {
+      "columns": [
+        "id",
+        "invoiceId",
+        "kind",
+        "delta",
+        "date",
+        "reference",
+        "note",
+        "actorId",
+        "receiptId",
+        "reversesId",
+        "createdAt"
+      ],
+      "count": 767,
+      "sha256": "c5efcea822c162c0a4ba685eac67134cbe0d979821c9702b4940720e2ad0701f"
+    },
+    "SubscriptionEvent": {
+      "columns": [
+        "id",
+        "organizationId",
+        "invoiceId",
+        "kind",
+        "note",
+        "actorId",
+        "metadata",
+        "createdAt"
+      ],
+      "count": 1018,
+      "sha256": "2eda17c488be6f62b17adc1d45d5ed4624d4b4176bc2e94a2b60132977a9459b"
+    },
+    "SubscriptionInvoice": {
+      "columns": [
+        "id",
+        "organizationId",
+        "number",
+        "plan",
+        "monthlyPrice",
+        "months",
+        "total",
+        "periodStart",
+        "periodEnd",
+        "due",
+        "billingSnapshot",
+        "status",
+        "voidReason",
+        "activatedAt",
+        "createdBy",
+        "createdAt"
+      ],
+      "count": 591,
+      "sha256": "b8fed638c938e3b5eaceb3d36956d6a85ae27a1e662c3d385deb09158330ae06"
+    },
+    "SupportCase": {
+      "columns": [
+        "id",
+        "organizationId",
+        "subject",
+        "category",
+        "priority",
+        "status",
+        "revision",
+        "createdBy",
+        "assigneeId",
+        "createdAt",
+        "updatedAt"
+      ],
+      "count": 376,
+      "sha256": "cf35327de4c8e7d36e79b44985a2dd42b6174f102e2a3f17c030e185e8d4365f"
+    },
+    "SupportEntry": {
+      "columns": [
+        "id",
+        "caseId",
+        "kind",
+        "actorId",
+        "actorRole",
+        "encryptedBody",
+        "status",
+        "revision",
+        "createdAt"
+      ],
+      "count": 922,
+      "sha256": "8dbd5f2594ecbeaff1e1621f11a54474ed3a4179feb3ec15133dab3df7d1a4e6"
+    },
+    "TenantLink": {
+      "columns": [
+        "id",
+        "invoiceId",
+        "tokenHash",
+        "includeAccess",
+        "expiresAt",
+        "revokedAt",
+        "createdAt"
+      ],
+      "count": 272,
+      "sha256": "adee5548010cc3954c2328fe193961cf1129ab7e06d8c50d6b3eee0ded2a277e"
+    },
+    "Ticket": {
+      "columns": [
+        "id",
+        "propertyId",
+        "stayId",
+        "title",
+        "description",
+        "category",
+        "priority",
+        "status",
+        "assigneeId",
+        "createdBy",
+        "createdAt",
+        "updatedAt"
+      ],
+      "count": 331,
+      "sha256": "112ac646a33ff5d929c4b4ddbdec9d77c182f90afa7163ab249c8f692266d42c"
+    },
+    "TicketUpdate": {
+      "columns": [
+        "id",
+        "ticketId",
+        "actorId",
+        "note",
+        "status",
+        "createdAt"
+      ],
+      "count": 402,
+      "sha256": "16c4789e901efc2fb1cfd158fbb766341470958d9624703cec2655913e3bc270"
+    },
+    "Upgrade": {
+      "columns": [
+        "id",
+        "organizationId",
+        "plan",
+        "status",
+        "createdAt"
+      ],
+      "count": 116,
+      "sha256": "d4794e498cbfae61abf17a9c8ecdb73a2d0e2ac77fa117d8c24696a7d86c72e5"
+    },
+    "User": {
+      "columns": [
+        "id",
+        "organizationId",
+        "name",
+        "email",
+        "phone",
+        "password",
+        "role",
+        "platformAdmin",
+        "propertyIds",
+        "canControlDevices",
+        "canRecordPayments",
+        "accountStatus",
+        "emailVerifiedAt",
+        "notificationsEnabled",
+        "phoneVerifiedAt"
+      ],
+      "count": 1399,
+      "sha256": "20c805d57d94ffe716da3b1e3aa412ab5755bc83c52271eb24724c9620fd3e56"
+    }
+  },
+  "after": {
+    "Audit": {
+      "columns": [
+        "id",
+        "organizationId",
+        "actorId",
+        "action",
+        "targetId",
+        "metadata",
+        "createdAt"
+      ],
+      "count": 12840,
+      "sha256": "fa297934739df441c1b246aa10c7ec70b51120d5132da1676927674c1ab50f2a"
+    },
+    "Contract": {
+      "columns": [
+        "id",
+        "stayId",
+        "status",
+        "revision",
+        "createdAt"
+      ],
+      "count": 92,
+      "sha256": "2681227c203bf7f0c597aab0f1ec3bbb0f0d4691102f1007fca17e7ac367227b"
+    },
+    "ContractVersion": {
+      "columns": [
+        "id",
+        "contractId",
+        "revision",
+        "state",
+        "start",
+        "end",
+        "rent",
+        "depositRequired",
+        "terms",
+        "signatureReference",
+        "snapshotHash",
+        "actorId",
+        "createdAt"
+      ],
+      "count": 218,
+      "sha256": "d3aab30af289d59c4eda133516ac73dc513e7963dfdc7d0fc86c1bad8cabcf1c"
+    },
+    "DepositAccount": {
+      "columns": [
+        "id",
+        "stayId",
+        "createdAt"
+      ],
+      "count": 96,
+      "sha256": "a6b60b68ce03f8edbbc83cb65baab8b508a4928d2c49625150fc56c719706319"
+    },
+    "DepositAdjustment": {
+      "columns": [
+        "id",
+        "accountId",
+        "amount",
+        "reason",
+        "inspectionNote",
+        "status",
+        "createdBy",
+        "reviewedBy",
+        "reviewedAt",
+        "createdAt"
+      ],
+      "count": 58,
+      "sha256": "ee04917361c3ab4334586aaec813bb87935fa6dcd8ff224770900e95eb027115"
+    },
+    "DepositEntry": {
+      "columns": [
+        "id",
+        "accountId",
+        "kind",
+        "delta",
+        "date",
+        "reference",
+        "actorId",
+        "reversesId",
+        "createdAt"
+      ],
+      "count": 294,
+      "sha256": "f5e7a1ecb8a086d447f280ace428dc92bba85afae63b30bc1c762104fe203853"
+    },
+    "Device": {
+      "columns": [
+        "id",
+        "propertyId",
+        "roomId",
+        "name",
+        "provider",
+        "online",
+        "capabilities",
+        "state",
+        "syncedAt",
+        "automationEnabled",
+        "kind",
+        "guestControllable"
+      ],
+      "count": 137,
+      "sha256": "c86536a1e83109181b861a22e023a0675541d45e30cc8b946b4bdb121e95cfe0"
+    },
+    "EmailOutbox": {
+      "columns": [
+        "id",
+        "dedupeKey",
+        "userId",
+        "organizationId",
+        "template",
+        "encryptedPayload",
+        "status",
+        "attempts",
+        "nextAttemptAt",
+        "leaseUntil",
+        "expiresAt",
+        "acceptedAt",
+        "providerMessageId",
+        "lastErrorCode",
+        "createdAt",
+        "updatedAt"
+      ],
+      "count": 3745,
+      "sha256": "8371de9f97c605d39d98b2afc14b9ec48877d36ace80fc5dce151188ab359028"
+    },
+    "Expense": {
+      "columns": [
+        "id",
+        "propertyId",
+        "description",
+        "category",
+        "amount",
+        "incurredOn",
+        "due",
+        "payee",
+        "reference",
+        "note",
+        "status",
+        "voidReason",
+        "voidedAt",
+        "createdBy",
+        "createdAt"
+      ],
+      "count": 90135,
+      "sha256": "94a3b172160661859363165f7521350d324409d3d00458775d4e483f0dcc9458"
+    },
+    "ExpenseEntry": {
+      "columns": [
+        "id",
+        "expenseId",
+        "kind",
+        "delta",
+        "date",
+        "reference",
+        "note",
+        "actorId",
+        "paymentId",
+        "reversesId",
+        "createdAt"
+      ],
+      "count": 1276,
+      "sha256": "a1b5098b91d753a6dfdf980b483faccc8cc1733fc8360cc3e318ea5b906f48b2"
+    },
+    "FinanceMatch": {
+      "columns": [
+        "id",
+        "propertyId",
+        "paymentId",
+        "expenseEntryId",
+        "statementReference",
+        "statementDate",
+        "amount",
+        "note",
+        "actorId",
+        "createdAt",
+        "revokedAt",
+        "revokedBy",
+        "revokeReason",
+        "openingReceiptId"
+      ],
+      "count": 621,
+      "sha256": "7266e29178bbe471adedd7a8bbf5d0a3b3311c03862c39150b93913cb363b41f"
+    },
+    "Guest": {
+      "columns": [
+        "id",
+        "propertyId",
+        "name",
+        "phone"
+      ],
+      "count": 1891,
+      "sha256": "c85c5c87e3f8ab7eb2ef6d455d577a28c246b5d2f5508f7cebbcc3501243f0dd"
+    },
+    "IdentityChallenge": {
+      "columns": [
+        "id",
+        "userId",
+        "purpose",
+        "targetEmail",
+        "tokenHash",
+        "expiresAt",
+        "consumedAt",
+        "attempts",
+        "createdAt"
+      ],
+      "count": 1419,
+      "sha256": "0241bd2649682ba95458154e3d2533d4c67dd056793951d7c97d756eda89006c"
+    },
+    "Invitation": {
+      "columns": [
+        "id",
+        "organizationId",
+        "issuerId",
+        "recipientEmail",
+        "kind",
+        "propertyIds",
+        "stayId",
+        "canRecordPayments",
+        "canControlDevices",
+        "includeAccess",
+        "tokenHash",
+        "state",
+        "expiresAt",
+        "acceptedBy",
+        "acceptedAt",
+        "revokedAt",
+        "createdAt"
+      ],
+      "count": 604,
+      "sha256": "3147c5d1134b33391e397ab89bd120d71cbd59002d680146daf53a27a9f6bad7"
+    },
+    "Invoice": {
+      "columns": [
+        "id",
+        "propertyId",
+        "roomId",
+        "guestId",
+        "stayId",
+        "number",
+        "date",
+        "due",
+        "period",
+        "status",
+        "total",
+        "items"
+      ],
+      "count": 3620,
+      "sha256": "c214247cc6ae931cfc1386483c2036ef631d5255bff573c9ceaa57c23f6a8eb3"
+    },
+    "LifecycleCommand": {
+      "columns": [
+        "id",
+        "organizationId",
+        "key",
+        "requestHash",
+        "response",
+        "createdAt"
+      ],
+      "count": 5750,
+      "sha256": "0bfeb32f7d7d2e506ac7019083f4745bf8321cd06ed49316f85350064b3de08e"
+    },
+    "MessageEntry": {
+      "columns": [
+        "id",
+        "threadId",
+        "revision",
+        "kind",
+        "actorId",
+        "actorRole",
+        "encryptedBody",
+        "createdAt"
+      ],
+      "count": 732,
+      "sha256": "f2fd511de253c659d4051a5b2039858b2e355789a78de2f3e1bb63d2a6b7c936"
+    },
+    "MessageThread": {
+      "columns": [
+        "id",
+        "stayId",
+        "residentUserId",
+        "assigneeId",
+        "status",
+        "revision",
+        "createdAt",
+        "updatedAt"
+      ],
+      "count": 32,
+      "sha256": "404b0bdbd37b0a9516f7d85409df49a9e05da8b58aa3a57122001f6a9ca60faa"
+    },
+    "OccupantAccess": {
+      "columns": [
+        "id",
+        "userId",
+        "stayId",
+        "status",
+        "canViewBilling",
+        "canControlDevices",
+        "includeAccess",
+        "createdAt",
+        "revokedAt"
+      ],
+      "count": 210,
+      "sha256": "dc4459a26125f7a5ce568e6b5d7bc4251be71f0a17611246fbe529dfe455dfa4"
+    },
+    "OpeningBalanceBatch": {
+      "columns": [
+        "id",
+        "propertyId",
+        "asOf",
+        "encryptedSourceNote",
+        "recordCount",
+        "status",
+        "actorId",
+        "createdAt",
+        "voidedAt",
+        "voidedBy",
+        "encryptedVoidReason"
+      ],
+      "count": 325,
+      "sha256": "1a2c487271b7dd70a34579a222e108208f2ea80e4dd535aec2ec570c4ab6c93c"
+    },
+    "OpeningProof": {
+      "columns": [
+        "id",
+        "receivableId",
+        "shareId",
+        "uploadedBy",
+        "requestKey",
+        "requestHash",
+        "amount",
+        "date",
+        "method",
+        "reference",
+        "encryptedTenantNote",
+        "storageKey",
+        "contentHash",
+        "mimeType",
+        "fileSize",
+        "uploadedAt",
+        "status",
+        "encryptedReviewNote",
+        "reviewedAt",
+        "reviewedBy",
+        "receiptId"
+      ],
+      "count": 291,
+      "sha256": "47faf6bbb9194d2c6e0aeb94c47e9aada0e9057c0d433f4a522ef56af63f4f9b"
+    },
+    "OpeningReceipt": {
+      "columns": [
+        "id",
+        "receivableId",
+        "kind",
+        "delta",
+        "date",
+        "method",
+        "reference",
+        "encryptedNote",
+        "actorId",
+        "createdAt",
+        "reversesId"
+      ],
+      "count": 310,
+      "sha256": "971d9682b02ca792d8523a2d0f8401ecfc1f21026396dbab4f1a3ab4b7a84735"
+    },
+    "OpeningReceivable": {
+      "columns": [
+        "id",
+        "propertyId",
+        "batchId",
+        "guestId",
+        "reference",
+        "sourceKey",
+        "amount",
+        "due",
+        "status",
+        "createdAt"
+      ],
+      "count": 358,
+      "sha256": "6dbe6d1592ca681ab7ca175a84035c6556d0a100aa0214136f2a1df7eb3c6757"
+    },
+    "OpeningReminder": {
+      "columns": [
+        "id",
+        "receivableId",
+        "shareId",
+        "amount",
+        "due",
+        "reference",
+        "actorId",
+        "createdAt"
+      ],
+      "count": 303,
+      "sha256": "b2dfc78a662854b5ef29cecb4203b62d5dc6ad2dffd23882191a037ceb0ce229"
+    },
+    "OpeningShare": {
+      "columns": [
+        "id",
+        "receivableId",
+        "grantId",
+        "userId",
+        "stayId",
+        "actorId",
+        "createdAt",
+        "revokedAt",
+        "revokedBy"
+      ],
+      "count": 79,
+      "sha256": "b64cb59ec2dccf0fed88fd38f078b31acfcfe5df4ebfd15320d50b267fa0a4f7"
+    },
+    "OrgMembership": {
+      "columns": [
+        "id",
+        "userId",
+        "organizationId",
+        "role",
+        "status",
+        "propertyIds",
+        "canRecordPayments",
+        "canControlDevices",
+        "createdAt",
+        "revokedAt"
+      ],
+      "count": 1400,
+      "sha256": "6b983e6d5cadae598956c7bf16e677d9d8bc698fb6e04da835c037179256f748"
+    },
+    "Organization": {
+      "columns": [
+        "id",
+        "name",
+        "plan",
+        "planExpiresAt",
+        "subscriptionStatus"
+      ],
+      "count": 2005,
+      "sha256": "5d61b41d5f0761c5be24a447310ce596cb708cc048c36c388875c40a9cce4aee"
+    },
+    "Payment": {
+      "columns": [
+        "id",
+        "invoiceId",
+        "amount",
+        "date",
+        "method",
+        "reference",
+        "actorId",
+        "createdAt"
+      ],
+      "count": 225,
+      "sha256": "f63333c9b28cf6591098b82ebe2d9d5e6dc9482344a6f332ce8d10977c47344f"
+    },
+    "PaymentProof": {
+      "columns": [
+        "id",
+        "invoiceId",
+        "amount",
+        "date",
+        "method",
+        "reference",
+        "status",
+        "storageKey",
+        "mimeType",
+        "fileSize",
+        "contentHash",
+        "reviewNote",
+        "reviewedBy",
+        "reviewedAt",
+        "paymentId",
+        "uploadedAt"
+      ],
+      "count": 336,
+      "sha256": "a4e55ad30600e2ebd3dd26b7d4cf75f386452e7134ffbb2799fe26107a2e1ee4"
+    },
+    "PrivacyEntry": {
+      "columns": [
+        "id",
+        "requestId",
+        "revision",
+        "kind",
+        "actorId",
+        "actorRole",
+        "encryptedBody",
+        "status",
+        "createdAt"
+      ],
+      "count": 1308,
+      "sha256": "e9cd9033fae128b36bf63d18e39885dc76727713a1a716abdf5b76809debb087"
+    },
+    "PrivacyRequest": {
+      "columns": [
+        "id",
+        "requesterId",
+        "kind",
+        "status",
+        "revision",
+        "createdAt",
+        "updatedAt"
+      ],
+      "count": 15421,
+      "sha256": "e0af3a9a7e226b8f1b07a5f45c932dbf627a42d95397d40e86145db9106465b7"
+    },
+    "Property": {
+      "columns": [
+        "id",
+        "organizationId",
+        "name",
+        "type",
+        "city",
+        "encryptedWifiPassword",
+        "guestInstructions",
+        "supportPhone",
+        "wifiSsid",
+        "billingAutomation",
+        "operationsLastRunAt"
+      ],
+      "count": 663,
+      "sha256": "53c32cff87d564a109379b8d67e9870db9f3e0fd0ddd11e4195c019bc7a261c6"
+    },
+    "Prospect": {
+      "columns": [
+        "id",
+        "propertyId",
+        "name",
+        "phone",
+        "email",
+        "source",
+        "consentReference",
+        "consentAt",
+        "interest",
+        "roomId",
+        "requestedStart",
+        "requestedEnd",
+        "budget",
+        "stage",
+        "surveyAt",
+        "followUpAt",
+        "offerRent",
+        "offerTerms",
+        "notes",
+        "lossReason",
+        "revision",
+        "convertedStayId",
+        "createdBy",
+        "createdAt",
+        "updatedAt"
+      ],
+      "count": 1225,
+      "sha256": "6b99b6921119825bcc422949d634a958ac6bce3d3fb13e933c8276a7a9513dd2"
+    },
+    "ProspectActivity": {
+      "columns": [
+        "id",
+        "prospectId",
+        "revision",
+        "kind",
+        "note",
+        "actorId",
+        "metadata",
+        "createdAt"
+      ],
+      "count": 1178,
+      "sha256": "9d38e5b97f4bccaa374c9626f9abb744aab06f09505c7dce7e89b5fa401a513a"
+    },
+    "RateLimit": {
+      "columns": [
+        "key",
+        "count",
+        "expires"
+      ],
+      "count": 6114,
+      "sha256": "119ca83b2ddaa43d9edb1c2326810f23cbb2a680926d534666e791b0825e27b1"
+    },
+    "ReminderDelivery": {
+      "columns": [
+        "id",
+        "propertyId",
+        "invoiceId",
+        "receivableId",
+        "shareId",
+        "grantId",
+        "userId",
+        "channel",
+        "scheduledOn",
+        "amount",
+        "due",
+        "reference",
+        "emailHash",
+        "policyRevision",
+        "dedupeKey",
+        "status",
+        "reason",
+        "emailOutboxId",
+        "createdAt"
+      ],
+      "count": 276,
+      "sha256": "3606c51449e11a0fa9cf34608322c02e5912999bfe7940aa01933b2ac198a7a5"
+    },
+    "ReminderPolicy": {
+      "columns": [
+        "propertyId",
+        "enabled",
+        "emailEnabled",
+        "hour",
+        "leadDays",
+        "intervalDays",
+        "revision",
+        "actorId",
+        "lastRunAt",
+        "updatedAt"
+      ],
+      "count": 4,
+      "sha256": "c64845b91ed9bd26a132710b0604e0f90db50dba0d39496169215714f28a2ccb"
+    },
+    "ResetToken": {
+      "columns": [
+        "token",
+        "userId",
+        "expires"
+      ],
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ResidentImportBatch": {
+      "columns": [
+        "id",
+        "propertyId",
+        "actorId",
+        "recordCount",
+        "encryptedSnapshots",
+        "status",
+        "createdAt",
+        "rolledBackAt",
+        "rolledBackBy"
+      ],
+      "count": 132,
+      "sha256": "957bf001008714066a9fbb0a80d8f33565837d618f77af004e70792a5a71a7ba"
+    },
+    "ResidentProfile": {
+      "columns": [
+        "id",
+        "guestId",
+        "email",
+        "encryptedEmergencyContact",
+        "emergencyConsent",
+        "updatedAt"
+      ],
+      "count": 87,
+      "sha256": "f53903dff1dd1465cacefd3de0f72edabc2a6a1f085f80669e8d73506d378fda"
+    },
+    "Room": {
+      "columns": [
+        "id",
+        "propertyId",
+        "number",
+        "rate",
+        "operational"
+      ],
+      "count": 2032,
+      "sha256": "7dbb382991a09294f9fb0a2b701266fc07a5303d17896cccf65c924913e534b2"
+    },
+    "RoomImportBatch": {
+      "columns": [
+        "id",
+        "propertyId",
+        "actorId",
+        "roomCount",
+        "roomSnapshots",
+        "status",
+        "createdAt",
+        "rolledBackAt",
+        "rolledBackBy"
+      ],
+      "count": 70,
+      "sha256": "aedee2d2f42a1449108459b33af979100bc37c6de545ec06d4b5e30078b2bf37"
+    },
+    "RoomTransfer": {
+      "columns": [
+        "id",
+        "fromStayId",
+        "toStayId",
+        "date",
+        "actorId",
+        "createdAt"
+      ],
+      "count": 20,
+      "sha256": "9e93221007418f04ac58f05715feb6705b8d0147a0b479abad741fbb9fe8ec32"
+    },
+    "SaaSBillingProfile": {
+      "columns": [
+        "organizationId",
+        "legalName",
+        "address",
+        "contactName",
+        "contactEmail",
+        "encryptedTaxId",
+        "reference",
+        "revision",
+        "updatedAt"
+      ],
+      "count": 38,
+      "sha256": "0c80a8ebfe23e3fce7aea5c58703eb3185415e5c283cae8782259e27671bbae0"
+    },
+    "Session": {
+      "columns": [
+        "token",
+        "userId",
+        "expires",
+        "contextType",
+        "createdAt",
+        "membershipId",
+        "occupantAccessId",
+        "userAgent"
+      ],
+      "count": 1786,
+      "sha256": "76741c41ca5ff7f9550a929a7d0a61bcbd503d69941e4181f15efd2e469b11c5"
+    },
+    "SmartAccess": {
+      "columns": [
+        "id",
+        "deviceId",
+        "stayId",
+        "status",
+        "validFrom",
+        "validUntil",
+        "encryptedPin",
+        "provider",
+        "createdAt",
+        "revokedAt"
+      ],
+      "count": 108,
+      "sha256": "7288aa7d6ce16f95d0dcba0189507ec749a42912f1d4a4f8f1fbcbf996426ded"
+    },
+    "Stay": {
+      "columns": [
+        "id",
+        "roomId",
+        "guestId",
+        "start",
+        "end",
+        "rate",
+        "billingDay",
+        "status"
+      ],
+      "count": 911,
+      "sha256": "98590c4b67a21ff418c92dd09ade0b5c5c3a1db399a8c755369195a1643aa6fb"
+    },
+    "StayLink": {
+      "columns": [
+        "id",
+        "stayId",
+        "tokenHash",
+        "includeAccess",
+        "expiresAt",
+        "revokedAt",
+        "createdAt"
+      ],
+      "count": 167,
+      "sha256": "57967159cf3c19f3c764ddcd2789a7611d78ba4e7086ec77c7ef8bc0e08d444c"
+    },
+    "SubscriptionEntry": {
+      "columns": [
+        "id",
+        "invoiceId",
+        "kind",
+        "delta",
+        "date",
+        "reference",
+        "note",
+        "actorId",
+        "receiptId",
+        "reversesId",
+        "createdAt"
+      ],
+      "count": 767,
+      "sha256": "c5efcea822c162c0a4ba685eac67134cbe0d979821c9702b4940720e2ad0701f"
+    },
+    "SubscriptionEvent": {
+      "columns": [
+        "id",
+        "organizationId",
+        "invoiceId",
+        "kind",
+        "note",
+        "actorId",
+        "metadata",
+        "createdAt"
+      ],
+      "count": 1018,
+      "sha256": "2eda17c488be6f62b17adc1d45d5ed4624d4b4176bc2e94a2b60132977a9459b"
+    },
+    "SubscriptionInvoice": {
+      "columns": [
+        "id",
+        "organizationId",
+        "number",
+        "plan",
+        "monthlyPrice",
+        "months",
+        "total",
+        "periodStart",
+        "periodEnd",
+        "due",
+        "billingSnapshot",
+        "status",
+        "voidReason",
+        "activatedAt",
+        "createdBy",
+        "createdAt"
+      ],
+      "count": 591,
+      "sha256": "b8fed638c938e3b5eaceb3d36956d6a85ae27a1e662c3d385deb09158330ae06"
+    },
+    "SupportCase": {
+      "columns": [
+        "id",
+        "organizationId",
+        "subject",
+        "category",
+        "priority",
+        "status",
+        "revision",
+        "createdBy",
+        "assigneeId",
+        "createdAt",
+        "updatedAt"
+      ],
+      "count": 376,
+      "sha256": "cf35327de4c8e7d36e79b44985a2dd42b6174f102e2a3f17c030e185e8d4365f"
+    },
+    "SupportEntry": {
+      "columns": [
+        "id",
+        "caseId",
+        "kind",
+        "actorId",
+        "actorRole",
+        "encryptedBody",
+        "status",
+        "revision",
+        "createdAt"
+      ],
+      "count": 922,
+      "sha256": "8dbd5f2594ecbeaff1e1621f11a54474ed3a4179feb3ec15133dab3df7d1a4e6"
+    },
+    "TenantLink": {
+      "columns": [
+        "id",
+        "invoiceId",
+        "tokenHash",
+        "includeAccess",
+        "expiresAt",
+        "revokedAt",
+        "createdAt"
+      ],
+      "count": 272,
+      "sha256": "adee5548010cc3954c2328fe193961cf1129ab7e06d8c50d6b3eee0ded2a277e"
+    },
+    "Ticket": {
+      "columns": [
+        "id",
+        "propertyId",
+        "stayId",
+        "title",
+        "description",
+        "category",
+        "priority",
+        "status",
+        "assigneeId",
+        "createdBy",
+        "createdAt",
+        "updatedAt"
+      ],
+      "count": 331,
+      "sha256": "112ac646a33ff5d929c4b4ddbdec9d77c182f90afa7163ab249c8f692266d42c"
+    },
+    "TicketUpdate": {
+      "columns": [
+        "id",
+        "ticketId",
+        "actorId",
+        "note",
+        "status",
+        "createdAt"
+      ],
+      "count": 402,
+      "sha256": "16c4789e901efc2fb1cfd158fbb766341470958d9624703cec2655913e3bc270"
+    },
+    "Upgrade": {
+      "columns": [
+        "id",
+        "organizationId",
+        "plan",
+        "status",
+        "createdAt"
+      ],
+      "count": 116,
+      "sha256": "d4794e498cbfae61abf17a9c8ecdb73a2d0e2ac77fa117d8c24696a7d86c72e5"
+    },
+    "User": {
+      "columns": [
+        "id",
+        "organizationId",
+        "name",
+        "email",
+        "phone",
+        "password",
+        "role",
+        "platformAdmin",
+        "propertyIds",
+        "canControlDevices",
+        "canRecordPayments",
+        "accountStatus",
+        "emailVerifiedAt",
+        "notificationsEnabled",
+        "phoneVerifiedAt"
+      ],
+      "count": 1399,
+      "sha256": "20c805d57d94ffe716da3b1e3aa412ab5755bc83c52271eb24724c9620fd3e56"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+# Optional worker-only template. It is not started automatically.
+# Use the reviewed application image and the web server's HTTPS origin/job key.
+services:
+  operations:
+    image: ${KAMELO_IMAGE:?Set the reviewed application image}
+    command: ["node", "scripts/operations-worker.mjs"]
+    environment:
+      APP_URL: ${APP_URL:?Set the application HTTPS origin}
+      OPERATIONS_JOB_KEY: ${OPERATIONS_JOB_KEY:?Set the server job key privately}
+    restart: unless-stopped
+    init: true
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+  reminders:
+    image: ${KAMELO_IMAGE:?Set the reviewed application image}
+    command: ["node", "scripts/reminder-worker.mjs"]
+    environment:
+      APP_URL: ${APP_URL:?Set the application HTTPS origin}
+      OPERATIONS_JOB_KEY: ${OPERATIONS_JOB_KEY:?Set the server job key privately}
+    restart: unless-stopped
+    init: true
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+  mail:
+    image: ${KAMELO_IMAGE:?Set the reviewed application image}
+    command: ["node", "scripts/mail-worker.mjs"]
+    environment:
+      APP_URL: ${APP_URL:?Set the application HTTPS origin}
+      OPERATIONS_JOB_KEY: ${OPERATIONS_JOB_KEY:?Set the server job key privately}
+    restart: unless-stopped
+    init: true
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]

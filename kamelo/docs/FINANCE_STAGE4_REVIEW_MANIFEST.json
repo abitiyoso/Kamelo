@@ -1,0 +1,295 @@
+{
+  "stage": "Remaining stage 4 finance completion local scope",
+  "branch": "codex/finance-completion",
+  "files": [
+    {
+      "path": "package.json",
+      "sha256": "4ade20d6f0ea1369bf89a2e5ec053b59e6423da9065bc1d10e7e80552f78a65f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "bff04af30b065f47a1c002f20cbf5d6597f537022d2da32ef391fdc24e7f2d82"
+    },
+    {
+      "path": "design-qa.md",
+      "sha256": "b4fe51a251e2cedfa47a012ebf0406e748b03376868c1a1c03db09a7ed52f1e1"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_STATUS.md",
+      "sha256": "173a55c51e7fd8166daed9e0750ab3fcbbacba3eb876b68d0cee840c58723269"
+    },
+    {
+      "path": "docs/REMAINING_DELIVERY_STAGES.md",
+      "sha256": "68182f968e63484fff710aa5897c90ea4379f053a1fc48e6bb691e23a7b628d8"
+    },
+    {
+      "path": "docs/FINANCE_STAGE4.md",
+      "sha256": "6122219b54ae6aa0da2a6193360a1a2476d63eedac55dea9faa9e0eab7a1e903"
+    },
+    {
+      "path": "docs/FINANCE_STAGE4_DESIGN_QA.md",
+      "sha256": "b6ec3565008461acfc39ccd49d75b6ad724d520b23fcdbe64119e2caa07435be"
+    },
+    {
+      "path": "prisma/schema.prisma",
+      "sha256": "41b7c1b3d4ae600993cbc27a851f4018b4ed5321eab6db272c58a237ebd74663"
+    },
+    {
+      "path": "prisma/migrations/20261020200000_financial_documents_refunds/migration.sql",
+      "sha256": "36642f931f3a418a93a4c7157c29d4e271389a967b6635a3acbf09f0c4f74539"
+    },
+    {
+      "path": "lib/opening-receipts.ts",
+      "sha256": "693a00ab9815699453e155f97873b3b2e05955b14b7d75b8f31475abf254491e"
+    },
+    {
+      "path": "lib/finance.ts",
+      "sha256": "7d50f7a90945c6f9609aa835efbf024bbbccbe32e490e8bbfa2c4b09a6dc2e37"
+    },
+    {
+      "path": "lib/finance-report.ts",
+      "sha256": "2700460ea8c69bc2dcfedff1f124c40e75eb559a54f87d3b733f808a9cb0084c"
+    },
+    {
+      "path": "lib/financial-documents.ts",
+      "sha256": "789683a6e5d13a21d312e9c7e5813c694da2207ef9a22b316a43523a1ca0260a"
+    },
+    {
+      "path": "lib/receipt-html.mjs",
+      "sha256": "7a2cf59ba52e2c2d7a797758410591f2338448a019a756147b00efdf20ac56a2"
+    },
+    {
+      "path": "app/api/opening-balances/route.ts",
+      "sha256": "60d2d12f6f74585a8f8c87391586b50c159beeb85f7201e0b6c87acf51934d99"
+    },
+    {
+      "path": "app/api/financial-documents/route.ts",
+      "sha256": "bb984a53b823205e3d4b3f3a61891c2c317b82668b218fb636ba62fc7430bee6"
+    },
+    {
+      "path": "components/workspace/financial-documents.tsx",
+      "sha256": "314b2e4219c6d04c125185ba75b6de15d056a0dae222a21ad2042f55a8e82db4"
+    },
+    {
+      "path": "components/workspace/finance.tsx",
+      "sha256": "b92780855a8ebcc3157040faeffce6191d09dc9bd20e7f46b99c8c62b837c10c"
+    },
+    {
+      "path": "components/workspace/opening-receipts.tsx",
+      "sha256": "eba32c6e24c0407d449b998714157a4a2d31f265141181db24e33ca8f7597eac"
+    },
+    {
+      "path": "components/identity/resident-portal.tsx",
+      "sha256": "57f984ddaff3758b32763e21a2c709739a0996ce4f69fd6caaf58d20d780c09e"
+    },
+    {
+      "path": "tests/receipt.test.mjs",
+      "sha256": "2ee867f00107ee75498bd847d67419247fe0818161651b69f7baf5b2d1f24a42"
+    },
+    {
+      "path": "tests/finance-stage4.integration.mjs",
+      "sha256": "3f2fc11dcf95fcb2e9cd7ad9f8cca27d6b0602a820e6159b0c1201e51481d036"
+    },
+    {
+      "path": "scripts/finance-stage4-qa-migrate.mjs",
+      "sha256": "5b9fbe08eaf5a5c8db84e7a97081636425006eed9686bbf4955007d6251c5684"
+    },
+    {
+      "path": "scripts/finance-stage4-qa-verify.mjs",
+      "sha256": "95406ce7498c89e25d21a2cf58234fb9a5d275aab1e85e97e667d55cba03791f"
+    },
+    {
+      "path": "scripts/finance-stage4-browser-fixture.mjs",
+      "sha256": "4b2739f0757b4fda380729aff080a206e885364fbeff539b6653150a020f2fe5"
+    },
+    {
+      "path": "scripts/finance-stage4-review-sync.mjs",
+      "sha256": "8d8396ce3fa5866ab11e4a03535bd001cca093f6c4bd0b6a76b0c79fdaae91f6"
+    },
+    {
+      "path": "artifacts/finance-stage4/build.log",
+      "sha256": "2f29720a6cc6fcaeb09209c849e826ec018234fcddfbce629cc78a429ff234ec"
+    },
+    {
+      "path": "artifacts/finance-stage4/unit.log",
+      "sha256": "9520faf23dc026aea7e9e1ae5965d662b9c40b1e525dd4521f636de8e0317ba8"
+    },
+    {
+      "path": "artifacts/finance-stage4/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/finance-stage4/migration-preservation.json",
+      "sha256": "c937f0aafff815b5f226e4dfd9edcf9360b3757394f06fb2c03b94d148860cd0"
+    },
+    {
+      "path": "artifacts/finance-stage4/regression-results.json",
+      "sha256": "38778e96e1cc6c3efd2a512424256096debfece77f8cf313fe113f88c6222e32"
+    },
+    {
+      "path": "artifacts/finance-stage4/finance-api.json",
+      "sha256": "e2cd3b9a18e7619f6580ef95d5fa4b3d009da786a348780fad9043539b84b598"
+    },
+    {
+      "path": "artifacts/finance-stage4/browser-metrics.json",
+      "sha256": "7ae12d63eddd9caf1d24a46ea983bac537bfe7cb46d7f87ca0ded56b8e7406d1"
+    },
+    {
+      "path": "artifacts/finance-stage4/owner-archive.png",
+      "sha256": "04c963fa0f616f0d0b327c08324520b160f5f4a2433e8662314f795ba482c281"
+    },
+    {
+      "path": "artifacts/finance-stage4/owner-archive-page2.png",
+      "sha256": "21b29a93e3e4edc9cef881d3f3ff43beedf51bf9ee912c22769e4cb0eb93cfc9"
+    },
+    {
+      "path": "artifacts/finance-stage4/owner-retention-history.png",
+      "sha256": "b474c7eef251f2680f52410d09df2405c40fb9bf79d8255bfbe842fec2979034"
+    },
+    {
+      "path": "artifacts/finance-stage4/owner-mobile-390.png",
+      "sha256": "d47d4d7e0d6f9ac96335acfd5aee9625815977caea847570d5099e0ca56a673d"
+    },
+    {
+      "path": "artifacts/finance-stage4/owner-mobile-320.png",
+      "sha256": "19f5d1a108221ebc53ea2e93f2812ef2fff9f18b523288377f1fe08a90b67a29"
+    },
+    {
+      "path": "artifacts/finance-stage4/tenant-archive.png",
+      "sha256": "b4d55a06694aebb3028fa9d162014a8aad0c6e65d12b5a6a78ba03d34732d1c4"
+    },
+    {
+      "path": "artifacts/finance-stage4/tenant-archive-page2.png",
+      "sha256": "cfe49949cae5a9f927ff941cf0fde3fd17cae0e09cf3d9b0b19e88202040c604"
+    },
+    {
+      "path": "artifacts/finance-stage4/tenant-mobile-390.png",
+      "sha256": "2c0670bcffd02015577fae96b71259341a37ef63201c3ddfa0125a9df2022e4a"
+    },
+    {
+      "path": "artifacts/finance-stage4/tenant-mobile-320.png",
+      "sha256": "bec76fb10e5201c0d794536fbab43a96e19eb90ae59170261a5879b341232300"
+    },
+    {
+      "path": "artifacts/finance-stage4/receipt-desktop.png",
+      "sha256": "8cafe3fb4d2af5bbd0e05b89387a5c815af7a1fd8c52c44a6d88a216aaf808f8"
+    },
+    {
+      "path": "artifacts/finance-stage4/receipt-mobile-320.png",
+      "sha256": "5ed34751921445ca9b12207cdfb75eb8fd0c995b5365954f5b0b096741b19ec9"
+    },
+    {
+      "path": "artifacts/finance-stage4/receipt-after-refund.png",
+      "sha256": "2b87733bf1d160470a3c2e62090ffb8d6f3528e97e05263d93496d429d827192"
+    },
+    {
+      "path": "artifacts/finance-stage4/integration.log",
+      "sha256": "d02e21d2d6d9c661ed71bbe9ae4c018f09e4f5d2025f1088e10e120efd31bbe1"
+    },
+    {
+      "path": "artifacts/finance-stage4/operations.integration.log",
+      "sha256": "5c5546ba4d575fb935deb41c3c5cb2c73bbb66fbf88ff9b3246a61d4a9e30368"
+    },
+    {
+      "path": "artifacts/finance-stage4/tenant-smart.integration.log",
+      "sha256": "1544d2ab66b7601b8c4730768244fe879862a9e859b90c545f5e5b71f3d9a459"
+    },
+    {
+      "path": "artifacts/finance-stage4/acquisition.integration.log",
+      "sha256": "ed7d5ebf518413e9285fd1ef4ebcb51bdcb6d3b07ae91f15546241fac33c6ec9"
+    },
+    {
+      "path": "artifacts/finance-stage4/identity.integration.log",
+      "sha256": "8be910194db8de4898158df2f4eb2f7a63e77bc3eaea4aa8d74c765f1f972e09"
+    },
+    {
+      "path": "artifacts/finance-stage4/workspace.integration.log",
+      "sha256": "328d6ddd0892cc8b1a72c42071882cbedffdd16d837e036c136dd7ed59a5f430"
+    },
+    {
+      "path": "artifacts/finance-stage4/lifecycle.integration.log",
+      "sha256": "737f272f99ddbd580b68220872448886fef6f95b5fde9aa107e12a1f06a0a9a4"
+    },
+    {
+      "path": "artifacts/finance-stage4/prospects.integration.log",
+      "sha256": "6dd33c3cd8e62d560e60ade338f0674e27df74c5daca5e1abf1566248c654b57"
+    },
+    {
+      "path": "artifacts/finance-stage4/subscriptions.integration.log",
+      "sha256": "45709de29d3cea93b6be75e98055e8a20e08c279863b51ed44012d2a82c502cd"
+    },
+    {
+      "path": "artifacts/finance-stage4/finance.integration.log",
+      "sha256": "64590dd06698822cb4fd2584baf0b7f7f1f4ac97ad4dc6579686435f895c944c"
+    },
+    {
+      "path": "artifacts/finance-stage4/support.integration.log",
+      "sha256": "2dd01aba2f8eb59fde0857fa2ccd824f613646cfb1cba9b72b3cb39d27a423bd"
+    },
+    {
+      "path": "artifacts/finance-stage4/messages.integration.log",
+      "sha256": "e06e32b2dce92f98d1e5ae6ff074377ee5e300c955541cad47562364d13f9aa3"
+    },
+    {
+      "path": "artifacts/finance-stage4/privacy.integration.log",
+      "sha256": "9203cd6d96eee6519f5a688bd1c53dcd27763ca66c8526b15acdbfa2e1bc6ec2"
+    },
+    {
+      "path": "artifacts/finance-stage4/room-import.integration.log",
+      "sha256": "f42a888f174f7e81ea7a459f01c841b6cd678865b978279efa7af374f1ef0569"
+    },
+    {
+      "path": "artifacts/finance-stage4/resident-import.integration.log",
+      "sha256": "bc71737bceaa78d973a9067d70e87c7e479cb0906ac04bc5c1e92fcc1cf3f524"
+    },
+    {
+      "path": "artifacts/finance-stage4/import-files.integration.log",
+      "sha256": "3ca4a3472d384ac4d886058ae11899ce18e187138085ae09fd19cd25309c47d9"
+    },
+    {
+      "path": "artifacts/finance-stage4/opening-balances.integration.log",
+      "sha256": "2e7579fbdf802941ddc5b2e045a94a15f41d026d14ca932760a68340fbdb438e"
+    },
+    {
+      "path": "artifacts/finance-stage4/opening-receipts.integration.log",
+      "sha256": "e815fd244ca72862ea4b25816b4a785f27d80d4deccf5c78b4d48d5c06af9986"
+    },
+    {
+      "path": "artifacts/finance-stage4/opening-tenant.integration.log",
+      "sha256": "d3f0d8b65f18e98322d8669d0e9f14289ce2cf8964578ba00770ef660322fce5"
+    },
+    {
+      "path": "artifacts/finance-stage4/opening-reminders.integration.log",
+      "sha256": "3f1c24d2a8e1e096c25bf7cbafe6dde8aad4c1cb1cfcfacd78c5e14117cabedd"
+    },
+    {
+      "path": "artifacts/finance-stage4/proof-queue.integration.log",
+      "sha256": "2d41710e728c6b5c46c2aa5ddc96e9351e8dde2640f8c9ae57e5fde336dccd90"
+    },
+    {
+      "path": "artifacts/finance-stage4/dashboard.integration.log",
+      "sha256": "779b22d303c841abc6f2c4bb5a8fcfef28429cc459eaae72f74cace51a5e7e86"
+    },
+    {
+      "path": "artifacts/finance-stage4/reminder.integration.log",
+      "sha256": "65c8dd99301422138730fc7df86794647aa29ca3bd5f0d5ae98f07e7d2d76101"
+    },
+    {
+      "path": "artifacts/finance-stage4/finance-stage4.integration.log",
+      "sha256": "dcbec2849bf3460d382a74b5ffadbc1ec35504cfc6e5b9110e9a51effa20ea30"
+    }
+  ],
+  "excluded": [
+    ".env*",
+    ".local-secrets",
+    "mail sink",
+    "runtime databases",
+    "uploaded payment evidence",
+    "node_modules",
+    "generated",
+    ".next"
+  ],
+  "committed": false,
+  "pushed": false,
+  "deployed": false
+}

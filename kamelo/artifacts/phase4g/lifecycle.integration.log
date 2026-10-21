@@ -1,0 +1,8 @@
+PASS owner-only lifecycle / cross-organization denial / staff denial / origin protection
+PASS property-bound resident profile / encrypted consented emergency contact / consent withdrawal / no phone or email identity merge
+PASS contract proposal / explicit manual agreement / immutable versions / tenant hides unagreed drafts / retry idempotency / signed rate protection
+PASS renewal preserves prior dates until agreement / conflicting reservation denial / revised proposals / stale version protection
+PASS deposit is liability, not rent / concurrent receipt exactly once / transfer race and collision checks / paired liability transfer / old invoices unchanged / old room services revoked / explicit new stay context
+PASS unpaid checkout allowed / cleaning task and closed contract / deposit retained / pending deduction reserves balance / reject or confirm / partial refund and deduction exactly once
+PASS append-only settlement corrections / one reversal only / concurrent over-refund protection / database immutability / no deposit-driven rental income
+PASS returning stay reuses the explicit profile without automatic account claim / full financial history / directory pagination / liability summary

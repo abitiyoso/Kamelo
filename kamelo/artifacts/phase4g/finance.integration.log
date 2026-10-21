@@ -1,0 +1,9 @@
+PASS owner-only property/portfolio boundaries, platform/staff denial, CSRF and bounded real report dates
+PASS immutable cost source, unpaid versus paid separation, idempotent partial payments and resource isolation
+PASS real paid rent only; pending proof, subscription, deposit deductions and transfers excluded from operating cash
+PASS concurrent expense payment cap, source-bounded vendor refunds, corrections and paid-void denial
+PASS manual statement matching, duplicate line/direction/amount guards, revoke-before-correct and retained rematch history
+PASS refunded/voided expense cash history survives across months and consolidated property scopes stay isolated
+PASS database source/entry/matching immutability and existing tenant invoice/proof/history preservation
+PASS private UTF8 accounting exports preserve signed cash, escape spreadsheet formulas and exclude other ledgers
+PASS all-history totals beyond visible pages, bounded entry/match/list pagination and explicit CSV size guard
